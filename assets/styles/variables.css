@@ -1,0 +1,432 @@
+:root {
+
+   /* =========================================================
+      NTS BETTING — COLORS
+      ========================================================= */
+
+   --color-night: #0E1036;
+   --color-night-deep: #080A24;
+
+   --color-background: #071522;
+   --color-background-card: #040d17;
+
+   --color-background-style:
+      linear-gradient(
+         180deg,
+         rgba(2, 10, 18, 0.98) 0%,
+         rgba(3, 14, 25, 0.96) 45%,
+         rgba(5, 19, 32, 0.92) 70%,
+         rgba(12, 32, 51, 0.82) 88%,
+         rgba(17, 43, 65, 0.72) 100%
+      );
+
+   --color-royal: #1E3A8A;
+   --color-sky: #415A77;
+
+   --color-gold: #DDB219;
+   --color-gold-hover: #C7A016;
+   --color-gold-light: #F2D35E;
+
+   --color-white: #FFFFFF;
+   --color-dark-text: #111111;
+   --color-gray-100: #F3F4F6;
+   --color-gray-200: #E5E7EB;
+   --color-gray-400: #9CA3AF;
+   --color-gray-500: #6B7280;
+   --color-gray-700: #374151;
+   --color-gray-900: #111827;
+
+
+   /* =========================================================
+      BACKGROUNDS
+      ========================================================= */
+
+   --bg-primary: var(--color-background);
+
+   --bg-secondary: var(--color-background-style);
+
+   --bg-panel:
+      linear-gradient(
+         145deg,
+         rgba(3, 10, 20, 0.96),
+         rgba(2, 7, 15, 0.94)
+      );
+
+   --bg-secondary-panel: var(--color-background-card);
+
+   --bg-card: rgba(7, 22, 36, 0.92);
+   --bg-card-hover: rgba(9, 27, 44, 0.96);
+
+
+   /* =========================================================
+      NAVBAR
+      ========================================================= */
+
+   --navbar-bg-scroll: rgba(4, 8, 20, 0.92);
+
+   --navbar-link-color: rgba(255, 255, 255, 0.80);
+   --navbar-link-color-hover: var(--color-gold);
+
+   --navbar-login-color: rgba(255, 255, 255, 0.95);
+
+   --navbar-register-color: #101010;
+
+   --navbar-toggle-border: rgba(255, 255, 255, 0.25);
+
+   --navbar-search-hover-bg: rgba(221, 178, 25, 0.045);
+   --navbar-login-hover-bg: rgba(221, 178, 25, 0.045);
+
+   
+   /* =========================================================
+      FOOTER
+      ========================================================= */
+
+   --footer-signature-gold:
+        rgba(
+            221,
+            178,
+            25,
+            0.75
+        );
+
+
+   /* =========================================================
+      BORDERS
+      ========================================================= */
+
+   --border-color: rgba(255, 255, 255, 0.10);
+   --border-color-hover: rgba(221, 178, 25, 0.45);
+
+   --navbar-border-scroll: rgba(255, 255, 255, 0.07);
+
+   --navbar-search-border: rgba(255, 255, 255, 0.32);
+   --navbar-search-border-hover: rgba(221, 178, 25, 0.75);
+
+   --navbar-login-border: rgba(255, 255, 255, 0.42);
+
+
+   /* =========================================================
+      HERO — COLORS
+      ========================================================= */
+
+   --hero-bg: #07091d;
+
+   --hero-text-primary: rgba(255, 255, 255, 0.97);
+   --hero-text-strong: rgba(255, 255, 255, 0.94);
+   --hero-text-high: rgba(255, 255, 255, 0.92);
+   --hero-text-medium: rgba(255, 255, 255, 0.86);
+   --hero-text-normal: rgba(255, 255, 255, 0.84);
+   --hero-text-soft: rgba(255, 255, 255, 0.78);
+   --hero-text-muted: rgba(255, 255, 255, 0.74);
+   --hero-text-low: rgba(255, 255, 255, 0.72);
+   --hero-text-faded: rgba(255, 255, 255, 0.68);
+   --hero-text-subtle: rgba(255, 255, 255, 0.55);
+   --hero-text-disabled: rgba(255, 255, 255, 0.46);
+
+   --hero-border-soft: rgba(255, 255, 255, 0.07);
+   --hero-border-light: rgba(255, 255, 255, 0.09);
+   --hero-border-medium: rgba(255, 255, 255, 0.11);
+
+   --hero-gold-border: rgba(221, 178, 25, 0.80);
+   --hero-gold-border-soft: rgba(221, 178, 25, 0.62);
+   --hero-gold-border-light: rgba(221, 178, 25, 0.55);
+
+   --hero-gold-bg: rgba(221, 178, 25, 0.055);
+   --hero-gold-bg-soft: rgba(221, 178, 25, 0.045);
+   --hero-gold-bg-subtle: rgba(221, 178, 25, 0.025);
+
+   --hero-success: #19d47a;
+   --hero-success-border: rgba(25, 212, 122, 0.62);
+    --hero-success-bg: rgba(25, 212, 122, 0.055);
+
+
+   /* =========================================================
+      HERO — BACKGROUNDS / OVERLAYS
+      ========================================================= */
+
+   --hero-overlay-dark: rgba(3, 8, 18, 0.94);
+   --hero-overlay-dark-medium: rgba(3, 8, 18, 0.78);
+   --hero-overlay-soft: rgba(3, 8, 18, 0.28);
+   --hero-overlay-light: rgba(3, 8, 18, 0.48);
+
+   --hero-vertical-dark: rgba(2, 6, 15, 0.34);
+   --hero-vertical-transparent: rgba(2, 6, 15, 0.02);
+   --hero-vertical-soft: rgba(2, 6, 15, 0.08);
+   --hero-vertical-bottom: rgba(2, 6, 15, 0.88);
+
+   --hero-vignette-soft: rgba(0, 0, 0, 0.22);
+   --hero-vignette-dark: rgba(0, 0, 0, 0.62);
+
+
+   /* =========================================================
+      HERO — GRADIENTS
+      ========================================================= */
+
+   --hero-background-gradient:
+      linear-gradient(
+            90deg,
+            rgba(3, 8, 18, 0.94) 0%,
+            rgba(3, 8, 18, 0.78) 23%,
+            rgba(3, 8, 18, 0.28) 52%,
+            rgba(3, 8, 18, 0.48) 100%
+      );
+
+   --hero-background-overlay-gradient:
+      linear-gradient(
+            180deg,
+            rgba(2, 6, 15, 0.34) 0%,
+            rgba(2, 6, 15, 0.02) 30%,
+            rgba(2, 6, 15, 0.08) 65%,
+            rgba(2, 6, 15, 0.88) 100%
+      );
+
+   --hero-vignette-gradient:
+      radial-gradient(
+            ellipse at center,
+            transparent 35%,
+            rgba(0, 0, 0, 0.22) 72%,
+            rgba(0, 0, 0, 0.62) 100%
+      );
+
+   --hero-member-gradient:
+      linear-gradient(
+            145deg,
+            #415A77,
+            #111B2B
+      );
+
+   --hero-results-gradient:
+      linear-gradient(
+            145deg,
+            rgba(3, 10, 20, 0.96),
+            rgba(2, 7, 15, 0.94)
+      );
+
+   --hero-result-card-gradient:
+      linear-gradient(
+            145deg,
+            rgba(8, 23, 39, 0.96),
+            rgba(5, 15, 28, 0.92)
+      );
+
+   --hero-quote-gradient:
+      linear-gradient(
+            145deg,
+            rgba(9, 22, 37, 0.98),
+            rgba(4, 12, 22, 0.94)
+      );
+
+   --hero-number-line-gradient:
+      linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.50),
+            rgba(255, 255, 255, 0.10)
+      );
+
+   --hero-sports-left-gradient:
+      linear-gradient(
+            90deg,
+            rgba(4, 6, 20, 1) 0%,
+            rgba(4, 6, 20, 0.85) 30%,
+            rgba(4, 6, 20, 0) 100%
+      );
+
+   --hero-sports-right-gradient:
+      linear-gradient(
+            270deg,
+            rgba(4, 6, 20, 1) 0%,
+            rgba(4, 6, 20, 0.85) 30%,
+            rgba(4, 6, 20, 0) 100%
+      );
+
+
+   /* =========================================================
+      HERO — SHADOWS
+      ========================================================= */
+
+   --hero-button-shadow:
+      0 8px 25px rgba(221, 178, 25, 0.16);
+
+   --hero-button-shadow-hover:
+      0 10px 30px rgba(221, 178, 25, 0.24);
+
+   --hero-results-shadow:
+      0 25px 65px rgba(0, 0, 0, 0.60),
+      inset 0 1px 0 rgba(255, 255, 255, 0.015);
+
+   --hero-quote-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+   /* =========================================================
+      OFFERS — COLORS
+      ========================================================= */
+
+   --offers-text-primary: #FFFFFF;
+   --offers-text-strong: rgba(255, 255, 255, 0.90);
+   --offers-text-medium: rgba(255, 255, 255, 0.72);
+   --offers-text-muted: rgba(255, 255, 255, 0.58);
+
+   --offers-card-bg: rgba(7, 22, 36, 0.25);
+   --offers-card-button-bg: rgba(7, 23, 38, 0.82);
+   --offers-card-button-hover-bg: rgba(221, 178, 25, 0.06);
+
+   --offers-border: rgba(255, 255, 255, 0.10);
+   --offers-button-border: rgba(255, 255, 255, 0.12);
+
+   --offers-border-hover: rgba(221, 178, 25, 0.35);
+   --offers-button-border-hover: rgba(221, 178, 25, 0.50);
+
+   --offers-featured-border: rgba(221, 178, 25, 0.72);
+   --offers-featured-border-hover: rgba(221, 178, 25, 0.95);
+
+   --offers-featured-ring: rgba(221, 178, 25, 0.08);
+   --offers-featured-ring-hover: rgba(221, 178, 25, 0.12);
+
+   --offers-badge-border: rgba(221, 178, 25, 0.90);
+
+
+   /* =========================================================
+      OFFERS — ICON COLORS
+      ========================================================= */
+
+   --offers-icon-starter: #22C55E;
+   --offers-icon-essential: #3B82F6;
+   --offers-icon-advanced: #F5C542;
+
+
+   /* =========================================================
+      OFFERS — SHADOWS
+      ========================================================= */
+
+   --offers-card-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.16);
+
+   --offers-card-shadow-hover:
+      0 16px 35px rgba(0, 0, 0, 0.24),
+      0 0 20px rgba(221, 178, 25, 0.035);
+
+   --offers-featured-shadow:
+      0 0 0 1px rgba(221, 178, 25, 0.08),
+      0 15px 35px rgba(0, 0, 0, 0.22),
+      0 0 25px rgba(221, 178, 25, 0.07);
+
+   --offers-featured-shadow-hover:
+      0 0 0 1px rgba(221, 178, 25, 0.12),
+      0 18px 40px rgba(0, 0, 0, 0.28),
+      0 0 30px rgba(221, 178, 25, 0.10);
+
+   --offers-badge-shadow:
+      0 4px 12px rgba(221, 178, 25, 0.12);
+
+   --offers-button-featured-shadow:
+      0 5px 16px rgba(221, 178, 25, 0.12);
+
+   --offers-button-featured-shadow-hover:
+      0 7px 20px rgba(221, 178, 25, 0.20);
+
+
+   /* =========================================================
+      VAULT — SHADOWS
+      ========================================================= */
+
+   --shadow-vault:
+      0 15px 40px rgba(0, 0, 0, 0.22);
+
+   --shadow-vault-hover:
+      0 18px 45px rgba(0, 0, 0, 0.28);
+
+   --shadow-vault-feature:
+      0 8px 25px rgba(0, 0, 0, 0.14);
+
+
+   /* =========================================================
+      NAVBAR — SHADOWS
+      ========================================================= */
+
+   --navbar-shadow-scroll:
+      0 8px 30px rgba(0, 0, 0, 0.28);
+
+   --navbar-register-shadow:
+      0 5px 18px rgba(221, 178, 25, 0.12);
+
+   --navbar-register-shadow-hover:
+      0 8px 22px rgba(221, 178, 25, 0.22);
+
+
+   /* =========================================================
+      TYPOGRAPHY
+      ========================================================= */
+
+   --font-heading:
+      'Playfair Display', Georgia, serif;
+
+   --font-body:
+      'Montserrat', Arial, sans-serif;
+
+
+   /* =========================================================
+      SPACING
+      ========================================================= */
+
+   --space-xs: 0.25rem;
+   --space-sm: 0.5rem;
+   --space-md: 1rem;
+   --space-lg: 1.5rem;
+   --space-xl: 2rem;
+   --space-2xl: 3rem;
+   --space-3xl: 4rem;
+   --space-4xl: 6rem;
+
+
+   /* =========================================================
+      BORDER RADIUS
+      ========================================================= */
+
+   --radius-sm: 6px;
+   --radius-md: 10px;
+   --radius-lg: 16px;
+   --radius-xl: 24px;
+   --radius-full: 9999px;
+
+
+   /* =========================================================
+      SHADOWS — GLOBAL
+      ========================================================= */
+
+   --shadow-sm:
+      0 4px 12px rgba(0, 0, 0, 0.15);
+
+   --shadow-md:
+      0 10px 30px rgba(0, 0, 0, 0.20);
+
+   --shadow-lg:
+      0 20px 50px rgba(0, 0, 0, 0.30);
+
+   --shadow-gold:
+      0 10px 30px rgba(221, 178, 25, 0.15);
+
+
+   /* =========================================================
+      TRANSITIONS
+      ========================================================= */
+
+   --transition-fast:
+      150ms ease;
+
+   --transition-base:
+      250ms ease;
+
+   --transition-slow:
+      400ms ease;
+
+   --transition-vault:
+      220ms ease;
+
+
+   /* =========================================================
+      LAYOUT
+      ========================================================= */
+
+   --container-width: 1280px;
+   --header-height: 80px;
+}

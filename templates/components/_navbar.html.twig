@@ -1,0 +1,133 @@
+<header class="site-header">
+    <div class="navbar-container">
+
+        {# =====================================================
+           LOGO
+           ===================================================== #}
+
+        <a href="{{ path('app_home') }}"
+            class="navbar-logo"
+            aria-label="NTS Betting - Accueil">
+
+            <img
+                src="{{ asset('images/logo/logo.png') }}"
+                alt="NTS Betting"
+                class="navbar-logo-image"
+            >
+
+        </a>
+
+
+        {# =====================================================
+           NAVIGATION PRINCIPALE
+           ===================================================== #}
+
+        <nav class="navbar-navigation" aria-label="Navigation principale">
+
+            <a
+                href="{{ path('app_home') }}"
+                class="navbar-link is-active"
+            >
+                Accueil
+            </a>
+
+            <a href="#" class="navbar-link">
+                Nos offres
+            </a>
+
+            <a href="#" class="navbar-link">
+                Résultats
+            </a>
+
+            <a href="#" class="navbar-link">
+                Pronostics
+            </a>
+
+            <a href="#" class="navbar-link">
+                NTS Vault
+            </a>
+
+            <a href="#" class="navbar-link">
+                Blog
+            </a>
+
+            <a href="#" class="navbar-link">
+                À propos
+            </a>
+
+            <a href="#" class="navbar-link">
+                FAQ
+            </a>
+
+            <a href="#" class="navbar-link">
+                Contact
+            </a>
+
+        </nav>
+
+
+        {# =====================================================
+           ACTIONS
+           ===================================================== #}
+
+        <div class="navbar-actions">
+
+            <button
+                type="button"
+                class="navbar-search"
+                aria-label="Rechercher"
+            >
+                <svg
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                >
+                    <circle
+                        cx="11"
+                        cy="11"
+                        r="6.5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                    />
+
+                    <path
+                        d="M16 16L21 21"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                    />
+                </svg>
+            </button>
+
+
+            <a href="#" class="navbar-login">
+                Se connecter
+            </a>
+
+
+            <a href="#" class="navbar-register">
+                S'inscrire
+            </a>
+
+        </div>
+
+
+        {# =====================================================
+           MOBILE
+           ===================================================== #}
+
+        <button
+            type="button"
+            class="navbar-toggle"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+</header>

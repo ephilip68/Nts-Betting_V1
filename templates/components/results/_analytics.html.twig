@@ -1,0 +1,425 @@
+<section class="results-performance">
+
+    <div class="results-performance__container">
+
+        {# =====================================================
+           ÉVOLUTION DES PERFORMANCES
+           ===================================================== #}
+
+        <article class="performance-card performance-card--chart">
+
+            <div class="performance-card__header">
+
+                <div>
+                    <p class="performance-card__eyebrow">
+                        Analyse
+                    </p>
+
+                    <h2 class="performance-card__title">
+                        Évolution des performances
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <div class="performance-card__legend">
+
+                <span class="performance-legend performance-legend--units">
+                    <i></i>
+                    Unités gagnées
+                </span>
+
+                <span class="performance-legend performance-legend--losses">
+                    <i></i>
+                    Unités perdues
+                </span>
+
+                <span class="performance-legend performance-legend--rate">
+                    <i></i>
+                    Taux de réussite
+                </span>
+
+            </div>
+
+
+            <div class="performance-chart">
+
+                <div class="performance-chart__y-axis">
+
+                    <span>30</span>
+                    <span>20</span>
+                    <span>10</span>
+                    <span>0</span>
+                    <span>-10</span>
+
+                </div>
+
+
+                <div class="performance-chart__area">
+
+                    <div class="performance-chart__grid">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+
+                    {# BARRES #}
+
+                    <div class="performance-chart__bars">
+
+                        <span style="height: 13%;"></span>
+                        <span style="height: 20%;"></span>
+                        <span style="height: 35%;"></span>
+                        <span style="height: 17%;"></span>
+                        <span style="height: 28%;"></span>
+                        <span style="height: 38%;"></span>
+                        <span style="height: 29%;"></span>
+                        <span style="height: 46%;"></span>
+                        <span style="height: 54%;"></span>
+                        <span style="height: 63%;"></span>
+                        <span style="height: 72%;"></span>
+                        <span style="height: 83%;"></span>
+
+                    </div>
+
+
+                    {# COURBE #}
+
+                    <svg
+                        class="performance-chart__line"
+                        viewBox="0 0 500 150"
+                        preserveAspectRatio="none"
+                        aria-hidden="true"
+                    >
+
+                        <polyline
+                            points="
+                                0,92
+                                45,67
+                                90,72
+                                135,55
+                                180,60
+                                225,53
+                                270,57
+                                315,51
+                                360,43
+                                405,51
+                                450,26
+                                500,38
+                            "
+                        />
+
+                        <circle cx="0" cy="92" r="2.5"/>
+                        <circle cx="45" cy="67" r="2.5"/>
+                        <circle cx="90" cy="72" r="2.5"/>
+                        <circle cx="135" cy="55" r="2.5"/>
+                        <circle cx="180" cy="60" r="2.5"/>
+                        <circle cx="225" cy="53" r="2.5"/>
+                        <circle cx="270" cy="57" r="2.5"/>
+                        <circle cx="315" cy="51" r="2.5"/>
+                        <circle cx="360" cy="43" r="2.5"/>
+                        <circle cx="405" cy="51" r="2.5"/>
+                        <circle cx="450" cy="26" r="2.5"/>
+                        <circle cx="500" cy="38" r="2.5"/>
+
+                    </svg>
+
+
+                    <div class="performance-chart__months">
+
+                        <span>Jan</span>
+                        <span>Fév</span>
+                        <span>Mar</span>
+                        <span>Avr</span>
+                        <span>Mai</span>
+                        <span>Juin</span>
+                        <span>Juil</span>
+                        <span>Aoû</span>
+                        <span>Sep</span>
+                        <span>Oct</span>
+                        <span>Nov</span>
+                        <span>Déc</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="performance-chart__right-axis">
+
+                    <span>100%</span>
+                    <span>75%</span>
+                    <span>50%</span>
+                    <span>25%</span>
+                    <span>0%</span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        {# =====================================================
+           RÉPARTITION PAR SPORT
+           ===================================================== #}
+
+        <article class="performance-card performance-card--sports">
+
+            <div class="performance-card__header">
+
+                <div>
+
+                    <p class="performance-card__eyebrow">
+                        Répartition
+                    </p>
+
+                    <h2 class="performance-card__title">
+                        Répartition par sport
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="sports-distribution">
+
+                <div class="sports-donut">
+
+                    <div class="sports-donut__center">
+
+                        <strong>78%</strong>
+
+                        <span>
+                            de réussite
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="sports-list">
+
+                    <div class="sports-list__item">
+
+                        <span class="sports-list__icon">
+                            <i class="fa-solid fa-futbol"></i>
+                        </span>
+
+                        <span class="sports-list__name">
+                            Football
+                        </span>
+
+                        <strong>45%</strong>
+
+                    </div>
+
+
+                    <div class="sports-list__item">
+
+                        <span class="sports-list__icon">
+                            <i class="fa-solid fa-table-tennis-paddle-ball"></i>
+                        </span>
+
+                        <span class="sports-list__name">
+                            Tennis
+                        </span>
+
+                        <strong>25%</strong>
+
+                    </div>
+
+
+                    <div class="sports-list__item">
+
+                        <span class="sports-list__icon">
+                            <i class="fa-solid fa-basketball"></i>
+                        </span>
+
+                        <span class="sports-list__name">
+                            Basketball
+                        </span>
+
+                        <strong>15%</strong>
+
+                    </div>
+
+
+                    <div class="sports-list__item">
+
+                        <span class="sports-list__icon">
+                            <i class="fa-solid fa-baseball"></i>
+                        </span>
+
+                        <span class="sports-list__name">
+                            Sports US
+                        </span>
+
+                        <strong>10%</strong>
+
+                    </div>
+
+
+                    <div class="sports-list__item">
+
+                        <span class="sports-list__icon">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </span>
+
+                        <span class="sports-list__name">
+                            Autres
+                        </span>
+
+                        <strong>5%</strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        {# =====================================================
+           STATISTIQUES CLÉS
+           ===================================================== #}
+
+        <article class="performance-card performance-card--key-stats">
+
+            <div class="performance-card__header">
+
+                <div>
+
+                    <p class="performance-card__eyebrow">
+                        Performance
+                    </p>
+
+                    <h2 class="performance-card__title">
+                        Statistiques clés
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="key-stats">
+
+                <div class="key-stat">
+
+                    <span class="key-stat__icon">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </span>
+
+                    <span class="key-stat__label">
+                        Cote moyenne
+                    </span>
+
+                    <strong class="key-stat__value">
+                        1.72
+                    </strong>
+
+                </div>
+
+
+                <div class="key-stat">
+
+                    <span class="key-stat__icon">
+                        <i class="fa-solid fa-stopwatch"></i>
+                    </span>
+
+                    <span class="key-stat__label">
+                        Mise moyenne
+                    </span>
+
+                    <strong class="key-stat__value">
+                        2.1 u
+                    </strong>
+
+                </div>
+
+
+                <div class="key-stat">
+
+                    <span class="key-stat__icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </span>
+
+                    <span class="key-stat__label">
+                        ROI
+                    </span>
+
+                    <strong class="key-stat__value key-stat__value--positive">
+                        +18.4%
+                    </strong>
+
+                </div>
+
+
+                <div class="key-stat">
+
+                    <span class="key-stat__icon">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                    </span>
+
+                    <span class="key-stat__label">
+                        Plus longue série gagnante
+                    </span>
+
+                    <strong class="key-stat__value">
+                        12
+                    </strong>
+
+                </div>
+
+
+                <div class="key-stat">
+
+                    <span class="key-stat__icon">
+                        <i class="fa-solid fa-arrow-trend-down"></i>
+                    </span>
+
+                    <span class="key-stat__label">
+                        Plus longue série perdante
+                    </span>
+
+                    <strong class="key-stat__value">
+                        4
+                    </strong>
+
+                </div>
+
+
+                <div class="key-stat">
+
+                    <span class="key-stat__icon">
+                        <i class="fa-regular fa-calendar"></i>
+                    </span>
+
+                    <span class="key-stat__label">
+                        Meilleur mois
+                    </span>
+
+                    <strong class="key-stat__value key-stat__value--month">
+                        Octobre 2024
+                        <small>(+62 u)</small>
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>

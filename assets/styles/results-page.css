@@ -1,0 +1,7610 @@
+/* =========================================================
+   NTS BETTING — RESULTS HERO
+   ========================================================= */
+
+.results-hero {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 480px;
+
+    min-height: 480px;
+
+    overflow: hidden;
+
+    background-color:
+        var(--color-background);
+}
+
+
+/* =========================================================
+   IMAGE HERO
+   ========================================================= */
+
+.results-hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    background-image:
+        var(--hero-background-gradient),
+        url('/images/offers/offers-hero.png');
+
+    background-size: cover;
+
+    background-position:
+        center center;
+
+    background-repeat: no-repeat;
+}
+
+
+/* =========================================================
+   OVERLAY
+   ========================================================= */
+
+.results-hero__overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background:
+        var(--hero-background-overlay-gradient);
+}
+
+
+/* =========================================================
+   CONTENEUR
+   ========================================================= */
+
+.results-hero__container {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(
+            calc(100% - 120px),
+            1450px
+        );
+
+    /*
+     * La navbar est positionnée par-dessus le hero
+     * et occupe environ 70px.
+     *
+     * On commence donc le centrage sous la navbar.
+     */
+
+    height: calc(100% - 70px);
+
+    margin: 70px auto 0;
+
+    display: flex;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   CONTENU
+   ========================================================= */
+
+.results-hero__content {
+
+    width: 700px;
+
+    max-width: 100%;
+
+    margin: 0;
+
+    padding: 0;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   SUR-TITRE
+   ========================================================= */
+
+.results-hero__eyebrow {
+
+    display: block;
+
+    margin: 0 0 10px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.88
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size: 0.80rem;
+
+    font-weight: 500;
+
+    letter-spacing: 0.105em;
+
+    line-height: 1.4;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.results-hero__title {
+
+    margin: 0;
+
+    padding: 0;
+
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 12px;
+
+    color: var(--color-white);
+
+    font-family: var(--font-body);
+
+    font-size: 3.55rem;
+
+    font-weight: 800;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.04em;
+
+    text-transform: uppercase;
+}
+
+
+/* NOS */
+
+.results-hero__title span {
+
+    color: var(--color-white);
+
+    font-weight: 800;
+}
+
+
+/* RÉSULTATS */
+
+.results-hero__title strong {
+
+    color: var(--color-gold);
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   SOUS-TITRE
+   ========================================================= */
+
+.results-hero__subtitle {
+
+    max-width: 680px;
+
+    margin: 12px 0 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.90
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.05rem;
+
+    font-weight: 400;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.results-hero__features {
+
+    margin-top: 23px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 42px;
+}
+
+
+/* =========================================================
+   FEATURE
+   ========================================================= */
+
+.results-hero__feature {
+
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.88
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size: 0.72rem;
+
+    font-weight: 400;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   ICÔNE
+   ========================================================= */
+
+.results-hero__feature-icon {
+
+    flex: 0 0 38px;
+
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+        var(--color-gold);
+
+    border:
+        1.5px solid
+        var(--color-gold);
+
+    border-radius: 50%;
+
+    background:
+        rgba(
+            221,
+            178,
+            25,
+            0.035
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(
+            221,
+            178,
+            25,
+            0.08
+        );
+
+    font-size: 0.90rem;
+}
+
+
+/* =========================================================
+   TEXTE FEATURE
+   ========================================================= */
+
+.results-hero__feature > span {
+
+    display: flex;
+
+    flex-direction: column;
+
+    white-space: nowrap;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.90
+        );
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   SOUS-TEXTE
+   ========================================================= */
+
+.results-hero__feature small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.55
+        );
+
+    font-size: 0.64rem;
+
+    font-weight: 400;
+
+    line-height: 1.3;
+}
+
+/* =========================================================
+   NTS BETTING — RESULTS — STATISTIQUES
+   ========================================================= */
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.results-stats {
+
+    position: relative;
+
+    width: 100%;
+
+    padding: 24px 0 12px;
+
+    background:
+        var(--bg-panel);
+}
+
+
+/* =========================================================
+   CONTENEUR
+   ========================================================= */
+
+.results-stats__container {
+
+    width: min(calc(100% - 120px), 1450px);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap: 10px;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.results-stat-card {
+
+    min-height: 84px;
+
+    padding: 16px 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    background:
+        rgba(
+            5,
+            21,
+            34,
+            0.72
+        );
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.42
+        );
+
+    border-radius: 5px;
+
+    box-sizing: border-box;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.results-stat-card:hover {
+
+    background:
+        rgba(
+            7,
+            27,
+            44,
+            0.82
+        );
+
+    border-color:
+        rgba(
+            65,
+            90,
+            119,
+            0.68
+        );
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   ICÔNE
+   ========================================================= */
+
+.results-stat-card__icon {
+
+    flex:
+        0 0 43px;
+
+    width: 43px;
+
+    height: 43px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+        var(--color-gold);
+
+    border:
+        1px solid
+        rgba(
+            221,
+            178,
+            25,
+            0.72
+        );
+
+    border-radius: 50%;
+
+    background:
+        rgba(
+            221,
+            178,
+            25,
+            0.035
+        );
+
+    font-size: 0.95rem;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CONTENU
+   ========================================================= */
+
+.results-stat-card__content {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 2px;
+}
+
+
+/* =========================================================
+   VALEUR
+   ========================================================= */
+
+.results-stat-card__value {
+
+    display: block;
+
+    margin: 0;
+
+    color:
+        var(--color-white);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.05rem;
+
+    font-weight: 800;
+
+    line-height: 1.1;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.results-stat-card__label {
+
+    display: block;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.48
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size: 0.66rem;
+
+    font-weight: 400;
+
+    line-height: 1.25;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   CARD SUCCESS
+   ========================================================= */
+
+.results-stat-card--success {
+
+    border-color:
+        rgba(
+            0,
+            210,
+            160,
+            0.22
+        );
+}
+
+
+.results-stat-card--success
+.results-stat-card__icon {
+
+    color:
+        #00d2a0;
+
+    border-color:
+        rgba(
+            0,
+            210,
+            160,
+            0.65
+        );
+
+    background:
+        rgba(
+            0,
+            210,
+            160,
+            0.035
+        );
+}
+
+
+.results-stat-card--success
+.results-stat-card__value {
+
+    color:
+        #00d2a0;
+}
+
+
+/* =========================================================
+   NTS BETTING — RESULTS — FILTRES
+   ========================================================= */
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.results-filters {
+
+    position: relative;
+
+    width: 100%;
+
+    padding:
+        12px 0;
+
+    background:
+        var(--bg-panel);
+}
+
+
+/* =========================================================
+   CONTENEUR
+   ========================================================= */
+
+.results-filters__container {
+
+    width:
+        min(
+            calc(100% - 120px),
+            1450px
+        );
+
+    margin:
+        0 auto;
+}
+
+
+/* =========================================================
+   PANEL
+   ========================================================= */
+
+.results-filters__panel {
+
+    padding:
+        12px 15px 13px;
+
+    background:
+        rgba(
+            5,
+            21,
+            34,
+            0.72
+        );
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.42
+        );
+
+    border-radius:
+        5px;
+
+    box-sizing:
+        border-box;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.results-filters__header {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    margin-bottom:
+        10px;
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.results-filters__title {
+
+    margin:
+        0;
+
+    color:
+        var(--color-white);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.90rem;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.2;
+}
+
+/* =========================================================
+   FORMULAIRE
+   ========================================================= */
+
+.results-filters__form {
+
+    display:
+        grid;
+
+    /*
+     * Les 5 champs sont légèrement réduits
+     * pour donner davantage d'espace au bouton.
+     */
+
+    grid-template-columns:
+        repeat(
+            5,
+            minmax(
+                0,
+                1fr
+            )
+        )
+        92px;
+
+    gap:
+        10px;
+
+    align-items:
+        end;
+}
+
+
+/* =========================================================
+   FILTRE
+   ========================================================= */
+
+.results-filter {
+
+    min-width:
+        0;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        5px;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.results-filter label {
+
+    margin:
+        0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.58
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.80rem;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.2;
+}
+
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+.results-filter select {
+
+    width:
+        100%;
+
+    height:
+        31px;
+
+    padding:
+        0 28px 0 9px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.88
+        );
+
+    background-color:
+        rgba(
+            5,
+            21,
+            34,
+            0.88
+        );
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.50
+        );
+
+    border-radius:
+        3px;
+
+    outline:
+        none;
+
+    box-sizing:
+        border-box;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.70rem;
+
+    font-weight:
+        400;
+
+    line-height:
+        1;
+
+    cursor:
+        pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        color 0.2s ease;
+
+    appearance:
+        auto;
+}
+
+
+.results-filter select:hover {
+
+    color:
+        var(--color-white);
+
+    border-color:
+        rgba(
+            65,
+            90,
+            119,
+            0.80
+        );
+}
+
+
+.results-filter select:focus {
+
+    color:
+        var(--color-white);
+
+    border-color:
+        rgba(
+            221,
+            178,
+            25,
+            0.65
+        );
+
+    background-color:
+        rgba(
+            7,
+            27,
+            44,
+            0.95
+        );
+}
+
+
+/* =========================================================
+   OPTIONS
+   ========================================================= */
+
+.results-filter select option {
+
+    color:
+        #ffffff;
+
+    background:
+        #051522;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.65rem;
+}
+
+
+/* Option sélectionnée */
+
+.results-filter select option:checked {
+
+    color:
+        #ffffff;
+
+    background:
+        #1e3a4f;
+}
+
+
+/* Hover option */
+
+.results-filter select option:hover {
+
+    color:
+        #07111a;
+
+    background:
+        var(--color-gold);
+}
+
+
+/* =========================================================
+   BOUTON FILTRER
+   ========================================================= */
+
+.results-filters__button {
+
+    width:
+        92px;
+
+    height:
+        31px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        6px;
+
+    padding:
+        0 13px;
+
+    color:
+        #07111a;
+
+    background:
+        var(--color-gold);
+
+    border:
+        1px solid
+        var(--color-gold);
+
+    border-radius:
+        3px;
+
+    box-sizing:
+        border-box;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.70rem;
+
+    font-weight:
+        700;
+
+    line-height:
+        1;
+
+    white-space:
+        nowrap;
+
+    cursor:
+        pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.results-filters__button i {
+
+    font-size:
+        0.70rem;
+}
+
+
+.results-filters__button:hover {
+
+    background:
+        var(--color-gold-hover);
+
+    border-color:
+        var(--color-gold-hover);
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 5px 15px
+        rgba(
+            221,
+            178,
+            25,
+            0.14
+        );
+}
+
+
+.results-filters__button:active {
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   NTS BETTING — RESULTS — DERNIERS RÉSULTATS
+   ========================================================= */
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.latest-results {
+
+    position: relative;
+
+    width: 100%;
+
+    padding:
+        12px 0;
+
+    background:
+        var(--bg-panel);
+}
+
+
+/* =========================================================
+   CONTENEUR
+   ========================================================= */
+
+.latest-results__container {
+
+    width:
+        min(
+            calc(100% - 120px),
+            1450px
+        );
+
+    margin:
+        0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.latest-results__header {
+
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    justify-content:
+        space-between;
+
+    margin-bottom:
+        13px;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.latest-results__heading {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        4px;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.latest-results__eyebrow {
+
+    margin:
+        0;
+
+    color: var(--color-gold);
+
+    font-family: var(--font-body);
+
+    font-size: 0.90rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.09em;
+
+    text-transform: uppercase;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.latest-results__title {
+
+    margin:
+        0;
+
+    color: var(--hero-text-primary);
+
+    font-family: var(--font-body);
+
+    font-size: 1.50rem;
+
+    font-weight: 750;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.018em;
+}
+
+
+.latest-results__title span {
+
+    color: var(--hero-text-subtle);
+
+    font-family: var(--font-body);
+
+    font-size: 0.90rem;
+
+    font-weight: 400;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   BOUTON HISTORIQUE
+   ========================================================= */
+
+.latest-results__history {
+
+    min-width:
+        170px;
+
+    height:
+        38px;
+
+    padding:
+        0 12px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        9px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.78
+        );
+
+    background:
+        rgba(
+            5,
+            21,
+            34,
+            0.72
+        );
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.55
+        );
+
+    border-radius:
+        4px;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.80rem;
+
+    font-weight:
+        500;
+
+    line-height:
+        1;
+
+    text-decoration:
+        none;
+
+    white-space:
+        nowrap;
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.latest-results__history i {
+
+    font-size:
+        0.70rem;
+}
+
+
+.latest-results__history:hover {
+
+    color:
+        var(--color-gold);
+
+    border-color:
+        rgba(
+            221,
+            178,
+            25,
+            0.65
+        );
+
+    background:
+        rgba(
+            221,
+            178,
+            25,
+            0.045
+        );
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+   ========================================================= */
+
+.latest-results__table-wrapper {
+
+    width:
+        100%;
+
+    overflow-x:
+        auto;
+
+    background:
+        rgba(
+            5,
+            21,
+            34,
+            0.72
+        );
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.42
+        );
+
+    border-radius:
+        5px;
+
+    scrollbar-width:
+        thin;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.latest-results__table {
+
+    width:
+        100%;
+
+    min-width:
+        1050px;
+
+    border-collapse:
+        collapse;
+
+    table-layout:
+        auto;
+
+    font-family:
+        var(--font-body);
+}
+
+
+/* =========================================================
+   HEADER TABLEAU
+   ========================================================= */
+
+.latest-results__table thead {
+
+    background:
+        rgba(
+            65,
+            90,
+            119,
+            0.10
+        );
+}
+
+
+.latest-results__table th {
+
+    height:
+        42px;
+
+    padding:
+        0 13px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.48
+        );
+
+    border-bottom:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.40
+        );
+
+    font-size:
+        0.75rem;
+
+    font-weight:
+        600;
+
+    line-height:
+        1;
+
+    text-align:
+        left;
+
+    white-space:
+        nowrap;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.045em;
+}
+
+
+/* =========================================================
+   CELLULES
+   ========================================================= */
+
+.latest-results__table td {
+
+    height:
+        45px;
+
+    padding:
+        0 13px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.72
+        );
+
+    border-bottom:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.19
+        );
+
+    font-size:
+        0.78rem;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.2;
+
+    white-space:
+        nowrap;
+}
+
+
+.latest-results__table tbody tr:last-child td {
+
+    border-bottom:
+        none;
+}
+
+
+.latest-results__table tbody tr {
+
+    transition:
+        background-color 0.2s ease;
+}
+
+
+.latest-results__table tbody tr:hover {
+
+    background:
+        rgba(
+            65,
+            90,
+            119,
+            0.075
+        );
+}
+
+
+/* =========================================================
+   MATCH
+   ========================================================= */
+
+.latest-results__match {
+
+    color:
+        var(--color-white) !important;
+
+    font-weight:
+        500 !important;
+}
+
+
+/* =========================================================
+   SPORT
+   ========================================================= */
+
+.latest-results__sport {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.74
+        );
+}
+
+
+.latest-results__sport i {
+
+    width:
+        17px;
+
+    color:
+        var(--color-gold);
+
+    font-size:
+        0.72rem;
+
+    text-align:
+        center;
+}
+
+
+/* =========================================================
+   COTE
+   ========================================================= */
+
+.latest-results__odds {
+
+    color:
+        var(--color-white) !important;
+
+    font-weight:
+        600 !important;
+}
+
+
+/* =========================================================
+   STATUT
+   ========================================================= */
+
+.latest-results__status {
+
+    width: 75px;
+    height: 28px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        5px;
+
+    border-radius:
+        3px;
+
+    font-size:
+        0.78rem;
+
+    font-weight:
+        600;
+
+    line-height:
+        1;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   GAGNÉ
+   ========================================================= */
+
+.latest-results__status--won {
+
+    color:
+        #39d98a;
+
+    background:
+        rgba(
+            25,
+            211,
+            126,
+            0.12
+        );
+
+    border:
+        1px solid
+        rgba(
+            25,
+            211,
+            126,
+            0.48
+        );
+}
+
+
+.latest-results__status--won i {
+
+    font-size:
+        0.78rem;
+}
+
+
+/* =========================================================
+   PERDU
+   ========================================================= */
+
+.latest-results__status--lost {
+
+    color:
+        #ff6464;
+
+    background:
+        rgba(
+            255,
+            72,
+            72,
+            0.11
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            72,
+            72,
+            0.45
+        );
+}
+
+
+.latest-results__status--lost i {
+
+    font-size:
+        0.78rem;
+}
+
+
+/* =========================================================
+   GAIN
+   ========================================================= */
+
+.latest-results__profit {
+
+    font-weight:
+        700 !important;
+
+    font-size:
+        0.78rem !important;
+}
+
+
+/* =========================================================
+   GAIN POSITIF
+   ========================================================= */
+
+.latest-results__profit--positive {
+
+    color:
+        #39d98a !important;
+}
+
+
+/* =========================================================
+   PERTE
+   ========================================================= */
+
+.latest-results__profit--negative {
+
+    color:
+        #ff6464 !important;
+}
+
+
+/* =========================================================
+   FLÈCHE
+   ========================================================= */
+
+.latest-results__arrow {
+
+    width:
+        28px;
+
+    padding:
+        0 9px !important;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.35
+        ) !important;
+
+    text-align:
+        right;
+
+    transition:
+        color 0.2s ease;
+}
+
+
+.latest-results__table tbody tr:hover .latest-results__arrow {
+
+    color:
+        var(--color-gold) !important;
+}
+
+
+.latest-results__arrow i {
+
+    font-size:
+        0.78rem;
+}
+
+
+/* =========================================================
+   NTS BETTING — RESULTS — PERFORMANCE
+   ========================================================= */
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.results-performance {
+
+    width: 100%;
+
+    padding:
+        12px 0;
+
+    background:
+        var(--bg-panel);
+}
+
+
+/* =========================================================
+   CONTENEUR
+   ========================================================= */
+
+.results-performance__container {
+
+    width:
+        min(
+            calc(100% - 120px),
+            1450px
+        );
+
+    margin:
+        0 auto;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1.25fr
+        0.95fr
+        1fr;
+
+    gap:
+        12px;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.performance-card {
+
+    min-width: 0;
+
+    min-height:
+        190px;
+
+    padding:
+        16px 17px;
+
+    background:
+        rgba(
+            5,
+            21,
+            34,
+            0.72
+        );
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.42
+        );
+
+    border-radius:
+        5px;
+
+    box-sizing:
+        border-box;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.performance-card__header {
+
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    justify-content:
+        space-between;
+
+    margin-bottom:
+        15px;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.performance-card__eyebrow {
+
+    margin:
+        0 0 5px;
+
+    color:
+        var(--color-gold);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.90rem;
+
+    font-weight:
+        700;
+
+    line-height:
+        1;
+
+    letter-spacing:
+        0.09em;
+
+    text-transform:
+        uppercase;
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.performance-card__title {
+
+    margin:
+        0;
+
+    color:
+        var(--color-white);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        1.50rem;
+
+    font-weight:
+        750;
+
+    line-height:
+        1.15;
+
+    letter-spacing:
+        -0.018em;
+}
+
+
+/* =========================================================
+   LÉGENDE
+   ========================================================= */
+
+.performance-card__legend {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        18px;
+
+    margin-bottom:
+        9px;
+}
+
+
+.performance-legend {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        6px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.65
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.78rem;
+
+    font-weight:
+        400;
+
+    white-space:
+        nowrap;
+}
+
+
+.performance-legend i {
+
+    width:
+        9px;
+
+    height:
+        9px;
+
+    display:
+        block;
+
+    border-radius:
+        1px;
+}
+
+
+.performance-legend--units i {
+
+    background:
+        var(--color-gold);
+}
+
+
+.performance-legend--losses i {
+
+    background:
+        #ef4444;
+}
+
+
+.performance-legend--rate i {
+
+    background:
+        #3b82f6;
+}
+
+
+/* =========================================================
+   GRAPHIQUE
+   ========================================================= */
+
+.performance-chart {
+
+    height:
+        125px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        28px minmax(0, 1fr) 34px;
+
+    gap:
+        6px;
+}
+
+
+/* =========================================================
+   AXE GAUCHE
+   ========================================================= */
+
+.performance-chart__y-axis {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        space-between;
+
+    padding:
+        2px 0 17px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.48
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.62rem;
+
+    line-height:
+        1;
+}
+
+
+/* =========================================================
+   ZONE
+   ========================================================= */
+
+.performance-chart__area {
+
+    position:
+        relative;
+
+    min-width:
+        0;
+
+    height:
+        100%;
+}
+
+
+/* =========================================================
+   GRILLE
+   ========================================================= */
+
+.performance-chart__grid {
+
+    position:
+        absolute;
+
+    inset:
+        2px 0 18px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        space-between;
+}
+
+
+.performance-chart__grid span {
+
+    width:
+        100%;
+
+    height:
+        1px;
+
+    background:
+        rgba(
+            65,
+            90,
+            119,
+            0.20
+        );
+}
+
+
+/* =========================================================
+   BARRES
+   ========================================================= */
+
+.performance-chart__bars {
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    right:
+        0;
+
+    bottom:
+        18px;
+
+    height:
+        85px;
+
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    justify-content:
+        space-around;
+
+    gap:
+        6px;
+
+    z-index:
+        1;
+}
+
+
+.performance-chart__bars span {
+
+    width:
+        8px;
+
+    max-width:
+        8px;
+
+    min-height:
+        3px;
+
+    background:
+        var(--color-gold);
+
+    opacity:
+        0.90;
+
+    border-radius:
+        1px 1px 0 0;
+}
+
+
+/* =========================================================
+   COURBE
+   ========================================================= */
+
+.performance-chart__line {
+
+    position:
+        absolute;
+
+    inset:
+        2px 0 18px;
+
+    width:
+        100%;
+
+    height:
+        85px;
+
+    z-index:
+        2;
+
+    overflow:
+        visible;
+}
+
+
+.performance-chart__line polyline {
+
+    fill:
+        none;
+
+    stroke:
+        #3b82f6;
+
+    stroke-width:
+        1.7;
+
+    vector-effect:
+        non-scaling-stroke;
+}
+
+
+.performance-chart__line circle {
+
+    fill:
+        #3b82f6;
+
+    stroke:
+        var(--bg-panel);
+
+    stroke-width:
+        1;
+}
+
+
+/* =========================================================
+   MOIS
+   ========================================================= */
+
+.performance-chart__months {
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    right:
+        0;
+
+    bottom:
+        0;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.48
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.62rem;
+}
+
+
+/* =========================================================
+   AXE DROIT
+   ========================================================= */
+
+.performance-chart__right-axis {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        space-between;
+
+    padding:
+        2px 0 17px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.48
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.62rem;
+
+    line-height:
+        1;
+
+    text-align:
+        right;
+}
+
+
+/* =========================================================
+   RÉPARTITION SPORTS
+   ========================================================= */
+
+.sports-distribution {
+
+    min-height:
+        125px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        22px;
+}
+
+
+/* =========================================================
+   DONUT
+   ========================================================= */
+
+.sports-donut {
+
+    width:
+        108px;
+
+    height:
+        108px;
+
+    flex:
+        0 0 108px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    position:
+        relative;
+
+    border-radius:
+        50%;
+
+    background:
+        conic-gradient(
+            var(--color-gold) 0 45%,
+            #f59e0b 45% 70%,
+            #3b82f6 70% 85%,
+            #94a3b8 85% 95%,
+            #64748b 95% 100%
+        );
+}
+
+
+.sports-donut::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        17px;
+
+    border-radius:
+        50%;
+
+    background:
+        #071a29;
+}
+
+
+/* =========================================================
+   CENTRE DONUT
+   ========================================================= */
+
+.sports-donut__center {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+}
+
+
+.sports-donut__center strong {
+
+    color:
+        var(--color-white);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        1.05rem;
+
+    font-weight:
+        800;
+
+    line-height:
+        1;
+}
+
+
+.sports-donut__center span {
+
+    margin-top:
+        4px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.52
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.62rem;
+}
+
+
+/* =========================================================
+   LISTE SPORTS
+   ========================================================= */
+
+.sports-list {
+
+    flex:
+        1;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        9px;
+}
+
+
+.sports-list__item {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        18px minmax(0, 1fr) auto;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.70
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.78rem;
+}
+
+
+.sports-list__icon {
+
+    width:
+        16px;
+
+    height:
+        16px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    color:
+        var(--color-gold);
+
+    font-size:
+        0.75rem;
+}
+
+
+.sports-list__item strong {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.82
+        );
+
+    font-size:
+        0.78rem;
+
+    font-weight:
+        600;
+}
+
+
+/* =========================================================
+   STATISTIQUES CLÉS
+   ========================================================= */
+
+.key-stats {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        9px;
+}
+
+
+/* =========================================================
+   STAT
+   ========================================================= */
+
+.key-stat {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        19px minmax(0, 1fr) auto;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    min-height:
+        18px;
+}
+
+
+.key-stat__icon {
+
+    width:
+        17px;
+
+    height:
+        17px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    color:
+        var(--color-gold);
+
+    font-size:
+        0.75rem;
+}
+
+
+.key-stat__label {
+
+    min-width:
+        0;
+
+    overflow:
+        hidden;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.62
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.78rem;
+
+    line-height:
+        1.2;
+
+    white-space:
+        nowrap;
+
+    text-overflow:
+        ellipsis;
+}
+
+
+.key-stat__value {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.86
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.78rem;
+
+    font-weight:
+        700;
+
+    white-space:
+        nowrap;
+}
+
+
+.key-stat__value--positive {
+
+    color:
+        #10b981;
+}
+
+
+.key-stat__value--month {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        4px;
+}
+
+
+.key-stat__value small {
+
+    color:
+        #10b981;
+
+    font-size:
+        0.68rem;
+
+    font-weight:
+        600;
+}
+
+/* =========================================================
+   NTS BETTING — RESULTS — DERNIERS TICKETS
+   ========================================================= */
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.latest-tickets {
+
+    position: relative;
+
+    width: 100%;
+
+    padding:
+        36px 0 48px;
+
+    background:
+        var(--bg-panel);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   LÉGER EFFET DE FOND
+   ========================================================= */
+
+.latest-tickets::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 50%;
+
+    width: 850px;
+
+    height: 350px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(30, 58, 138, 0.08) 0%,
+            rgba(30, 58, 138, 0) 70%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTENEUR
+   ========================================================= */
+
+.latest-tickets__container {
+
+    position: relative;
+
+    z-index: 1;
+
+    width:
+        min(
+            calc(100% - 60px),
+            1450px
+        );
+
+    margin:
+        0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.latest-tickets__header {
+
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    justify-content:
+        space-between;
+
+    gap:
+        30px;
+
+    margin-bottom:
+        24px;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.latest-tickets__heading {
+
+    min-width:
+        0;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.latest-tickets__eyebrow {
+
+    display:
+        block;
+
+    margin:
+        0 0 10px;
+
+    color:
+        var(--color-gold);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.90rem;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.09em;
+
+    line-height:
+        1;
+
+    text-transform:
+        uppercase;
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.latest-tickets__title {
+
+    margin:
+        0;
+
+    color:
+        var(--color-white);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        1.50rem;
+
+    font-weight:
+        750;
+
+    line-height:
+        1.15;
+
+    letter-spacing:
+        -0.018em;
+}
+
+
+/* =========================================================
+   SOUS-TITRE
+   ========================================================= */
+
+.latest-tickets__subtitle {
+
+    margin:
+        7px 0 0;
+
+    color:
+        var(--hero-text-subtle);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.90rem;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.4;
+}
+
+
+/* =========================================================
+   BOUTON
+   ========================================================= */
+
+.latest-tickets__button {
+
+    min-height:
+        49px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        12px;
+
+    padding:
+        0 24px;
+
+    color:
+        var(--color-white);
+
+    background:
+        rgba(
+            5,
+            21,
+            34,
+            0.72
+        );
+
+    border:
+        1px solid
+        rgba(
+            221,
+            178,
+            25,
+            0.65
+        );
+
+    border-radius:
+        8px;
+
+    box-shadow:
+        0 0 16px
+        rgba(
+            221,
+            178,
+            25,
+            0.12
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.80rem;
+
+    font-weight:
+        700;
+
+    line-height:
+        1;
+
+    text-decoration:
+        none;
+
+    white-space:
+        nowrap;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.latest-tickets__button i {
+
+    color:
+        var(--color-gold);
+
+    font-size:
+        0.75rem;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+.latest-tickets__button:hover {
+
+    color:
+        var(--color-white);
+
+    background:
+        rgba(
+            221,
+            178,
+            25,
+            0.07
+        );
+
+    border-color:
+        var(--color-gold);
+
+    box-shadow:
+        0 0 22px
+        rgba(
+            221,
+            178,
+            25,
+            0.20
+        );
+
+    transform:
+        translateY(-1px);
+}
+
+
+.latest-tickets__button:hover i {
+
+    transform:
+        translateX(3px);
+}
+
+
+/* =========================================================
+   GRILLE
+   ========================================================= */
+
+.latest-tickets__grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap:
+        22px;
+}
+
+
+/* =========================================================
+   TICKET
+   ========================================================= */
+
+.latest-ticket {
+
+    position: relative;
+
+    min-width:
+        0;
+
+    min-height:
+        380px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    padding:
+        17px 20px 15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(5, 21, 34, 0.96),
+            rgba(3, 15, 25, 0.94)
+        );
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.46
+        );
+
+    border-radius:
+        9px;
+
+    box-shadow:
+        0 12px 35px
+        rgba(
+            0,
+            0,
+            0,
+            0.22
+        );
+
+    box-sizing:
+        border-box;
+
+    overflow:
+        hidden;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   LIGNE DORÉE SUPÉRIEURE
+   ========================================================= */
+
+.latest-ticket::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    right: 0;
+
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(221, 178, 25, 0.35),
+            var(--color-gold),
+            rgba(221, 178, 25, 0.35)
+        );
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.latest-ticket:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(
+            65,
+            90,
+            119,
+            0.75
+        );
+
+    box-shadow:
+        0 18px 42px
+        rgba(
+            0,
+            0,
+            0,
+            0.30
+        );
+}
+
+
+/* =========================================================
+   TOP
+   ========================================================= */
+
+.latest-ticket__top {
+
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    justify-content:
+        space-between;
+
+    gap:
+        15px;
+
+    margin-bottom:
+        14px;
+}
+
+
+/* =========================================================
+   SPORT
+   ========================================================= */
+
+.latest-ticket__sport {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        11px;
+
+    min-width:
+        0;
+}
+
+
+.latest-ticket__sport-icon {
+
+    width:
+        34px;
+
+    height:
+        34px;
+
+    flex:
+        0 0 34px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    color:
+        var(--color-gold);
+
+    border:
+        1px solid
+        rgba(
+            221,
+            178,
+            25,
+            0.75
+        );
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(
+            221,
+            178,
+            25,
+            0.06
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(
+            221,
+            178,
+            25,
+            0.10
+        );
+
+    font-size:
+        0.90rem;
+}
+
+
+.latest-ticket__sport div {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        3px;
+
+    min-width:
+        0;
+}
+
+
+.latest-ticket__sport strong {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.78
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.80rem;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.1;
+}
+
+
+.latest-ticket__sport small {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.46
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.62rem;
+
+    font-weight:
+        500;
+
+    letter-spacing:
+        0.07em;
+
+    line-height:
+        1.1;
+
+    text-transform:
+        uppercase;
+}
+
+
+/* =========================================================
+   STATUT
+   ========================================================= */
+
+.latest-ticket__status {
+
+    min-height:
+        35px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        7px;
+
+    padding:
+        0 12px;
+
+    border-radius:
+        6px;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.80rem;
+
+    font-weight:
+        700;
+
+    line-height:
+        1;
+
+    white-space:
+        nowrap;
+}
+
+
+.latest-ticket__status i {
+
+    font-size:
+        0.72rem;
+}
+
+
+/* =========================================================
+   GAGNÉ
+   ========================================================= */
+
+.latest-ticket__status--won {
+
+    color:
+        #10d9a0;
+
+    background:
+        rgba(
+            16,
+            185,
+            129,
+            0.10
+        );
+
+    border:
+        1px solid
+        rgba(
+            16,
+            185,
+            129,
+            0.38
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(
+            16,
+            185,
+            129,
+            0.05
+        );
+}
+
+
+/* =========================================================
+   PERDU
+   ========================================================= */
+
+.latest-ticket__status--lost {
+
+    color:
+        #ff4747;
+
+    background:
+        rgba(
+            239,
+            68,
+            68,
+            0.08
+        );
+
+    border:
+        1px solid
+        rgba(
+            239,
+            68,
+            68,
+            0.38
+        );
+}
+
+
+/* =========================================================
+   MATCH
+   ========================================================= */
+
+.latest-ticket__match {
+
+    position:
+        relative;
+
+    min-height:
+        124px;
+
+    margin-bottom: 13px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        60px
+        minmax(0, 1fr);
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    padding:
+        14px;
+
+    overflow:
+        hidden;
+
+    background:
+        rgba(
+            5,
+            21,
+            34,
+            0.88
+        );
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.42
+        );
+
+    border-radius:
+        5px;
+
+    box-sizing:
+        border-box;
+}
+
+.latest-ticket__match-bg {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+    object-position:
+        center 10%;
+
+    z-index:
+        0;
+
+    opacity:
+        0.48;
+
+    pointer-events:
+        none;
+}
+
+
+/* =========================================================
+   OVERLAY
+   ========================================================= */
+
+.latest-ticket__match-overlay {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(3, 13, 23, 0.92) 0%,
+            rgba(3, 13, 23, 0.48) 30%,
+            rgba(3, 13, 23, 0.35) 50%,
+            rgba(3, 13, 23, 0.48) 70%,
+            rgba(3, 13, 23, 0.92) 100%
+        );
+
+    pointer-events:
+        none;
+}
+
+/* =========================================================
+   ÉQUIPES
+   ========================================================= */
+
+.latest-ticket__team {
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    min-width:
+        0;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        7px;
+
+    text-align:
+        center;
+}
+
+
+.latest-ticket__team img {
+
+    width:
+        62px;
+
+    height:
+        62px;
+
+    display:
+        block;
+
+    object-fit:
+        contain;
+
+    filter:
+        drop-shadow(
+            0 5px 8px
+            rgba(
+                0,
+                0,
+                0,
+                0.38
+            )
+        );
+}
+
+
+.latest-ticket__team strong {
+
+    color:
+        var(--color-white);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.80rem;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.15;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   VS
+   ========================================================= */
+
+.latest-ticket__vs {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.38
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.85rem;
+
+    font-weight:
+        800;
+}
+
+/* =========================================================
+   CONTENU AU-DESSUS DU BACKGROUND
+   ========================================================= */
+
+.latest-ticket__team,
+.latest-ticket__vs {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+}
+
+
+/* =========================================================
+   PRONOSTIC
+   ========================================================= */
+
+.latest-ticket__prediction {
+
+    min-height:
+        50px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        15px;
+
+    padding:
+        0 13px;
+
+    margin-bottom:
+        15px;
+
+    background:
+        rgba(
+            5,
+            21,
+            34,
+            0.66
+        );
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.35
+        );
+
+    border-radius:
+        6px;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.80rem;
+}
+
+
+.latest-ticket__prediction span {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.48
+        );
+
+    font-weight:
+        400;
+}
+
+
+.latest-ticket__prediction strong {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.90
+        );
+
+    font-weight:
+        700;
+
+    text-align:
+        right;
+}
+
+
+/* =========================================================
+   STATS
+   ========================================================= */
+
+.latest-ticket__stats {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    margin-bottom:
+        17px;
+}
+
+
+/* =========================================================
+   STAT
+   ========================================================= */
+
+.latest-ticket__stat {
+
+    min-width:
+        0;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        5px;
+
+    padding:
+        0 13px;
+
+    border-right:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.32
+        );
+}
+
+
+.latest-ticket__stat:first-child {
+
+    padding-left:
+        4px;
+}
+
+
+.latest-ticket__stat:last-child {
+
+    padding-right:
+        4px;
+
+    border-right:
+        0;
+}
+
+
+.latest-ticket__stat span {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.48
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.72rem;
+
+    font-weight:
+        400;
+
+    line-height:
+        1;
+}
+
+
+.latest-ticket__stat strong {
+
+    color:
+        var(--color-white);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.90rem;
+
+    font-weight:
+        750;
+
+    line-height:
+        1;
+}
+
+
+/* =========================================================
+   GAIN
+   ========================================================= */
+
+.latest-ticket__profit {
+
+    color:
+        #10d9a0 !important;
+}
+
+
+/* =========================================================
+   PERTE
+   ========================================================= */
+
+.latest-ticket__loss {
+
+    color:
+        #ff3f3f !important;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.latest-ticket__footer {
+
+    margin-top:
+        auto;
+
+    padding-top:
+        13px;
+
+    border-top:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.28
+        );
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        10px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.43
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.68rem;
+
+    font-weight:
+        400;
+}
+
+
+.latest-ticket__footer span {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        6px;
+
+    white-space:
+        nowrap;
+}
+
+
+.latest-ticket__footer i {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.55
+        );
+
+    font-size:
+        0.72rem;
+}
+
+
+/* =========================================================
+   LATEST ANALYSIS
+   NTS BETTING — PREMIUM DARK BLUE
+   ========================================================= */
+
+.latest-analysis {
+    --la-bg-1: #030e19;
+    --la-bg-2: #061523;
+    --la-bg-3: #0c2033;
+    --la-bg-4: #112b41;
+
+    --la-blue: #1597d4;
+    --la-blue-light: #59c9f3;
+    --la-blue-dark: #126ba1;
+
+    --la-gold: #ddb219;
+    --la-gold-light: #f0c928;
+
+    --la-white: #f5f8fb;
+    --la-text: rgba(245, 248, 251, .78);
+    --la-muted: rgba(181, 201, 218, .62);
+
+    position: relative;
+
+    width: 100%;
+
+    padding: 48px 0;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(3, 14, 25, .92) 0%,
+            rgba(6, 21, 35, .82) 40%,
+            rgba(12, 32, 51, .82) 88%,
+            rgba(17, 43, 65, .72) 100%
+        );
+}
+
+
+/* =========================================================
+   BACKGROUND IMAGE
+   ========================================================= */
+
+.latest-analysis__background {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(3, 14, 25, .82) 0%,
+            rgba(3, 14, 25, .64) 38%,
+            rgba(3, 14, 25, .28) 75%,
+            rgba(3, 14, 25, .18) 100%
+        ),
+        url("/images/offers/bg-vip.png");
+
+    background-size: cover;
+
+    background-position: center;
+
+    opacity: .95;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   DARK OVERLAY
+   ========================================================= */
+
+.latest-analysis::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(20, 111, 169, .08),
+            transparent 45%
+        );
+
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.latest-analysis__container {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(calc(100% - 120px), 1450px);
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.latest-analysis__header {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 40px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.latest-analysis__heading {
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.latest-analysis__eyebrow {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    margin-bottom: 10px;
+
+     color: var(--color-gold);
+
+    font-family: var(--font-body);
+
+    font-size: 0.90rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.09em;
+
+    text-transform: uppercase;
+
+    line-height: 1;
+}
+
+
+.latest-analysis__eyebrow span {
+
+    display: block;
+
+    width: 45px;
+
+    height: 1px;
+
+    background:
+        rgba(221, 178, 25, .72);
+}
+
+
+.latest-analysis__eyebrow span:last-child {
+
+    width: 45px;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.latest-analysis__title {
+
+    margin: 0;
+
+    color:
+        var(--color-white);
+
+    font-family:
+        var(--font-title);
+
+    font-size:
+        clamp(
+            2rem,
+            3vw,
+            3rem
+        );
+
+    font-weight: 500;
+
+    line-height: 1.12;
+}
+
+
+.latest-analysis__title span {
+
+    color: var(--la-gold);
+}
+
+
+/* =========================================================
+   SUBTITLE
+   ========================================================= */
+
+.latest-analysis__subtitle {
+
+    margin: 10px 0 0;
+
+    color: rgba(190, 207, 222, .70);
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.latest-analysis__features {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 30px;
+
+    padding-bottom: 3px;
+}
+
+
+.latest-analysis__feature {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   FEATURE ICON
+   ========================================================= */
+
+.latest-analysis__feature-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 43px;
+
+    height: 43px;
+
+    flex: 0 0 43px;
+
+    border: 1px solid rgba(221, 178, 25, .55);
+
+    border-radius: 50%;
+
+    color: var(--la-gold);
+
+    background:
+        rgba(3, 14, 25, .48);
+
+    box-shadow:
+        inset 0 0 0 1px rgba(0, 0, 0, .15);
+}
+
+
+.latest-analysis__feature-icon i {
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   FEATURE TEXT
+   ========================================================= */
+
+.latest-analysis__feature-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.latest-analysis__feature-text strong {
+
+    color: rgba(255,255,255,.90);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+
+.latest-analysis__feature-text span {
+
+    color: rgba(177, 198, 215, .64);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   MAIN CARD
+   ========================================================= */
+
+.latest-analysis__main {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        1.14fr
+        1fr
+        .68fr;
+
+    min-height: 338px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(32, 158, 218, .76);
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(3, 17, 29, .76),
+            rgba(3, 18, 31, .64)
+        );
+
+    backdrop-filter: blur(4px);
+
+    -webkit-backdrop-filter: blur(4px);
+
+    box-shadow:
+        0 0 0 1px rgba(23, 112, 161, .10),
+        0 10px 40px rgba(0, 0, 0, .25);
+}
+
+
+/* =========================================================
+   MAIN CARD TOP REFLECTION
+   ========================================================= */
+
+.latest-analysis__main::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 5;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            115deg,
+            rgba(255,255,255,.025),
+            transparent 28%,
+            rgba(40, 159, 218, .035) 72%,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   PANELS
+   ========================================================= */
+
+.latest-analysis__match-panel,
+.latest-analysis__content,
+.latest-analysis__indicators {
+
+    position: relative;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   MATCH PANEL
+   ========================================================= */
+
+.latest-analysis__match-panel {
+
+    padding: 23px 32px 22px;
+
+    border-right:
+        1px solid rgba(40, 126, 173, .34);
+}
+
+
+/* =========================================================
+   MATCH HEADER
+   ========================================================= */
+
+.latest-analysis__match-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   COMPETITION
+   ========================================================= */
+
+.latest-analysis__competition {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.latest-analysis__competition-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 48px;
+
+    height: 48px;
+
+    flex: 0 0 48px;
+
+    border: 1px solid rgba(25, 151, 214, .82);
+
+    border-radius: 50%;
+
+    background:
+        rgba(5, 22, 37, .55);
+
+    color: var(--la-blue-light);
+}
+
+
+.latest-analysis__competition-icon i {
+
+    font-size: 20px;
+}
+
+
+.latest-analysis__competition div:last-child {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.latest-analysis__competition strong {
+
+    color: rgba(255,255,255,.90);
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.latest-analysis__competition span {
+
+    color: rgba(166, 191, 210, .58);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.latest-analysis__date {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 4px;
+
+    padding-top: 5px;
+
+    color: rgba(183, 203, 219, .66);
+
+    font-size: 11px;
+}
+
+
+.latest-analysis__date div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+}
+
+
+.latest-analysis__date i {
+
+    color: rgba(181, 202, 219, .72);
+}
+
+
+.latest-analysis__date strong {
+
+    color: rgba(229, 237, 244, .78);
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   MATCH
+   ========================================================= */
+
+.latest-analysis__match {
+
+    display: grid;
+
+    grid-template-columns: 1fr 60px 1fr;
+
+    align-items: center;
+
+    margin-top: 20px;
+
+    padding: 0 20px;
+
+    min-height: 135px;
+
+    border: 1px solid rgba(35, 104, 143, .34);
+
+    border-radius: 5px;
+
+    background:
+        rgba(2, 17, 29, .40);
+}
+
+
+/* =========================================================
+   TEAM
+   ========================================================= */
+
+.latest-analysis__team {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+}
+
+
+.latest-analysis__team-logo {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 65px;
+
+    height: 65px;
+}
+
+
+.latest-analysis__team-logo img {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+}
+
+
+.latest-analysis__team strong {
+
+    color: rgba(255,255,255,.92);
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   VS
+   ========================================================= */
+
+.latest-analysis__vs {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: rgba(180, 202, 219, .55);
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.latest-analysis__vs::before,
+.latest-analysis__vs::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    width: 1px;
+
+    height: 27px;
+
+    background: rgba(48, 110, 146, .28);
+}
+
+
+.latest-analysis__vs::before {
+
+    bottom: calc(50% + 12px);
+}
+
+
+.latest-analysis__vs::after {
+
+    top: calc(50% + 12px);
+}
+
+
+/* =========================================================
+   QUICK STATS
+   ========================================================= */
+
+.latest-analysis__quick-stats {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    margin-top: 17px;
+
+    padding-top: 17px;
+
+    border-top:
+        1px solid rgba(45, 107, 143, .30);
+}
+
+
+.latest-analysis__quick-stat {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 5px;
+
+    border-right:
+        1px solid rgba(46, 102, 136, .25);
+}
+
+
+.latest-analysis__quick-stat:last-child {
+
+    border-right: 0;
+}
+
+
+.latest-analysis__quick-stat span {
+
+    color: rgba(172, 193, 208, .58);
+
+    font-size: 11px;
+}
+
+
+.latest-analysis__quick-stat strong {
+
+    color: rgba(246, 249, 252, .93);
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.latest-analysis__content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 25px 22px 21px;
+
+    border-right:
+        1px solid rgba(40, 126, 173, .34);
+}
+
+
+/* =========================================================
+   CONTENT TITLE
+   ========================================================= */
+
+.latest-analysis__content-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-height: 23px;
+}
+
+
+.latest-analysis__content-title > i {
+
+    color: var(--la-gold);
+
+    font-size: 15px;
+}
+
+
+.latest-analysis__content-title strong {
+
+    color: rgba(247,249,251,.92);
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   AI BADGE
+   ========================================================= */
+
+.latest-analysis__ai {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    height: 22px;
+
+    padding: 0 7px;
+
+    border: 1px solid rgba(24, 151, 214, .65);
+
+    border-radius: 4px;
+
+    color: var(--la-blue-light);
+
+    background:
+        rgba(9, 73, 105, .22);
+
+    font-size: 9px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+.latest-analysis__text {
+
+    margin-top: 18px;
+
+    flex: 1;
+}
+
+
+.latest-analysis__text p {
+
+    margin: 0 0 13px;
+
+    color: rgba(191, 207, 220, .70);
+
+    font-size: 12px;
+
+    line-height: 1.55;
+}
+
+
+.latest-analysis__text p:last-child {
+
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   INSIGHTS
+   ========================================================= */
+
+.latest-analysis__insights {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 9px;
+
+    margin-top: 15px;
+}
+
+
+.latest-analysis__insight {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    min-width: 0;
+
+    padding: 10px 9px;
+
+    border:
+        1px solid rgba(39, 104, 140, .36);
+
+    border-radius: 5px;
+
+    background:
+        rgba(4, 23, 38, .42);
+}
+
+
+.latest-analysis__insight > i {
+
+    flex: 0 0 auto;
+
+    color: var(--la-gold);
+
+    font-size: 15px;
+}
+
+
+.latest-analysis__insight div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    min-width: 0;
+}
+
+
+.latest-analysis__insight span {
+
+    color: rgba(153, 179, 198, .55);
+
+    font-size: 9px;
+
+    font-weight: 600;
+}
+
+
+.latest-analysis__insight strong {
+
+    overflow: hidden;
+
+    color: rgba(235, 242, 247, .88);
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   PREDICTION
+   ========================================================= */
+
+.latest-analysis__prediction {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 13px;
+
+    min-height: 51px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(221, 178, 25, .72);
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(7, 28, 44, .82),
+            rgba(5, 23, 37, .78)
+        );
+}
+
+
+/* =========================================================
+   PREDICTION LEFT
+   ========================================================= */
+
+.latest-analysis__prediction-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+
+    padding-left: 10px;
+}
+
+
+.latest-analysis__prediction-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 30px;
+
+    height: 30px;
+
+    flex: 0 0 30px;
+
+    border: 1px solid rgba(221, 178, 25, .50);
+
+    border-radius: 50%;
+
+    color: var(--la-gold);
+
+    font-size: 12px;
+}
+
+
+.latest-analysis__prediction-label {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+    min-width: 0;
+}
+
+
+.latest-analysis__prediction-label span {
+
+    color: var(--la-gold);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+
+.latest-analysis__prediction-label strong {
+
+    overflow: hidden;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   CONFIDENCE
+   ========================================================= */
+
+.latest-analysis__confidence {
+
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 5px;
+
+    margin-left: auto;
+
+    white-space: nowrap;
+}
+
+
+.latest-analysis__confidence span {
+
+    color: rgba(118, 188, 223, .85);
+
+    font-size: 10px;
+}
+
+
+.latest-analysis__confidence strong {
+
+    color: var(--la-blue-light);
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   ODDS
+   ========================================================= */
+
+.latest-analysis__odds {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    align-self: stretch;
+
+    min-width: 59px;
+
+    padding: 0 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e4ba17,
+            #c99d09
+        );
+
+    color: #07131d;
+
+    font-size: 15px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   INDICATORS
+   ========================================================= */
+
+.latest-analysis__indicators {
+
+    padding: 25px 25px 21px;
+}
+
+
+/* =========================================================
+   INDICATOR LIST
+   ========================================================= */
+
+.latest-analysis__indicator-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 13px;
+
+    margin-top: 20px;
+}
+
+
+/* =========================================================
+   INDICATOR
+   ========================================================= */
+
+.latest-analysis__indicator {
+
+    width: 100%;
+}
+
+
+.latest-analysis__indicator-head {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 7px;
+}
+
+
+.latest-analysis__indicator-head span {
+
+    color: rgba(172, 194, 210, .63);
+
+    font-size: 11px;
+}
+
+
+.latest-analysis__indicator-head strong {
+
+    color: rgba(223, 235, 243, .87);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+.latest-analysis__progress {
+
+    width: 100%;
+
+    height: 6px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background:
+        rgba(25, 66, 91, .55);
+}
+
+
+.latest-analysis__progress span {
+
+    display: block;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2459c9,
+            #56c9ed
+        );
+
+    box-shadow:
+        0 0 7px rgba(59, 190, 239, .18);
+}
+
+
+/* =========================================================
+   RISK
+   ========================================================= */
+
+.latest-analysis__risk {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 20px;
+
+    padding-top: 17px;
+
+    border-top:
+        1px solid rgba(47, 105, 138, .30);
+
+    color: rgba(172, 195, 211, .68);
+
+    font-size: 11px;
+}
+
+
+.latest-analysis__risk i {
+
+    color: var(--la-gold);
+
+    font-size: 15px;
+}
+
+
+.latest-analysis__risk strong {
+
+    color: rgba(239, 244, 248, .91);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   PETITES CARDS — ANALYSES
+   ========================================================= */
+
+.latest-analysis__cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) 0.72fr;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.latest-analysis__card {
+    position: relative;
+
+    min-height: 114px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 14px 12px;
+
+    overflow: hidden;
+
+    text-decoration: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(3, 14, 25, 0.94) 0%,
+            rgba(6, 21, 35, 0.88) 40%,
+            rgba(12, 32, 51, 0.86) 88%,
+            rgba(17, 43, 65, 0.80) 100%
+        );
+
+    border: 1px solid rgba(55, 105, 145, 0.42);
+
+    border-radius: 7px;
+
+    transition:
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   IMAGE DE STADE EN BACKGROUND
+   ========================================================= */
+
+.latest-analysis__card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(3, 14, 25, 0.94) 0%,
+            rgba(3, 14, 25, 0.82) 45%,
+            rgba(8, 27, 46, 0.72) 100%
+        ),
+        url("/images/resultats/bg-card-ldc.png");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    opacity: 0.95;
+
+    transition:
+        transform 0.5s ease,
+        opacity 0.3s ease;
+}
+
+
+/* =========================================================
+   LÉGER EFFET BLEU
+   ========================================================= */
+
+.latest-analysis__card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(24, 105, 165, 0.20),
+            transparent 65%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTENU AU-DESSUS DU BACKGROUND
+   ========================================================= */
+
+.latest-analysis__card > * {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.latest-analysis__card:hover {
+
+    transform: translateY(-2px);
+
+    border-color:
+        rgba(55, 145, 210, 0.72);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.25),
+        0 0 18px rgba(30, 110, 170, 0.12);
+}
+
+
+.latest-analysis__card:hover::before {
+
+    transform: scale(1.05);
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   CARD ACTIVE
+   ========================================================= */
+
+.latest-analysis__card--active {
+
+    border-color:
+        rgba(221, 178, 25, 0.90);
+
+    box-shadow:
+        0 0 0 1px rgba(221, 178, 25, 0.10),
+        0 0 18px rgba(221, 178, 25, 0.08);
+}
+
+
+.latest-analysis__card--active:hover {
+
+    border-color:
+        var(--color-gold);
+}
+
+
+/* =========================================================
+   ÉQUIPES
+   ========================================================= */
+
+.latest-analysis__card-teams {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-bottom: 8px;
+}
+
+
+.latest-analysis__card-teams img {
+
+    width: 32px;
+    height: 32px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 2px 5px
+            rgba(0, 0, 0, 0.5)
+        );
+}
+
+
+.latest-analysis__card-teams span {
+
+    color:
+        rgba(255, 255, 255, 0.48);
+
+    font-size: 0.62rem;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   NOM DU MATCH
+   ========================================================= */
+
+.latest-analysis__card > strong {
+
+    color:
+        rgba(255, 255, 255, 0.92);
+
+    font-size: 0.68rem;
+
+    font-weight: 700;
+
+    text-align: center;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.latest-analysis__card > small {
+
+    margin-top: 5px;
+
+    color:
+        rgba(255, 255, 255, 0.42);
+
+    font-size: 0.56rem;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   CARD "VOIR TOUTES" — TRANSPARENTE
+   ========================================================= */
+
+.latest-analysis__card--all {
+
+    background: transparent;
+
+    border:
+        1px dashed
+        rgba(55, 105, 145, 0.45);
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   AUCUNE IMAGE DE BACKGROUND
+   ========================================================= */
+
+.latest-analysis__card--all::before {
+
+    content: none;
+}
+
+
+/* =========================================================
+   AUCUN OVERLAY — TRANSPARENCE TOTALE
+   ========================================================= */
+
+.latest-analysis__card--all::after {
+
+    content: none;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.latest-analysis__card--all:hover {
+
+    background: rgba(6, 21, 35, 0.12);
+
+    border-color:
+        rgba(55, 145, 210, 0.75);
+
+    box-shadow:
+        0 0 18px
+        rgba(30, 110, 170, 0.10);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   ICÔNE +
+   ========================================================= */
+
+.latest-analysis__card--all .latest-analysis__all-icon {
+
+    width: 31px;
+    height: 31px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 9px;
+
+    background: transparent;
+
+    border:
+        1px solid
+        rgba(221, 178, 25, 0.75);
+
+    border-radius: 50%;
+
+    color: var(--color-gold);
+
+    font-size: 0.65rem;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* =========================================================
+   HOVER ICÔNE
+   ========================================================= */
+
+.latest-analysis__card--all:hover
+.latest-analysis__all-icon {
+
+    background:
+        rgba(221, 178, 25, 0.08);
+
+    border-color:
+        var(--color-gold);
+
+    transform:
+        scale(1.05);
+}
+
+/* =========================================================
+   NTS BETTING — CTA RÉSULTATS
+   ========================================================= */
+
+.results-cta {
+
+    position: relative;
+
+    width: 100vw;
+
+    min-height: 260px;
+
+    margin-left:
+        calc((100% - 100vw) / 2);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 24px;
+
+    background-image:
+        url("/images/resultats/cta-results.png");
+
+    background-repeat: no-repeat;
+
+    background-size: cover;
+
+    background-position: center center;
+
+    border: 0;
+
+    border-radius: 0;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   OVERLAY DE BASE
+   ========================================================= */
+
+.results-cta::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(2, 12, 23, 0.16) 0%,
+            rgba(2, 12, 23, 0.02) 48%,
+            rgba(2, 12, 23, 0.08) 78%,
+            rgba(2, 12, 23, 0.14) 100%
+        );
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   OVERLAY PRINCIPAL
+   ========================================================= */
+
+.results-cta__overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        var(--hero-background-overlay-gradient);
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.results-cta__container {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(calc(100% - 120px), 1450px);
+
+    display: flex;
+
+    align-items: center;
+
+    margin: 0 auto;
+
+    padding: 0;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.results-cta__content {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin-left: 0;
+
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.results-cta__title {
+
+    margin: 0 0 5px;
+
+    font-family:
+        var(--font-body);
+
+    font-size: 25px;
+
+    font-weight: 750;
+
+    line-height: 1.12;
+
+    letter-spacing: -0.025em;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   TEXTE
+   ========================================================= */
+
+.results-cta__text {
+
+    margin: 0;
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 400;
+
+    line-height: 1.5;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.82
+        );
+}
+
+
+/* =========================================================
+   LIGNE BOUTON + FEATURES
+   ========================================================= */
+
+.results-cta__bottom {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 55px;
+
+    margin-top: 18px;
+}
+
+
+/* =========================================================
+   BOUTON
+   ========================================================= */
+
+.results-cta__button {
+
+    flex-shrink: 0;
+
+    min-width: 180px;
+
+    height: 46px;
+
+    padding: 0 22px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    border-radius: 6px;
+
+    background: #e5b900;
+
+    color: #071321;
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 8px 24px
+        rgba(
+            229,
+            185,
+            0,
+            0.18
+        );
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   ICÔNE DU BOUTON
+   ========================================================= */
+
+.results-cta__button i {
+
+    font-size: 12px;
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+/* =========================================================
+   HOVER BOUTON
+   ========================================================= */
+
+.results-cta__button:hover {
+
+    background: #f0c514;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(
+            229,
+            185,
+            0,
+            0.28
+        );
+}
+
+
+.results-cta__button:hover i {
+
+    transform:
+        translateX(4px);
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.results-cta__features {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+    flex-wrap: nowrap;
+}
+
+
+/* =========================================================
+   FEATURE
+   ========================================================= */
+
+.results-cta__feature {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    white-space: nowrap;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.90
+        );
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   ICÔNE FEATURE
+   ========================================================= */
+
+.results-cta__feature i {
+
+    width: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--color-gold);
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLETTE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .results-cta__bottom {
+
+        gap: 30px;
+    }
+
+    .results-cta__features {
+
+        gap: 18px;
+
+        flex-wrap: wrap;
+    }
+
+    .results-cta__feature {
+
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .results-cta {
+
+        min-height: 320px;
+
+        padding: 35px 20px;
+    }
+
+    .results-cta__container {
+
+        padding: 0;
+    }
+
+    .results-cta__content {
+
+        text-align: center;
+    }
+
+    .results-cta__title {
+
+        font-size: 22px;
+    }
+
+    .results-cta__text {
+
+        font-size: 13px;
+    }
+
+    .results-cta__bottom {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 25px;
+
+        margin-top: 22px;
+    }
+
+    .results-cta__features {
+
+        justify-content: center;
+
+        gap: 14px 22px;
+    }
+
+    .results-cta__feature {
+
+        font-size: 11px;
+    }
+}
+
+
+/* =========================================================
+   TABLETTE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+    .results-hero {
+
+        height: 460px;
+
+        min-height: 460px;
+    }
+
+
+    .results-hero__container {
+
+        width:
+            min(
+                calc(100% - 80px),
+                1200px
+            );
+    }
+
+
+    .results-hero__content {
+
+        width: 620px;
+
+        transform: translateY(0);
+    }
+
+
+    .results-hero__title {
+
+        font-size: 3.15rem;
+    }
+
+
+    .results-hero__subtitle {
+
+        font-size: 0.98rem;
+
+        max-width: 600px;
+    }
+
+
+    .results-hero__features {
+
+        gap: 30px;
+    }
+
+    .results-stats__container {
+
+        width:
+            min(
+                calc(100% - 60px),
+                1100px
+            );
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 10px;
+    }
+
+     .results-filters__container {
+
+        width:
+            calc(100% - 50px);
+    }
+
+
+    .results-filters__form {
+
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(
+                    0,
+                    1fr
+                )
+            )
+            92px;
+    }
+
+    .latest-results__container {
+
+        width:
+            calc(100% - 50px);
+    }
+
+     .results-performance__container {
+
+        width:
+            min(
+                calc(100% - 40px),
+                900px
+            );
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .performance-card--chart {
+
+        grid-column:
+            1 / -1;
+    }
+
+
+    .performance-card {
+
+        min-height:
+            190px;
+    }
+
+    .latest-tickets__container {
+
+        width:
+            min(
+                calc(100% - 40px),
+                900px
+            );
+    }
+
+
+    .latest-tickets__grid {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap:
+            16px;
+    }
+
+
+    .latest-ticket:last-child {
+
+        grid-column:
+            1 / -1;
+
+        max-width:
+            calc(50% - 8px);
+
+        width:
+            100%;
+
+        margin:
+            0 auto;
+    }
+
+}
+
+
+/* =========================================================
+   TABLETTE PETITE
+   ========================================================= */
+
+@media (max-width: 992px) {
+
+    .results-hero {
+
+        height: 440px;
+
+        min-height: 440px;
+    }
+
+
+    .results-hero__container {
+
+        width:
+            calc(100% - 60px);
+    }
+
+
+    .results-hero__content {
+
+        width: 560px;
+    }
+
+
+    .results-hero__title {
+
+        font-size: 2.75rem;
+    }
+
+
+    .results-hero__subtitle {
+
+        font-size: 0.92rem;
+
+        max-width: 530px;
+    }
+
+
+    .results-hero__features {
+
+        gap: 25px;
+    }
+
+
+    .results-hero__feature {
+
+        min-width: 90px;
+
+        font-size: 0.68rem;
+    }
+
+
+    .results-hero__feature small {
+
+        font-size: 0.60rem;
+    }
+
+    .results-stats {
+
+        padding: 24px 0 24px;
+    }
+
+
+    .results-stats__container {
+
+        width:
+            calc(100% - 40px);
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
+    }
+
+
+    .results-stat-card {
+
+        min-height: 80px;
+
+        padding:
+            14px 15px;
+    }
+
+    .results-filters {
+
+        padding-bottom:
+            18px;
+    }
+
+
+    .results-filters__container {
+
+        width:
+            calc(100% - 32px);
+    }
+
+
+    .results-filters__form {
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+
+        gap:
+            10px;
+    }
+
+
+    .results-filters__button {
+
+        width:
+            100%;
+    }
+
+    .latest-analysis__header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 25px;
+    }
+
+
+    .latest-analysis__features {
+
+        width: 100%;
+
+        justify-content: flex-start;
+    }
+
+
+    .latest-analysis__main {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .latest-analysis__indicators {
+
+        grid-column: 1 / -1;
+
+        border-top:
+            1px solid rgba(40, 126, 173, .34);
+    }
+
+
+    .latest-analysis__content {
+
+        border-right: 0;
+    }
+
+
+    .latest-analysis__cards {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+
+    .latest-analysis__card--all {
+
+        grid-column: span 3;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .results-hero {
+
+        height: auto;
+
+        min-height: 540px;
+    }
+
+
+    .results-hero::before {
+
+        background-position:
+            center center;
+    }
+
+
+    .results-hero__container {
+
+        width:
+            calc(100% - 40px);
+
+        min-height: 540px;
+
+        align-items: center;
+    }
+
+
+    .results-hero__content {
+
+        width: 100%;
+
+        padding: 35px 0;
+
+        transform: none;
+    }
+
+
+    .results-hero__eyebrow {
+
+        margin-bottom: 9px;
+
+        font-size: 0.70rem;
+    }
+
+
+    .results-hero__title {
+
+        font-size: 2.35rem;
+
+        line-height: 1;
+
+        letter-spacing: -0.035em;
+    }
+
+
+    .results-hero__subtitle {
+
+        margin-top: 12px;
+
+        font-size: 0.88rem;
+
+        line-height: 1.5;
+
+        max-width: 100%;
+    }
+
+
+    .results-hero__features {
+
+        margin-top: 22px;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 20px 25px;
+    }
+
+
+    .results-hero__feature {
+
+        min-width: 0;
+
+        gap: 7px;
+
+        font-size: 0.67rem;
+    }
+
+
+    .results-hero__feature-icon {
+
+        width: 35px;
+
+        height: 35px;
+
+        font-size: 0.85rem;
+    }
+
+
+    .results-hero__feature span {
+
+        white-space: normal;
+    }
+
+
+    .results-hero__feature small {
+
+        font-size: 0.59rem;
+
+        line-height: 1.3;
+    }
+
+    .results-stats {
+
+        padding: 20px 0 20px;
+    }
+
+
+    .results-stats__container {
+
+        width:
+            calc(100% - 30px);
+
+        grid-template-columns:
+            1fr;
+
+        gap: 8px;
+    }
+
+
+    .results-stat-card {
+
+        min-height: 76px;
+
+        padding:
+            13px 15px;
+
+        gap: 13px;
+    }
+
+
+    .results-stat-card__icon {
+
+        flex-basis: 40px;
+
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 0.88rem;
+    }
+
+
+    .results-stat-card__value {
+
+        font-size: 1rem;
+    }
+
+
+    .results-stat-card__label {
+
+        font-size: 0.64rem;
+    }
+
+     .results-filters__container {
+
+        width:
+            calc(100% - 24px);
+    }
+
+
+    .results-filters__panel {
+
+        padding:
+            13px;
+    }
+
+
+    .results-filters__header {
+
+        margin-bottom:
+            12px;
+    }
+
+
+    .results-filters__title {
+
+        font-size:
+            0.84rem;
+    }
+
+
+    .results-filters__history {
+
+        padding:
+            6px 9px;
+
+        font-size:
+            0.64rem;
+    }
+
+
+    .results-filters__form {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .results-filter label {
+
+        font-size:
+            0.62rem;
+    }
+
+
+    .results-filter select {
+
+        height:
+            35px;
+
+        font-size:
+            0.66rem;
+    }
+
+
+    .results-filters__button {
+
+        height:
+            35px;
+
+        font-size:
+            0.66rem;
+    }
+
+     .latest-results {
+
+        padding-bottom:
+            25px;
+    }
+
+
+    .latest-results__container {
+
+        width:
+            calc(100% - 24px);
+    }
+
+
+    .latest-results__header {
+
+        align-items:
+            flex-start;
+
+        gap:
+            14px;
+    }
+
+
+    .latest-results__eyebrow {
+
+        font-size:
+            0.78rem;
+    }
+
+
+    .latest-results__title {
+
+        font-size:
+            1.20rem;
+    }
+
+
+    .latest-results__title span {
+
+        font-size:
+            0.78rem;
+    }
+
+
+    .latest-results__history {
+
+        min-width:
+            auto;
+
+        height:
+            32px;
+
+        padding:
+            0 10px;
+
+        font-size:
+            0.60rem;
+    }
+
+
+    .latest-results__table {
+
+        min-width:
+            1000px;
+    }
+
+
+    .latest-results__table th {
+
+        height:
+            36px;
+
+        padding:
+            0 10px;
+
+        font-size:
+            0.58rem;
+    }
+
+
+    .latest-results__table td {
+
+        height:
+            43px;
+
+        padding:
+            0 10px;
+
+        font-size:
+            0.63rem;
+    }
+
+        .results-performance {
+
+        padding:
+            18px 0 22px;
+    }
+
+
+    .results-performance__container {
+
+        width:
+            calc(100% - 24px);
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            12px;
+    }
+
+
+    .performance-card--chart {
+
+        grid-column:
+            auto;
+    }
+
+
+    .performance-card {
+
+        min-height:
+            185px;
+
+        padding:
+            15px;
+    }
+
+
+    .performance-card__eyebrow {
+
+        font-size:
+            0.78rem;
+    }
+
+
+    .performance-card__title {
+
+        font-size:
+            1.25rem;
+    }
+
+
+    .performance-card__legend {
+
+        gap:
+            10px;
+
+        flex-wrap:
+            wrap;
+    }
+
+
+    .performance-legend {
+
+        font-size:
+            0.62rem;
+    }
+
+
+    .sports-distribution {
+
+        justify-content:
+            center;
+
+        gap:
+            25px;
+    }
+
+
+    .sports-donut {
+
+        width:
+            105px;
+
+        height:
+            105px;
+
+        flex-basis:
+            105px;
+    }
+
+
+    .sports-list__item {
+
+        font-size:
+            0.68rem;
+    }
+
+
+    .key-stat__label {
+
+        font-size:
+            0.68rem;
+    }
+
+
+    .key-stat__value {
+
+        font-size:
+            0.68rem;
+    }
+
+     .latest-tickets {
+
+        padding:
+            28px 0 32px;
+    }
+
+
+    .latest-tickets__container {
+
+        width:
+            calc(100% - 24px);
+    }
+
+
+    .latest-tickets__header {
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        gap:
+            18px;
+
+        margin-bottom:
+            20px;
+    }
+
+
+    .latest-tickets__eyebrow {
+
+        font-size:
+            0.82rem;
+    }
+
+
+    .latest-tickets__title {
+
+        font-size:
+            1.35rem;
+    }
+
+
+    .latest-tickets__subtitle {
+
+        font-size:
+            0.82rem;
+    }
+
+
+    .latest-tickets__button {
+
+        width:
+            100%;
+
+        min-height:
+            46px;
+
+        box-sizing:
+            border-box;
+
+        font-size:
+            0.80rem;
+    }
+
+
+    .latest-tickets__grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            14px;
+    }
+
+
+    .latest-ticket:last-child {
+
+        grid-column:
+            auto;
+
+        max-width:
+            none;
+
+        margin:
+            0;
+    }
+
+
+    .latest-ticket {
+
+        min-height:
+            370px;
+
+        padding:
+            16px;
+    }
+
+    .latest-ticket__team img {
+
+        width:
+            48px;
+
+        height:
+            48px;
+    }
+
+
+     .latest-analysis {
+
+        padding: 45px 0 50px;
+    }
+
+
+    .latest-analysis__container {
+
+        width: min(100% - 28px, 620px);
+    }
+
+
+    .latest-analysis__features {
+
+        display: grid;
+
+        grid-template-columns:
+            1fr;
+
+        gap: 15px;
+    }
+
+
+    .latest-analysis__main {
+
+        display: block;
+
+        min-height: auto;
+    }
+
+
+    .latest-analysis__match-panel,
+    .latest-analysis__content,
+    .latest-analysis__indicators {
+
+        border-right: 0;
+    }
+
+
+    .latest-analysis__match-panel {
+
+        padding: 22px 18px;
+    }
+
+
+    .latest-analysis__content {
+
+        padding: 22px 18px;
+
+        border-top:
+            1px solid rgba(40, 126, 173, .34);
+    }
+
+
+    .latest-analysis__indicators {
+
+        padding: 22px 18px;
+
+        border-top:
+            1px solid rgba(40, 126, 173, .34);
+    }
+
+
+    .latest-analysis__match-header {
+
+        flex-direction: column;
+    }
+
+
+    .latest-analysis__date {
+
+        align-items: flex-start;
+
+        padding-left: 60px;
+    }
+
+
+    .latest-analysis__match {
+
+        grid-template-columns:
+            1fr 45px 1fr;
+
+        padding: 0 8px;
+    }
+
+
+    .latest-analysis__team-logo {
+
+        width: 55px;
+
+        height: 55px;
+    }
+
+
+    .latest-analysis__team strong {
+
+        font-size: 12px;
+    }
+
+
+    .latest-analysis__quick-stat span {
+
+        font-size: 9px;
+
+        text-align: center;
+    }
+
+
+    .latest-analysis__quick-stat strong {
+
+        font-size: 14px;
+    }
+
+
+    .latest-analysis__insights {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .latest-analysis__prediction {
+
+        gap: 7px;
+    }
+
+
+    .latest-analysis__confidence {
+
+        flex-direction: column;
+
+        align-items: flex-end;
+
+        gap: 0;
+    }
+
+
+    .latest-analysis__cards {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .latest-analysis__card--all {
+
+        grid-column: span 2;
+    }
+}
+
+
+/* =========================================================
+   PETIT MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .results-hero {
+
+        min-height: 570px;
+    }
+
+
+    .results-hero__container {
+
+        width:
+            calc(100% - 30px);
+
+        min-height: 570px;
+    }
+
+
+    .results-hero__content {
+
+        padding: 30px 0;
+    }
+
+
+    .results-hero__title {
+
+        font-size: 2rem;
+    }
+
+
+    .results-hero__subtitle {
+
+        font-size: 0.82rem;
+
+        line-height: 1.5;
+    }
+
+
+    .results-hero__features {
+
+        gap: 18px 15px;
+    }
+
+
+    .results-hero__feature {
+
+        font-size: 0.64rem;
+    }
+
+
+    .results-hero__feature-icon {
+
+        width: 33px;
+
+        height: 33px;
+
+        font-size: 0.78rem;
+    }
+
+
+    .results-hero__feature small {
+
+        font-size: 0.56rem;
+    }
+
+    .results-filters__container {
+
+        width:
+            calc(100% - 16px);
+    }
+
+
+    .results-filters__header {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+        gap:
+            10px;
+    }
+
+
+    .results-filters__history {
+
+        width:
+            100%;
+
+        justify-content:
+            center;
+    }
+
+
+    .results-filters__title {
+
+        font-size:
+            0.82rem;
+    }
+
+      .latest-results__header {
+
+        flex-direction:
+            column;
+    }
+
+
+    .latest-results__history {
+
+        width:
+            100%;
+    }
+
+    .performance-card__title {
+
+        font-size:
+            1.15rem;
+    }
+
+
+    .sports-distribution {
+
+        gap:
+            15px;
+    }
+
+
+    .sports-donut {
+
+        width:
+            88px;
+
+        height:
+            88px;
+
+        flex-basis:
+            88px;
+    }
+
+
+    .sports-donut::after {
+
+        inset:
+            14px;
+    }
+
+
+    .sports-list {
+
+        gap:
+            7px;
+    }
+
+    .latest-tickets__container {
+
+        width:
+            calc(100% - 20px);
+    }
+
+
+    .latest-ticket {
+
+        padding:
+            14px;
+
+        min-height:
+            360px;
+    }
+
+
+    .latest-ticket__sport-icon {
+
+        width:
+            31px;
+
+        height:
+            31px;
+
+        flex-basis:
+            31px;
+    }
+
+
+    .latest-ticket__sport strong {
+
+        font-size:
+            0.75rem;
+    }
+
+
+    .latest-ticket__sport small {
+
+        font-size:
+            0.56rem;
+    }
+
+
+    .latest-ticket__status {
+
+        min-height:
+            31px;
+
+        padding:
+            0 9px;
+
+        font-size:
+            0.74rem;
+    }
+
+
+    .latest-ticket__match {
+
+        grid-template-columns:
+            1fr
+            40px
+            1fr;
+
+        min-height:
+            115px;
+
+        padding:
+            10px 5px;
+    }
+
+
+    .latest-ticket__team img {
+
+        width:
+            43px;
+
+        height:
+            43px;
+    }
+
+
+    .latest-ticket__team strong {
+
+        font-size:
+            0.70rem;
+    }
+
+
+    .latest-ticket__prediction {
+
+        font-size:
+            0.72rem;
+    }
+
+
+    .latest-ticket__stat span {
+
+        font-size:
+            0.65rem;
+    }
+
+
+    .latest-ticket__stat strong {
+
+        font-size:
+            0.82rem;
+    }
+
+
+    .latest-ticket__footer {
+
+        font-size:
+            0.61rem;
+    }
+
+    .latest-analysis__title {
+
+        font-size: 29px;
+    }
+
+
+    .latest-analysis__subtitle {
+
+        font-size: 12px;
+    }
+
+
+    .latest-analysis__eyebrow {
+
+        font-size: 10px;
+    }
+
+
+    .latest-analysis__eyebrow span {
+
+        width: 30px;
+    }
+
+
+    .latest-analysis__feature-icon {
+
+        width: 38px;
+
+        height: 38px;
+
+        flex-basis: 38px;
+    }
+
+
+    .latest-analysis__match {
+
+        min-height: 120px;
+    }
+
+
+    .latest-analysis__quick-stats {
+
+        gap: 0;
+    }
+
+
+    .latest-analysis__quick-stat {
+
+        padding: 0 4px;
+    }
+
+
+    .latest-analysis__quick-stat span {
+
+        font-size: 8px;
+    }
+
+
+    .latest-analysis__quick-stat strong {
+
+        font-size: 13px;
+    }
+
+
+    .latest-analysis__prediction-label strong {
+
+        max-width: 105px;
+    }
+
+
+    .latest-analysis__confidence strong {
+
+        font-size: 15px;
+    }
+
+
+    .latest-analysis__odds {
+
+        min-width: 48px;
+
+        padding: 0 8px;
+
+        font-size: 13px;
+    }
+
+
+    .latest-analysis__cards {
+
+        gap: 8px;
+    }
+
+
+    .latest-analysis__card {
+
+        min-height: 105px;
+
+        padding: 9px;
+    }
+
+
+    .latest-analysis__card-teams img {
+
+        width: 31px;
+
+        height: 31px;
+    }
+
+
+    .latest-analysis__card > strong {
+
+        font-size: 9px;
+    }
+}

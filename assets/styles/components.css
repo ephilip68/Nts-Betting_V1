@@ -1,0 +1,7516 @@
+/* =========================================================
+   NTS BETTING
+   COMPONENTS
+   ========================================================= */
+
+
+/* =========================================================
+   NAVBAR — BASE / HERO
+   ========================================================= */
+
+.site-header {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    z-index: 1000;
+
+    width: 100%;
+    height: 68px;
+
+    background: transparent;
+
+    border: none;
+
+    box-shadow: none;
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    transition:
+        background-color 300ms ease,
+        backdrop-filter 300ms ease,
+        box-shadow 300ms ease;
+}
+
+
+/* =========================================================
+   NAVBAR — ÉTAT SCROLL
+   ========================================================= */
+
+.site-header.is-scrolled {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 70px;
+
+    background: var(--navbar-bg-scroll);
+
+    border-bottom:
+        1px solid var(--navbar-border-scroll);
+
+    box-shadow:
+        var(--navbar-shadow-scroll);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+
+/* =========================================================
+   NAVBAR CONTAINER
+   ========================================================= */
+
+.navbar-container {
+    position: relative;
+
+    width: calc(100% - 120px);
+
+    height: 70px;
+    min-height: 70px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 0;
+}
+
+
+/* =========================================================
+   LOGO — HERO
+   ========================================================= */
+
+.navbar-logo {
+    position: absolute;
+
+    top: 10px;
+    left: 0;
+
+    z-index: 20;
+
+    width: 80px;
+    height: auto;
+
+    display: block;
+
+    margin: 0;
+    padding: 0;
+
+    text-decoration: none;
+
+    transform: none;
+}
+
+
+.navbar-logo-image {
+    display: block;
+
+    width: 80px;
+    height: auto;
+
+    margin: 0;
+    padding: 0;
+
+    object-fit: contain;
+
+    transition:
+        width 300ms ease,
+        top 300ms ease;
+}
+
+
+/* =========================================================
+   LOGO — SCROLL
+   ========================================================= */
+
+.site-header.is-scrolled .navbar-logo {
+    width: 66px;
+}
+
+
+.site-header.is-scrolled .navbar-logo-image {
+    width: 66px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.navbar-navigation {
+    position: absolute;
+
+    top: 5px;
+    left: 50%;
+
+    height: 68px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+
+    gap: 1.35rem;
+}
+
+
+/* =========================================================
+   NAVIGATION — SCROLL
+   ========================================================= */
+
+.site-header.is-scrolled .navbar-navigation {
+    top: 0;
+
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* =========================================================
+   LIENS NAVIGATION
+   ========================================================= */
+
+.navbar-link {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 68px;
+    min-height: 68px;
+
+    color: var(--navbar-link-color);
+
+    font-family: var(--font-body);
+    font-size: 0.80rem;
+    font-weight: 600;
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    text-decoration: none;
+
+    transition:
+        color 180ms ease;
+}
+
+
+/* =========================================================
+   LIENS — SCROLL
+   ========================================================= */
+
+.site-header.is-scrolled .navbar-link {
+    height: 70px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   LIGNE SOUS LE LIEN
+   ========================================================= */
+
+.navbar-link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 21px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--color-gold);
+
+    border-radius: var(--radius-full);
+
+    transform: translateX(-50%);
+
+    opacity: 0;
+
+    transition:
+        width 180ms ease,
+        opacity 180ms ease;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.navbar-link:hover {
+    color: var(--navbar-link-color-hover);
+}
+
+
+.navbar-link:hover::after {
+    width: 100%;
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   PAGE ACTIVE
+   ========================================================= */
+
+.navbar-link.is-active {
+    color: var(--color-gold);
+}
+
+
+.navbar-link.is-active::after {
+    width: 100%;
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 0.55rem;
+
+    margin-left: auto;
+
+    flex-shrink: 0;
+
+    transform: translateY(4px);
+}
+
+
+.site-header.is-scrolled .navbar-actions {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    height: 70px;
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.55rem;
+
+    box-sizing: border-box;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   RECHERCHE
+   ========================================================= */
+
+.navbar-search {
+    width: 38px;
+    height: 38px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    color: var(--navbar-action-color);
+
+    border:
+        1px solid var(--navbar-search-border);
+
+    border-radius: var(--radius-sm);
+
+    background: transparent;
+
+    cursor: pointer;
+
+    transition:
+        color 180ms ease,
+        border-color 180ms ease,
+        background-color 180ms ease,
+        transform 180ms ease;
+}
+
+
+.navbar-search svg {
+    width: 20px;
+    height: 20px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.8;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+.navbar-search:hover {
+    color: var(--color-gold);
+
+    border-color:
+        var(--navbar-search-border-hover);
+
+    background:
+        var(--navbar-search-hover-bg);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   SE CONNECTER
+   ========================================================= */
+
+.navbar-login {
+    min-width: 104px;
+    height: 38px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 1.05rem;
+
+    color: var(--navbar-login-color);
+
+    border:
+        1px solid var(--navbar-login-border);
+
+    border-radius: var(--radius-sm);
+
+    background: transparent;
+
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 650;
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    text-decoration: none;
+
+    transition:
+        color 180ms ease,
+        border-color 180ms ease,
+        background-color 180ms ease,
+        transform 180ms ease;
+}
+
+
+.navbar-login:hover {
+    color: var(--color-gold);
+
+    border-color:
+        var(--color-gold);
+
+    background:
+        var(--navbar-login-hover-bg);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   S'INSCRIRE
+   ========================================================= */
+
+.navbar-register {
+    min-width: 88px;
+    height: 38px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 1.05rem;
+
+    color: var(--navbar-register-color);
+
+    border:
+        1px solid var(--color-gold);
+
+    border-radius: var(--radius-sm);
+
+    background:
+        var(--color-gold);
+
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    text-decoration: none;
+
+    box-shadow:
+        var(--navbar-register-shadow);
+
+    transition:
+        background-color 180ms ease,
+        border-color 180ms ease,
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+
+.navbar-register:hover {
+    background:
+        var(--color-gold-hover);
+
+    border-color:
+        var(--color-gold-hover);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        var(--navbar-register-shadow-hover);
+}
+
+
+/* =========================================================
+   BOUTONS — SCROLL
+   ========================================================= */
+
+.site-header.is-scrolled .navbar-search,
+.site-header.is-scrolled .navbar-login,
+.site-header.is-scrolled .navbar-register {
+    position: relative;
+
+    top: 0;
+    bottom: auto;
+
+    margin: 0;
+
+    padding-top: 0;
+    padding-bottom: 0;
+
+    height: 36px;
+    min-height: 36px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    align-self: center;
+
+    box-sizing: border-box;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   MOBILE TOGGLE
+   ========================================================= */
+
+.navbar-toggle {
+    display: none;
+
+    width: 38px;
+    height: 38px;
+
+    padding: 0;
+
+    border:
+        1px solid var(--navbar-toggle-border);
+
+    border-radius: var(--radius-sm);
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+
+.navbar-toggle span {
+    display: block;
+
+    width: 18px;
+    height: 2px;
+
+    margin: 4px auto;
+
+    background:
+        var(--color-white);
+
+    border-radius: 2px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1150px) {
+
+    .navbar-container {
+        width: calc(100% - 3rem);
+    }
+
+
+    .navbar-navigation {
+        gap: 0.95rem;
+    }
+
+
+    .navbar-link {
+        font-size: 0.70rem;
+    }
+
+
+    .navbar-logo {
+        width: 120px;
+        min-width: 120px;
+    }
+
+
+    .navbar-logo-image {
+        width: 110px;
+    }
+
+
+    .site-header.is-scrolled .navbar-logo {
+        width: 88px;
+        min-width: 88px;
+    }
+
+
+    .site-header.is-scrolled .navbar-logo-image {
+        width: 70px;
+    }
+
+
+    .navbar-login {
+        min-width: 96px;
+
+        padding: 0 0.8rem;
+    }
+
+
+    .navbar-register {
+        min-width: 82px;
+
+        padding: 0 0.8rem;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .site-header,
+    .site-header.is-scrolled {
+        height: 64px;
+    }
+
+
+    .navbar-container {
+        width: calc(100% - 2rem);
+
+        height: 64px;
+        min-height: 64px;
+    }
+
+
+    .navbar-navigation,
+    .navbar-actions {
+        display: none;
+    }
+
+
+    /* -----------------------------------------------------
+       LOGO MOBILE — HERO
+       ----------------------------------------------------- */
+
+    .navbar-logo {
+        width: 100px;
+        min-width: 100px;
+
+        height: 90px;
+
+        justify-content: flex-start;
+
+        transform: translateY(12px);
+    }
+
+
+    .navbar-logo-image {
+        width: 92px;
+    }
+
+
+    /* -----------------------------------------------------
+       LOGO MOBILE — SCROLL
+       ----------------------------------------------------- */
+
+    .site-header.is-scrolled .navbar-logo {
+        width: 78px;
+        min-width: 78px;
+
+        height: 64px;
+
+        align-items: center;
+        justify-content: center;
+
+        transform: translateY(0);
+    }
+
+
+    .site-header.is-scrolled .navbar-logo-image {
+        width: 66px;
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE TOGGLE
+       ----------------------------------------------------- */
+
+    .navbar-toggle {
+        display: block;
+
+        margin-left: auto;
+    }
+
+}
+
+
+/* =========================================================
+   TRÈS PETITS ÉCRANS
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .navbar-container {
+        width: calc(100% - 1.25rem);
+    }
+
+
+    .navbar-logo {
+        width: 90px;
+        min-width: 90px;
+
+        transform: translateY(10px);
+    }
+
+
+    .navbar-logo-image {
+        width: 84px;
+    }
+
+
+    .site-header.is-scrolled .navbar-logo {
+        width: 72px;
+        min-width: 72px;
+    }
+
+
+    .site-header.is-scrolled .navbar-logo-image {
+        width: 60px;
+    }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITÉ
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .site-header,
+    .navbar-logo,
+    .navbar-logo-image,
+    .navbar-link,
+    .navbar-link::after,
+    .navbar-search,
+    .navbar-login,
+    .navbar-register {
+        transition: none;
+    }
+
+}
+
+
+/* =========================================================
+   HERO — NTS BETTING
+   ========================================================= */
+
+.hero {
+    position: relative;
+
+    height: 720px;
+    min-height: 720px;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--hero-bg);
+
+    color: var(--color-white);
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    overflow: hidden;
+}
+
+
+.hero-background-image {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        var(--hero-background-gradient),
+        url('/images/hero/hero-player.png');
+
+    background-size: 100% auto;
+    background-position: center -5%;
+    background-repeat: no-repeat;
+
+    transform: scale(1.015);
+}
+
+
+/* =========================================================
+   ASSOMBRISSEMENT VERTICAL
+   ========================================================= */
+
+.hero-background-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: var(--hero-background-overlay-gradient);
+}
+
+
+/* =========================================================
+   VIGNETTE
+   ========================================================= */
+
+.hero-background-vignette {
+    position: absolute;
+    inset: 0;
+
+    background: var(--hero-vignette-gradient);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTENEUR PRINCIPAL
+   ========================================================= */
+
+.hero-container {
+    position: relative;
+    z-index: 5;
+
+    width: min(calc(100% - 120px), 1450px);
+
+    min-height: 644px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        500px
+        minmax(0, 1fr)
+        340px;
+
+    align-items: center;
+
+    column-gap: 25px;
+
+    padding: 45px 0 35px;
+}
+
+
+/* =========================================================
+   CONTENU GAUCHE
+   ========================================================= */
+
+.hero-content {
+    grid-column: 1;
+    grid-row: 1;
+
+    position: relative;
+    z-index: 10;
+
+    width: 100%;
+    max-width: 500px;
+
+    margin: 28px 0 0;
+}
+
+
+/* =========================================================
+   KICKER
+   ========================================================= */
+
+.hero-kicker {
+    display: block;
+
+    margin: 0 0 13px;
+
+    color: var(--hero-text-low);
+
+    font-family: var(--font-body);
+    font-size: 0.74rem;
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+    line-height: 1;
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.hero-brand {
+    margin: 0;
+
+    display: flex;
+    align-items: baseline;
+
+    white-space: nowrap;
+
+    font-family: var(--font-heading);
+    font-size: clamp(3.25rem, 4.5vw, 4.8rem);
+    font-weight: 700;
+
+    line-height: 0.94;
+    letter-spacing: -0.055em;
+}
+
+
+.hero-brand span {
+    color: var(--color-white);
+}
+
+
+.hero-brand strong {
+    margin-left: 15px;
+
+    color: var(--color-gold);
+
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.hero-description {
+    max-width: 450px;
+
+    margin: 17px 0 0;
+
+    color: var(--hero-text-soft);
+
+    font-family: var(--font-body);
+    font-size: 0.90rem;
+    font-weight: 400;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   AVANTAGES
+   ========================================================= */
+
+.hero-features {
+    width: 430px;
+    max-width: 100%;
+
+    margin: 18px 0 0;
+    padding: 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    column-gap: 20px;
+    row-gap: 11px;
+
+    list-style: none;
+}
+
+
+.hero-features li {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--hero-text-medium);
+
+    font-family: var(--font-body);
+    font-size: 0.74rem;
+    font-weight: 500;
+
+    line-height: 1.25;
+}
+
+
+/* =========================================================
+   ICÔNE FEATURE
+   ========================================================= */
+
+.hero-feature-icon {
+    width: 19px;
+    height: 19px;
+
+    flex: 0 0 19px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--color-gold);
+
+    border: 1px solid var(--hero-gold-border);
+
+    border-radius: 50%;
+
+    font-size: 0.64rem;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   BOUTON
+   ========================================================= */
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+
+    margin-top: 22px;
+}
+
+
+.hero-btn {
+    min-height: 44px;
+
+    padding: 0 20px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    border-radius: 5px;
+
+    font-family: var(--font-body);
+    font-size: 0.74rem;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        transform 180ms ease,
+        background 180ms ease,
+        box-shadow 180ms ease;
+}
+
+
+.hero-btn-primary {
+    color: #101016;
+
+    background: var(--color-gold);
+
+    box-shadow: var(--hero-button-shadow);
+}
+
+
+.hero-btn-primary:hover {
+    color: #101016;
+
+    background: #e4bd2c;
+
+    transform: translateY(-1px);
+
+    box-shadow: var(--hero-button-shadow-hover);
+}
+
+
+.hero-btn svg {
+    width: 18px;
+    height: 18px;
+
+    fill: none;
+
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   MEMBRES
+   ========================================================= */
+
+.hero-members {
+    display: flex;
+    align-items: center;
+
+    margin-top: 18px;
+}
+
+
+.hero-members-avatars {
+    display: flex;
+    align-items: center;
+
+    margin-right: 11px;
+}
+
+
+.hero-member-avatar {
+    width: 28px;
+    height: 28px;
+
+    margin-left: -5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--color-white);
+
+    background: var(--hero-member-gradient);
+
+    border: 2px solid #08101c;
+    border-radius: 50%;
+
+    font-family: var(--font-body);
+    font-size: 0.54rem;
+    font-weight: 700;
+}
+
+
+.hero-member-avatar:first-child {
+    margin-left: 0;
+}
+
+
+.hero-members-text {
+    color: var(--hero-text-faded);
+
+    font-family: var(--font-body);
+    font-size: 0.64rem;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   CARTE RÉSULTATS
+   ========================================================= */
+
+.hero-results {
+    grid-column: 3;
+    grid-row: 1;
+
+    position: relative;
+    z-index: 20;
+
+    width: 390px;
+    max-width: 390px;
+
+    justify-self: start;
+
+    margin: 28px 0 0;
+    padding: 20px;
+
+    background: var(--hero-results-gradient);
+
+    border: none;
+    border-radius: 9px;
+
+    box-shadow: var(--hero-results-shadow);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADER CARTE
+   ========================================================= */
+
+.hero-results-heading {
+    display: flex;
+    align-items: baseline;
+
+    gap: 6px;
+
+    padding: 2px 5px 14px;
+
+    border-bottom: 1px solid var(--hero-border-light);
+
+    white-space: nowrap;
+}
+
+
+.hero-results-heading span {
+    color: var(--hero-text-primary);
+
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 700;
+
+    letter-spacing: 0.02em;
+}
+
+
+.hero-results-heading small {
+    color: var(--hero-text-subtle);
+
+    font-family: var(--font-body);
+    font-size: 0.58rem;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   GRILLE STATISTIQUES
+   ========================================================= */
+
+.hero-results-grid {
+    margin-top: 14px;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 11px;
+}
+
+
+/* =========================================================
+   CARD STATISTIQUE
+   ========================================================= */
+
+.hero-result-card {
+    min-height: 118px;
+
+    padding: 14px 12px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    background: var(--hero-result-card-gradient);
+
+    border: none;
+    border-radius: 8px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   BLOC ICÔNE + CHIFFRE
+   ========================================================= */
+
+.hero-result-top {
+    width: 124px;
+    min-width: 124px;
+
+    height: 32px;
+
+    display: grid;
+
+    grid-template-columns: 30px auto;
+
+    align-items: center;
+
+    column-gap: 7px;
+
+    justify-content: center;
+
+    margin: 0 auto;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ICÔNE
+   ========================================================= */
+
+.hero-result-icon {
+    width: 30px;
+    height: 30px;
+
+    flex: 0 0 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+
+    border-radius: 50%;
+
+    box-sizing: border-box;
+}
+
+
+.hero-result-icon svg {
+    width: 17px;
+    height: 17px;
+
+    fill: none;
+
+    stroke: currentColor;
+    stroke-width: 1.8;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   COULEURS ICÔNES
+   ========================================================= */
+
+.hero-result-icon-success,
+.hero-result-icon-profit,
+.hero-result-icon-bets {
+    color: var(--hero-success);
+
+    border: 1px solid var(--hero-success-border);
+
+    background: var(--hero-success-bg);
+}
+
+
+.hero-result-icon-members {
+    color: var(--color-gold);
+
+    border: 1px solid var(--hero-gold-border-soft);
+
+    background: var(--hero-gold-bg);
+}
+
+
+/* =========================================================
+   ZONE CHIFFRE
+   ========================================================= */
+
+.hero-result-number {
+    width: 65px;
+    min-width: 65px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    margin: 0;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CHIFFRE
+   ========================================================= */
+
+.hero-result-number strong {
+    display: block;
+
+    width: 65px;
+    min-width: 0;
+
+    margin: 0;
+
+    color: var(--color-white);
+
+    font-family: var(--font-heading);
+
+    font-size: 1.62rem;
+    font-weight: 700;
+
+    line-height: 1;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LIGNE SOUS LE CHIFFRE
+   ========================================================= */
+
+.hero-result-number-line {
+    display: block;
+
+    width: 40px;
+    height: 2px;
+
+    margin: 7px auto 0;
+
+    background: var(--hero-number-line-gradient);
+
+    border-radius: 999px;
+}
+
+
+/* =========================================================
+   LIBELLÉ
+   ========================================================= */
+
+.hero-result-label {
+    width: 100%;
+
+    margin: 11px 0 0;
+
+    color: var(--hero-text-muted);
+
+    font-family: var(--font-body);
+
+    font-size: 0.70rem;
+    font-weight: 600;
+
+    line-height: 1.25;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CITATION
+   ========================================================= */
+
+.hero-results-quote {
+    position: relative;
+
+    min-height: 118px;
+
+    margin-top: 11px;
+    padding: 17px;
+
+    overflow: hidden;
+
+    background: var(--hero-quote-gradient);
+
+    border: 1px solid var(--hero-border-medium);
+    border-radius: 8px;
+
+    box-shadow: var(--hero-quote-shadow);
+
+    box-sizing: border-box;
+}
+
+
+.hero-results-quote-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 280px;
+}
+
+
+.hero-results-quote p {
+    margin: 0;
+
+    color: var(--hero-text-normal);
+
+    font-family: var(--font-body);
+
+    font-size: 0.74rem;
+    font-weight: 400;
+
+    line-height: 1.65;
+}
+
+
+.hero-results-quote span {
+    display: block;
+
+    margin-top: 11px;
+
+    color: var(--color-gold);
+
+    font-family: var(--font-body);
+
+    font-size: 0.63rem;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   COURONNE
+   ========================================================= */
+
+.hero-results-crown {
+    position: absolute;
+
+    right: -55px;
+    bottom: -45px;
+
+    width: 145px;
+
+    color: var(--color-gold);
+
+    opacity: 0.20;
+
+    z-index: 1;
+    pointer-events: none;
+
+    transform: rotate(-3deg);
+}
+
+
+.hero-results-crown svg {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    overflow: visible;
+}
+
+
+/* =========================================================
+   BARRE SPORTS
+   ========================================================= */
+
+.hero-sports-bar {
+    position: relative;
+    z-index: 30;
+
+    min-height: 76px;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+
+    background: var(--bg-secondary);
+
+    border-top: 1px solid var(--hero-border-light);
+    border-bottom: 1px solid var(--hero-border-soft);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+
+/* =========================================================
+   CONTENEUR SPORTS
+   ========================================================= */
+
+.hero-sports-container {
+    width: 100%;
+    height: 76px;
+
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+}
+
+
+.hero-sports-container::before,
+.hero-sports-container::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    width: 120px;
+
+    z-index: 10;
+
+    pointer-events: none;
+}
+
+
+.hero-sports-container::before {
+    left: 0;
+
+    background: var(--hero-sports-left-gradient);
+}
+
+
+.hero-sports-container::after {
+    right: 0;
+
+    background: var(--hero-sports-right-gradient);
+}
+
+
+/* =========================================================
+   TRACK
+   ========================================================= */
+
+.hero-sports-track {
+    display: flex;
+    align-items: center;
+
+    width: max-content;
+    min-width: max-content;
+
+    height: 76px;
+
+    margin: 0;
+    padding: 0;
+
+    flex-shrink: 0;
+
+    animation: heroSportsScroll 45s linear 2s infinite;
+
+    will-change: transform;
+}
+
+
+@keyframes heroSportsScroll {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+
+}
+
+
+/* =========================================================
+   SPORT
+   ========================================================= */
+
+.hero-sport {
+    position: relative;
+
+    width: 240px;
+    min-width: 240px;
+    max-width: 240px;
+
+    height: 76px;
+    min-height: 76px;
+
+    flex: 0 0 240px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 16px;
+
+    padding: 0 25px;
+
+    box-sizing: border-box;
+
+    color: var(--hero-text-subtle);
+
+    text-decoration: none;
+
+    transition:
+        color 180ms ease,
+        background 180ms ease;
+}
+
+
+.hero-sport-icon {
+    width: 46px;
+    height: 46px;
+
+    flex: 0 0 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--hero-text-subtle);
+
+    border: 1px solid var(--hero-gold-border-light);
+    border-radius: 50%;
+
+    background: var(--hero-gold-bg-subtle);
+
+    transition:
+        color 180ms ease,
+        border-color 180ms ease,
+        background 180ms ease;
+}
+
+
+.hero-sport-icon svg {
+    width: 29px;
+    height: 29px;
+
+    fill: none;
+
+    stroke: currentColor;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+.hero-sport-copy {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+
+.hero-sport-copy strong {
+    color: var(--hero-text-primary);
+
+    font-family: var(--font-body);
+    font-size: 0.80rem;
+    font-weight: 700;
+
+    line-height: 1.15;
+}
+
+
+.hero-sport-copy small {
+    margin-top: 4px;
+
+    color: var(--hero-text-disabled);
+
+    font-family: var(--font-body);
+    font-size: 0.57rem;
+    font-weight: 500;
+
+    line-height: 1.15;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.hero-sport:hover {
+    color: var(--color-white);
+
+    background: rgba(255, 255, 255, 0.018);
+}
+
+
+.hero-sport-vault {
+    color: var(--color-gold);
+}
+
+
+.hero-sport-vault .hero-sport-icon {
+    color: var(--color-gold);
+}
+
+
+/* =========================================================
+   LIGNE ACTIVE
+   ========================================================= */
+
+.hero-sport::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--color-gold);
+
+    transform: translateX(-50%);
+
+    transition: width 180ms ease;
+}
+
+
+.hero-sport:hover::after {
+    width: 75%;
+}
+
+
+/* =========================================================
+   PAUSE AU SURVOL
+   ========================================================= */
+
+.hero-sports-track:hover {
+    animation-play-state: paused;
+}
+
+
+/* =========================================================
+   ACCESSIBILITÉ
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .hero-sports-track {
+        animation: none;
+    }
+
+}
+
+
+/* =========================================================
+   NTS BETTING — NOS OFFRES
+   ========================================================= */
+
+.offers-section {
+    position: relative;
+
+    width: 100%;
+
+    padding: 24px 0;
+
+    background: var(--bg-panel);
+
+    color: var(--color-white);
+
+    overflow: hidden;
+}
+
+
+.offers-container {
+    width: min(calc(100% - 96px), 1500px);
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   EN-TÊTE
+   ========================================================= */
+
+.offers-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   PETIT TITRE — NOS OFFRES
+   ========================================================= */
+
+.offers-eyebrow {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--color-gold);
+
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+
+    line-height: 1;
+}
+
+
+.offers-eyebrow::before {
+    content: "♛";
+
+    color: var(--color-gold);
+
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   TITRE PRINCIPAL
+   ========================================================= */
+
+.offers-title {
+    margin: 9px 0 0;
+
+    color: var(--color-white);
+
+    font-family: var(--font-body);
+    font-size: 2rem;
+    font-weight: 750;
+
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.offers-description {
+    max-width: 650px;
+
+    margin: 7px auto 0;
+
+    color: var(--offers-text-muted);
+
+    font-family: var(--font-body);
+    font-size: 0.90rem;
+    font-weight: 400;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   GRILLE DES OFFRES
+   ========================================================= */
+
+.offers-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 14px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   CARTES OFFRES
+   ========================================================= */
+
+.offer-card {
+    position: relative;
+
+    min-width: 0;
+    min-height: 430px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 22px 18px 16px;
+
+    background: var(--offers-card-bg);
+
+    border: 1px solid var(--offers-border);
+    border-radius: 7px;
+
+    box-shadow: var(--offers-card-shadow);
+
+    overflow: hidden;
+
+    transition:
+        border-color var(--transition-vault),
+        transform var(--transition-vault),
+        box-shadow var(--transition-vault);
+}
+
+
+/* =========================================================
+   HOVER CARTE
+   ========================================================= */
+
+.offer-card:hover {
+    border-color: var(--offers-border-hover);
+
+    transform: translateY(-2px);
+
+    box-shadow: var(--offers-card-shadow-hover);
+}
+
+
+/* =========================================================
+   ICÔNE
+   ========================================================= */
+
+.offer-card-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 8px;
+
+    color: var(--color-gold);
+
+    font-family: var(--font-body);
+    font-size: 1.60rem;
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+
+.offer-card-icon span {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   ICÔNES SPÉCIFIQUES
+   ========================================================= */
+
+.offer-card-icon-starter {
+    color: var(--offers-icon-starter);
+
+    font-size: 1.50rem;
+}
+
+
+.offer-card-icon-essential {
+    color: var(--offers-icon-essential);
+
+    font-size: 0.98rem;
+
+    letter-spacing: 2px;
+}
+
+
+.offer-card-icon-advanced {
+    color: var(--offers-icon-advanced);
+
+    font-size: 1.70rem;
+}
+
+
+.offer-card-icon-vip {
+    color: var(--color-gold);
+
+    font-size: 1.70rem;
+}
+
+
+/* =========================================================
+   TITRE DE L'OFFRE
+   ========================================================= */
+
+.offer-card-title {
+    margin: 0;
+
+    color: var(--offers-text-primary);
+
+    font-family: var(--font-body);
+    font-size: 1.12rem;
+    font-weight: 750;
+
+    line-height: 1.15;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   PRIX
+   ========================================================= */
+
+.offer-card-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+
+    margin-top: 6px;
+
+    color: var(--offers-text-primary);
+
+    white-space: nowrap;
+}
+
+
+.offer-card-price strong {
+    color: var(--offers-text-primary);
+
+    font-family: var(--font-body);
+    font-size: 1.52rem;
+    font-weight: 750;
+
+    line-height: 1;
+}
+
+
+.offer-card-price span {
+    margin-left: 5px;
+
+    color: var(--offers-text-medium);
+
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   LISTE DES AVANTAGES
+   ========================================================= */
+
+.offer-card-features {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin: 22px 0 0;
+
+    padding: 0 5px;
+
+    list-style: none;
+}
+
+
+/* =========================================================
+   TEXTE DES AVANTAGES
+   ========================================================= */
+
+.offer-card-features li {
+    min-width: 0;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    color: var(--offers-text-strong);
+
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   CHECK DES AVANTAGES
+   ========================================================= */
+
+.offer-check {
+    flex: 0 0 auto;
+
+    color: var(--color-gold);
+
+    font-size: 0.92rem;
+    font-weight: 800;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   BOUTON
+   ========================================================= */
+
+.offer-card-button {
+    width: 100%;
+
+    min-height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: auto;
+
+    padding: 0 12px;
+
+    color: var(--offers-text-primary);
+
+    border: 1px solid var(--offers-button-border);
+    border-radius: 5px;
+
+    background: var(--offers-card-button-bg);
+
+    font-family: var(--font-body);
+    font-size: 0.80rem;
+    font-weight: 700;
+
+    line-height: 1;
+
+    text-decoration: none;
+
+    transition:
+        color 180ms ease,
+        border-color 180ms ease,
+        background-color 180ms ease,
+        transform 180ms ease;
+}
+
+
+.offer-card-button:hover {
+    color: var(--color-gold);
+
+    border-color: var(--offers-button-border-hover);
+
+    background: var(--offers-card-button-hover-bg);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   CARTE AVANCÉ — MISE EN AVANT
+   ========================================================= */
+
+.offer-card-featured {
+    border-color: var(--offers-featured-border);
+
+    box-shadow: var(--offers-featured-shadow);
+}
+
+
+.offer-card-featured:hover {
+    border-color: var(--offers-featured-border-hover);
+
+    box-shadow: var(--offers-featured-shadow-hover);
+}
+
+
+/* =========================================================
+   BADGE — PLUS POPULAIRE
+   ========================================================= */
+
+.offer-card-badge {
+    position: absolute;
+
+    top: 6px;
+    right: 6px;
+
+    min-height: 19px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 9px;
+
+    color: var(--navbar-register-color);
+
+    border: 1px solid var(--offers-badge-border);
+    border-radius: var(--radius-full);
+
+    background: var(--color-gold);
+
+    font-family: var(--font-body);
+    font-size: 0.54rem;
+    font-weight: 800;
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    box-shadow: var(--offers-badge-shadow);
+}
+
+
+/* =========================================================
+   BOUTON AVANCÉ
+   ========================================================= */
+
+.offer-card-button-featured {
+    color: var(--color-dark-text);
+
+    border-color: var(--color-gold);
+
+    background: var(--color-gold);
+
+    box-shadow: var(--offers-button-featured-shadow);
+}
+
+
+.offer-card-button-featured:hover {
+    color: var(--color-dark-text);
+
+    border-color: var(--color-gold-hover);
+
+    background: var(--color-gold-hover);
+
+    box-shadow: var(--offers-button-featured-shadow-hover);
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .offers-container {
+        width: min(calc(100% - 48px), 1000px);
+    }
+
+    .offers-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 14px;
+    }
+
+    .offer-card {
+        min-height: 430px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .offers-section {
+        padding: 32px 0 24px;
+    }
+
+    .offers-container {
+        width: calc(100% - 28px);
+    }
+
+    .offers-header {
+        margin-bottom: 22px;
+    }
+
+    .offers-eyebrow {
+        font-size: 0.82rem;
+    }
+
+    .offers-eyebrow::before {
+        font-size: 0.88rem;
+    }
+
+    .offers-title {
+        font-size: 1.50rem;
+    }
+
+    .offers-description {
+        padding: 0 10px;
+
+        font-size: 0.70rem;
+    }
+
+    .offers-grid {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+    .offer-card {
+        min-height: 380px;
+
+        padding: 20px 18px 16px;
+    }
+
+    .offer-card-features {
+        gap: 10px;
+
+        margin-top: 20px;
+    }
+
+    .offer-card-features li {
+        font-size: 0.82rem;
+    }
+
+    .offer-check {
+        font-size: 0.90rem;
+    }
+}
+
+/* =========================================================
+   NTS BETTING — NTS VAULT
+   ========================================================= */
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.vault-section {
+    position: relative;
+
+    width: 100%;
+
+    padding: 34px 0 36px;
+
+    color: var(--color-white);
+
+    background: var(--bg-panel);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.vault-container {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(calc(100% - 64px), 1500px);
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   CARD PRINCIPALE
+   ========================================================= */
+
+.vault-card {
+    position: relative;
+
+    min-height: 280px;
+
+    display: grid;
+
+    grid-template-columns:
+        500px
+        350px;
+
+    align-items: center;
+
+    column-gap: 110px;
+
+    justify-content: end;
+
+    padding:
+        30px
+        55px
+        30px
+        365px;
+
+    background-image:
+
+        linear-gradient(
+            90deg,
+
+            rgba(3, 14, 25, 0.00) 0%,
+            rgba(3, 14, 25, 0.01) 10%,
+            rgba(3, 14, 25, 0.04) 18%,
+            rgba(3, 14, 25, 0.10) 25%,
+            rgba(3, 14, 25, 0.22) 32%,
+            rgba(3, 14, 25, 0.40) 39%,
+            rgba(3, 14, 25, 0.60) 46%,
+            rgba(3, 14, 25, 0.78) 53%,
+            rgba(3, 14, 25, 0.90) 60%,
+            rgba(3, 14, 25, 0.97) 69%,
+            rgba(3, 14, 25, 1.00) 80%,
+            rgba(3, 14, 25, 1.00) 100%
+        ),
+
+        url("/images/vault/nts-vault.png");
+
+    background-repeat: no-repeat;
+
+    background-size:
+        100% 100%,
+        auto 100%;
+
+    background-position:
+        center,
+        left 52%;
+
+    background-color:
+        rgba(3, 14, 25, 0.96);
+
+    border:
+        1px solid var(--border-color);
+
+    border-radius: 9px;
+
+    box-shadow:
+        var(--shadow-vault);
+
+    overflow: hidden;
+
+    transition:
+        border-color var(--transition-vault),
+        box-shadow var(--transition-vault),
+        transform var(--transition-vault);
+}
+
+
+/* =========================================================
+   FONDU INTERNE
+   ========================================================= */
+
+.vault-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+
+            rgba(3, 14, 25, 0.00) 0%,
+            rgba(3, 14, 25, 0.01) 12%,
+            rgba(3, 14, 25, 0.05) 20%,
+            rgba(3, 14, 25, 0.14) 29%,
+            rgba(3, 14, 25, 0.30) 36%,
+            rgba(3, 14, 25, 0.50) 42%,
+            rgba(3, 14, 25, 0.68) 48%,
+            rgba(3, 14, 25, 0.82) 55%,
+            rgba(3, 14, 25, 0.91) 62%,
+            rgba(3, 14, 25, 0.97) 72%,
+            rgba(3, 14, 25, 1.00) 100%
+        );
+}
+
+
+/* =========================================================
+   VOILE VERTICAL
+   ========================================================= */
+
+.vault-card::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+
+            rgba(3, 14, 25, 0.03) 0%,
+            rgba(3, 14, 25, 0.00) 30%,
+            rgba(3, 14, 25, 0.04) 70%,
+            rgba(3, 14, 25, 0.14) 100%
+        );
+}
+
+
+/* =========================================================
+   CONTENU AU-DESSUS DES BACKGROUNDS
+   ========================================================= */
+
+.vault-card > * {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   ANCIEN VISUEL
+   ========================================================= */
+
+.vault-visual,
+.vault-image {
+    display: none;
+}
+
+
+/* =========================================================
+   CONTENU PRINCIPAL
+   ========================================================= */
+
+.vault-content {
+    min-width: 0;
+
+    width: 500px;
+    max-width: 500px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+    justify-content: center;
+
+    transform: translateX(35px);
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.vault-eyebrow {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+
+    color: var(--color-gold);
+
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 750;
+
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+
+    line-height: 1;
+}
+
+
+.vault-eyebrow::before {
+    content: "♛";
+
+    color: var(--color-gold);
+
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.vault-title {
+    max-width: 500px;
+
+    margin: 0;
+
+    color: var(--color-white);
+
+    font-family: var(--font-body);
+    font-size: 1.50rem;
+    font-weight: 750;
+
+    line-height: 1.13;
+    letter-spacing: -0.025em;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.vault-description {
+    width: 100%;
+    max-width: 480px;
+
+    margin: 14px 0 0;
+
+    color: rgba(255, 255, 255, 0.72);
+
+    font-family: var(--font-body);
+    font-size: 0.90rem;
+    font-weight: 400;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   BOUTON
+   ========================================================= */
+
+.vault-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+
+    margin-top: 18px;
+
+    padding: 0 19px;
+
+    color: var(--color-gold);
+
+    border:
+        1px solid rgba(221, 178, 25, 0.82);
+
+    border-radius: var(--radius-sm);
+
+    background:
+        rgba(3, 14, 25, 0.55);
+
+    font-family: var(--font-body);
+    font-size: 0.80rem;
+    font-weight: 750;
+
+    line-height: 1;
+
+    text-decoration: none;
+
+    transition:
+        color 180ms ease,
+        background-color 180ms ease,
+        border-color 180ms ease,
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+
+.vault-button:hover {
+    color: #111111;
+
+    border-color: var(--color-gold);
+
+    background: var(--color-gold);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        var(--shadow-gold);
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.vault-features {
+    min-width: 0;
+
+    width: 350px;
+    min-height: 200px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 18px;
+
+    padding:
+        18px
+        18px
+        18px
+        20px;
+
+    border:
+        1px solid var(--hero-border-soft);
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(3, 14, 25, 0.92) 0%,
+            rgba(6, 21, 35, 0.82) 40%,
+            rgba(12, 32, 51, 0.82) 88%,
+            rgba(17, 43, 65, 0.72) 100%
+        );
+
+    box-shadow:
+        var(--shadow-vault-feature);
+
+    transform: translateX(-8px);
+}
+
+
+/* =========================================================
+   LISTE FEATURES
+   ========================================================= */
+
+.vault-features ul {
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+
+.vault-features li {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: rgba(255, 255, 255, 0.84);
+
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    line-height: 1.3;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   CHECK FEATURES
+   ========================================================= */
+
+.vault-features li > span:first-child {
+    flex: 0 0 auto;
+
+    color: var(--color-gold);
+
+    font-size: 0.98rem;
+    font-weight: 800;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   CADENAS / SERRURE
+   ========================================================= */
+
+.vault-lock {
+    width: 105px;
+    height: 105px;
+
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0;
+    line-height: 0;
+
+    background-image:
+        url("/images/vault/nts-lock.png");
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    filter:
+        drop-shadow(
+            0 14px 8px rgba(0, 0, 0, 0.65)
+        );
+}
+
+
+/* =========================================================
+   HOVER CARD
+   ========================================================= */
+
+.vault-card:hover {
+    border-color:
+        var(--border-color-hover);
+
+    box-shadow:
+        var(--shadow-vault-hover),
+        0 0 25px rgba(221, 178, 25, 0.025);
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .vault-section {
+        padding: 30px 0 32px;
+    }
+
+
+    .vault-container {
+        width: min(calc(100% - 48px), 1000px);
+    }
+
+
+    .vault-card {
+        min-height: 280px;
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            215px;
+
+        gap: 28px;
+
+        padding:
+            26px
+            35px
+            26px
+            280px;
+
+        background-size:
+            100% 100%,
+            auto 118%;
+    }
+
+
+    .vault-content {
+        transform: translateX(5px);
+    }
+
+
+    .vault-title {
+        font-size: 1.48rem;
+    }
+
+
+    .vault-description {
+        font-size: 0.82rem;
+    }
+
+
+    .vault-features {
+        min-height: 135px;
+
+        padding:
+            17px
+            11px;
+    }
+
+
+    .vault-features li {
+        font-size: 0.70rem;
+    }
+
+
+    .vault-lock {
+        width: 50px;
+        height: 66px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+    .vault-section {
+        padding: 26px 0;
+    }
+
+
+    .vault-container {
+        width: calc(100% - 28px);
+    }
+
+
+    .vault-card {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 20px;
+
+        min-height: 0;
+
+        padding:
+            190px
+            18px
+            22px;
+
+        background-size:
+            100% 100%,
+            auto 205px;
+
+        background-position:
+            center,
+            left top;
+    }
+
+
+    /* -----------------------------------------------------
+       FONDU MOBILE
+       ----------------------------------------------------- */
+
+    .vault-card::before {
+        background:
+            linear-gradient(
+                180deg,
+
+                rgba(3, 14, 25, 0.00) 0%,
+                rgba(3, 14, 25, 0.06) 15%,
+                rgba(3, 14, 25, 0.20) 25%,
+                rgba(3, 14, 25, 0.50) 35%,
+                rgba(3, 14, 25, 0.82) 46%,
+                rgba(3, 14, 25, 0.96) 58%,
+                rgba(3, 14, 25, 1.00) 70%,
+                rgba(3, 14, 25, 1.00) 100%
+            );
+    }
+
+
+    .vault-content {
+        align-items: center;
+
+        text-align: center;
+
+        transform: none;
+    }
+
+
+    .vault-eyebrow {
+        font-size: 0.84rem;
+    }
+
+
+    .vault-title {
+        font-size: 1.34rem;
+    }
+
+
+    .vault-description {
+        font-size: 0.79rem;
+
+        line-height: 1.5;
+    }
+
+
+    .vault-button {
+        margin-top: 14px;
+    }
+
+
+    .vault-features {
+        width: 100%;
+
+        min-height: 120px;
+
+        justify-content: center;
+
+        padding:
+            17px
+            12px;
+
+        transform: none;
+    }
+
+
+    .vault-features ul {
+        width: auto;
+
+        gap: 9px;
+    }
+
+
+    .vault-features li {
+        font-size: 0.73rem;
+    }
+
+
+    .vault-lock {
+        width: 49px;
+        height: 63px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — PETIT MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .vault-card {
+        padding:
+            165px
+            14px
+            18px;
+
+        background-size:
+            100% 100%,
+            auto 180px;
+    }
+
+
+    .vault-title {
+        font-size: 1.21rem;
+    }
+
+
+    .vault-description {
+        font-size: 0.74rem;
+    }
+
+
+    .vault-button {
+        min-height: 38px;
+
+        padding: 0 14px;
+
+        font-size: 0.72rem;
+    }
+
+    .vault-features {
+        gap: 8px;
+
+        padding:
+            14px
+            10px;
+    }
+
+
+    .vault-features li {
+        font-size: 0.68rem;
+    }
+
+
+    .vault-features li > span:first-child {
+        font-size: 0.79rem;
+    }
+
+
+    .vault-lock {
+        width: 43px;
+        height: 57px;
+    }
+}
+
+/* =========================================================
+   NTS BETTING — DERNIERS PRONOSTICS
+   ========================================================= */
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.latest-predictions-section {
+    position: relative;
+
+    width: 100%;
+
+    padding: 38px 0 42px;
+
+    color: var(--color-white);
+
+    background: var(--bg-panel);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.latest-predictions-container {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(calc(100% - 64px), 1500px);
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   EN-TÊTE
+   ========================================================= */
+
+.latest-predictions-header {
+    width: 100%;
+
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 40px;
+
+    margin-bottom: 26px;
+}
+
+
+/* =========================================================
+   BLOC TITRES
+   ========================================================= */
+
+.latest-predictions-heading {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.latest-predictions-eyebrow {
+    display: inline-flex;
+
+    align-items: center;
+
+    color: var(--color-gold);
+
+    font-family: var(--font-body);
+
+    font-size: 0.90rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.09em;
+
+    text-transform: uppercase;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.latest-predictions-title {
+    margin: 7px 0 0;
+
+    color: var(--hero-text-primary);
+
+    font-family: var(--font-body);
+
+    font-size: 1.50rem;
+
+    font-weight: 750;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.018em;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.latest-predictions-description {
+    margin: 7px 0 0;
+
+    color: var(--hero-text-subtle);
+
+    font-family: var(--font-body);
+
+    font-size: 0.90rem;
+
+    font-weight: 400;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   BOUTON — VOIR TOUS LES RÉSULTATS
+   ========================================================= */
+
+.latest-predictions-link {
+    flex: 0 0 auto;
+
+    min-height: 42px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 0 19px;
+
+    color: var(--hero-text-high);
+
+    border:
+        1px solid var(--border-color);
+
+    border-radius: var(--radius-sm);
+
+    background:
+        rgba(7, 22, 36, 0.42);
+
+    font-family: var(--font-body);
+
+    font-size: 0.80rem;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    transition:
+        color var(--transition-fast),
+        border-color var(--transition-fast),
+        background-color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+
+/* =========================================================
+   FLÈCHE
+   ========================================================= */
+
+.latest-predictions-link span {
+    width: 18px;
+    height: 18px;
+
+    flex: 0 0 18px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    line-height: 0;
+
+    transition:
+        transform var(--transition-fast);
+}
+
+
+.latest-predictions-link span svg {
+    width: 18px;
+    height: 18px;
+
+    display: block;
+
+    overflow: visible;
+}
+
+/* =========================================================
+   HOVER LIEN
+   ========================================================= */
+
+.latest-predictions-link:hover {
+    color: var(--color-gold);
+
+    border-color:
+        var(--border-color-hover);
+
+    background:
+        var(--navbar-search-hover-bg);
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.14);
+}
+
+
+.latest-predictions-link:hover span {
+    transform:
+        translateX(2px);
+}
+
+
+/* =========================================================
+   GRILLE
+   ========================================================= */
+
+.latest-predictions-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap: 16px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   CARTE PRONOSTIC
+   ========================================================= */
+
+.prediction-card {
+    position: relative;
+
+    width: 100%;
+
+    min-width: 0;
+
+    min-height: 205px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding:
+        18px
+        19px
+        17px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8, 23, 39, 0.96),
+            rgba(5, 15, 28, 0.92)
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.065);
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 9px 24px rgba(0, 0, 0, 0.15);
+
+    overflow: hidden;
+
+    transition:
+        border-color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+
+/* =========================================================
+   EFFET INTERNE
+   ========================================================= */
+
+.prediction-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.025),
+            transparent 45%
+        );
+
+    opacity: 0.7;
+}
+
+
+/* =========================================================
+   HOVER CARTE
+   ========================================================= */
+
+.prediction-card:hover {
+    border-color:
+        rgba(221, 178, 25, 0.24);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 13px 28px rgba(0, 0, 0, 0.22),
+        0 0 18px rgba(221, 178, 25, 0.025);
+}
+
+
+/* =========================================================
+   CONTENU AU-DESSUS DE L'EFFET
+   ========================================================= */
+
+.prediction-card > * {
+    position: relative;
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   TOP CARD
+   ========================================================= */
+
+.prediction-card-top {
+    width: 100%;
+
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 16px;
+}
+
+
+/* =========================================================
+   MÉTADONNÉES
+   ========================================================= */
+
+.prediction-card-meta {
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.prediction-card-date {
+    color:
+        rgba(255, 255, 255, 0.70);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.72rem;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.15;
+}
+
+
+/* =========================================================
+   COMPÉTITION
+   ========================================================= */
+
+.prediction-card-competition {
+    min-width: 0;
+
+    overflow: hidden;
+
+    color:
+        rgba(255, 255, 255, 0.48);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.66rem;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.15;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   ICÔNE SPORT
+   ========================================================= */
+
+.prediction-card-sport {
+    width: 40px;
+
+    height: 40px;
+
+    flex:
+        0 0 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+        var(--color-gold);
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+
+    font-size:
+        1.02rem;
+
+    line-height:
+        1;
+}
+
+
+/* =========================================================
+   BLOC MATCH
+   ========================================================= */
+
+.prediction-card-match {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    margin-top:
+        20px;
+}
+
+
+/* =========================================================
+   ÉQUIPES
+   ========================================================= */
+
+.prediction-card-teams {
+    min-width: 0;
+
+    overflow: hidden;
+
+    color:
+        rgba(255, 255, 255, 0.97);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.95rem;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.25;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   PRONOSTIC
+   ========================================================= */
+
+.prediction-card-prediction {
+    min-width: 0;
+
+    overflow: hidden;
+
+    color:
+        rgba(255, 255, 255, 0.64);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.78rem;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.25;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.prediction-card-footer {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 14px;
+
+    margin-top:
+        auto;
+
+    padding-top:
+        18px;
+}
+
+
+/* =========================================================
+   STATUT
+   ========================================================= */
+
+.prediction-card-status {
+    min-height:
+        29px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    padding:
+        0 11px;
+
+    border:
+        1px solid transparent;
+
+    border-radius:
+        5px;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.66rem;
+
+    font-weight:
+        700;
+
+    line-height:
+        1;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   STATUT — GAGNÉ
+   ========================================================= */
+
+.prediction-card-status-win {
+    color:
+        var(--hero-success);
+
+    border-color:
+        var(--hero-success-border);
+
+    background:
+        var(--hero-success-bg);
+}
+
+
+.prediction-card-status-win span {
+    font-size:
+        0.72rem;
+
+    font-weight:
+        800;
+}
+
+
+/* =========================================================
+   STATUT — PERDU
+   ========================================================= */
+
+.prediction-card-status-loss {
+    color:
+        #ff5555;
+
+    border-color:
+        rgba(255, 70, 70, 0.24);
+
+    background:
+        rgba(255, 70, 70, 0.10);
+}
+
+
+.prediction-card-status-loss span {
+    font-size:
+        0.72rem;
+
+    font-weight:
+        800;
+}
+
+
+/* =========================================================
+   COTE
+   ========================================================= */
+
+.prediction-card-odds {
+    flex:
+        0 0 auto;
+
+    color:
+        rgba(255, 255, 255, 0.97);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.98rem;
+
+    font-weight:
+        750;
+
+    line-height:
+        1;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .latest-predictions-section {
+        padding:
+            32px 0 36px;
+    }
+
+
+    .latest-predictions-container {
+        width:
+            min(calc(100% - 48px), 1000px);
+    }
+
+
+    .latest-predictions-header {
+        margin-bottom:
+            24px;
+    }
+
+
+    .latest-predictions-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap:
+            16px;
+    }
+
+
+    .prediction-card {
+        min-height:
+            195px;
+
+        padding:
+            17px
+            18px
+            16px;
+    }
+
+
+    .prediction-card-teams {
+        font-size:
+            0.94rem;
+    }
+
+
+    .prediction-card-prediction {
+        font-size:
+            0.76rem;
+    }
+
+
+    .prediction-card-odds {
+        font-size:
+            0.94rem;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .latest-predictions-section {
+        padding:
+            28px 0 30px;
+    }
+
+
+    .latest-predictions-container {
+        width:
+            calc(100% - 28px);
+    }
+
+
+    .latest-predictions-header {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        gap:
+            15px;
+
+        margin-bottom:
+            20px;
+    }
+
+
+    .latest-predictions-eyebrow {
+        font-size:
+            0.72rem;
+    }
+
+
+    .latest-predictions-title {
+        font-size:
+            1.25rem;
+    }
+
+
+    .latest-predictions-description {
+        font-size:
+            0.72rem;
+    }
+
+
+    .latest-predictions-link {
+        min-height:
+            42px;
+
+        padding:
+            0 17px;
+
+        font-size:
+            0.74rem;
+    }
+
+
+    .latest-predictions-link span {
+        font-size:
+            0.92rem;
+    }
+
+
+    .latest-predictions-grid {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            13px;
+    }
+
+
+    .prediction-card {
+        min-height:
+            185px;
+
+        padding:
+            17px
+            18px
+            16px;
+    }
+
+
+    .prediction-card-meta {
+        gap:
+            6px;
+    }
+
+
+    .prediction-card-date {
+        font-size:
+            0.68rem;
+    }
+
+
+    .prediction-card-competition {
+        font-size:
+            0.62rem;
+    }
+
+
+    .prediction-card-sport {
+        width:
+            38px;
+
+        height:
+            38px;
+
+        flex-basis:
+            38px;
+
+        font-size:
+            0.96rem;
+    }
+
+
+    .prediction-card-match {
+        margin-top:
+            18px;
+    }
+
+
+    .prediction-card-teams {
+        font-size:
+            0.92rem;
+    }
+
+
+    .prediction-card-prediction {
+        font-size:
+            0.74rem;
+    }
+
+
+    .prediction-card-footer {
+        padding-top:
+            16px;
+    }
+
+
+    .prediction-card-status {
+        min-height:
+            27px;
+
+        padding:
+            0 10px;
+
+        font-size:
+            0.63rem;
+    }
+
+
+    .prediction-card-status-win span,
+    .prediction-card-status-loss span {
+        font-size:
+            0.70rem;
+    }
+
+
+    .prediction-card-odds {
+        font-size:
+            0.92rem;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — PETIT MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .latest-predictions-section {
+        padding:
+            26px 0 28px;
+    }
+
+
+    .latest-predictions-container {
+        width:
+            calc(100% - 24px);
+    }
+
+
+    .latest-predictions-eyebrow {
+        font-size:
+            0.68rem;
+    }
+
+
+    .latest-predictions-title {
+        font-size:
+            1.18rem;
+    }
+
+
+    .latest-predictions-description {
+        font-size:
+            0.69rem;
+    }
+
+
+    .latest-predictions-link {
+        min-height:
+            40px;
+
+        padding:
+            0 15px;
+
+        font-size:
+            0.70rem;
+    }
+
+
+    .prediction-card {
+        min-height:
+            180px;
+
+        padding:
+            16px
+            17px
+            15px;
+    }
+
+
+    .prediction-card-date {
+        font-size:
+            0.66rem;
+    }
+
+
+    .prediction-card-competition {
+        font-size:
+            0.60rem;
+    }
+
+
+    .prediction-card-sport {
+        width:
+            36px;
+
+        height:
+            36px;
+
+        flex-basis:
+            36px;
+
+        font-size:
+            0.92rem;
+    }
+
+
+    .prediction-card-match {
+        margin-top:
+            17px;
+    }
+
+
+    .prediction-card-teams {
+        font-size:
+            0.88rem;
+    }
+
+
+    .prediction-card-prediction {
+        font-size:
+            0.70rem;
+    }
+
+
+    .prediction-card-status {
+        min-height:
+            26px;
+
+        padding:
+            0 9px;
+
+        font-size:
+            0.60rem;
+    }
+
+
+    .prediction-card-odds {
+        font-size:
+            0.88rem;
+    }
+}
+
+
+/* =========================================================
+   NTS BETTING — COMMUNAUTÉ
+   ========================================================= */
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.community-section {
+
+    position: relative;
+
+    width: 100%;
+
+    padding:
+        0;
+
+    background:
+        var(--bg-panel);
+
+    color:
+        var(--color-white);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CONTAINER PRINCIPAL
+   ========================================================= */
+
+.community-container {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(
+            calc(100% - 150px),
+            1500px
+        );
+
+    margin:
+        0 auto;
+}
+
+
+/* =========================================================
+   EN-TÊTE
+   ========================================================= */
+
+.community-heading {
+
+    margin:
+        0 0 28px;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.community-eyebrow {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    color:
+        var(--color-gold);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.90rem;
+
+    font-weight:
+        750;
+
+    line-height:
+        1;
+
+    letter-spacing:
+        0.09em;
+
+    text-transform:
+        uppercase;
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.community-title {
+
+    margin:
+        7px 0 0;
+
+    color:
+        var(--hero-text-primary);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        1.50rem;
+
+    font-weight:
+        750;
+
+    line-height:
+        1.15;
+
+    letter-spacing:
+        -0.018em;
+}
+
+
+/* =========================================================
+   GRILLE TÉMOIGNAGES
+   ========================================================= */
+
+.community-testimonials {
+
+    width:
+        100%;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap:
+        20px;
+
+    align-items:
+        stretch;
+}
+
+
+/* =========================================================
+   CARTE TÉMOIGNAGE
+   ========================================================= */
+
+.community-testimonial {
+
+    position:
+        relative;
+
+    min-width:
+        0;
+
+    min-height:
+        180px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    padding:
+        21px 23px 19px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8, 25, 41, 0.98),
+            rgba(4, 17, 30, 0.97)
+        );
+
+    border:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.075
+        );
+
+    border-radius:
+        9px;
+
+    box-shadow:
+        0 10px 26px rgba(
+            0,
+            0,
+            0,
+            0.16
+        );
+
+    overflow:
+        hidden;
+
+    transition:
+        border-color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+
+/* =========================================================
+   REFLET INTERNE
+   ========================================================= */
+
+.community-testimonial::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    pointer-events:
+        none;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(
+                255,
+                255,
+                255,
+                0.028
+            ),
+            transparent 48%
+        );
+
+    opacity:
+        0.8;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.community-testimonial:hover {
+
+    border-color:
+        rgba(
+            221,
+            178,
+            25,
+            0.22
+        );
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 14px 30px rgba(
+            0,
+            0,
+            0,
+            0.22
+        );
+}
+
+
+/* =========================================================
+   HEADER
+   AVATAR + NOM / ÉTOILES
+   ========================================================= */
+
+.community-testimonial-header {
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    width:
+        100%;
+
+    margin:
+        0;
+}
+
+
+/* =========================================================
+   MEMBRE
+   ========================================================= */
+
+.community-member {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        11px;
+
+    margin:
+        0;
+
+    min-width:
+        0;
+}
+
+
+/* =========================================================
+   AVATAR
+   ========================================================= */
+
+.community-member-avatar {
+
+    width:
+        35px;
+
+    height:
+        35px;
+
+    flex:
+        0 0 35px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        10px;
+
+    overflow:
+        hidden;
+
+    background:
+        var(--color-gold);
+
+    border:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+
+    box-shadow:
+        0 4px 12px rgba(
+            0,
+            0,
+            0,
+            0.18
+        );
+}
+
+
+.community-member-avatar img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    display:
+        block;
+
+    object-fit:
+        cover;
+}
+
+
+/* =========================================================
+   INFORMATIONS MEMBRE
+   ========================================================= */
+
+.community-member-info {
+
+    min-width:
+        0;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        3px;
+}
+
+
+/* =========================================================
+   NOM
+   ========================================================= */
+
+.community-member-name {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.97
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.82rem;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.1;
+}
+
+
+/* =========================================================
+   ÉTOILES
+   ========================================================= */
+
+.community-stars {
+
+    flex:
+        0 0 auto;
+
+    margin:
+        0;
+
+    color:
+        var(--color-gold);
+
+    font-size:
+        0.98rem;
+
+    line-height:
+        1;
+
+    letter-spacing:
+        0.025em;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   TEXTE AVIS
+   ========================================================= */
+
+.community-testimonial-text {
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    margin:
+        18px 0 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.92
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.96rem;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.48;
+}
+
+
+/* =========================================================
+   FOOTER AVIS
+   ========================================================= */
+
+.community-testimonial-footer {
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    width:
+        100%;
+
+    margin:
+        auto 0 0;
+
+    padding-top:
+        15px;
+
+    border-top:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+}
+
+
+/* =========================================================
+   INFORMATIONS ABONNEMENT
+   ========================================================= */
+
+.community-testimonial-membership {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    min-width:
+        0;
+}
+
+
+/* =========================================================
+   STATUT
+   ========================================================= */
+
+.community-member-role {
+
+    color:
+        var(--color-gold);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.78rem;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.1;
+}
+
+
+/* =========================================================
+   DURÉE
+   ========================================================= */
+
+.community-member-duration {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.55
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.76rem;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.1;
+}
+
+
+/* =========================================================
+   DATE DE L'AVIS
+   ========================================================= */
+
+.community-testimonial-date {
+
+    flex:
+        0 0 auto;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.42
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.70rem;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.1;
+
+    white-space:
+        nowrap;
+}
+
+/* =========================================================
+   CTA — BANDEAU STADE
+   ========================================================= */
+
+.community-cta {
+
+    position:
+        relative;
+
+    width:
+        100vw;
+
+    min-height:
+        260px;
+
+    margin-top:
+        40px;
+
+    margin-left:
+        calc(
+            (100% - 100vw) / 2
+        );
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        24px;
+
+    background-image:
+        url("/images/community/community-stadium2.png");
+
+    background-repeat:
+        no-repeat;
+
+    background-size:
+        cover;
+
+    background-position:
+        center center;
+
+    border:
+        0;
+
+    border-radius:
+        0;
+
+    overflow:
+        hidden;
+}
+
+
+/* =========================================================
+   VOILE DE CONTRASTE
+   ========================================================= */
+
+.community-cta::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    pointer-events:
+        none;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(
+                2,
+                12,
+                23,
+                0.16
+            ),
+            rgba(
+                2,
+                12,
+                23,
+                0.02
+            ) 48%,
+            rgba(
+                2,
+                12,
+                23,
+                0.08
+            ) 78%,
+            rgba(
+                2,
+                12,
+                23,
+                0.14
+            )
+        );
+
+    z-index:
+        0;
+}
+
+
+/* =========================================================
+   CONTENEUR CTA
+   ========================================================= */
+
+.community-cta__container {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    width:
+        min(
+            100%,
+            1500px
+        );
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        90px;
+
+    margin:
+        0 auto;
+
+    padding:
+        0 30px;
+}
+
+
+/* =========================================================
+   CONTENU TEXTE
+   ========================================================= */
+
+.community-cta__content {
+
+    flex:
+        0 1 auto;
+
+    width:
+        auto;
+
+    max-width:
+        680px;
+
+    min-width:
+        0;
+
+    margin:
+        0;
+
+    text-align:
+        left;
+}
+
+
+/* =========================================================
+   TITRE CTA
+   ========================================================= */
+
+.community-cta__title {
+
+    margin:
+        0;
+
+    color:
+        #ffffff;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        2rem;
+
+    font-weight:
+        750;
+
+    line-height:
+        1.12;
+
+    letter-spacing:
+        -0.025em;
+}
+
+
+/* =========================================================
+   DESCRIPTION CTA
+   ========================================================= */
+
+.community-cta__description {
+
+    margin:
+        12px 0 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.82
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        1rem;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.45;
+}
+
+
+/* =========================================================
+   ACTION — BOUTON
+   ========================================================= */
+
+.community-cta__action {
+
+    flex:
+        0 0 auto;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    margin:
+        0;
+}
+
+
+/* =========================================================
+   BOUTON CTA
+   ========================================================= */
+
+.community-cta__button {
+
+    position:
+        relative;
+
+    z-index:
+        3;
+
+    min-width:
+        230px;
+
+    min-height:
+        58px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        13px;
+
+    margin:
+        0;
+
+    padding:
+        0 26px;
+
+    color:
+        #111827;
+
+    background:
+        var(--color-gold);
+
+    border:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.18
+        );
+
+    border-radius:
+        7px;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.92rem;
+
+    font-weight:
+        750;
+
+    line-height:
+        1;
+
+    text-decoration:
+        none;
+
+    box-shadow:
+        0 8px 24px rgba(
+            0,
+            0,
+            0,
+            0.24
+        );
+
+    transition:
+        background-color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+
+/* =========================================================
+   HOVER BOUTON
+   ========================================================= */
+
+.community-cta__button:hover {
+
+    background:
+        var(--color-gold-hover);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(
+            0,
+            0,
+            0,
+            0.32
+        );
+}
+
+
+/* =========================================================
+   FLÈCHE CTA
+   ========================================================= */
+
+.community-cta__arrow {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        19px;
+
+    height:
+        19px;
+
+    font-size:
+        1.15rem;
+
+    line-height:
+        1;
+
+    transform:
+        translateY(0);
+
+    transition:
+        transform var(--transition-fast);
+}
+
+
+.community-cta__button:hover
+.community-cta__arrow {
+
+    transform:
+        translateX(5px);
+}
+
+
+/* =========================================================
+   GRAND TABLET
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+    .community-container {
+
+        width:
+            min(
+                calc(100% - 80px),
+                1100px
+            );
+    }
+
+
+    .community-title {
+
+        font-size:
+            1.70rem;
+    }
+
+
+    .community-testimonials {
+
+        gap:
+            15px;
+    }
+
+
+    .community-testimonial {
+
+        min-height:
+            120px;
+
+        padding:
+            16px 17px 14px;
+    }
+
+
+    .community-testimonial-text {
+
+        font-size:
+            0.79rem;
+    }
+
+
+    .community-cta {
+
+        min-height:
+            155px;
+
+        padding-left:
+            max(
+                30px,
+                calc(
+                    (100vw - 1100px) / 2
+                )
+            );
+
+        padding-right:
+            max(
+                30px,
+                calc(
+                    (100vw - 1100px) / 2
+                )
+            );
+
+        background-position:
+            center center;
+    }
+
+
+    .community-cta-content {
+
+        width:
+            380px;
+    }
+
+
+    .community-cta-title {
+
+        font-size:
+            1.35rem;
+    }
+
+
+    .community-cta-description {
+
+        font-size:
+            0.76rem;
+    }
+
+
+    .community-cta-button {
+
+        min-width:
+            180px;
+
+        min-height:
+            44px;
+
+        margin-left:
+            45px;
+
+        font-size:
+            0.72rem;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .community-section {
+
+        padding-bottom:
+            34px;
+    }
+
+
+    .community-container {
+
+        width:
+            calc(100% - 48px);
+    }
+
+
+    .community-heading {
+
+        margin-bottom:
+            20px;
+    }
+
+
+    .community-eyebrow {
+
+        font-size:
+            0.82rem;
+    }
+
+
+    .community-title {
+
+        font-size:
+            1.55rem;
+    }
+
+
+    .community-testimonials {
+
+        gap:
+            12px;
+    }
+
+
+    .community-testimonial {
+
+        min-height:
+            116px;
+
+        padding:
+            15px 15px 13px;
+    }
+
+
+    .community-testimonial-text {
+
+        font-size:
+            0.74rem;
+
+        line-height:
+            1.35;
+    }
+
+
+    .community-stars {
+
+        font-size:
+            0.80rem;
+    }
+
+
+    .community-member-avatar {
+
+        width:
+            27px;
+
+        height:
+            27px;
+
+        flex-basis:
+            27px;
+    }
+
+
+    .community-member-name {
+
+        font-size:
+            0.70rem;
+    }
+
+
+    .community-member-role {
+
+        font-size:
+            0.56rem;
+    }
+
+
+    .community-cta {
+
+        min-height:
+            145px;
+
+        padding-left:
+            40px;
+
+        padding-right:
+            40px;
+
+        background-position:
+            center center;
+    }
+
+
+    .community-cta-content {
+
+        width:
+            330px;
+    }
+
+
+    .community-cta-title {
+
+        font-size:
+            1.22rem;
+    }
+
+
+    .community-cta-description {
+
+        font-size:
+            0.70rem;
+    }
+
+
+    .community-cta-button {
+
+        min-width:
+            165px;
+
+        min-height:
+            42px;
+
+        margin-left:
+            25px;
+
+        font-size:
+            0.68rem;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .community-section {
+
+        padding:
+            0 0 28px;
+    }
+
+
+    .community-container {
+
+        width:
+            calc(100% - 28px);
+    }
+
+
+    .community-heading {
+
+        margin-bottom:
+            17px;
+    }
+
+
+    .community-eyebrow {
+
+        font-size:
+            0.68rem;
+
+        letter-spacing:
+            0.085em;
+    }
+
+
+    .community-title {
+
+        font-size:
+            1.35rem;
+
+        margin-top:
+            7px;
+    }
+
+
+    .community-testimonials {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            10px;
+    }
+
+
+    .community-testimonial {
+
+        min-height:
+            118px;
+
+        padding:
+            15px 16px 13px;
+    }
+
+
+    .community-testimonial-text {
+
+        font-size:
+            0.75rem;
+
+        line-height:
+            1.36;
+    }
+
+
+    .community-stars {
+
+        margin-top:
+            6px;
+
+        font-size:
+            0.80rem;
+    }
+
+
+    .community-member {
+
+        margin-top:
+            6px;
+    }
+
+
+    .community-member-avatar {
+
+        width:
+            27px;
+
+        height:
+            27px;
+
+        flex-basis:
+            27px;
+    }
+
+
+    .community-member-name {
+
+        font-size:
+            0.69rem;
+    }
+
+
+    .community-member-role {
+
+        font-size:
+            0.55rem;
+    }
+
+
+    /* =====================================================
+       CTA MOBILE
+       ===================================================== */
+
+    .community-cta {
+
+        width:
+            100vw;
+
+        min-height:
+            250px;
+
+        margin-top:
+            12px;
+
+        margin-left:
+            calc(
+                (100% - 100vw) / 2
+            );
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        gap:
+            20px;
+
+        padding:
+            32px 20px;
+
+        background-size:
+            cover;
+
+        background-position:
+            center center;
+    }
+
+
+    .community-cta-content {
+
+        width:
+            min(
+                100%,
+                500px
+            );
+
+        text-align:
+            center;
+    }
+
+
+    .community-cta-title {
+
+        font-size:
+            1.30rem;
+    }
+
+
+    .community-cta-description {
+
+        margin-top:
+            7px;
+
+        font-size:
+            0.72rem;
+    }
+
+
+    .community-cta-button {
+
+        min-width:
+            190px;
+
+        min-height:
+            44px;
+
+        margin-left:
+            0;
+
+        font-size:
+            0.72rem;
+    }
+
+}
+
+
+/* =========================================================
+   PETIT MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .community-container {
+
+        width:
+            calc(100% - 22px);
+    }
+
+
+    .community-eyebrow {
+
+        font-size:
+            0.62rem;
+    }
+
+
+    .community-title {
+
+        font-size:
+            1.25rem;
+    }
+
+
+    .community-testimonial {
+
+        min-height:
+            116px;
+
+        padding:
+            14px 14px 12px;
+    }
+
+
+    .community-testimonial-text {
+
+        font-size:
+            0.71rem;
+
+        line-height:
+            1.34;
+    }
+
+
+    .community-stars {
+
+        font-size:
+            0.76rem;
+    }
+
+
+    .community-member-avatar {
+
+        width:
+            26px;
+
+        height:
+            26px;
+
+        flex-basis:
+            26px;
+    }
+
+
+    .community-member-name {
+
+        font-size:
+            0.66rem;
+    }
+
+
+    .community-member-role {
+
+        font-size:
+            0.53rem;
+    }
+
+
+    .community-cta {
+
+        min-height:
+            225px;
+
+        padding:
+            28px 16px;
+    }
+
+
+    .community-cta-title {
+
+        font-size:
+            1.16rem;
+    }
+
+
+    .community-cta-description {
+
+        font-size:
+            0.67rem;
+    }
+
+
+    .community-cta-button {
+
+        min-width:
+            180px;
+
+        min-height:
+            42px;
+
+        font-size:
+            0.68rem;
+    }
+
+
+}
+
+/* =========================================================
+   NTS BETTING — FOOTER PREMIUM
+   ========================================================= */
+
+/* =========================================================
+   FOOTER GLOBAL
+   ========================================================= */
+
+.site-footer {
+
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    color: var(--color-white);
+
+    background-color: var(--color-background);
+
+    background-image:
+        linear-gradient(
+        180deg,
+        rgba(12, 32, 51, 0.90) 0%,
+        rgba(5, 19, 32, 0.94) 45%,
+        rgba(3, 14, 25, 0.96) 75%,
+        rgba(4, 13, 23, 0.98) 100%
+    ),
+        url('/images/footer/footer-crown.png');
+
+    background-position:
+        center,
+        left -50px top 10px;
+
+    background-size:
+        cover,
+        280px 280px;
+
+    background-repeat:
+        no-repeat,
+        no-repeat;
+}
+
+
+/* =========================================================
+   FOOTER PRINCIPAL
+   ========================================================= */
+
+.site-footer__main {
+
+    position: relative;
+
+    width: 100%;
+
+    background: transparent;
+}
+
+
+/* =========================================================
+   CONTAINER PRINCIPAL
+   ========================================================= */
+
+.site-footer__container {
+
+    position: relative;
+
+    z-index: 1;
+
+    width:
+        min(
+            calc(100% - 150px),
+            1500px
+        );
+
+    min-height: 255px;
+
+    margin: 0 auto;
+
+    padding: 38px 0 34px;
+
+    display: grid;
+
+    grid-template-columns:
+        1.45fr
+        1.35fr
+        0.95fr
+        1.15fr;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   SÉPARATION DES COLONNES
+   ========================================================= */
+
+.site-footer__brand,
+.site-footer__column {
+
+    min-width: 0;
+
+    padding:
+        0 38px;
+
+    border-right:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.055
+        );
+}
+
+
+.site-footer__brand {
+
+    padding-left: 0;
+}
+
+
+.site-footer__social {
+
+    padding-right: 0;
+
+    border-right: none;
+}
+
+
+/* =========================================================
+   IDENTITÉ / MARQUE
+   ========================================================= */
+
+.site-footer__brand {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    padding-left: 0;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.site-footer__logo {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-decoration: none;
+}
+
+
+.site-footer__logo img {
+
+    display: block;
+
+    width: 100px;
+
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.site-footer__description {
+
+    width: 270px;
+
+    max-width: 100%;
+
+    margin: 12px 0 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.68
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size: 0.82rem;
+
+    font-weight: 400;
+
+    line-height: 1.55;
+
+    text-align: center;
+}
+
+/* =========================================================
+   AVANTAGES / ENGAGEMENTS
+   ========================================================= */
+
+.site-footer__features {
+
+    width: 100%;
+
+    margin: 24px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        max-content
+        max-content
+        max-content;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   ÉLÉMENT
+   ========================================================= */
+
+.site-footer__feature {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    gap: 9px;
+
+    padding:
+        0 18px;
+
+    min-width: max-content;
+}
+
+
+/* =========================================================
+   SÉPARATEURS
+   ========================================================= */
+
+.site-footer__feature + .site-footer__feature {
+
+    border-left:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+}
+
+
+/* =========================================================
+   ICÔNE
+   ========================================================= */
+
+.site-footer__feature-icon {
+
+    flex: 0 0 auto;
+
+    width: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+        var(--color-gold);
+
+    font-size: 1.05rem;
+
+    opacity: 0.90;
+
+    filter:
+        drop-shadow(
+            0 0 4px
+            rgba(221, 178, 25, 0.12)
+        );
+}
+
+
+/* =========================================================
+   TEXTE
+   ========================================================= */
+
+.site-footer__feature-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.72
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size: 0.60rem;
+
+    font-weight: 400;
+
+    line-height: 1.35;
+
+    white-space: nowrap;
+}
+
+/* =========================================================
+   COLONNES
+   ========================================================= */
+
+.site-footer__column {
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   TITRES
+   ========================================================= */
+
+.site-footer__title {
+
+    position: relative;
+
+    margin: 0 0 25px;
+
+    padding-bottom: 13px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.95
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size: 0.95rem;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+}
+
+
+.site-footer__title::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 28px;
+
+    height: 2px;
+
+    opacity: 0.85;
+
+    background:
+        var(--color-gold);
+}
+
+
+/* =========================================================
+   LISTES DE LIENS
+   ========================================================= */
+
+.site-footer__links {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    column-gap: 30px;
+
+    row-gap: 14px;
+
+    margin: 0;
+
+    padding: 0;
+
+    list-style: none;
+}
+
+
+/* =========================================================
+   LIENS
+   ========================================================= */
+
+.site-footer__links a {
+
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.66
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size: 0.85rem;
+
+    font-weight: 400;
+
+    line-height: 1.3;
+
+    text-decoration: none;
+
+    transition:
+        color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+
+.site-footer__links a i {
+
+    color: rgba(221, 178, 25, 0.75);
+
+    font-size: 0.60rem;
+
+    line-height: 1;
+
+    transition:
+        transform var(--transition-fast),
+        color var(--transition-fast);
+}
+
+
+.site-footer__links a:hover i {
+
+    color: var(--color-gold);
+
+    transform: translateX(3px);
+}
+
+
+.site-footer__links a:hover {
+
+    color:
+        var(--color-white);
+
+    transform:
+        translateX(3px);
+}
+
+
+.site-footer__links a:hover::before {
+
+    transform:
+        translateX(2px);
+}
+
+
+/* =========================================================
+   LÉGAL — AFFICHAGE VERTICAL
+   ========================================================= */
+
+.site-footer__legal .site-footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+
+/* =========================================================
+   RÉSEAUX SOCIAUX
+   ========================================================= */
+
+.site-footer__social-links {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 0;
+}
+
+
+/* =========================================================
+   BOUTONS SOCIAUX
+   ========================================================= */
+
+.site-footer__social-link {
+
+    width: 42px;
+
+    height: 42px;
+
+    flex: 0 0 42px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.78
+        );
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7, 21, 34, 0.95),
+            rgba(4, 13, 23, 0.98)
+        );
+
+    border:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.16
+        );
+
+    border-radius: 50%;
+
+    text-decoration: none;
+
+    font-size: 1rem;
+
+    transition:
+        color var(--transition-fast),
+        border-color var(--transition-fast),
+        background-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.site-footer__social-link svg {
+
+    width: 18px;
+
+    height: 18px;
+
+    display: block;
+
+    fill: currentColor;
+}
+
+
+.site-footer__social-link:hover {
+
+    color: var(--color-gold);
+
+    border-color:
+        rgba(221, 178, 25, 0.55);
+
+    background:
+        rgba(221, 178, 25, 0.055);
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   NEWSLETTER
+   ========================================================= */
+
+.site-footer__newsletter {
+
+    margin-top: 20px;
+
+    padding-top: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    border-top:
+    1px solid rgba(
+        255,
+        255,
+        255,
+        0.08
+    );
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   ICÔNE NEWSLETTER
+   ========================================================= */
+
+.site-footer__newsletter-icon {
+
+    flex: 0 0 22px;
+
+    width: 22px;
+
+    height: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+        rgba(221, 178, 25, 0.85);
+
+    font-size: 1.15rem;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   CONTENU NEWSLETTER
+   ========================================================= */
+
+.site-footer__newsletter-content {
+
+    min-width: 0;
+
+    flex: 1;
+    
+}
+
+
+.site-footer__newsletter-title {
+
+    margin: 0 0 3px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.92
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size: 0.95rem;
+
+    font-weight: 700;
+
+    line-height: 1.25;
+}
+
+
+.site-footer__newsletter-text {
+
+    margin: 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.55
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size: 0.80rem;
+
+    font-weight: 400;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   FLÈCHE NEWSLETTER
+   ========================================================= */
+
+.site-footer__newsletter-arrow {
+
+    flex: 0 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+        rgba(221, 178, 25, 0.85);
+
+    font-size: 1.15rem;
+
+    line-height: 1;
+
+    transition:
+        transform var(--transition-fast),
+        color var(--transition-fast);
+}
+
+
+.site-footer__newsletter:hover
+.site-footer__newsletter-arrow {
+
+    color:
+        var(--color-white);
+
+    transform:
+        translateX(4px);
+
+}
+
+
+/* =========================================================
+   BARRE INFÉRIEURE
+   ========================================================= */
+
+.site-footer__bottom {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    min-height: 62px;
+
+    display: flex;
+
+    align-items: center;
+
+    border-top:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+
+    background:
+        rgba(
+            4,
+            13,
+            23,
+            0.98
+        );
+}
+
+
+/* =========================================================
+   CONTAINER BARRE INFÉRIEURE
+   ========================================================= */
+
+.site-footer__bottom-container {
+
+    width:
+        min(
+            calc(100% - 150px),
+            1500px
+        );
+
+    min-height: 62px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        auto
+        1fr;
+
+    align-items: center;
+
+    gap: 30px;
+}
+
+
+/* =========================================================
+   ZONE CENTRALE — SIGNATURE NTS
+   ========================================================= */
+
+.site-footer__motto {
+
+    position: static;
+
+    width: auto;
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    pointer-events: none;
+
+    justify-self: center;
+}
+
+
+/* =========================================================
+   COURONNE — SUR LA BORDURE
+   ========================================================= */
+
+.site-footer__signature-crown {
+
+    position: absolute;
+
+    top: -8px;
+
+    left: 50%;
+
+    width: 24px;
+
+    height: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+        rgba(
+            221,
+            178,
+            25,
+            0.78
+        );
+
+    background: transparent;
+
+    font-size: 14px;
+
+    line-height: 1;
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   TEXTE DU MOTTO
+   ========================================================= */
+
+.site-footer__motto-text {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 16px;
+
+    margin: 0;
+
+    padding: 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.58
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size: 0.58rem;
+
+    font-weight: 500;
+
+    letter-spacing: 0.38em;
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   LIGNE GAUCHE
+   ========================================================= */
+
+.site-footer__motto-text::before {
+
+    content: "";
+
+    display: block;
+
+    width: 82px;
+
+    height: 1px;
+
+    flex: 0 0 82px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--footer-signature-gold)
+        );
+}
+
+
+/* =========================================================
+   LIGNE DROITE
+   ========================================================= */
+
+.site-footer__motto-text::after {
+
+    content: "";
+
+    display: block;
+
+    width: 82px;
+
+    height: 1px;
+
+    flex: 0 0 82px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--footer-signature-gold),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   TEXTES BAS DE FOOTER
+   ========================================================= */
+
+.site-footer__copyright,
+.site-footer__responsible {
+
+    margin: 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.50
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size: 0.68rem;
+
+    font-weight: 400;
+
+    line-height: 1.3;
+}
+
+
+.site-footer__copyright {
+
+    justify-self: start;
+}
+
+
+.site-footer__responsible {
+
+    justify-self: end;
+}
+
+
+/* =========================================================
+   18+
+   ========================================================= */
+
+.site-footer__responsible span:first-child {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.75
+        );
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   SÉPARATEUR
+   ========================================================= */
+
+.site-footer__separator {
+
+    margin: 0 7px;
+
+    color:
+        rgba(
+            221,
+            178,
+            25,
+            0.65
+        );
+}
+
+
+/* =========================================================
+   TABLETTE — 1100px
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .site-footer {
+
+        background-position:
+            center,
+            left -155px top -95px;
+
+        background-size:
+            cover,
+            400px 400px;
+    }
+
+
+    .site-footer__container {
+
+        width:
+            calc(100% - 70px);
+
+        grid-template-columns:
+            1.35fr
+            1.25fr
+            0.95fr
+            1fr;
+    }
+
+
+    .site-footer__brand,
+    .site-footer__column {
+
+        padding-left: 25px;
+
+        padding-right: 25px;
+    }
+
+
+    .site-footer__brand {
+
+        padding-left: 0;
+    }
+
+
+    .site-footer__social {
+
+        padding-right: 0;
+    }
+
+
+    .site-footer__bottom-container {
+
+        width:
+            calc(100% - 70px);
+    }
+
+
+    .site-footer__motto {
+
+        min-width: 340px;
+    }
+
+
+    .site-footer__motto-text {
+
+        gap: 12px;
+
+        letter-spacing: 0.30em;
+    }
+
+
+    .site-footer__motto-text::before,
+    .site-footer__motto-text::after {
+
+        width: 55px;
+
+        flex-basis: 55px;
+    }
+
+
+    .site-footer__newsletter {
+
+        gap: 10px;
+    }
+
+}
+
+
+/* =========================================================
+   PETITE TABLETTE — 850px
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .site-footer {
+
+        background-position:
+            center,
+            left -145px top -80px;
+
+        background-size:
+            cover,
+            360px 360px;
+    }
+
+
+    .site-footer__container {
+
+        width:
+            calc(100% - 48px);
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        row-gap: 35px;
+
+        padding:
+            35px 0;
+    }
+
+
+    .site-footer__brand {
+
+        grid-column:
+            1 / -1;
+
+        padding:
+            0 0 25px;
+
+        border-right: none;
+
+        border-bottom:
+            1px solid rgba(
+                255,
+                255,
+                255,
+                0.045
+            );
+    }
+
+
+    .site-footer__column {
+
+        padding:
+            0 25px 0 0;
+
+        border-right: none;
+    }
+
+
+    .site-footer__social {
+
+        padding: 0;
+    }
+
+
+    .site-footer__bottom-container {
+
+        width:
+            calc(100% - 48px);
+    }
+
+
+    .site-footer__motto {
+
+        min-width: 280px;
+    }
+
+
+    .site-footer__signature-crown {
+
+        font-size: 14px;
+    }
+
+
+    .site-footer__motto-text {
+
+        gap: 8px;
+
+        font-size: 0.52rem;
+
+        letter-spacing: 0.22em;
+    }
+
+
+    .site-footer__motto-text::before,
+    .site-footer__motto-text::after {
+
+        width: 35px;
+
+        flex-basis: 35px;
+    }
+
+
+    .site-footer__newsletter {
+
+        margin-top: 18px;
+
+        padding-top: 17px;
+
+        gap: 10px;
+    }
+
+
+    .site-footer__newsletter-text {
+
+        font-size: 0.64rem;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE — 600px
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .site-footer {
+
+        background-position:
+            center,
+            left -125px top -65px;
+
+        background-size:
+            cover,
+            300px 300px;
+    }
+
+
+    .site-footer__container {
+
+        width:
+            calc(100% - 32px);
+
+        grid-template-columns: 1fr;
+
+        row-gap: 30px;
+
+        padding:
+            32px 0;
+    }
+
+
+    .site-footer__brand {
+
+        padding-bottom: 25px;
+    }
+
+
+    .site-footer__column {
+
+        padding: 0;
+
+        border: none;
+    }
+
+
+    .site-footer__logo img {
+
+        width: 90px;
+    }
+
+
+    .site-footer__description {
+
+        width: 260px;
+
+        font-size: 0.76rem;
+    }
+
+    .site-footer__features {
+
+        margin-top: 22px;
+
+        width: 100%;
+
+        flex-direction: column;
+
+        gap: 14px;
+    }
+
+
+    .site-footer__feature {
+
+        width: 100%;
+
+        justify-content: flex-start;
+
+        padding: 0;
+    }
+
+
+    .site-footer__feature + .site-footer__feature {
+
+        padding-top: 14px;
+
+        border-left: none;
+
+        border-top:
+            1px solid rgba(
+                255,
+                255,
+                255,
+                0.08
+            );
+    }
+
+
+    .site-footer__title {
+
+        margin-bottom: 20px;
+
+        font-size: 0.88rem;
+    }
+
+
+    .site-footer__links {
+
+        grid-template-columns: 1fr;
+
+        row-gap: 11px;
+    }
+
+
+    .site-footer__links a {
+
+        font-size: 0.74rem;
+    }
+
+
+    .site-footer__social-links {
+
+        gap: 10px;
+    }
+
+
+    .site-footer__social-link {
+
+        width: 36px;
+
+        height: 36px;
+
+        flex-basis: 36px;
+    }
+
+
+    /* -----------------------------------------------------
+       NEWSLETTER MOBILE
+       ----------------------------------------------------- */
+
+    .site-footer__newsletter {
+
+        margin-top: 18px;
+
+        padding-top: 16px;
+
+        gap: 10px;
+    }
+
+
+    .site-footer__newsletter-icon {
+
+        flex-basis: 20px;
+
+        width: 20px;
+
+        height: 20px;
+
+        font-size: 1rem;
+    }
+
+
+    .site-footer__newsletter-title {
+
+        font-size: 0.74rem;
+    }
+
+
+    .site-footer__newsletter-text {
+
+        font-size: 0.62rem;
+
+        line-height: 1.4;
+    }
+
+
+    .site-footer__newsletter-arrow {
+
+        font-size: 1rem;
+    }
+
+
+    /* -----------------------------------------------------
+       BARRE BASSE MOBILE
+       ----------------------------------------------------- */
+
+    .site-footer__bottom {
+
+        min-height: 105px;
+
+        padding:
+            12px 0;
+    }
+
+
+    .site-footer__bottom-container {
+
+        width:
+            calc(100% - 32px);
+
+        min-height: 80px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: space-between;
+
+        gap: 8px;
+
+        padding:
+            8px 0;
+    }
+
+
+    .site-footer__copyright,
+    .site-footer__responsible {
+
+        font-size: 0.62rem;
+
+        text-align: center;
+    }
+
+
+    /* -----------------------------------------------------
+       MOTTO MOBILE
+       ----------------------------------------------------- */
+
+    .site-footer__motto {
+
+        position: relative;
+
+        top: auto;
+
+        left: auto;
+
+        width: 100%;
+
+        min-width: 0;
+
+        margin: 2px 0;
+
+        transform: none;
+
+        order: 2;
+    }
+
+
+    .site-footer__signature-crown {
+
+        margin-bottom: 5px;
+
+        font-size: 13px;
+
+        filter:
+            drop-shadow(
+                0 0 4px
+                rgba(
+                    221,
+                    178,
+                    25,
+                    0.25
+                )
+            );
+    }
+
+
+    .site-footer__motto-text {
+
+        width: 100%;
+
+        gap: 7px;
+
+        font-size: 0.45rem;
+
+        letter-spacing: 0.16em;
+    }
+
+
+    .site-footer__motto-text::before,
+    .site-footer__motto-text::after {
+
+        width: 25px;
+
+        flex-basis: 25px;
+    }
+
+
+    .site-footer__copyright {
+
+        order: 1;
+    }
+
+
+    .site-footer__responsible {
+
+        order: 3;
+    }
+
+}
+
+
+/* =========================================================
+   TRÈS PETIT MOBILE — 400px
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .site-footer {
+
+        background-position:
+            center,
+            left -115px top -55px;
+
+        background-size:
+            cover,
+            270px 270px;
+    }
+
+
+    .site-footer__container {
+
+        width:
+            calc(100% - 24px);
+    }
+
+
+    .site-footer__bottom-container {
+
+        width:
+            calc(100% - 24px);
+    }
+
+
+    .site-footer__signature-crown {
+
+        margin-bottom: 4px;
+
+        font-size: 12px;
+    }
+
+
+    .site-footer__newsletter {
+
+        gap: 8px;
+    }
+
+
+    .site-footer__newsletter-text {
+
+        font-size: 0.60rem;
+    }
+
+
+    .site-footer__motto-text {
+
+        gap: 5px;
+
+        font-size: 0.40rem;
+
+        letter-spacing: 0.12em;
+    }
+
+
+    .site-footer__motto-text::before,
+    .site-footer__motto-text::after {
+
+        width: 18px;
+
+        flex-basis: 18px;
+    }
+
+}

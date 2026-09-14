@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NTS Betting — Pronostics sportifs{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    <main>
+        {# HERO #}
+        {% include 'components/home/_hero.html.twig' %}
+
+        {# NOS OFFRES #}
+        {% include 'components/home/_offers.html.twig' %}
+
+        {# VAULT #}
+        {% include 'components/home/_vault.html.twig' %}
+
+        {# DERNIERS PRONOSTICS #}
+        {% include 'components/home/_latest_predictions.html.twig' %}
+
+        {# COMMUNAUTE#}
+        {% include 'components/home/_community.html.twig' %}
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

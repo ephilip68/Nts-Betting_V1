@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos offres — NTS Betting{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    <main class="offers-page">
+
+        {# HERO #}
+        {% include 'components/offers/_hero.html.twig' %}
+
+        {# OFFRES #}
+        {% include 'components/offers/_plans.html.twig' %}
+
+        {# COMPARATIF #}
+        {% include 'components/offers/_comparison.html.twig' %}
+
+        {# GARANTIES / CONFIANCE #}
+        {% include 'components/offers/_trust.html.twig' %}
+
+        {# POURQUOI LE VIP #}
+        {% include 'components/offers/_vip.html.twig' %}
+
+        {# FAQ #}
+        {% include 'components/offers/_faq.html.twig' %}
+
+        {# CTA FINAL #}
+        {% include 'components/offers/_cta.html.twig' %}
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

@@ -1,0 +1,3319 @@
+/* =========================================================
+   NTS BETTING — OFFERS HERO
+   ========================================================= */
+
+.offers-hero {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 480px;
+
+    min-height: 480px;
+
+    overflow: hidden;
+
+    background-color:
+        var(--color-background);
+}
+
+
+/* =========================================================
+   IMAGE HERO
+   ========================================================= */
+
+.offers-hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    background-image:
+        var(--hero-background-gradient),
+        url('/images/offers/offers-hero.png');
+
+    background-size: cover;
+
+    background-position:
+        center;
+
+    background-repeat: no-repeat;
+    
+}
+
+
+/* =========================================================
+   OVERLAY
+   ========================================================= */
+
+.offers-hero__overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background: var(--hero-background-overlay-gradient);
+}
+
+
+/* =========================================================
+   CONTENEUR
+   ========================================================= */
+
+.offers-hero__container {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(calc(100% - 120px), 1450px);
+
+    height: 100%;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   CONTENU
+   ========================================================= */
+
+.offers-hero__content {
+
+    width: 650px;
+
+    max-width: 100%;
+
+    padding-top: 15px;
+}
+
+
+/* =========================================================
+   SUR-TITRE
+   ========================================================= */
+
+.offers-hero__eyebrow {
+
+    margin: 0 0 10px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.84
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size: 0.80rem;
+
+    font-weight: 500;
+
+    letter-spacing: 0.105em;
+
+    line-height: 1.4;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.offers-hero__title {
+
+    margin: 0;
+
+    padding: 0;
+
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 11px;
+
+    color:
+        var(--color-white);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 3.55rem;
+
+    font-weight: 800;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.04em;
+
+    text-transform: uppercase;
+}
+
+.offers-hero__title span {
+
+    color:
+        var(--color-white);
+}
+
+
+.offers-hero__title strong {
+
+    color:
+        var(--color-gold);
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   SOUS-TITRE
+   ========================================================= */
+
+.offers-hero__subtitle {
+
+    margin: 11px 0 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.90
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.05rem;
+
+    font-weight: 400;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.offers-hero__features {
+
+    margin-top: 23px;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 43px;
+}
+
+
+/* =========================================================
+   FEATURE
+   ========================================================= */
+
+.offers-hero__feature {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 8px;
+
+    min-width: 95px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.86
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size: 0.72rem;
+
+    font-weight: 400;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   ICÔNE
+   ========================================================= */
+
+.offers-hero__feature-icon {
+
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+        var(--color-gold);
+
+    border:
+        1.5px solid
+        var(--color-gold);
+
+    border-radius: 50%;
+
+    background:
+        rgba(
+            221,
+            178,
+            25,
+            0.035
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(
+            221,
+            178,
+            25,
+            0.08
+        );
+
+    font-size: 0.95rem;
+}
+
+
+/* =========================================================
+   TEXTE FEATURE
+   ========================================================= */
+
+.offers-hero__feature span {
+
+    display: flex;
+
+    flex-direction: column;
+
+    white-space: nowrap;
+}
+
+
+.offers-hero__feature small {
+
+    margin-top: 2px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.58
+        );
+
+    font-size: 0.64rem;
+
+    font-weight: 400;
+}
+
+/* =========================================================
+   NTS BETTING — OFFERS PLANS
+   ========================================================= */
+
+.offers-plans {
+
+    position: relative;
+
+    z-index: 4;
+
+    background: var(--bg-panel);
+
+    margin-top: 0;
+
+    padding-bottom: 24px;
+}
+
+
+/* =========================================================
+   CONTENEUR
+   ========================================================= */
+
+.offers-plans__container {
+
+    width:
+        min(
+            calc(100% - 120px),
+            1450px
+        );
+
+    margin: 0 auto;
+    height: 420px;
+}
+
+
+/* =========================================================
+   GRILLE
+   ========================================================= */
+
+.offers-plans__grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
+
+    align-items: start;
+
+    /*
+     * On remonte uniquement les cards.
+     * Le background de .offers-plans reste sous le hero.
+     */
+    transform: translateY(-65px);
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.offer-card {
+
+    position: relative;
+
+    min-height: 470px;
+
+    padding:
+        24px
+        20px
+        22px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.45
+        );
+
+    border-radius: 8px;
+
+    background: var(--offers-card-bg);
+
+    box-shadow: var(--offers-card-shadow);
+
+    color:
+        var(--color-white);
+        
+
+}
+
+
+/* =========================================================
+   TOP
+   ========================================================= */
+
+.offer-card__top {
+
+    text-align: center;
+
+}
+
+
+.offer-card__icon {
+
+    width: 34px;
+
+    height: 34px;
+
+    margin:
+        0
+        auto
+        7px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+        var(--color-gold);
+
+    font-size: 1.15rem;
+
+}
+
+
+.offer-card__name {
+
+    margin: 0;
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.05rem;
+
+    font-weight: 700;
+
+}
+
+
+.offer-card__description {
+
+    margin:
+        4px
+        0
+        8px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.68
+        );
+
+    font-size: 0.72rem;
+
+}
+
+
+.offer-card__price {
+
+    display: flex;
+
+    align-items: baseline;
+
+    justify-content: center;
+
+    gap: 5px;
+
+}
+
+
+.offer-card__price strong {
+
+    color:
+        var(--color-white);
+
+    font-size: 1.45rem;
+
+    font-weight: 700;
+
+}
+
+
+.offer-card__price span {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.65
+        );
+
+    font-size: 0.65rem;
+
+}
+
+
+/* =========================================================
+   BOUTON
+   ========================================================= */
+
+.offer-card__button {
+
+    width: 100%;
+
+    min-height: 38px;
+
+    margin-top: 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid var(--offers-button-border);
+
+    border-radius: 5px;
+
+    color: var(--offers-text-primary);
+
+    background: var(--offers-card-button-bg);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 0.80rem;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+
+}
+
+
+.offer-card__button:hover {
+
+    color:
+        var(--color-gold);
+
+    border-color:
+        var(--color-gold);
+
+    background:
+        rgba(
+            221,
+            178,
+            25,
+            0.08
+        );
+
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.offer-card__features {
+
+    width: 100%;
+
+    margin: 15px 0 0;
+
+    padding: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    list-style: none;
+
+    text-align: left;
+}
+
+
+.offer-card__features li {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: flex-start;
+
+    gap: 12px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.78
+        );
+
+    font-size: 0.90rem;
+
+    line-height: 1.3;
+
+    text-align: left;
+}
+
+
+.offer-card__features li i {
+
+    flex-shrink: 0;
+
+    margin-top: 2px;
+
+    color:
+        var(--color-gold);
+
+    font-size: 1rem;
+}
+
+
+.offer-card__features li.is-disabled {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.48
+        );
+}
+
+
+.offer-card__features li.is-disabled i {
+
+    color:
+        #d94b42;
+}
+
+
+/* =========================================================
+   AVANCÉ — CARTE PRINCIPALE
+   ========================================================= */
+
+.offer-card--advanced {
+
+    border-color:
+        var(--color-gold);
+
+    box-shadow:
+        0 0 0 1px
+        rgba(
+            221,
+            178,
+            25,
+            0.15
+        ),
+        0 0 25px
+        rgba(
+            221,
+            178,
+            25,
+            0.16
+        ),
+        0 18px 40px
+        rgba(
+            0,
+            0,
+            0,
+            0.35
+        );
+
+}
+
+
+.offer-card--advanced .offer-card__button {
+
+    color:
+        #111827;
+
+    border-color:
+        var(--color-gold);
+
+    background:
+        var(--color-gold);
+
+}
+
+
+.offer-card--advanced .offer-card__button:hover {
+
+    background:
+        var(--accent-yellow-hover);
+
+    color:
+        #111827;
+
+}
+
+
+/* =========================================================
+   BADGE POPULAIRE
+   ========================================================= */
+
+.offer-card__popular {
+
+    position: absolute;
+
+    top: 7px;
+
+    right: 7px;
+
+    padding:
+        5px
+        9px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    border-radius: 4px;
+
+    color:
+        #111827;
+
+    background:
+        var(--color-gold);
+
+    font-size: 0.55rem;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+}
+
+
+.offer-card__popular i {
+
+    font-size: 0.55rem;
+
+}
+
+
+/* =========================================================
+   NTS BETTING — COMPARATIF DES OFFRES
+   ========================================================= */
+
+.offers-comparison {
+
+    position: relative;
+
+    width: 100%;
+
+    background: var(--bg-panel);
+
+    padding: 24px 0;
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.offers-comparison__container {
+
+    width: min(calc(100% - 120px), 1450px);
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.offers-comparison__header {
+
+    margin-bottom: 28px;
+
+    text-align: left;
+}
+
+
+.offers-comparison__eyebrow {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--color-gold);
+
+    font-family: var(--font-body);
+
+    font-size: 0.90rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.09em;
+
+    text-transform: uppercase;
+
+    line-height: 1;
+}
+
+
+.offers-comparison__title {
+
+    margin: 0;
+
+    color: var(--hero-text-primary);
+
+    font-family: var(--font-body);
+
+    font-size: 1.50rem;
+
+    font-weight: 750;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.018em;
+}
+
+
+.offers-comparison__subtitle {
+
+    margin: 7px 0 0;
+
+
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+   ========================================================= */
+
+.offers-comparison__table-wrapper {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    border: 1px solid rgba(65, 90, 119, 0.45);
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(5, 21, 34, 0.92) 0%,
+            rgba(2, 14, 25, 0.97) 100%
+        );
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.offers-comparison__table {
+
+    width: 100%;
+
+    min-width: 900px;
+
+    border-collapse: collapse;
+
+    table-layout: fixed;
+
+    color: var(--color-white);
+
+    font-size: 0.90rem;
+}
+
+
+/* =========================================================
+   HEADER TABLEAU
+   ========================================================= */
+
+.offers-comparison__table thead th {
+
+    height: 56px;
+
+    padding: 14px 16px;
+
+    color: var(--color-white);
+
+    background: rgba(8, 28, 44, 0.88);
+
+    border-bottom: 1px solid rgba(65, 90, 119, 0.45);
+
+    text-align: center;
+
+    font-size: 0.82rem;
+
+    font-weight: 700;
+}
+
+
+.offers-comparison__table thead th:first-child {
+
+    width: 31%;
+
+    text-align: left;
+}
+
+
+/* =========================================================
+   CELLULES
+   ========================================================= */
+
+.offers-comparison__table tbody td {
+
+    height: 48px;
+
+    padding: 11px 16px;
+
+    border-bottom: 1px solid rgba(65, 90, 119, 0.20);
+
+    color: rgba(255, 255, 255, 0.78);
+
+    text-align: center;
+
+    vertical-align: middle;
+
+    font-size: 0.90rem;
+}
+
+
+.offers-comparison__table tbody tr:last-child td {
+
+    border-bottom: none;
+}
+
+
+.offers-comparison__table tbody td:first-child {
+
+    color: rgba(255, 255, 255, 0.92);
+
+    text-align: left;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   COLONNE AVANCÉ
+   ========================================================= */
+
+.offers-comparison__table th.is-featured {
+
+    color: var(--color-white);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(221, 178, 25, 0.18),
+            rgba(221, 178, 25, 0.07)
+        );
+
+    border-left: 1px solid rgba(221, 178, 25, 0.45);
+
+    border-right: 1px solid rgba(221, 178, 25, 0.45);
+
+    border-top: 1px solid rgba(221, 178, 25, 0.45);
+}
+
+
+.offers-comparison__table td.is-featured {
+
+    background: rgba(221, 178, 25, 0.045);
+
+    border-left: 1px solid rgba(221, 178, 25, 0.25);
+
+    border-right: 1px solid rgba(221, 178, 25, 0.25);
+}
+
+
+/* =========================================================
+   CHECK / CROSS
+   ========================================================= */
+
+.offers-comparison__table .is-yes,
+.offers-comparison__table .is-no {
+
+    font-size: 1.20rem;
+
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+
+.offers-comparison__table .is-yes {
+
+    color: #20c997;
+}
+
+
+.offers-comparison__table .is-no {
+
+    color: #ef4444;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.offers-comparison__table tbody tr {
+
+    transition: background 0.2s ease;
+}
+
+
+.offers-comparison__table tbody tr:hover {
+
+    background: rgba(255, 255, 255, 0.025);
+}
+
+
+/* =========================================================
+   NTS BETTING — TRUST
+   ========================================================= */
+
+.offers-trust {
+
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+
+    padding: 26px 0 70px;
+
+    background: var(--bg-panel);
+}
+
+
+.offers-trust__container {
+
+    width: min(calc(100% - 120px), 1450px);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    border:
+        1px solid
+        rgba(65, 90, 119, 0.45);
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    background:
+        rgba(5, 21, 34, 0.72);
+}
+
+
+/* =========================================================
+   ITEM
+   ========================================================= */
+
+.offers-trust__item {
+
+    min-height: 82px;
+
+    padding: 18px 24px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border-right:
+        1px solid
+        rgba(65, 90, 119, 0.35);
+}
+
+
+.offers-trust__item:last-child {
+
+    border-right: none;
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.offers-trust__icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(221, 178, 25, 0.55);
+
+    border-radius: 50%;
+
+    color: var(--color-gold);
+
+    background:
+        rgba(221, 178, 25, 0.06);
+
+    font-size: 1.05rem;
+}
+
+
+/* =========================================================
+   TEXTE
+   ========================================================= */
+
+.offers-trust__content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.offers-trust__content strong {
+
+    color: var(--color-white);
+
+    font-size: 0.82rem;
+
+    font-weight: 700;
+}
+
+
+.offers-trust__content span {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.58
+        );
+
+    font-size: 0.68rem;
+
+    line-height: 1.35;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.offers-trust__item {
+
+    transition:
+        background 0.2s ease;
+}
+
+
+.offers-trust__item:hover {
+
+    background:
+        rgba(221, 178, 25, 0.035);
+}
+
+
+/* =========================================================
+   NTS BETTING — VIP SECTION
+   ========================================================= */
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.vip-section {
+
+    position: relative;
+
+    width: 100%;
+
+    padding: 70px 0;
+
+    overflow: hidden;
+
+    background-image: 
+        var(--hero-background-gradient),
+        url("/images/offers/bg-vip.png");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+}
+
+/* =========================================================
+   OVERLAY — BACKGROUND SECTION
+   ========================================================= */
+
+.vip-section__overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    background:
+        var(--hero-background-overlay-gradient);
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.vip-section__container {
+
+    width:
+        min(
+            calc(100% - 80px),
+            1480px
+        );
+
+    margin: 0 auto;
+
+    position: relative;
+
+    z-index: 1;
+
+}
+
+
+/* =========================================================
+   CARD VIP
+   ========================================================= */
+
+.vip-section__card {
+
+    position: relative;
+
+    min-height: 500px;
+
+    border:
+        1px solid
+        rgba(65, 90, 119, 0.70);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    background-image: 
+        var(--hero-background-gradient),
+        url("/images/offers/bg-card-vip.png");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    box-shadow:
+        0 25px 60px
+        rgba(0, 0, 0, 0.45);
+
+}
+
+.vip-section__card-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    background:
+        var(--hero-background-overlay-gradient);
+
+    pointer-events: none;
+}
+
+/* =========================================================
+   LÉGER VOILE POUR LE CONTENU
+   ========================================================= */
+
+.vip-section__card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(2, 10, 18, 0.30) 0%,
+            rgba(2, 10, 18, 0.08) 45%,
+            rgba(2, 10, 18, 0) 70%
+        );
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   CONTENU
+   ========================================================= */
+
+.vip-section__content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 65%;
+
+    min-height: 500px;
+
+    padding:
+        48px
+        55px
+        42px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.vip-section__eyebrow {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 14px;
+
+    color: var(--color-gold);
+
+    font-family: var(--font-body);
+
+    font-size: 0.90rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.09em;
+
+    text-transform: uppercase;
+
+    line-height: 1;
+}
+
+
+.vip-section__eyebrow::before,
+.vip-section__eyebrow::after {
+
+    content: "";
+
+    width: 42px;
+
+    height: 1px;
+
+    background:
+        rgba(
+            221,
+            178,
+            25,
+            0.70
+        );
+
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.vip-section__title {
+
+    margin: 0;
+
+    color:
+        var(--color-white);
+
+    font-family:
+        var(--font-title);
+
+    font-size:
+        clamp(
+            2rem,
+            3vw,
+            3rem
+        );
+
+    font-weight: 500;
+
+    line-height: 1.12;
+
+}
+
+
+.vip-section__title span {
+
+    color:
+        var(--color-gold);
+
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.vip-section__intro {
+
+    max-width: 760px;
+
+    margin:
+        14px 0 28px;
+
+    color: var(--hero-text-subtle);
+
+    font-family: var(--font-body);
+
+    font-size: 0.90rem;
+
+    font-weight: 400;
+
+    line-height: 1.4;
+
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.vip-section__features {
+
+    width: 100%;
+
+    max-width: 850px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    column-gap: 42px;
+
+    row-gap: 20px;
+
+}
+
+
+/* =========================================================
+   FEATURE
+   ========================================================= */
+
+.vip-feature {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+}
+
+
+/* =========================================================
+   ICONE
+   ========================================================= */
+
+.vip-feature__icon {
+
+    flex-shrink: 0;
+
+    width: 52px;
+
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(
+            221,
+            178,
+            25,
+            0.55
+        );
+
+    border-radius: 8px;
+
+    color:
+        var(--color-gold);
+
+    background:
+        rgba(
+            3,
+            14,
+            25,
+            0.55
+        );
+
+    box-shadow:
+        inset 0 0 15px
+        rgba(
+            221,
+            178,
+            25,
+            0.04
+        );
+
+    font-size:
+        1.15rem;
+}
+
+
+/* =========================================================
+   FEATURE CONTENU
+   ========================================================= */
+
+.vip-feature__content {
+
+    min-width: 0;
+
+}
+
+
+.vip-feature__content h3 {
+
+    margin: 0 0 4px;
+
+    color:
+        var(--color-white);
+
+    font-size:
+        0.90rem;
+
+    font-weight: 700;
+
+}
+
+
+.vip-feature__content p {
+
+    margin: 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.58
+        );
+
+    font-size:
+        0.70rem;
+
+    line-height:
+        1.45;
+
+}
+
+
+/* =========================================================
+   CTA + PRIX
+   ========================================================= */
+
+.vip-section__bottom {
+
+    margin-top: 30px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 22px;
+}
+
+
+/* =========================================================
+   BOUTON
+   ========================================================= */
+
+.vip-section__button {
+
+    min-width: 205px;
+    height: 49px;
+
+    padding: 0 24px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    border-radius: 6px;
+
+    color: #111827;
+    background: var(--color-gold);
+
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 8px 22px
+        rgba(221, 178, 25, 0.16);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.vip-section__button:hover {
+
+    background: var(--accent-yellow-hover);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 10px 26px
+        rgba(221, 178, 25, 0.22);
+}
+
+
+.vip-section__button i {
+
+    font-size: 0.75rem;
+}
+
+
+/* =========================================================
+   SÉPARATEUR
+   ========================================================= */
+
+.vip-section__separator {
+
+    width: 1px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    background:
+        rgba(255, 255, 255, 0.20);
+}
+
+
+/* =========================================================
+   BLOC PRIX
+   ========================================================= */
+
+.vip-section__pricing {
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 3px;
+}
+
+
+/* =========================================================
+   PRIX
+   ========================================================= */
+
+.vip-section__price {
+
+    display: flex;
+    align-items: baseline;
+
+    gap: 5px;
+}
+
+
+.vip-section__price strong {
+
+    color: var(--color-gold);
+
+    font-size: 1.55rem;
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+
+.vip-section__price span {
+
+    color:
+        rgba(255, 255, 255, 0.68);
+
+    font-size: 0.68rem;
+}
+
+
+/* =========================================================
+   CONDITIONS
+   ========================================================= */
+
+.vip-section__conditions {
+
+    margin: 0;
+
+    color:
+        rgba(255, 255, 255, 0.58);
+
+    font-size: 0.62rem;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   NTS BETTING — FAQ
+   ========================================================= */
+
+.faq-section {
+    position: relative;
+    width: 100%;
+    padding: 70px 24px 70px;
+    background:
+        linear-gradient(
+            180deg,
+            #020914 0%,
+            #03111f 50%,
+            #020914 100%
+        );
+}
+
+.faq-section__container {
+    width: min(1480px, 100%);
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.faq-section__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 28px;
+}
+
+.faq-section__heading {
+    max-width: 700px;
+}
+
+.faq-section__eyebrow {
+    display: block;
+    
+    color: var(--color-gold);
+
+    font-family: var(--font-body);
+
+    font-size: 0.90rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.09em;
+
+    text-transform: uppercase;
+
+    line-height: 1;
+}
+
+.faq-section__title {
+     margin: 7px 0 7px;
+
+    color: var(--hero-text-primary);
+
+    font-family: var(--font-body);
+
+    font-size: 1.50rem;
+
+    font-weight: 750;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.018em;
+}
+
+.faq-section__intro {
+    margin: 0;
+
+    color: var(--hero-text-subtle);
+
+    font-family: var(--font-body);
+
+    font-size: 0.90rem;
+
+    font-weight: 400;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   BOUTON — VOIR TOUTES LES QUESTIONS
+   ========================================================= */
+
+.faq-section__all {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 11px 15px;
+
+    border: 1px solid rgba(55, 88, 116, 0.65);
+    border-radius: 5px;
+
+    background: rgba(4, 29, 48, 0.55);
+
+    color: #dce7ef;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+.faq-section__all i {
+    font-size: 10px;
+
+    transition: transform 0.25s ease;
+}
+
+.faq-section__all:hover {
+    border-color: rgba(221, 178, 25, 0.7);
+
+    background: rgba(4, 41, 69, 0.65);
+
+    color: #ffffff;
+}
+
+.faq-section__all:hover i {
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.faq-section__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px 18px;
+}
+
+
+/* =========================================================
+   FAQ ITEM
+   ========================================================= */
+
+.faq-item {
+    overflow: hidden;
+
+    border: 1px solid rgba(35, 69, 96, 0.7);
+    border-radius: 5px;
+
+    background:
+        rgba(3, 20, 34, 0.72);
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.faq-item:hover {
+    border-color: rgba(55, 99, 130, 0.9);
+}
+
+.faq-item.is-open {
+    border-color: rgba(221, 178, 25, 0.55);
+
+    background:
+        rgba(4, 30, 48, 0.82);
+}
+
+
+/* =========================================================
+   QUESTION
+   ========================================================= */
+
+.faq-item__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    width: 100%;
+    min-height: 48px;
+
+    padding: 0 14px;
+
+    border: 0;
+    background: transparent;
+
+    color: #e7eef4;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.faq-item__question span {
+    line-height: 1.4;
+}
+
+.faq-item__question i {
+    flex-shrink: 0;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    transition:
+        transform 0.3s ease,
+        color 0.25s ease;
+}
+
+.faq-item.is-open .faq-item__question i {
+    transform: rotate(45deg);
+    color: var(--accent-gold, #ddb219);
+}
+
+
+/* =========================================================
+   RÉPONSE
+   ========================================================= */
+
+.faq-item__answer {
+    display: grid;
+    grid-template-rows: 0fr;
+
+    transition: grid-template-rows 0.3s ease;
+}
+
+.faq-item__answer p {
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0 14px;
+
+    color: #8fa3b6;
+
+    font-size: 12px;
+    line-height: 1.6;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.25s ease,
+        padding 0.3s ease;
+}
+
+.faq-item.is-open .faq-item__answer {
+    grid-template-rows: 1fr;
+}
+
+.faq-item.is-open .faq-item__answer p {
+    padding: 0 14px 15px;
+
+    opacity: 1;
+}
+
+/* =========================================================
+   NTS BETTING — CTA OFFRES
+   ========================================================= */
+
+.offers-cta {
+     position:
+        relative;
+
+    width:
+        100vw;
+
+    min-height:
+        260px;
+
+
+    margin-left:
+        calc(
+            (100% - 100vw) / 2
+        );
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        24px;
+
+    background-image:
+        url("/images/offers/offers-cta.png");
+
+    background-repeat:
+        no-repeat;
+
+    background-size:
+        cover;
+
+    background-position:
+        center center;
+
+    border:
+        0;
+
+    border-radius:
+        0;
+
+    overflow:
+        hidden;
+}
+
+.offers-cta::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    pointer-events:
+        none;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(
+                2,
+                12,
+                23,
+                0.16
+            ),
+            rgba(
+                2,
+                12,
+                23,
+                0.02
+            ) 48%,
+            rgba(
+                2,
+                12,
+                23,
+                0.08
+            ) 78%,
+            rgba(
+                2,
+                12,
+                23,
+                0.14
+            )
+        );
+
+    z-index:
+        0;
+}
+
+
+
+/* =========================================================
+   OVERLAY
+   ========================================================= */
+
+.offers-cta__overlay {
+    position: absolute;
+    inset: 0;
+
+    background: var(--hero-background-overlay-gradient);
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.offers-cta__container {
+     position:
+        relative;
+
+    z-index:
+        2;
+
+    width:
+        min(
+            100%,
+            1500px
+        );
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        90px;
+
+    margin:
+        0 auto;
+
+    padding:
+        0 30px
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.offers-cta__content {
+    max-width: 700px;
+}
+
+.offers-cta__title {
+    margin: 0 0 5px;
+
+    font-family:
+        var(--font-body);
+    font-size: 25px;
+    font-weight:
+        750;
+
+    line-height:
+        1.12;
+
+    letter-spacing:
+        -0.025em;
+
+    color: #ffffff;
+}
+
+.offers-cta__text {
+    margin: 0;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.82
+        );
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.offers-cta__button {
+    flex-shrink: 0;
+
+    min-width: 180px;
+    height: 46px;
+
+    padding: 0 22px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    border-radius: 6px;
+
+    background: #e5b900;
+    color: #071321;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 8px 24px rgba(229, 185, 0, 0.18);
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.offers-cta__button i {
+    font-size: 12px;
+
+    transition:
+        transform 0.25s ease;
+}
+
+.offers-cta__button:hover {
+    background: #f0c514;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(229, 185, 0, 0.28);
+}
+
+.offers-cta__button:hover i {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   TABLETTE — 1100px
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .offers-hero {
+
+        height: 380px;
+
+        min-height: 380px;
+
+    }
+
+
+    .offers-hero__container {
+
+        width:
+            calc(100% - 70px);
+
+    }
+
+
+    .offers-hero__content {
+
+        width: 500px;
+
+    }
+
+
+    .offers-hero__title {
+
+        font-size: 2.65rem;
+
+    }
+
+
+    .offers-hero__features {
+
+        gap: 24px;
+
+    }
+
+
+    /* -----------------------------------------------------
+       OFFERS PLANS
+       ----------------------------------------------------- */
+
+    .offers-plans {
+
+        margin-top: 0;
+
+        padding-bottom: 145px;
+
+    }
+
+
+    .offers-plans__container {
+
+        width:
+            calc(100% - 70px);
+
+    }
+
+
+    .offers-plans__grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 18px;
+
+        transform:
+            translateY(-65px);
+
+    }
+
+    .offers-comparison {
+
+        padding: 70px 0;
+    }
+
+
+    .offers-comparison__container {
+
+        width: calc(100% - 70px);
+    }
+
+      .offers-trust__container {
+
+        width:
+            calc(100% - 70px);
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .offers-trust__item:nth-child(2) {
+
+        border-right: none;
+    }
+
+
+    .offers-trust__item:nth-child(-n + 2) {
+
+        border-bottom:
+            1px solid
+            rgba(65, 90, 119, 0.35);
+    }
+
+       .vip-section {
+
+        padding:
+            60px 0 70px;
+
+    }
+
+
+    .vip-section__container {
+
+        width:
+            calc(100% - 50px);
+
+    }
+
+
+    .vip-section__card {
+
+        min-height: 480px;
+
+    }
+
+
+    .vip-section__content {
+
+        width: 75%;
+
+        min-height: 480px;
+
+        padding:
+            42px 40px;
+
+    }
+
+
+    .vip-section__features {
+
+        column-gap: 25px;
+
+    }
+
+
+    .vip-feature {
+
+        gap: 11px;
+
+    }
+
+    .faq-section__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================================
+   TABLETTE — 850px
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .offers-hero {
+
+        height: 360px;
+
+        min-height: 360px;
+
+    }
+
+
+    .offers-hero::before {
+
+        background-position:
+            48%
+            center;
+
+    }
+
+
+    .offers-hero__container {
+
+        width:
+            calc(100% - 48px);
+
+    }
+
+
+    .offers-hero__content {
+
+        width: 470px;
+
+        padding-top: 50px;
+
+    }
+
+
+    .offers-hero__title {
+
+        font-size: 2.45rem;
+
+    }
+
+
+    .offers-hero__features {
+
+        gap: 20px;
+
+    }
+
+
+    /* -----------------------------------------------------
+       OFFERS PLANS
+       ----------------------------------------------------- */
+
+    .offers-plans {
+
+        /*
+         * On conserve le principe :
+         * background sous le hero,
+         * cards au-dessus.
+         */
+        margin-top: 0;
+
+        padding-top: 80px;
+
+    }
+
+
+    .offers-plans__grid {
+
+        transform:
+            translateY(-80px);
+
+    }
+
+    .vip-section {
+
+        padding:
+            50px 0 60px;
+
+    }
+
+
+    .vip-section__container {
+
+        width:
+            calc(100% - 32px);
+
+    }
+
+
+    .vip-section__card {
+
+        min-height: 520px;
+
+        background-position:
+            62% center;
+
+    }
+
+
+    .vip-section__card::before {
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(2, 10, 18, 0.92) 0%,
+                rgba(2, 10, 18, 0.78) 48%,
+                rgba(2, 10, 18, 0.30) 100%
+            );
+
+    }
+
+
+    .vip-section__content {
+
+        width: 78%;
+
+        min-height: 520px;
+
+        padding:
+            38px 32px;
+
+    }
+
+
+    .vip-section__title {
+
+        font-size:
+            2.2rem;
+
+    }
+
+
+    .vip-section__intro {
+
+        font-size:
+            0.82rem;
+
+    }
+
+
+    .vip-section__features {
+
+        grid-template-columns:
+            1fr;
+
+        row-gap:
+            16px;
+
+    }
+
+
+    .vip-section__bottom {
+
+        gap:
+            20px;
+
+        flex-wrap:
+            wrap;
+
+    }
+
+    .faq-section {
+        padding: 55px 18px 60px;
+    }
+
+    .faq-section__header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .faq-section__all {
+        align-self: flex-start;
+    }
+
+    .faq-section__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .offers-cta {
+        min-height: 180px;
+
+        background-position: center;
+    }
+
+    .offers-cta__container {
+        min-height: 180px;
+
+        width: min(100% - 32px, 600px);
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+        gap: 18px;
+    }
+
+    .offers-cta__title {
+        font-size: 19px;
+    }
+
+    .offers-cta__text {
+        font-size: 12px;
+    }
+
+    .offers-cta__button {
+        width: 100%;
+        max-width: 220px;
+    }
+
+
+}
+
+
+/* =========================================================
+   MOBILE — 600px
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .offers-hero {
+
+        height: 420px;
+
+        min-height: 420px;
+
+    }
+
+
+    .offers-hero::before {
+
+        background-position:
+            63%
+            center;
+
+        background-size:
+            auto 100%;
+
+    }
+
+
+    .offers-hero__overlay {
+
+        background:
+            linear-gradient(
+                90deg,
+                rgba(2, 10, 18, 0.94) 0%,
+                rgba(2, 10, 18, 0.78) 48%,
+                rgba(2, 10, 18, 0.34) 100%
+            );
+
+    }
+
+
+    .offers-hero__container {
+
+        width:
+            calc(100% - 32px);
+
+        align-items:
+            flex-start;
+
+    }
+
+
+    .offers-hero__content {
+
+        width: 100%;
+
+        padding-top: 45px;
+
+    }
+
+
+    .offers-hero__eyebrow {
+
+        font-size: 0.60rem;
+
+        letter-spacing: 0.07em;
+
+    }
+
+
+    .offers-hero__title {
+
+        font-size: 2.15rem;
+
+        gap: 6px;
+
+    }
+
+
+    .offers-hero__subtitle {
+
+        font-size: 0.76rem;
+
+    }
+
+
+    .offers-hero__features {
+
+        margin-top: 20px;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 18px 25px;
+
+    }
+
+
+    .offers-hero__feature {
+
+        font-size: 0.62rem;
+
+    }
+
+
+    /* -----------------------------------------------------
+       OFFERS PLANS
+       ----------------------------------------------------- */
+
+    .offers-plans {
+
+        /*
+         * Le background commence sous le hero.
+         */
+        margin-top: 0;
+
+        padding-top: 60px;
+
+        padding-bottom: 75px;
+
+    }
+
+
+    .offers-plans__container {
+
+        width:
+            calc(100% - 32px);
+
+    }
+
+
+    .offers-plans__grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 16px;
+
+        transform:
+            translateY(-40px);
+
+    }
+
+
+    .offer-card {
+
+        min-height: auto;
+
+        padding:
+            22px
+            18px;
+
+    }
+
+     .offers-comparison {
+
+        padding: 55px 0;
+    }
+
+
+    .offers-comparison__container {
+
+        width: calc(100% - 32px);
+    }
+
+
+    .offers-comparison__header {
+
+        margin-bottom: 22px;
+    }
+
+
+    .offers-comparison__title {
+
+        font-size: 1.45rem;
+    }
+
+
+    .offers-comparison__subtitle {
+
+        font-size: 0.72rem;
+
+        line-height: 1.5;
+    }
+
+
+    .offers-comparison__table-wrapper {
+
+        border-radius: 7px;
+    }
+
+
+    .offers-comparison__table {
+
+        min-width: 780px;
+
+        font-size: 0.70rem;
+    }
+
+
+    .offers-comparison__table thead th {
+
+        height: 46px;
+
+        padding: 9px 12px;
+
+        font-size: 0.65rem;
+    }
+
+
+    .offers-comparison__table tbody td {
+
+        height: 40px;
+
+        padding: 9px 12px;
+    }
+
+     .offers-trust {
+
+        padding: 20px 0;
+    }
+
+
+    .offers-trust__container {
+
+        width:
+            calc(100% - 32px);
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .offers-trust__item {
+
+        min-height: 70px;
+
+        padding: 15px 18px;
+
+        border-right: none;
+
+        border-bottom:
+            1px solid
+            rgba(65, 90, 119, 0.35);
+    }
+
+
+    .offers-trust__item:last-child {
+
+        border-bottom: none;
+    }
+
+
+    .offers-trust__icon {
+
+        width: 38px;
+
+        height: 38px;
+
+        font-size: 0.95rem;
+    }
+
+
+    .offers-trust__content strong {
+
+        font-size: 0.76rem;
+    }
+
+
+    .offers-trust__content span {
+
+        font-size: 0.64rem;
+    }
+
+     .vip-section {
+
+        padding:
+            35px 0 45px;
+
+    }
+
+
+    .vip-section__container {
+
+        width:
+            calc(100% - 24px);
+
+    }
+
+
+    .vip-section__card {
+
+        min-height:
+            650px;
+
+        border-radius:
+            16px;
+
+        background-position:
+            68% center;
+
+    }
+
+
+    .vip-section__card::before {
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(2, 10, 18, 0.94) 0%,
+                rgba(2, 10, 18, 0.88) 42%,
+                rgba(2, 10, 18, 0.60) 72%,
+                rgba(2, 10, 18, 0.42) 100%
+            );
+
+    }
+
+
+    .vip-section__content {
+
+        width:
+            100%;
+
+        min-height:
+            650px;
+
+        padding:
+            32px 22px;
+
+        justify-content:
+            flex-start;
+
+    }
+
+
+    .vip-section__eyebrow {
+
+        gap:
+            10px;
+
+        margin-bottom:
+            12px;
+
+        font-size:
+            0.58rem;
+
+        letter-spacing:
+            0.18em;
+
+    }
+
+
+    .vip-section__eyebrow::before,
+    .vip-section__eyebrow::after {
+
+        width:
+            25px;
+
+    }
+
+
+    .vip-section__title {
+
+        font-size:
+            1.9rem;
+
+    }
+
+
+    .vip-section__intro {
+
+        margin:
+            12px 0 24px;
+
+        font-size:
+            0.75rem;
+
+        line-height:
+            1.55;
+
+    }
+
+
+    .vip-section__features {
+
+        row-gap:
+            14px;
+
+    }
+
+
+    .vip-feature {
+
+        gap:
+            11px;
+
+    }
+
+
+    .vip-feature__icon {
+
+        width:
+            43px;
+
+        height:
+            43px;
+
+        font-size:
+            0.95rem;
+
+    }
+
+
+    .vip-feature__content h3 {
+
+        font-size:
+            0.72rem;
+
+    }
+
+
+    .vip-feature__content p {
+
+        font-size:
+            0.60rem;
+
+    }
+
+
+    .vip-section__bottom {
+
+        margin-top:
+            25px;
+
+        display:
+            grid;
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            15px;
+
+    }
+
+
+    .vip-section__button {
+
+        width:
+            100%;
+
+        min-height:
+            46px;
+
+    }
+
+
+    .vip-section__price {
+
+        justify-content:
+            flex-start;
+
+    }
+
+
+    .vip-section__separator {
+
+        display:
+            none;
+
+    }
+
+
+    .vip-section__conditions {
+
+        font-size:
+            0.60rem;
+
+    }
+
+}
+
+
+/* =========================================================
+   PETIT MOBILE — 400px
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .offers-hero {
+
+        height: 430px;
+
+        min-height: 430px;
+
+    }
+
+
+    .offers-hero__container {
+
+        width:
+            calc(100% - 24px);
+
+    }
+
+
+    .offers-hero__title {
+
+        font-size: 1.95rem;
+
+    }
+
+
+    .offers-hero__subtitle {
+
+        font-size: 0.70rem;
+
+    }
+
+
+    .offers-hero__features {
+
+        gap: 16px 18px;
+
+    }
+
+
+    /* -----------------------------------------------------
+       OFFERS PLANS
+       ----------------------------------------------------- */
+
+    .offers-plans {
+
+        padding-top: 60px;
+
+    }
+
+
+    .offers-plans__grid {
+
+        transform:
+            translateY(-60px);
+
+    }
+
+     .offers-comparison__container {
+
+        width: calc(100% - 24px);
+    }
+
+
+    .offers-comparison__title {
+
+        font-size: 1.30rem;
+    }
+
+     .vip-section__card {
+
+        min-height:
+            670px;
+
+    }
+
+
+    .vip-section__content {
+
+        min-height:
+            670px;
+
+        padding:
+            28px 18px;
+
+    }
+
+
+    .vip-section__title {
+
+        font-size:
+            1.7rem;
+
+    }
+
+
+    .vip-section__intro {
+
+        font-size:
+            0.70rem;
+
+    }
+
+}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos résultats — NTS Betting{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    <main class="results-page">
+
+        {# HERO #}
+        {% include 'components/results/_hero.html.twig' %}
+
+        {# STATISTIQUES #}
+        {% include 'components/results/_stats.html.twig' %}
+
+        {# FILTRES #}
+        {% include 'components/results/_filters.html.twig' %}
+
+        {# RÉSULTATS #}
+        {% include 'components/results/_latest-results.html.twig' %}
+
+        {# ANALYTICS #}
+        {% include 'components/results/_analytics.html.twig' %}
+
+        {# DERNIERS TICKETS #}
+        {% include 'components/results/_tickets.html.twig' %}
+
+        {# DERNIÈRES ANALYSES #}
+        {% include 'components/results/_analyses.html.twig' %}
+
+        {# CTA #}
+        {% include 'components/results/_cta.html.twig' %}
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

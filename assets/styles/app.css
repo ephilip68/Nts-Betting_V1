@@ -1,0 +1,131 @@
+/* =========================================
+   NTS BETTING — GLOBAL STYLES
+   ========================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background: var(--bg-panel);
+    color: var(--color-white);
+
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-family: var(--font-heading);
+    line-height: 1.2;
+}
+
+p {
+    margin: 0;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* =========================================
+   CONTAINER
+   ========================================= */
+
+.container {
+    width: min(100% - 2rem, var(--container-width));
+    margin-inline: auto;
+}
+
+/* =========================================
+   TYPOGRAPHY
+   ========================================= */
+
+.text-gold {
+    color: var(--color-gold);
+}
+
+.text-muted {
+    color: var(--color-gray-400);
+}
+
+.heading-font {
+    font-family: var(--font-heading);
+}
+
+.body-font {
+    font-family: var(--font-body);
+}
+
+/* =========================================
+   SCROLLBAR
+   ========================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-sky);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold);
+}
+
+/* =========================================
+   SELECTION
+   ========================================= */
+
+::selection {
+    background: var(--color-gold);
+    color: var(--color-night);
+}

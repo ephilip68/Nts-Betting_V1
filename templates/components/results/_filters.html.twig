@@ -1,0 +1,222 @@
+{# =========================================================
+   NTS BETTING — RESULTS — FILTRES
+   ========================================================= #}
+
+<section class="results-filters">
+
+    <div class="results-filters__container">
+
+        <div class="results-filters__panel">
+
+            {# =================================================
+               HEADER
+               ================================================= #}
+
+            <div class="results-filters__header">
+
+                <h2 class="results-filters__title">
+                    Filtrer les résultats
+                </h2>
+
+            </div>
+
+
+            {# =================================================
+               FILTRES
+               ================================================= #}
+
+            <form class="results-filters__form">
+
+                {# SPORT #}
+
+                <div class="results-filter">
+
+                    <label for="results-sport">
+                        Sport
+                    </label>
+
+                    <select id="results-sport" name="sport">
+
+                        <option value="">
+                            Tous
+                        </option>
+
+                        <option value="football">
+                            Football
+                        </option>
+
+                        <option value="tennis">
+                            Tennis
+                        </option>
+
+                        <option value="basketball">
+                            Basketball
+                        </option>
+
+                        <option value="baseball">
+                            Baseball
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                {# COMPÉTITION #}
+
+                <div class="results-filter">
+
+                    <label for="results-competition">
+                        Compétition
+                    </label>
+
+                    <select
+                        id="results-competition"
+                        name="competition"
+                    >
+
+                        <option value="">
+                            Toutes
+                        </option>
+
+                        <option value="ligue-1">
+                            Ligue 1
+                        </option>
+
+                        <option value="premier-league">
+                            Premier League
+                        </option>
+
+                        <option value="liga">
+                            Liga
+                        </option>
+
+                        <option value="serie-a">
+                            Serie A
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                {# TYPE DE PRONOSTIC #}
+
+                <div class="results-filter">
+
+                    <label for="results-type">
+                        Type de pronostic
+                    </label>
+
+                    <select
+                        id="results-type"
+                        name="type"
+                    >
+
+                        <option value="">
+                            Tous
+                        </option>
+
+                        <option value="simple">
+                            Simple
+                        </option>
+
+                        <option value="combine">
+                            Combiné
+                        </option>
+
+                        <option value="live">
+                            Live
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                {# PÉRIODE #}
+
+                <div class="results-filter">
+
+                    <label for="results-period">
+                        Période
+                    </label>
+
+                    <select
+                        id="results-period"
+                        name="period"
+                    >
+
+                        <option value="30">
+                            30 derniers jours
+                        </option>
+
+                        <option value="7">
+                            7 derniers jours
+                        </option>
+
+                        <option value="90">
+                            90 derniers jours
+                        </option>
+
+                        <option value="365">
+                            Cette année
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                {# STATUT #}
+
+                <div class="results-filter">
+
+                    <label for="results-status">
+                        Statut
+                    </label>
+
+                    <select
+                        id="results-status"
+                        name="status"
+                    >
+
+                        <option value="">
+                            Tous
+                        </option>
+
+                        <option value="won">
+                            Gagné
+                        </option>
+
+                        <option value="lost">
+                            Perdu
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                {# BOUTON #}
+
+                <button
+                    type="submit"
+                    class="results-filters__button"
+                >
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <span>
+                        Filtrer
+                    </span>
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>

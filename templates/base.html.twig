@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}NTS Betting{% endblock %}</title>
+
+    <meta name="description"
+          content="{% block meta_description %}NTS Betting — Analyses, pronostics et performances sportives.{% endblock %}">
+
+    <link rel="icon" href="{{ asset('favicon.svg') }}">
+
+    {# Google Fonts #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('styles/variables.css') }}">
+        <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('styles/components.css') }}">
+        <link rel="stylesheet" href="{{ asset('styles/offers-page.css') }}">
+        <link rel="stylesheet" href="{{ asset('styles/results-page.css') }}">
+    {% endblock %}
+
+    {% block javascripts %}
+        {% block importmap %}
+            {{ importmap('app') }}
+        {% endblock %}
+    {% endblock %}
+</head>
+
+<body>
+
+    {% block body %}{% endblock %}
+
+</body>
+</html>
