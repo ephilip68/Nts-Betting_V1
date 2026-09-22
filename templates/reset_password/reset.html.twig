@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau mot de passe — NTS Betting{% endblock %}
+
+{% block body_class %}page-reset-password{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    <main class="auth-page reset-password-page">
+
+        <div class="reset-password-background"></div>
+
+        {# FEATURES À GAUCHE #}
+        <div class="reset-password-features">
+
+            <div class="reset-password-feature">
+                <div class="reset-password-feature__icon">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+
+                <div class="reset-password-feature__content">
+                    <strong>Choisissez un mot</strong>
+                    <span>de passe sécurisé</span>
+                </div>
+            </div>
+
+            <div class="reset-password-feature">
+                <div class="reset-password-feature__icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <div class="reset-password-feature__content">
+
+                    <div class="reset-password-rule">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Au moins 8 caractères</span>
+                    </div>
+
+                    <div class="reset-password-rule">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Une lettre majuscule</span>
+                    </div>
+
+                    <div class="reset-password-rule">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Une lettre minuscule</span>
+                    </div>
+
+                    <div class="reset-password-rule">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Un chiffre</span>
+                    </div>
+
+                    <div class="reset-password-rule">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Un caractère spécial<br>(@#$%...)</span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        {# CARTE #}
+        <div class="reset-password-card">
+
+            <div class="reset-password-icon">
+                👑
+            </div>
+
+            <h1>NOUVEAU MOT DE PASSE</h1>
+
+            <p class="reset-password-description">
+                Entrez votre nouveau mot de passe pour
+                sécuriser votre compte.
+            </p>
+
+            {{ form_start(resetForm, {
+                attr: {
+                    class: 'reset-password-form'
+                }
+            }) }}
+
+                <div class="reset-password-field">
+                    {{ form_widget(resetForm.plainPassword.first, {
+                        attr: {
+                            placeholder: 'Nouveau mot de passe',
+                            autocomplete: 'new-password'
+                        }
+                    }) }}
+                </div>
+
+                <div class="reset-password-field">
+                    {{ form_widget(resetForm.plainPassword.second, {
+                        attr: {
+                            placeholder: 'Confirmer le nouveau mot de passe',
+                            autocomplete: 'new-password'
+                        }
+                    }) }}
+                </div>
+
+                {{ form_errors(resetForm.plainPassword) }}
+
+                <button type="submit" class="reset-password-submit">
+                    Réinitialiser mon mot de passe
+                    <span>→</span>
+                </button>
+
+            {{ form_end(resetForm) }}
+
+            <a href="{{ path('app_login') }}" class="reset-password-back">
+                Retour à la connexion
+            </a>
+
+        </div>
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

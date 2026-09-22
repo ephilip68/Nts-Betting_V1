@@ -1,0 +1,407 @@
+<section class="pronostics-section">
+
+    <div class="pronostics-section__container">
+
+        <!-- COLONNE GAUCHE -->
+        <div class="pronostics-section__main">
+
+            <div class="pronostics-section__header">
+
+                <h2 class="pronostics-section__title">
+                    Pronostics (32)
+                </h2>
+
+                <div class="pronostics-section__sort">
+                    <select>
+                        <option>Plus récents</option>
+                        <option>Plus anciens</option>
+                    </select>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+
+            </div>
+
+
+            <div class="pronostics-list">
+
+                <!-- chaque pronostic -->
+
+                <div class="pronostics-list__item">
+
+                    <!-- MATCH -->
+                    <div class="pronostics-list__match">
+
+                        <div class="pronostics-list__sport-icon">
+                            <i class="fa-solid fa-futbol"></i>
+                        </div>
+
+                        <div class="pronostics-list__match-info">
+
+                            <span class="pronostics-list__competition">
+                                FR Ligue des Champions
+                            </span>
+
+                            <div class="pronostics-list__teams">
+                                <span>Real Madrid</span>
+
+                                <span class="pronostics-list__vs">
+                                    VS
+                                </span>
+
+                                <span>AC Milan</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRONOSTIC -->
+                    <div class="pronostics-list__bet">
+
+                        <span class="pronostics-list__bet-type">
+                            1X2
+                        </span>
+
+                        <span class="pronostics-list__bet-value">
+                            Real Madrid
+                        </span>
+
+                    </div>
+
+                    <!-- COTE -->
+                    <div class="pronostics-list__odds">
+
+                        <span class="pronostics-list__meta-label">
+                            Cote
+                        </span>
+
+                        <strong class="pronostics-list__odds-value">
+                            1.65
+                        </strong>
+
+                    </div>
+
+
+                    <!-- CONFIANCE -->
+                    <div class="pronostics-list__confidence">
+
+                        <span class="pronostics-list__meta-label">
+                            Confiance
+                        </span>
+
+                        <div class="pronostics-list__confidence-dots">
+
+                            <span class="is-active"></span>
+                            <span class="is-active"></span>
+                            <span class="is-active"></span>
+                            <span class="is-active"></span>
+                            <span></span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACTION -->
+                    <div class="pronostics-list__action">
+
+                        <button class="pronostics-list__button">
+                            Voir
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="pronostics-pagination">
+
+                <button>
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+
+                <button class="is-active">1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+                <button>...</button>
+                <button>8</button>
+
+                <button>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- COLONNE DROITE -->
+        <aside class="pronostics-sidebar">
+
+            <!-- PRONOSTIC DU JOUR -->
+
+            <article class="pronostics-card">
+
+                {# HEADER #}
+
+                <div class="pronostics-card__header">
+
+                    <div class="pronostics-card__title">
+
+                        <i class="fa-solid fa-star"></i>
+
+                        <span>
+                            Pronostic du jour
+                        </span>
+
+                    </div>
+
+                    <span class="pronostics-card__badge">
+                        Gratuit
+                    </span>
+
+                </div>
+
+
+                {# CORPS #}
+
+                <div class="pronostics-card__body">
+
+                    {# COMPÉTITION + DATE #}
+
+                    <div class="pronostics-card__match-info">
+
+                        <div class="pronostics-card__competition">
+
+                            <i class="fa-solid fa-futbol"></i>
+
+                            <span>
+                                Ligue des Champions
+                            </span>
+
+                        </div>
+
+                        <div class="pronostics-card__date">
+                            12 Novembre 2024 · 21:00
+                        </div>
+
+                    </div>
+
+
+                    {# ÉQUIPES #}
+
+                    <div class="pronostics-card__teams">
+
+                        <div class="pronostics-card__team">
+
+                            <img
+                                src="/images/resultats/teams/real-madrid.png"
+                                alt="Real Madrid"
+                            >
+
+                            <span>
+                                Real Madrid
+                            </span>
+
+                        </div>
+
+
+                        <div class="pronostics-card__vs">
+                            VS
+                        </div>
+
+
+                        <div class="pronostics-card__team">
+
+                            <img
+                                src="/images/resultats/teams/milan.png"
+                                alt="AC Milan"
+                            >
+
+                            <span>
+                                AC Milan
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    {# INFORMATIONS #}
+
+                    <div class="pronostics-card__stats">
+
+                        {# PRONOSTIC #}
+
+                        <div class="pronostics-card__stat">
+
+                            <span class="pronostics-card__stat-label">
+                                <i class="fa-solid fa-star"></i>
+                                Pronostic
+                            </span>
+
+                            <strong class="pronostics-card__stat-value">
+                                1X2 : Real Madrid
+                            </strong>
+
+                        </div>
+
+
+                        {# COTE #}
+
+                        <div class="pronostics-card__stat">
+
+                            <span class="pronostics-card__stat-label">
+                                Cote
+                            </span>
+
+                            <strong class="pronostics-card__stat-value">
+                                1.65
+                            </strong>
+
+                        </div>
+
+
+                        {# CONFIANCE #}
+
+                        <div class="pronostics-card__stat pronostics-card__stat--confidence">
+
+                            <span class="pronostics-card__stat-label">
+                                Niveau de confiance
+                            </span>
+
+                            <div class="pronostics-card__confidence">
+
+                                <span class="is-active"></span>
+                                <span class="is-active"></span>
+                                <span class="is-active"></span>
+                                <span class="is-active"></span>
+                                <span></span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    {# ANALYSE #}
+
+                    <div class="pronostics-card__analysis-block">
+
+                        <h3 class="pronostics-card__analysis-title">
+                            Notre analyse
+                        </h3>
+
+                        <p class="pronostics-card__analysis">
+
+                            Le Real Madrid reste sur une série de victoires
+                            consécutives à domicile en Ligue des Champions.
+                            Face à un Milan en difficulté défensive, la valeur
+                            est du côté des Madrilènes.
+
+                        </p>
+
+                    </div>
+
+
+                    {# CTA #}
+
+                    <a
+                        href="#"
+                        class="pronostics-card__link"
+                    >
+
+                        <span>
+                            Voir l'analyse complète
+                        </span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- VIP -->
+
+            <article class="pronostics-card pronostics-card--vip">
+
+                <!-- EN-TÊTE VIP -->
+                <div class="pronostics-card--vip__head">
+
+                    <div class="pronostics-card--vip__icon">
+                        <i class="fa-solid fa-crown"></i>
+                    </div>
+
+                    <h3 class="pronostics-card--vip__title">
+                        Accès réservé aux membres VIP
+                    </h3>
+
+                    <p class="pronostics-card--vip__text">
+                        Cette analyse détaillée est disponible uniquement
+                        pour nos membres VIP.
+                    </p>
+
+                </div>
+
+
+                <!-- FEATURES -->
+                <div class="pronostics-card--vip__content">
+
+                    <ul class="pronostics-card--vip__features">
+
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Analyse complète du match</span>
+                        </li>
+
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Statistiques avancées</span>
+                        </li>
+
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Conseil de mise (bankroll)</span>
+                        </li>
+
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Scénarios alternatifs</span>
+                        </li>
+
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Notre avis d'expert</span>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- CTA -->
+                <div class="pronostics-card--vip__footer">
+
+                    <button class="pronostics-card--vip__button">
+                        <span>Découvrir nos offres VIP</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+
+            </article>
+
+        </aside>
+
+    </div>
+
+</section>

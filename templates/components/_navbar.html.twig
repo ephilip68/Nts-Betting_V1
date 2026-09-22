@@ -101,15 +101,27 @@
                 </svg>
             </button>
 
+            {% if app.user %}
 
-            <a href="#" class="navbar-login">
-                Se connecter
-            </a>
+                <a href="{{ path('app_profile') }}" class="navbar-login">
+                    Mon profil
+                </a>
 
+                <a href="{{ path('app_logout') }}" class="navbar-register">
+                    Déconnexion
+                </a>
 
-            <a href="#" class="navbar-register">
-                S'inscrire
-            </a>
+            {% else %}
+
+                <a href="{{ path('app_login') }}" class="navbar-login">
+                    Se connecter
+                </a>
+
+                <a href="{{ path('app_register') }}" class="navbar-register">
+                    S'inscrire
+                </a>
+
+            {% endif %}
 
         </div>
 

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos pronostics — NTS Betting{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    <main class="pronostics-page">
+
+        {# HERO #}
+        {% include 'components/pronostics/_hero.html.twig' %}
+
+        {# FILTRE #}
+        {% include 'components/pronostics/_filters.html.twig' %}
+
+        {# PRONOSTICS LISTES #}
+        {% include 'components/pronostics/_pronostics-list.html.twig' %}
+
+        {# PRONOSTICS LISTES #}
+        {% include 'components/pronostics/_stats.html.twig' %}
+
+        {# CTA#}
+        {% include 'components/pronostics/_cta.html.twig' %}
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

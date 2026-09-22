@@ -1,0 +1,150 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vérification de votre e-mail — NTS Betting{% endblock %}
+
+{% block body_class %}page-verify-email{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    <main class="verify-email-page">
+
+        <div class="verify-email-background"></div>
+
+        <div class="verify-email-card">
+
+            {# ÉTAT EN ATTENTE #}
+            <div id="verification-pending" class="verification-state">
+
+                <div class="verify-email-crown">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+
+                <div class="verify-email-main-icon">
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <span class="verify-email-loader">
+                        <span></span>
+                    </span>
+                </div>
+
+                <h1>
+                    VÉRIFIEZ VOTRE E-MAIL
+                </h1>
+
+                <p>
+                    Nous avons envoyé un lien de vérification
+                    à votre adresse e-mail.
+                </p>
+
+                <div class="verify-email-waiting">
+                    <span class="verify-email-spinner"></span>
+
+                    <span>
+                        En attente de vérification...
+                    </span>
+                </div>
+
+                <div class="verify-email-info">
+                    <i class="fa-solid fa-circle-info"></i>
+
+                    <span>
+                        Ouvrez votre boîte mail et cliquez sur
+                        le lien reçu pour activer votre compte.
+                    </span>
+                </div>
+
+            </div>
+
+
+            {# ÉTAT VÉRIFIÉ #}
+            <div id="verification-success"
+                 class="verification-state verification-success"
+                 hidden>
+
+                <div class="verify-email-crown">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+
+                <div class="verify-email-success-icon">
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <span>
+                        <i class="fa-solid fa-check"></i>
+                    </span>
+                </div>
+
+                <h1>
+                    VOTRE E-MAIL EST VÉRIFIÉ !
+                </h1>
+
+                <p>
+                    Votre compte est maintenant activé.<br>
+                    Vous pouvez accéder à toutes les fonctionnalités
+                    de NTS Betting.
+                </p>
+
+                <a href="{{ path('app_login') }}"
+                   class="verify-email-button">
+                    Accéder à mon compte
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        {# CARD À DROITE — UNIQUEMENT APRÈS VÉRIFICATION #}
+        <div id="verification-benefits"
+             class="verification-benefits"
+             hidden>
+
+            <div class="verification-benefit">
+                <span class="verification-benefit__check">
+                    <i class="fa-solid fa-check"></i>
+                </span>
+
+                <span>Compte activé</span>
+            </div>
+
+            <div class="verification-benefit">
+                <span class="verification-benefit__check">
+                    <i class="fa-solid fa-check"></i>
+                </span>
+
+                <span>Accès aux pronostics</span>
+            </div>
+
+            <div class="verification-benefit">
+                <span class="verification-benefit__check">
+                    <i class="fa-solid fa-check"></i>
+                </span>
+
+                <span>Accès à NTS Vault</span>
+            </div>
+
+            <div class="verification-benefit">
+                <span class="verification-benefit__check">
+                    <i class="fa-solid fa-check"></i>
+                </span>
+
+                <span>Rejoindre le groupe Telegram</span>
+            </div>
+
+            <div class="verification-benefit">
+                <span class="verification-benefit__check">
+                    <i class="fa-solid fa-check"></i>
+                </span>
+
+                <span>Profitez de toutes nos offres</span>
+            </div>
+
+        </div>
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

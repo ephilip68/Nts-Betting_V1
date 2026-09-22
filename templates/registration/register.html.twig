@@ -1,0 +1,254 @@
+{% extends 'base.html.twig' %}
+
+{% block body_class %}page-register{% endblock %}
+
+{% block title %}Créer un compte — NTS Betting{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    <main class="auth-page register-page">
+
+        <div class="auth-page__background"></div>
+
+        <div class="register-layout">
+
+            {# =========================
+               COLONNE GAUCHE
+               ========================= #}
+            <section class="register-presentation">
+
+                <h1>
+                    REJOIGNEZ<br>
+                    UNE COMMUNAUTÉ<br>
+                    <strong>DE PARIEURS<br>
+                    PASSIONNÉS.</strong>
+                </h1>
+
+                <ul class="register-benefits">
+                    <li>
+                        <span class="register-benefit-icon">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        <span>Analyses exclusives</span>
+                    </li>
+
+                    <li>
+                        <span class="register-benefit-icon">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        <span>Pronostics de qualité</span>
+                    </li>
+
+                    <li>
+                        <span class="register-benefit-icon">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        <span>Suivi de performance</span>
+                    </li>
+
+                    <li>
+                        <span class="register-benefit-icon">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        <span>Outils professionnels</span>
+                    </li>
+
+                    <li>
+                        <span class="register-benefit-icon">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        <span>Groupe Telegram privé</span>
+                    </li>
+                </ul>
+
+            </section>
+
+
+            {# =========================
+               CARTE REGISTER
+               ========================= #}
+            <section class="auth-card register-card">
+
+                <div class="auth-card__brand">
+
+                    <img
+                        src="{{ asset('images/logo/logo.png') }}"
+                        alt="NTS Betting"
+                        class="register-logo"
+                    >
+
+                    <h2>CRÉER UN COMPTE</h2>
+
+                    <p>
+                        Rejoignez NTS Betting et accédez à toutes<br>
+                        nos fonctionnalités.
+                    </p>
+
+                </div>
+
+                {{ form_errors(registrationForm) }}
+
+                {{ form_start(registrationForm, {
+                    attr: {
+                        class: 'auth-form register-form'
+                    }
+                }) }}
+
+                    {# Nom d'utilisateur #}
+                    {% if registrationForm.nickname is defined %}
+                        <div class="register-field">
+                            <div class="register-input-wrapper">
+                                <i class="fa-regular fa-user"></i>
+
+                                {{ form_widget(registrationForm.nickname, {
+                                    attr: {
+                                        class: 'auth-form__input',
+                                        placeholder: "Nom d'utilisateur",
+                                        autocomplete: 'username'
+                                    }
+                                }) }}
+                            </div>
+
+                            {{ form_errors(registrationForm.nickname) }}
+                        </div>
+                    {% endif %}
+
+
+                    {# Email #}
+                    <div class="register-field">
+
+                        <div class="register-input-wrapper">
+                            <i class="fa-regular fa-envelope"></i>
+
+                            {{ form_widget(registrationForm.email, {
+                                attr: {
+                                    class: 'auth-form__input',
+                                    placeholder: 'Adresse e-mail',
+                                    autocomplete: 'email'
+                                }
+                            }) }}
+                        </div>
+
+                        {{ form_errors(registrationForm.email) }}
+
+                    </div>
+
+                    {# Mot de passe #}
+                    <div class="register-field">
+
+                        <div class="register-input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+
+                            {{ form_widget(registrationForm.plainPassword.first, {
+                                attr: {
+                                    class: 'auth-form__input',
+                                    placeholder: 'Mot de passe',
+                                    autocomplete: 'new-password'
+                                }
+                            }) }}
+
+                            <span class="register-password-toggle">
+                                <i class="fa-regular fa-eye"></i>
+                            </span>
+                        </div>
+
+                        {{ form_errors(registrationForm.plainPassword.first) }}
+
+                    </div>
+
+
+                    {# Confirmation mot de passe #}
+                    <div class="register-field">
+
+                        <div class="register-input-wrapper">
+        <i class="fa-solid fa-lock"></i>
+
+        {{ form_widget(registrationForm.plainPassword.second, {
+            attr: {
+                class: 'auth-form__input',
+                placeholder: 'Confirmer le mot de passe',
+                autocomplete: 'new-password'
+            }
+        }) }}
+
+        <span class="register-password-toggle">
+            <i class="fa-regular fa-eye"></i>
+        </span>
+    </div>
+
+    {{ form_errors(registrationForm.plainPassword.second) }}
+
+</div>
+
+{{ form_errors(registrationForm.plainPassword) }}
+
+
+                    {# Conditions #}
+                    <div class="register-terms">
+
+                        {{ form_widget(registrationForm.agreeTerms, {
+                            attr: {
+                                class: 'register-checkbox'
+                            }
+                        }) }}
+
+                        <label for="{{ registrationForm.agreeTerms.vars.id }}">
+                            J'accepte les conditions d'utilisation et la
+                            <a href="#" target="_blank">politique de confidentialité</a>
+                        </label>
+
+                    </div>
+
+                    {{ form_errors(registrationForm.agreeTerms) }}
+
+
+                    {# Bouton #}
+                    <button type="submit" class="register-submit">
+                        <span>Créer mon compte</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                {{ form_end(registrationForm) }}
+
+
+                {# Séparateur #}
+                <div class="auth-divider">
+                    <span>ou continuer avec</span>
+                </div>
+
+
+                {# Connexions sociales #}
+                <div class="register-socials">
+
+                    <button type="button" class="register-social">
+                        <i class="fa-brands fa-google"></i>
+                        <span>Google</span>
+                    </button>
+
+                    <button type="button" class="register-social">
+                        <i class="fa-brands fa-apple"></i>
+                        <span>Apple</span>
+                    </button>
+
+                </div>
+
+
+                {# Login #}
+                <p class="register-login-link">
+                    Déjà un compte ?
+                    <a href="{{ path('app_login') }}">
+                        Se connecter
+                    </a>
+                </p>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

@@ -21,9 +21,12 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('styles/variables.css') }}">
         <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('styles/authentification.css') }}">
         <link rel="stylesheet" href="{{ asset('styles/components.css') }}">
         <link rel="stylesheet" href="{{ asset('styles/offers-page.css') }}">
         <link rel="stylesheet" href="{{ asset('styles/results-page.css') }}">
+        <link rel="stylesheet" href="{{ asset('styles/pronostics-page.css') }}">
+        <link rel="stylesheet" href="{{ asset('styles/community-page.css') }}">
     {% endblock %}
 
     {% block javascripts %}
@@ -33,7 +36,7 @@
     {% endblock %}
 </head>
 
-<body>
+<body class="{% block body_class %}{% endblock %}">
 
     {% block body %}{% endblock %}
 

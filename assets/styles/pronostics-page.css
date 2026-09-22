@@ -1,0 +1,5359 @@
+/* =========================================================
+   NTS BETTING — PRONOSTICS HERO
+   ========================================================= */
+
+.pronostics-hero {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 480px;
+
+    min-height: 480px;
+
+    overflow: hidden;
+
+    background-color:
+        var(--color-background);
+}
+
+
+/* =========================================================
+   IMAGE HERO
+   ========================================================= */
+
+.pronostics-hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    background-image:
+        var(--hero-background-gradient),
+        url('/images/offers/offers-hero.png');
+
+    background-size: cover;
+
+    background-position:
+        center center;
+
+    background-repeat: no-repeat;
+}
+
+
+/* =========================================================
+   OVERLAY
+   ========================================================= */
+
+.pronostics-hero__overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background:
+        var(--hero-background-overlay-gradient);
+}
+
+
+/* =========================================================
+   CONTENEUR
+   ========================================================= */
+
+.pronostics-hero__container {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(
+            calc(100% - 120px),
+            1450px
+        );
+
+    /*
+     * La navbar est positionnée par-dessus le hero
+     * et occupe environ 70px.
+     *
+     * On commence donc le centrage sous la navbar.
+     */
+
+    height: calc(100% - 70px);
+
+    margin: 70px auto 0;
+
+    display: flex;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   CONTENU
+   ========================================================= */
+
+.pronostics-hero__content {
+
+    width: 1100px;
+
+    max-width: 100%;
+
+    margin: 0;
+
+    padding: 0;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   SUR-TITRE
+   ========================================================= */
+
+.pronostics-hero__eyebrow {
+
+    display: block;
+
+    margin: 0 0 10px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.88
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size: 0.80rem;
+
+    font-weight: 500;
+
+    letter-spacing: 0.105em;
+
+    line-height: 1.4;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.pronostics-hero__title {
+
+    margin: 0;
+
+    padding: 0;
+
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 12px;
+
+    color:
+        var(--color-white);
+
+    font-family:
+        var(--font-body);
+
+    font-size: 3.55rem;
+
+    font-weight: 800;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.04em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   NOS
+   ========================================================= */
+
+.pronostics-hero__title span {
+
+    color:
+        var(--color-white);
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   PRONOSTICS
+   ========================================================= */
+
+.pronostics-hero__title strong {
+
+    color:
+        var(--color-gold);
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   SOUS-TITRE
+   ========================================================= */
+
+.pronostics-hero__subtitle {
+
+    max-width: 680px;
+
+    margin: 12px 0 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.90
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size: 1.05rem;
+
+    font-weight: 400;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.pronostics-hero__features {
+
+    margin-top: 23px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 42px;
+
+    flex-wrap: nowrap;
+}
+
+
+/* =========================================================
+   FEATURE
+   ========================================================= */
+
+.pronostics-hero__feature {
+
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.88
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size: 0.72rem;
+
+    font-weight: 400;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   ICÔNE
+   ========================================================= */
+
+.pronostics-hero__feature-icon {
+
+    flex: 0 0 38px;
+
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+        var(--color-gold);
+
+    border:
+        1.5px solid
+        var(--color-gold);
+
+    border-radius: 50%;
+
+    background:
+        rgba(
+            221,
+            178,
+            25,
+            0.035
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(
+            221,
+            178,
+            25,
+            0.08
+        );
+
+    font-size: 0.90rem;
+}
+
+
+/* =========================================================
+   TEXTE FEATURE
+   ========================================================= */
+
+.pronostics-hero__feature > span {
+
+    display: flex;
+
+    flex-direction: column;
+
+    white-space: nowrap;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.90
+        );
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   SOUS-TEXTE
+   ========================================================= */
+
+.pronostics-hero__feature small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.55
+        );
+
+    font-size: 0.64rem;
+
+    font-weight: 400;
+
+    line-height: 1.3;
+}
+
+/* =========================================================
+   NTS BETTING — PRONOSTICS FILTER
+   ========================================================= */
+
+.pronostics-filter {
+
+    position: relative;
+
+    width: 100%;
+
+    margin: 0;
+
+    padding: 24px 0;
+
+    background:
+        var(--bg-panel);
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.pronostics-filter__container {
+
+    position: relative;
+
+    width:
+        min(
+            calc(100% - 48px),
+            1450px
+        );
+
+    height: auto;
+
+    margin: 0 auto;
+
+    padding: 0;
+
+}
+
+
+/* =========================================================
+   TABS
+   Les tabs sont complètement indépendants
+   du cadre des filtres
+   ========================================================= */
+
+.pronostics-filter__tabs {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 56px;
+
+    display: flex;
+
+    align-items: stretch;
+
+    justify-content: space-between;
+
+    margin: 0;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   LISTE DES TABS
+   ========================================================= */
+
+.pronostics-filter__tabs-list {
+
+    display: flex;
+
+    align-items: stretch;
+
+    height: 56px;
+
+    margin: 0;
+
+    padding: 0;
+}
+
+
+/* =========================================================
+   TABS
+   ========================================================= */
+
+.pronostics-filter__tabs {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    width: 100%;
+
+    height: 56px;
+}
+
+
+/* =========================================================
+   LISTE DES TABS
+   ========================================================= */
+
+.pronostics-filter__tabs-list {
+
+    display: flex;
+
+    align-items: stretch;
+
+    gap: 0;
+
+    height: 56px;
+}
+
+
+/* =========================================================
+   TAB
+   ========================================================= */
+
+.pronostics-filter__tab {
+
+    height: 56px;
+
+    padding: 0 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-top: 1px solid #17405c;
+    border-left: 1px solid #17405c;
+    border-right: 1px solid #17405c;
+
+    border-bottom: none;
+
+    border-radius: 5px 5px 0 0;
+
+    background: transparent;
+
+    color: rgba(255, 255, 255, 0.88);
+
+    font-family: var(--font-body);
+
+    font-size: 0.78rem;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+/* =========================================================
+   TABS CÔTE À CÔTE
+   ========================================================= */
+
+.pronostics-filter__tab + .pronostics-filter__tab {
+
+    margin-left: -1px;
+}
+
+
+/* =========================================================
+   TAB ACTIF
+   ========================================================= */
+
+.pronostics-filter__tab--active {
+
+    background: #e5b900;
+
+    border-top-color: #e5b900;
+    border-left-color: #e5b900;
+    border-right-color: #e5b900;
+
+    color: #071321;
+
+    font-weight: 700;
+}
+
+/* =========================================================
+   BOUTON AIDE INDÉPENDANT
+   ========================================================= */
+
+.pronostics-filter__help {
+
+    height: 34px;
+
+    margin-top: 12px;
+
+    padding: 0 14px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    border: 1px solid #24516d;
+
+    border-radius: 5px;
+
+    background: transparent;
+
+    color: rgba(255, 255, 255, 0.90);
+
+    font-family: var(--font-body);
+
+    font-size: 0.68rem;
+
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+
+.pronostics-filter__help i {
+
+    color: rgba(255, 255, 255, 0.75);
+
+    font-size: 0.65rem;
+}
+
+
+/* =========================================================
+   CADRE DES FILTRES
+   C'EST ICI QUE SE TROUVE LE SEUL GRAND BORDER
+   ========================================================= */
+
+.pronostics-filter__filters {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 101px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1fr
+        1fr
+        1.10fr
+        1.80fr
+        90px;
+
+    align-items: end;
+
+    gap: 14px;
+
+    margin: 0;
+
+    padding:
+        17px 15px 17px;
+
+    border:
+        1px solid
+        #17415d;
+
+    border-radius:
+        0 0 5px 5px;
+
+    background:
+        rgba(
+            3,
+            18,
+            30,
+            0.72
+        );
+
+}
+
+
+/* =========================================================
+   CHAMPS
+   ========================================================= */
+
+.pronostics-filter__field {
+
+    min-width: 0;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.pronostics-filter__field label {
+
+    display: block;
+
+    margin:
+        0 0 7px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.70
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.80rem;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.2;
+}
+
+
+/* =========================================================
+   SELECT WRAPPER
+   ========================================================= */
+
+.pronostics-filter__select {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 45px;
+}
+
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+.pronostics-filter__select select {
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    width: 100%;
+
+    height: 45px;
+
+    padding:
+        0 36px 0 13px;
+
+    border:
+        1px solid
+        #17415d;
+
+    border-radius:
+        5px;
+
+    outline: none;
+
+    background:
+        #071a29;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.92
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.70rem;
+
+    font-weight:
+        400;
+
+    cursor:
+        pointer;
+}
+
+
+/* =========================================================
+   FLÈCHE
+   ========================================================= */
+
+.pronostics-filter__select i {
+
+    position: absolute;
+
+    top: 50%;
+
+    right: 13px;
+
+    transform:
+        translateY(-50%);
+
+    pointer-events:
+        none;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.70
+        );
+
+    font-size:
+        0.60rem;
+}
+
+
+/* =========================================================
+   FOCUS SELECT
+   ========================================================= */
+
+.pronostics-filter__select select:focus {
+
+    border-color:
+        rgba(
+            221,
+            178,
+            25,
+            0.70
+        );
+}
+
+
+/* =========================================================
+   RECHERCHE
+   ========================================================= */
+
+.pronostics-filter__search {
+
+    width: 100%;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding:
+        0 13px;
+
+    border:
+        1px solid
+        #17415d;
+
+    border-radius:
+        5px;
+
+    background:
+        #071a29;
+
+    box-sizing:
+        border-box;
+}
+
+
+/* =========================================================
+   ICÔNE RECHERCHE
+   ========================================================= */
+
+.pronostics-filter__search > i {
+
+    flex-shrink: 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.72
+        );
+
+    font-size:
+        0.76rem;
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.pronostics-filter__search input {
+
+    width: 100%;
+
+    min-width: 0;
+
+    height: 100%;
+
+    padding: 0;
+
+    border: 0;
+
+    outline: none;
+
+    background:
+        transparent;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.92
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.70rem;
+}
+
+
+.pronostics-filter__search input::placeholder {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.42
+        );
+}
+
+
+/* =========================================================
+   FOCUS SEARCH
+   ========================================================= */
+
+.pronostics-filter__search:focus-within {
+
+    border-color:
+        rgba(
+            221,
+            178,
+            25,
+            0.70
+        );
+}
+
+
+/* =========================================================
+   BOUTON FILTRER
+   ========================================================= */
+
+.pronostics-filter__button {
+
+    width: 90px;
+
+    height: 45px;
+
+    padding:
+        0 12px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    border: 0;
+
+    border-radius:
+        5px;
+
+    outline: none;
+
+    background:
+        #e5b900;
+
+    color:
+        #071321;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.70rem;
+
+    font-weight:
+        700;
+
+    line-height: 1;
+
+    cursor:
+        pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.pronostics-filter__button i {
+
+    font-size:
+        0.76rem;
+}
+
+
+.pronostics-filter__button:hover {
+
+    background:
+        #f0c514;
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .pronostics-filter__filters {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+    }
+
+    .pronostics-filter__search {
+
+        grid-column:
+            span 2;
+    }
+
+    .pronostics-filter__button {
+
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   TABLETTE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .pronostics-filter__container {
+
+        width:
+            calc(100% - 28px);
+    }
+
+    .pronostics-filter__tabs {
+
+        overflow-x:
+            auto;
+
+        scrollbar-width:
+            none;
+    }
+
+    .pronostics-filter__tabs::-webkit-scrollbar {
+
+        display:
+            none;
+    }
+
+    .pronostics-filter__tab {
+
+        padding:
+            0 20px;
+
+        flex-shrink:
+            0;
+    }
+
+    .pronostics-filter__help {
+
+        display:
+            none;
+    }
+
+    .pronostics-filter__filters {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:
+            12px;
+    }
+
+    .pronostics-filter__search {
+
+        grid-column:
+            span 2;
+    }
+
+    .pronostics-filter__button {
+
+        grid-column:
+            span 2;
+
+        width:
+            100%;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+    .pronostics-filter__filters {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .pronostics-filter__search {
+
+        grid-column:
+            auto;
+    }
+
+    .pronostics-filter__button {
+
+        grid-column:
+            auto;
+    }
+}
+
+/* =========================================================
+   NTS BETTING — PRONOSTICS LIST SECTION
+   ========================================================= */
+
+.pronostics-section {
+
+    width: 100%;
+
+    padding: 24px 0;
+
+    background:
+        var(--bg-panel);
+}
+
+
+/* =========================================================
+   CONTENEUR PRINCIPAL
+   ========================================================= */
+
+.pronostics-section__container {
+
+    width:
+        min(
+            calc(100% - 40px),
+            1450px
+        );
+
+    margin:
+        0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 2fr)
+        minmax(330px, 0.95fr);
+
+    gap: 18px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   COLONNE GAUCHE
+   ========================================================= */
+
+.pronostics-section__main {
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   HEADER LISTE
+   ========================================================= */
+
+.pronostics-section__header {
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+}
+
+
+.pronostics-section__title {
+
+    margin: 0;
+
+    color:
+        var(--color-white);
+
+    font-family: var(--font-body);
+
+    font-size: 0.90rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.09em;
+
+    text-transform: uppercase;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   TRI
+   ========================================================= */
+
+.pronostics-section__sort {
+
+    position: relative;
+
+    width: 112px;
+}
+
+
+.pronostics-section__sort select {
+
+    width: 100%;
+
+    height: 32px;
+
+    padding:
+        0 28px 0 10px;
+
+    appearance: none;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.72
+        );
+
+    background:
+        rgba(
+            5,
+            21,
+            34,
+            0.72
+        );
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.42
+        );
+
+    border-radius: 4px;
+
+    outline: none;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.65rem;
+
+    cursor: pointer;
+}
+
+
+.pronostics-section__sort i {
+
+    position: absolute;
+
+    top: 50%;
+
+    right: 9px;
+
+    transform:
+        translateY(-50%);
+
+    pointer-events: none;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.55
+        );
+
+    font-size:
+        0.55rem;
+}
+
+
+/* =========================================================
+   TABLEAU / LISTE
+   ========================================================= */
+
+.pronostics-list {
+
+    width:
+        100%;
+
+    overflow:
+        hidden;
+
+    background:
+        rgba(
+            5,
+            21,
+            34,
+            0.72
+        );
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.42
+        );
+
+    border-radius:
+        5px;
+}
+
+
+/* =========================================================
+   PRONOSTIC
+   ========================================================= */
+
+.pronostics-list__item {
+
+    min-height:
+        58px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        135px
+        70px
+        85px
+        78px;
+
+    align-items:
+        stretch;
+
+    border-bottom:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.19
+        );
+
+    transition:
+        background-color
+        0.2s ease;
+}
+
+
+.pronostics-list__item:last-child {
+
+    border-bottom:
+        none;
+}
+
+
+.pronostics-list__item:hover {
+
+    background:
+        rgba(
+            65,
+            90,
+            119,
+            0.075
+        );
+}
+
+
+/* =========================================================
+   MATCH
+   ========================================================= */
+
+.pronostics-list__match {
+
+    min-width:
+        0;
+
+    height:
+        100%;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        9px;
+
+    padding:
+        7px 12px;
+}
+
+
+/* =========================================================
+   SPORT ICON
+   ========================================================= */
+
+.pronostics-list__sport-icon {
+
+    flex:
+        0 0 22px;
+
+    width:
+        22px;
+
+    height:
+        22px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    color:
+        var(--color-white);
+
+    font-size:
+        0.72rem;
+}
+
+
+/* =========================================================
+   INFOS MATCH
+   ========================================================= */
+
+.pronostics-list__match-info {
+
+    min-width:
+        0;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    gap:
+        3px;
+}
+
+
+/* =========================================================
+   COMPÉTITION
+   ========================================================= */
+
+.pronostics-list__competition {
+
+    overflow:
+        hidden;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.48
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.65rem;
+
+    font-weight:
+        400;
+
+    line-height:
+        1;
+
+    white-space:
+        nowrap;
+
+    text-overflow:
+        ellipsis;
+}
+
+
+/* =========================================================
+   ÉQUIPES
+   ========================================================= */
+
+.pronostics-list__teams {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    color:
+        var(--color-white);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.75rem;
+
+    font-weight:
+        500;
+
+    line-height:
+        1;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   VS
+   ========================================================= */
+
+.pronostics-list__vs {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.38
+        );
+
+    font-size:
+        0.75rem;
+
+    font-weight:
+        400;
+}
+
+
+/* =========================================================
+   BLOC 1X2
+   ========================================================= */
+
+.pronostics-list__bet {
+
+    min-width:
+        0;
+
+    height:
+        100%;
+
+    box-sizing:
+        border-box;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        flex-start;
+
+    justify-content:
+        center;
+
+    gap:
+        4px;
+
+    padding:
+        0 12px;
+
+    border-left:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.30
+        );
+}
+
+
+/* =========================================================
+   LABEL 1X2
+   ========================================================= */
+
+.pronostics-list__bet-type {
+
+    display:
+        block;
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.48
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.62rem;
+
+    font-weight:
+        400;
+
+    line-height:
+        12px;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   VALEUR 1X2
+   ========================================================= */
+
+.pronostics-list__bet-value {
+
+    display:
+        block;
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.82
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.74rem;
+
+    font-weight:
+        500;
+
+    line-height:
+        14px;
+
+    white-space:
+        nowrap;
+
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
+}
+
+
+/* =========================================================
+   BLOC COTE
+   ========================================================= */
+
+.pronostics-list__odds {
+
+    min-width:
+        0;
+
+    height:
+        100%;
+
+    box-sizing:
+        border-box;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        flex-start;
+
+    justify-content:
+        center;
+
+    gap:
+        4px;
+
+    padding:
+        0 8px;
+
+    border-left:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.30
+        );
+}
+
+
+/* =========================================================
+   LABEL COTE
+   ========================================================= */
+
+.pronostics-list__odds .pronostics-list__meta-label {
+
+    display:
+        block;
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.48
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.62rem;
+
+    font-weight:
+        400;
+
+    line-height:
+        12px;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   VALEUR COTE
+   ========================================================= */
+
+.pronostics-list__odds-value {
+
+    display:
+        block;
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+    color:
+        var(--color-white);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.74rem;
+
+    font-weight:
+        700;
+
+    line-height:
+        14px;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   BLOC CONFIANCE
+   ========================================================= */
+
+.pronostics-list__confidence {
+
+    min-width:
+        0;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    box-sizing:
+        border-box;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        flex-start;
+
+    justify-content:
+        center;
+
+    gap:
+        4px;
+
+    padding:
+        0 8px;
+
+    border-left:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.30
+        );
+}
+
+
+/* =========================================================
+   LABEL CONFIANCE
+   ========================================================= */
+
+.pronostics-list__confidence .pronostics-list__meta-label {
+
+    display:
+        block;
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.48
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.62rem;
+
+    font-weight:
+        400;
+
+    line-height:
+        12px;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   POINTS DE CONFIANCE
+   ========================================================= */
+
+.pronostics-list__confidence-dots {
+
+    height:
+        14px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        3px;
+
+    margin:
+        0;
+
+    padding:
+        0;
+}
+
+
+/* =========================================================
+   POINT
+   ========================================================= */
+
+.pronostics-list__confidence-dots span {
+
+    width:
+        6px;
+
+    height:
+        6px;
+
+    flex:
+        0 0 6px;
+
+    display:
+        block;
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(
+            65,
+            90,
+            119,
+            0.45
+        );
+}
+
+
+/* =========================================================
+   POINT ACTIF
+   ========================================================= */
+
+.pronostics-list__confidence-dots span.is-active {
+
+    background:
+        #19d37e;
+
+    box-shadow:
+        0 0 5px
+        rgba(
+            25,
+            211,
+            126,
+            0.35
+        );
+}
+
+
+/* =========================================================
+   ACTION
+   ========================================================= */
+
+.pronostics-list__action {
+
+    height:
+        100%;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        0 8px;
+}
+
+
+/* =========================================================
+   BOUTON VOIR
+   ========================================================= */
+
+.pronostics-list__button {
+
+    width:
+        58px;
+
+    height:
+        30px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+    color:
+        var(--color-white);
+
+    background:
+        #19d37e;
+
+    border:
+        none;
+
+    border-radius:
+        3px;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.65rem;
+
+    font-weight:
+        600;
+
+    line-height:
+        1;
+
+    cursor:
+        pointer;
+
+    transition:
+        background-color
+        0.2s ease,
+        transform
+        0.2s ease;
+}
+
+
+.pronostics-list__button:hover {
+
+    background:
+        #16bd70;
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   PAGINATION
+   ========================================================= */
+
+.pronostics-pagination {
+
+    margin-top:
+        14px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        5px;
+}
+
+
+.pronostics-pagination button {
+
+    width:
+        28px;
+
+    height:
+        28px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.72
+        );
+
+    background:
+        rgba(
+            5,
+            21,
+            34,
+            0.72
+        );
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.38
+        );
+
+    border-radius:
+        4px;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.65rem;
+
+    font-weight:
+        500;
+
+    cursor:
+        pointer;
+
+    transition:
+        background-color
+        0.2s ease,
+        border-color
+        0.2s ease,
+        color
+        0.2s ease;
+}
+
+
+.pronostics-pagination button:hover {
+
+    color:
+        var(--color-white);
+
+    border-color:
+        rgba(
+            65,
+            90,
+            119,
+            0.65
+        );
+
+    background:
+        rgba(
+            65,
+            90,
+            119,
+            0.10
+        );
+}
+
+
+.pronostics-pagination button.is-active {
+
+    color:
+        #071521;
+
+    background:
+        var(--color-gold);
+
+    border-color:
+        var(--color-gold);
+
+    font-weight:
+        700;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .pronostics-list {
+
+        overflow-x:
+            auto;
+    }
+
+
+    .pronostics-list__item {
+
+        min-width:
+            720px;
+    }
+}
+
+
+@media (max-width: 750px) {
+
+    .pronostics-list__item {
+
+        min-width:
+            700px;
+    }
+
+    .pronostics-list__match {
+
+        padding:
+            7px 10px;
+    }
+
+    .pronostics-list__bet {
+
+        padding:
+            0 10px;
+    }
+
+    .pronostics-list__odds {
+
+        padding:
+            0 7px;
+    }
+
+    .pronostics-list__confidence {
+
+        padding:
+            0 7px;
+    }
+
+    .pronostics-list__action {
+
+        padding:
+            0 7px;
+    }
+}
+
+
+/* =========================================================
+   BOUTON VIP
+   ========================================================= */
+
+.pronostics-list__button--vip {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.85
+        );
+
+    background:
+        rgba(
+            65,
+            90,
+            119,
+            0.55
+        );
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.65
+        );
+}
+
+
+.pronostics-list__button--vip:hover {
+
+    background:
+        rgba(
+            65,
+            90,
+            119,
+            0.72
+        );
+}
+
+
+/* =========================================================
+   PAGINATION
+   ========================================================= */
+
+.pronostics-pagination {
+
+    margin-top: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+}
+
+
+.pronostics-pagination button {
+
+    width: 28px;
+
+    height: 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.65
+        );
+
+    background:
+        transparent;
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.35
+        );
+
+    border-radius: 4px;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.65rem;
+
+    cursor: pointer;
+}
+
+
+.pronostics-pagination button:hover {
+
+    color:
+        var(--color-white);
+
+    border-color:
+        rgba(
+            65,
+            90,
+            119,
+            0.65
+        );
+}
+
+
+.pronostics-pagination button.is-active {
+
+    color:
+        #071521;
+
+    background:
+        var(--color-gold);
+
+    border-color:
+        var(--color-gold);
+
+    font-weight:
+        700;
+}
+
+
+/* =========================================================
+   NTS BETTING — PRONOSTICS SIDEBAR
+   ========================================================= */
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.pronostics-sidebar {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        16px;
+}
+
+
+/* =========================================================
+   CARTE
+   ========================================================= */
+
+.pronostics-card {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    overflow:
+        hidden;
+
+    background:
+        rgba(
+            5,
+            21,
+            34,
+            0.72
+        );
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.42
+        );
+
+    border-radius:
+        5px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(
+            0,
+            0,
+            0,
+            0.14
+        );
+}
+
+
+/* =========================================================
+   LIGNE SUPÉRIEURE
+   ========================================================= */
+
+.pronostics-card::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        0;
+
+    right:
+        0;
+
+    height:
+        1px;
+
+    background:
+        rgba(
+            65,
+            90,
+            119,
+            0.55
+        );
+
+    pointer-events:
+        none;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.pronostics-card__header {
+
+    min-height:
+        44px;
+
+    padding:
+        0 13px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    background:
+        rgba(
+            65,
+            90,
+            119,
+            0.10
+        );
+
+    border-bottom:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.28
+        );
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.pronostics-card__title {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    color:
+        var(--color-white);
+
+    font-family: var(--font-body);
+
+    font-size: 0.90rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.09em;
+
+    text-transform: uppercase;
+
+    line-height: 1;
+}
+
+
+.pronostics-card__title i {
+
+    color:
+        var(--color-gold);
+
+    font-size:
+        0.75rem;
+    
+    
+}
+
+
+/* =========================================================
+   BADGE
+   ========================================================= */
+
+.pronostics-card__badge {
+
+    height:
+        23px;
+
+    padding:
+        0 8px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    color:
+        #061c15;
+
+    background:
+        #19d37e;
+
+    border-radius:
+        3px;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.70rem;
+
+    font-weight:
+        700;
+
+    line-height:
+        1;
+}
+
+
+/* =========================================================
+   CORPS
+   ========================================================= */
+
+.pronostics-card__body {
+
+    padding:
+        16px 14px 14px;
+}
+
+
+/* =========================================================
+   INFORMATIONS MATCH
+   ========================================================= */
+
+.pronostics-card__match-info {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    text-align:
+        center;
+}
+
+
+/* =========================================================
+   COMPÉTITION
+   ========================================================= */
+
+.pronostics-card__competition {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        6px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.70
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.78rem;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.25;
+}
+
+
+.pronostics-card__competition i {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.75
+        );
+
+    font-size:
+        0.68rem;
+}
+
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.pronostics-card__date {
+
+    margin-top:
+        4px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.48
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.65rem;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.3;
+}
+
+
+/* =========================================================
+   ÉQUIPES
+   ========================================================= */
+
+.pronostics-card__teams {
+
+    margin:
+        16px 0 0;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        34px
+        minmax(0, 1fr);
+
+    align-items:
+        center;
+
+    column-gap:
+        8px;
+
+    text-align:
+        center;
+}
+
+
+/* =========================================================
+   ÉQUIPE
+   ========================================================= */
+
+.pronostics-card__team {
+
+    min-width:
+        0;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    color:
+        var(--color-white);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.78rem;
+
+    font-weight:
+        600;
+
+    line-height:
+        1.25;
+}
+
+
+/* =========================================================
+   LOGO CLUB
+   ========================================================= */
+
+.pronostics-card__team img {
+
+    width:
+        46px;
+
+    height:
+        46px;
+
+    margin:
+        0 auto 8px;
+
+    object-fit:
+        contain;
+}
+
+
+/* =========================================================
+   VS
+   ========================================================= */
+
+.pronostics-card__vs {
+
+    width:
+        28px;
+
+    height:
+        28px;
+
+    margin:
+        auto;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.65
+        );
+
+    background:
+        rgba(
+            65,
+            90,
+            119,
+            0.08
+        );
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.38
+        );
+
+    border-radius:
+        4px;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.60rem;
+
+    font-weight:
+        600;
+}
+
+
+/* =========================================================
+   BLOCS INFORMATIONS
+   ========================================================= */
+
+.pronostics-card__stats {
+
+    margin:
+        15px 0 0;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1.35fr
+        0.70fr
+        1.45fr;
+
+    gap:
+        7px;
+}
+
+
+/* =========================================================
+   BLOC INFO
+   ========================================================= */
+
+.pronostics-card__stat {
+
+    min-width:
+        0;
+
+    min-height:
+        48px;
+
+    padding:
+        8px 9px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    background:
+        rgba(
+            65,
+            90,
+            119,
+            0.08
+        );
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.24
+        );
+
+    border-radius:
+        4px;
+}
+
+
+/* =========================================================
+   LABEL INFO
+   ========================================================= */
+
+.pronostics-card__stat-label {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        4px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.50
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.60rem;
+
+    font-weight:
+        500;
+
+    line-height:
+        1.2;
+
+    white-space:
+        nowrap;
+}
+
+
+.pronostics-card__stat-label i {
+
+    color:
+        var(--color-gold);
+
+    font-size:
+        0.50rem;
+}
+
+
+/* =========================================================
+   VALEUR INFO
+   ========================================================= */
+
+.pronostics-card__stat-value {
+
+    display:
+        block;
+
+    margin-top:
+        4px;
+
+    overflow:
+        hidden;
+
+    color:
+        var(--color-white);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.75rem;
+
+    font-weight:
+        600;
+
+    line-height:
+        1.25;
+
+    white-space:
+        nowrap;
+
+    text-overflow:
+        ellipsis;
+}
+
+
+/* =========================================================
+   COTE
+   ========================================================= */
+
+.pronostics-card__stat:nth-child(2) {
+
+    align-items:
+        flex-start;
+}
+
+
+.pronostics-card__stat:nth-child(2)
+.pronostics-card__stat-value {
+
+    font-size:
+        0.75rem;
+}
+
+
+/* =========================================================
+   CONFIANCE
+   ========================================================= */
+
+.pronostics-card__confidence {
+
+    margin-top:
+        7px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        3px;
+}
+
+
+.pronostics-card__confidence span {
+
+    width:
+        7px;
+
+    height:
+        7px;
+
+    display:
+        block;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(
+            65,
+            90,
+            119,
+            0.45
+        );
+}
+
+
+.pronostics-card__confidence span.is-active {
+
+    background:
+        #19d37e;
+
+    box-shadow:
+        0 0 5px
+        rgba(
+            25,
+            211,
+            126,
+            0.30
+        );
+}
+
+
+/* =========================================================
+   BLOC ANALYSE
+   ========================================================= */
+
+.pronostics-card__analysis-block {
+
+    margin-top:
+        13px;
+}
+
+
+/* =========================================================
+   TITRE ANALYSE
+   ========================================================= */
+
+.pronostics-card__analysis-title {
+
+    margin:
+        0 0 5px;
+
+    color:
+        var(--color-white);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.85rem;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.25;
+}
+
+
+/* =========================================================
+   TEXTE ANALYSE
+   ========================================================= */
+
+.pronostics-card__analysis {
+
+    margin:
+        0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.68
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.70rem;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.52;
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.pronostics-card__link {
+
+    width:
+        100%;
+
+    height:
+        34px;
+
+    margin:
+        13px 0 0;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        7px;
+
+    color:
+        var(--color-gold);
+
+    background:
+        transparent;
+
+    border:
+        1px solid
+        rgba(
+            221,
+            178,
+            25,
+            0.65
+        );
+
+    border-radius:
+        3px;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.75rem;
+
+    font-weight:
+        600;
+
+    line-height:
+        1;
+
+    text-decoration:
+        none;
+
+    cursor:
+        pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.pronostics-card__link:hover {
+
+    background:
+        rgba(
+            221,
+            178,
+            25,
+            0.06
+        );
+
+    border-color:
+        var(--color-gold);
+}
+
+
+.pronostics-card__link i {
+
+    font-size:
+        0.58rem;
+}
+
+
+/* =========================================================
+   CARTE VIP — PREMIUM GOLD GLOW
+   ========================================================= */
+
+.pronostics-card--vip {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    height:
+        375px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    overflow:
+        hidden;
+
+    background:
+        radial-gradient(
+            ellipse 75% 45% at 50% 0%,
+            rgba(221, 178, 25, 0.075) 0%,
+            rgba(221, 178, 25, 0.025) 42%,
+            transparent 75%
+        ),
+        rgba(5, 21, 34, 0.92);
+
+    border:
+        1px solid
+        rgba(
+            221,
+            178,
+            25,
+            0.78
+        );
+
+    border-radius:
+        5px;
+
+    /*
+     * Lumière extérieure :
+     * - première couche = halo proche
+     * - deuxième couche = halo diffus
+     * - troisième = ombre profonde
+     */
+    box-shadow:
+        0 0 0 1px
+        rgba(221, 178, 25, 0.08),
+
+        0 0 14px
+        rgba(221, 178, 25, 0.18),
+
+        0 0 34px
+        rgba(221, 178, 25, 0.10),
+
+        0 10px 30px
+        rgba(0, 0, 0, 0.30);
+}
+
+
+/* =========================================================
+   LUMIÈRE DORÉE SUR LE HAUT
+   ========================================================= */
+
+.pronostics-card--vip::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        8%;
+
+    width:
+        84%;
+
+    height:
+        2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(221, 178, 25, 0.25) 15%,
+            var(--color-gold) 50%,
+            rgba(221, 178, 25, 0.25) 85%,
+            transparent 100%
+        );
+
+    box-shadow:
+        0 0 8px
+        rgba(221, 178, 25, 0.55),
+
+        0 0 18px
+        rgba(221, 178, 25, 0.22);
+
+    opacity:
+        0.95;
+
+    pointer-events:
+        none;
+
+    z-index:
+        3;
+}
+
+/* =========================================================
+   HEADER VIP
+   ========================================================= */
+
+.pronostics-card--vip__head {
+
+    flex:
+        0 0 105px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        flex-start;
+
+    padding:
+        16px 14px 16px;
+
+    text-align:
+        center;
+
+    border-bottom:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.25
+        );
+}
+
+
+/* =========================================================
+   COURONNE
+   ========================================================= */
+
+/* =========================================================
+   COURONNE VIP — HALO DORÉ
+   ========================================================= */
+
+.pronostics-card--vip__icon {
+
+    width:
+        43px;
+
+    height:
+        43px;
+
+    flex:
+        0 0 43px;
+    
+    margin-top: 7px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    color:
+        var(--color-gold);
+
+    background:
+        rgba(
+            5,
+            21,
+            34,
+            0.96
+        );
+
+    border:
+        1px solid
+        rgba(
+            221,
+            178,
+            25,
+            0.85
+        );
+
+    border-radius:
+        50%;
+
+    font-size:
+        1rem;
+
+    /*
+     * Petit halo autour de la couronne
+     */
+    box-shadow:
+        0 0 8px
+        rgba(221, 178, 25, 0.20),
+
+        0 0 18px
+        rgba(221, 178, 25, 0.10);
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.pronostics-card--vip__title {
+
+    margin:
+        15px 0 7px;
+
+    color:
+        var(--color-white);
+
+    font-family: var(--font-body);
+
+    font-size: 0.90rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.09em;
+
+    text-transform: uppercase;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   SOUS-TITRE
+   ========================================================= */
+
+.pronostics-card--vip__text {
+
+    max-width:
+        390px;
+
+    margin:
+        4px auto 0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.56
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.75rem;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.4;
+
+    text-align:
+        center;
+}
+
+
+/* =========================================================
+   ZONE FEATURES
+   ========================================================= */
+
+.pronostics-card--vip__content {
+
+    flex:
+        1 1 auto;
+
+    padding:
+        13px 14px 8px;
+}
+
+
+/* =========================================================
+   LISTE FEATURES
+   ========================================================= */
+
+.pronostics-card--vip__features {
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        7px;
+
+    list-style:
+        none;
+}
+
+
+/* =========================================================
+   FEATURE
+   ========================================================= */
+
+.pronostics-card--vip__features li {
+
+    min-height:
+        20px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    margin:
+        0;
+
+    padding:
+        0 15px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.72
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.80rem;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.3;
+}
+
+
+/* =========================================================
+   ICÔNE FEATURE
+   ========================================================= */
+
+.pronostics-card--vip__features i {
+
+    flex:
+        0 0 13px;
+
+    color:
+        var(--color-gold);
+
+    font-size:
+        0.70rem;
+
+    text-align:
+        center;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.pronostics-card--vip__footer {
+
+    flex:
+        0 0 auto;
+
+    padding:
+        0 14px 13px;
+}
+
+
+/* =========================================================
+   BOUTON
+   ========================================================= */
+
+.pronostics-card--vip__button {
+
+    width:
+        100%;
+
+    height:
+        37px;
+
+    margin:
+        0;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        8px;
+
+    color:
+        #071521;
+
+    background:
+        var(--color-gold);
+
+    border:
+        none;
+
+    border-radius:
+        4px;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.75rem;
+
+    font-weight:
+        700;
+
+    line-height:
+        1;
+
+    cursor:
+        pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.pronostics-card--vip__button:hover {
+
+    background:
+        #c7a016;
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   FLÈCHE
+   ========================================================= */
+
+.pronostics-card--vip__button i {
+
+    font-size:
+        0.60rem;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+    .pronostics-card--vip {
+
+        height:
+            auto;
+
+        min-height:
+            325px;
+    }
+
+    .pronostics-card--vip__head {
+
+        flex-basis:
+            105px;
+    }
+
+    .pronostics-card--vip__content {
+
+        padding:
+            13px 10px 8px;
+    }
+
+    .pronostics-card--vip__footer {
+
+        padding:
+            0 10px 10px;
+    }
+}
+
+/* =========================================================
+   =========================================================
+   SECTION STATISTIQUES / TELEGRAM
+   =========================================================
+   ========================================================= */
+
+.stats-telegram-section {
+
+    width: 100%;
+
+    padding:
+        24px 0 48px;
+
+    background:
+        var(--bg-panel);
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.stats-telegram-section__container {
+
+    width: min(calc(100% - 40px), 1450px);
+
+    margin:
+        0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.45fr)
+        minmax(230px, 0.75fr)
+        minmax(0, 1fr);
+
+    align-items: stretch;
+
+    gap:
+        14px;
+}
+
+
+/* =========================================================
+   BLOC STATISTIQUES
+   ========================================================= */
+
+.stats-telegram-section__stats {
+
+    min-width: 0;
+
+    padding:
+        16px;
+
+    background:
+        rgba(
+            5,
+            21,
+            34,
+            0.72
+        );
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.42
+        );
+
+    border-radius:
+        5px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(
+            0,
+            0,
+            0,
+            0.14
+        );
+}
+
+
+/* =========================================================
+   HEADER STATISTIQUES
+   ========================================================= */
+
+.stats-telegram-section__header {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    min-height:
+        25px;
+
+    margin-bottom:
+        14px;
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.stats-telegram-section__title {
+
+    margin:
+        0;
+
+    color:
+        var(--color-white);
+
+    font-family: var(--font-body);
+
+    font-size: 0.90rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.09em;
+
+    text-transform: uppercase;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   GRILLE STATISTIQUES
+   ========================================================= */
+
+.stats-telegram-section__grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap:
+        8px;
+}
+
+
+/* =========================================================
+   CARTE STAT
+   ========================================================= */
+
+.stats-telegram-section__stat {
+
+    min-width:
+        0;
+
+    min-height:
+        62px;
+
+    padding:
+        10px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    background:
+        rgba(
+            65,
+            90,
+            119,
+            0.075
+        );
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.28
+        );
+
+    border-radius:
+        4px;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.stats-telegram-section__stat:hover {
+
+    background:
+        rgba(
+            65,
+            90,
+            119,
+            0.11
+        );
+
+    border-color:
+        rgba(
+            65,
+            90,
+            119,
+            0.42
+        );
+}
+
+
+/* =========================================================
+   ICÔNE STAT
+   ========================================================= */
+
+.stats-telegram-section__stat-icon {
+
+    flex:
+        0 0 38px;
+
+    width:
+        38px;
+
+    height:
+        38px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    color:
+        var(--color-gold);
+
+    background:
+        rgba(
+            221,
+            178,
+            25,
+            0.07
+        );
+
+    border:
+        1px solid
+        rgba(
+            221,
+            178,
+            25,
+            0.22
+        );
+
+    border-radius:
+        4px;
+
+    font-size:
+        0.82rem;
+}
+
+
+/* =========================================================
+   CONTENU STAT
+   ========================================================= */
+
+.stats-telegram-section__stat-content {
+
+    min-width:
+        0;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        3px;
+}
+
+
+/* =========================================================
+   VALEUR STAT
+   ========================================================= */
+
+.stats-telegram-section__stat-value {
+
+    color:
+        var(--color-white);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.80rem;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.1;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   LABEL STAT
+   ========================================================= */
+
+.stats-telegram-section__stat-label {
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.48
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.65rem;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.2;
+}
+
+
+/* =========================================================
+   =========================================================
+   TÉMOIGNAGE
+   =========================================================
+   ========================================================= */
+
+.stats-telegram-section__testimonial {
+
+    position:
+        relative;
+
+    min-width:
+        0;
+
+    padding:
+        20px 17px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    background:
+        rgba(
+            5,
+            21,
+            34,
+            0.72
+        );
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.42
+        );
+
+    border-radius:
+        5px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(
+            0,
+            0,
+            0,
+            0.14
+        );
+
+    overflow:
+        hidden;
+}
+
+
+/* =========================================================
+   LIGNE DÉCORATIVE
+   ========================================================= */
+
+.stats-telegram-section__testimonial::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        15%;
+
+    right:
+        15%;
+
+    height:
+        1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(
+                221,
+                178,
+                25,
+                0.7
+            ),
+            transparent
+        );
+
+    pointer-events:
+        none;
+}
+
+
+/* =========================================================
+   ICÔNE CITATION
+   ========================================================= */
+
+.stats-telegram-section__testimonial-quote {
+
+    width:
+        28px;
+
+    height:
+        28px;
+
+    margin-bottom:
+        11px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    color:
+        var(--color-gold);
+
+    font-size:
+        0.85rem;
+
+    opacity:
+        0.9;
+}
+
+
+/* =========================================================
+   TEXTE CITATION
+   ========================================================= */
+
+.stats-telegram-section__testimonial-text {
+
+    max-width:
+        280px;
+
+    margin:
+        0;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.76
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.85rem;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.55;
+}
+
+
+/* =========================================================
+   AUTEUR
+   ========================================================= */
+
+.stats-telegram-section__testimonial-author {
+
+    margin-top:
+        11px;
+
+    color:
+        var(--color-gold);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.65rem;
+
+    font-weight:
+        600;
+
+    line-height:
+        1.2;
+}
+
+
+/* =========================================================
+   =========================================================
+   TELEGRAM
+   =========================================================
+   ========================================================= */
+
+.stats-telegram-section__telegram {
+
+    position:
+        relative;
+
+    min-width:
+        0;
+
+    min-height:
+        110px;
+
+    padding:
+        14px 17px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        12px;
+
+    /*
+     * NOUVEAU BACKGROUND
+     */
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(5, 21, 34, 0.90) 0%,
+            rgba(5, 21, 34, 0.76) 48%,
+            rgba(5, 21, 34, 0.18) 100%
+        ),
+        url("/images/pronostics/telegram.png");
+
+    background-size: 100% 100%;
+
+    background-position:
+        center;
+
+    background-repeat:
+        no-repeat;
+
+    border:
+        1px solid
+        rgba(
+            65,
+            90,
+            119,
+            0.42
+        );
+
+    border-radius:
+        5px;
+
+    box-shadow:
+        0 8px 24px
+        rgba(
+            0,
+            0,
+            0,
+            0.14
+        );
+
+    overflow:
+        hidden;
+}
+
+
+/* =========================================================
+   LUMIÈRE / HALO TELEGRAM
+   ========================================================= */
+
+.stats-telegram-section__telegram::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        -80px;
+
+    right:
+        40px;
+
+    width:
+        220px;
+
+    height:
+        220px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(
+                65,
+                90,
+                119,
+                0.18
+            ) 0%,
+            rgba(
+                65,
+                90,
+                119,
+                0.07
+            ) 38%,
+            transparent 72%
+        );
+
+    pointer-events:
+        none;
+
+    z-index:
+        0;
+}
+
+
+/* =========================================================
+   VOILE DE PROTECTION
+   ========================================================= */
+
+.stats-telegram-section__telegram::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(
+                5,
+                21,
+                34,
+                0.22
+            ) 0%,
+            rgba(
+                5,
+                21,
+                34,
+                0.08
+            ) 55%,
+            rgba(
+                5,
+                21,
+                34,
+                0
+            ) 100%
+        );
+
+    pointer-events:
+        none;
+
+    z-index:
+        0;
+}
+
+
+/* =========================================================
+   CONTENU TELEGRAM
+   ========================================================= */
+
+.stats-telegram-section__telegram-content {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    min-width:
+        0;
+
+    flex:
+        1;
+}
+
+
+/* =========================================================
+   TITRE TELEGRAM
+   ========================================================= */
+
+.stats-telegram-section__telegram-title {
+
+    margin:
+        0 0 7px;
+
+    color:
+        var(--color-white);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.85rem;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.25;
+
+    text-shadow:
+        0 1px 4px
+        rgba(
+            0,
+            0,
+            0,
+            0.45
+        );
+}
+
+
+/* =========================================================
+   TEXTE TELEGRAM
+   ========================================================= */
+
+.stats-telegram-section__telegram-text {
+
+    margin:
+        0;
+
+    max-width:
+        260px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.68
+        );
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.70rem;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.45;
+
+    text-shadow:
+        0 1px 4px
+        rgba(
+            0,
+            0,
+            0,
+            0.55
+        );
+}
+
+
+/* =========================================================
+   BOUTON TELEGRAM
+   ========================================================= */
+
+.stats-telegram-section__telegram-button {
+
+    width:
+        fit-content;
+
+    min-width:
+        125px;
+
+    height:
+        30px;
+
+    margin-top:
+        13px;
+
+    padding:
+        0 11px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        7px;
+
+    color:
+        #071521;
+
+    background:
+        var(--color-gold);
+
+    border:
+        1px solid
+        rgba(
+            221,
+            178,
+            25,
+            0.85
+        );
+
+    border-radius:
+        3px;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.70rem;
+
+    font-weight:
+        700;
+
+    text-decoration:
+        none;
+
+    box-shadow:
+        0 4px 12px
+        rgba(
+            221,
+            178,
+            25,
+            0.16
+        );
+
+    transition:
+        background-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.stats-telegram-section__telegram-button:hover {
+
+    background:
+        #c7a016;
+
+    box-shadow:
+        0 5px 16px
+        rgba(
+            221,
+            178,
+            25,
+            0.24
+        );
+
+    transform:
+        translateY(-1px);
+}
+
+
+.stats-telegram-section__telegram-button i {
+
+    font-size:
+        0.605rem;
+}
+
+
+/* =========================================================
+   =========================================================
+   VISUEL TELEGRAM
+   =========================================================
+   ========================================================= */
+
+/*
+ * Le nouveau background contient déjà le téléphone.
+ * On désactive donc l'ancien visuel pour éviter
+ * d'avoir deux téléphones superposés.
+ */
+
+.stats-telegram-section__telegram-visual {
+
+    display:
+        none;
+}
+
+
+/* =========================================================
+   ANCIENS TÉLÉPHONES
+   ========================================================= */
+
+/*
+ * Sécurité : même si les éléments existent encore
+ * dans le HTML, ils ne seront plus affichés.
+ */
+
+.stats-telegram-section__telegram-phone {
+
+    display:
+        none;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .stats-telegram-section__telegram {
+
+        min-height:
+            105px;
+
+        padding:
+            13px 15px;
+
+        background-position:
+            65% center;
+    }
+}
+
+
+@media (max-width: 750px) {
+
+    .stats-telegram-section__telegram {
+
+        min-height:
+            115px;
+
+        padding:
+            14px;
+
+        background-position:
+            68% center;
+    }
+
+    .stats-telegram-section__telegram-text {
+
+        max-width:
+            220px;
+    }
+}
+
+
+/* =========================================================
+   =========================================================
+   RESPONSIVE
+   =========================================================
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .stats-telegram-section__container {
+
+        grid-template-columns:
+            minmax(0, 1.4fr)
+            minmax(0, 1fr);
+    }
+
+
+    .stats-telegram-section__testimonial {
+
+        display:
+            none;
+    }
+}
+
+
+@media (max-width: 750px) {
+
+    .stats-telegram-section {
+
+        padding:
+            32px 0;
+    }
+
+
+    .stats-telegram-section__container {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            12px;
+    }
+
+
+    .stats-telegram-section__testimonial {
+
+        display:
+            flex;
+
+        min-height:
+            150px;
+    }
+
+
+    .stats-telegram-section__grid {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .stats-telegram-section__telegram {
+
+        min-height:
+            145px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .stats-telegram-section__stats {
+
+        padding:
+            13px;
+    }
+
+
+    .stats-telegram-section__grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .stats-telegram-section__stat {
+
+        min-height:
+            58px;
+    }
+
+
+    .stats-telegram-section__telegram-visual {
+
+        display:
+            none;
+    }
+}
+
+/* =========================================================
+   NTS BETTING — CTA PRONOSTICS
+   ========================================================= */
+
+.pronostics-cta {
+
+    position:
+        relative;
+
+    width:
+        100vw;
+
+    min-height:
+        260px;
+
+    margin-left:
+        calc(
+            (100% - 100vw) / 2
+        );
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        24px;
+
+    background-image:
+        url("/images/offers/offers-cta.png");
+
+    background-repeat:
+        no-repeat;
+
+    background-size:
+        cover;
+
+    background-position:
+        center center;
+
+    border:
+        0;
+
+    border-radius:
+        0;
+
+    overflow:
+        hidden;
+}
+
+
+/* =========================================================
+   LUMIÈRE / ASSOMBRISSEMENT
+   ========================================================= */
+
+.pronostics-cta::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    pointer-events:
+        none;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(
+                2,
+                12,
+                23,
+                0.16
+            ),
+            rgba(
+                2,
+                12,
+                23,
+                0.02
+            ) 48%,
+            rgba(
+                2,
+                12,
+                23,
+                0.08
+            ) 78%,
+            rgba(
+                2,
+                12,
+                23,
+                0.14
+            )
+        );
+
+    z-index:
+        0;
+}
+
+
+/* =========================================================
+   OVERLAY
+   ========================================================= */
+
+.pronostics-cta__overlay {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        var(--hero-background-overlay-gradient);
+
+    z-index:
+        1;
+
+    pointer-events:
+        none;
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.pronostics-cta__container {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    width:
+        min(
+            100%,
+            1500px
+        );
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        90px;
+
+    margin:
+        0 auto;
+
+    padding:
+        0 30px;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.pronostics-cta__content {
+
+    max-width:
+        700px;
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.pronostics-cta__title {
+
+    margin:
+        0 0 5px;
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        25px;
+
+    font-weight:
+        750;
+
+    line-height:
+        1.12;
+
+    letter-spacing:
+        -0.025em;
+
+    color:
+        #ffffff;
+}
+
+
+/* =========================================================
+   TEXTE
+   ========================================================= */
+
+.pronostics-cta__text {
+
+    margin:
+        0;
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
+    font-size:
+        15px;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.5;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.82
+        );
+}
+
+
+/* =========================================================
+   BOUTON
+   ========================================================= */
+
+.pronostics-cta__button {
+
+    flex-shrink:
+        0;
+
+    min-width:
+        180px;
+
+    height:
+        46px;
+
+    padding:
+        0 22px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        12px;
+
+    border-radius:
+        6px;
+
+    background:
+        #e5b900;
+
+    color:
+        #071321;
+
+    font-family:
+        'Montserrat',
+        sans-serif;
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+
+    text-decoration:
+        none;
+
+    box-shadow:
+        0 8px 24px
+        rgba(
+            229,
+            185,
+            0,
+            0.18
+        );
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   ICÔNE
+   ========================================================= */
+
+.pronostics-cta__button i {
+
+    font-size:
+        12px;
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.pronostics-cta__button:hover {
+
+    background:
+        #f0c514;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(
+            229,
+            185,
+            0,
+            0.28
+        );
+}
+
+
+.pronostics-cta__button:hover i {
+
+    transform:
+        translateX(4px);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .pronostics-cta__container {
+
+        flex-direction:
+            column;
+
+        gap:
+            25px;
+
+        text-align:
+            center;
+    }
+
+    .pronostics-cta__content {
+
+        max-width:
+            600px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .pronostics-cta {
+
+        min-height:
+            280px;
+
+        padding:
+            30px 20px;
+    }
+
+    .pronostics-cta__title {
+
+        font-size:
+            22px;
+    }
+
+    .pronostics-cta__text {
+
+        font-size:
+            14px;
+    }
+
+    .pronostics-cta__button {
+
+        min-width:
+            180px;
+    }
+}

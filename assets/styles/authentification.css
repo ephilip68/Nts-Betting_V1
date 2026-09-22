@@ -1,0 +1,3780 @@
+/* =========================================================
+   AUTH — LOGIN NTS BETTING
+   ========================================================= */
+
+
+/* =========================================================
+   BODY LOGIN
+   ========================================================= */
+
+body.page-login {
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   NAVBAR — PAGE LOGIN
+   ========================================================= */
+
+.page-login .site-header,
+.page-login .site-header.is-scrolled {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 70px;
+
+    z-index: 1000;
+
+    background: var(--navbar-bg-scroll);
+
+    border-bottom:
+        1px solid var(--navbar-border-scroll);
+
+    box-shadow:
+        var(--navbar-shadow-scroll);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    transform: none;
+}
+
+
+/* =========================================================
+   NAVBAR — CONTAINER
+   ========================================================= */
+
+.page-login .navbar-container {
+    height: 70px;
+    min-height: 70px;
+}
+
+
+/* =========================================================
+   NAVBAR — LOGO
+   ========================================================= */
+
+.page-login .navbar-logo,
+.page-login .site-header.is-scrolled .navbar-logo {
+    width: 66px;
+
+    top: 10px;
+}
+
+.page-login .navbar-logo-image,
+.page-login .site-header.is-scrolled .navbar-logo-image {
+    width: 66px;
+}
+
+
+/* =========================================================
+   NAVBAR — NAVIGATION
+   ========================================================= */
+
+.page-login .navbar-navigation,
+.page-login .site-header.is-scrolled .navbar-navigation {
+    top: 0;
+
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   NAVBAR — LIENS
+   ========================================================= */
+
+.page-login .navbar-link,
+.page-login .site-header.is-scrolled .navbar-link {
+    height: 70px;
+
+    min-height: 70px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   NAVBAR — ACTIONS
+   ========================================================= */
+
+.page-login .navbar-actions,
+.page-login .site-header.is-scrolled .navbar-actions {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    height: 70px;
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.55rem;
+
+    box-sizing: border-box;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   NAVBAR — BOUTONS
+   ========================================================= */
+
+.page-login .navbar-search,
+.page-login .navbar-login,
+.page-login .navbar-register,
+.page-login .site-header.is-scrolled .navbar-search,
+.page-login .site-header.is-scrolled .navbar-login,
+.page-login .site-header.is-scrolled .navbar-register {
+    height: 36px;
+
+    min-height: 36px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   NAVBAR — RECHERCHE
+   ========================================================= */
+
+.page-login .navbar-search,
+.page-login .site-header.is-scrolled .navbar-search {
+    width: 36px;
+}
+
+
+/* =========================================================
+   PAGE LOGIN — ZONE PRINCIPALE
+   ========================================================= */
+
+body.page-login .auth-page {
+    position: relative;
+
+    flex: 1 1 auto;
+
+    width: 100%;
+
+    min-height: 0;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    padding:
+        85px
+        20px
+        25px;
+
+    overflow: hidden;
+
+    background: #030d16;
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.auth-page__background {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(3, 14, 24, .18) 0%,
+            rgba(3, 14, 24, .04) 45%,
+            rgba(3, 14, 24, .18) 100%
+        ),
+        url("/images/auth/bg-login 3.png");
+
+    background-size: cover;
+    background-position: center 68%;
+    background-repeat: no-repeat;
+}
+
+.auth-page__background::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(3, 14, 24, .20) 0%,
+            rgba(3, 14, 24, .04) 40%,
+            rgba(3, 14, 24, .48) 100%
+        );
+}
+
+
+/* =========================================================
+   LOGIN CARD
+   ========================================================= */
+
+.auth-card {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+    max-width: 370px;
+
+    min-height: 485px;
+
+    padding:
+        27px
+        24px
+        22px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(3, 18, 30, .97),
+            rgba(2, 13, 23, .96)
+        );
+
+    border:
+        1px solid rgba(65, 90, 119, .62);
+
+    border-radius: 6px;
+
+    box-shadow:
+        0 20px 55px rgba(0, 0, 0, .52),
+        0 0 35px rgba(0, 15, 30, .30);
+
+    backdrop-filter: blur(10px);
+}
+
+
+/* =========================================================
+   BRAND / HEADER
+   ========================================================= */
+
+.auth-card__brand {
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+.auth-card__crown {
+    width: 34px;
+    height: 34px;
+
+    margin:
+        0
+        auto
+        6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #DDB219;
+
+    font-size: 17px;
+}
+
+.auth-card__brand h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-family: var(--font-body);
+
+    font-size: .95rem;
+    font-weight: 800;
+
+    letter-spacing: .01em;
+}
+
+.auth-card__brand p {
+    margin:
+        6px
+        0
+        0;
+
+    color:
+        rgba(255, 255, 255, .58);
+
+    font-family: var(--font-body);
+
+    font-size: .60rem;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.auth-card__error {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 10px;
+
+    padding:
+        8px
+        9px;
+
+    color: #ff8b8b;
+
+    background:
+        rgba(255, 70, 70, .07);
+
+    border:
+        1px solid rgba(255, 70, 70, .22);
+
+    border-radius: 4px;
+
+    font-size: .58rem;
+}
+
+.auth-card__error i {
+    flex: 0 0 auto;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.auth-form {
+    width: 100%;
+}
+
+.auth-form__field {
+    margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.auth-form__input {
+    position: relative;
+
+    width: 100%;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+
+    box-sizing: border-box;
+
+    background:
+        rgba(3, 17, 29, .86);
+
+    border:
+        1px solid rgba(65, 90, 119, .48);
+
+    border-radius: 3px;
+
+    transition: .2s ease;
+}
+
+.auth-form__input:focus-within {
+    border-color:
+        rgba(221, 178, 25, .58);
+
+    box-shadow:
+        0 0 0 1px rgba(221, 178, 25, .08);
+}
+
+.auth-form__input > i {
+    width: 36px;
+
+    flex: 0 0 36px;
+
+    display: flex;
+    justify-content: center;
+
+    color:
+        rgba(255, 255, 255, .50);
+
+    font-size: 10px;
+}
+
+.auth-form__input input {
+    min-width: 0;
+
+    width: 100%;
+    height: 100%;
+
+    padding:
+        0
+        7px
+        0
+        0;
+
+    box-sizing: border-box;
+
+    color:
+        rgba(255, 255, 255, .88);
+
+    background: transparent;
+
+    border: 0;
+    outline: 0;
+
+    font-family: var(--font-body);
+
+    font-size: .64rem;
+}
+
+.auth-form__input input::placeholder {
+    color:
+        rgba(255, 255, 255, .38);
+}
+
+
+/* =========================================================
+   PASSWORD TOGGLE
+   ========================================================= */
+
+.auth-form__password-toggle {
+    width: 32px;
+    height: 100%;
+
+    flex: 0 0 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    color:
+        rgba(255, 255, 255, .42);
+
+    background: transparent;
+
+    border: 0;
+
+    cursor: pointer;
+
+    transition:
+        color .2s ease;
+}
+
+.auth-form__password-toggle:hover {
+    color: #DDB219;
+}
+
+
+/* =========================================================
+   OPTIONS
+   ========================================================= */
+
+.auth-form__options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin:
+        4px
+        1px
+        13px;
+}
+
+.auth-form__remember {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    color:
+        rgba(255, 255, 255, .52);
+
+    font-size: .53rem;
+
+    cursor: pointer;
+}
+
+.auth-form__remember input {
+    width: 10px;
+    height: 10px;
+
+    margin: 0;
+
+    accent-color: #DDB219;
+
+    cursor: pointer;
+}
+
+.auth-form__forgot {
+    color:
+        rgba(255, 255, 255, .55);
+
+    font-size: .53rem;
+
+    text-decoration: none;
+
+    transition:
+        color .2s ease;
+}
+
+.auth-form__forgot:hover {
+    color: #DDB219;
+}
+
+
+/* =========================================================
+   SUBMIT
+   ========================================================= */
+
+.auth-form__submit {
+    width: 100%;
+    height: 39px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    border: 0;
+
+    border-radius: 3px;
+
+    color: #07101a;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f0c52b 0%,
+            #DDB219 100%
+        );
+
+    box-shadow:
+        0 5px 15px rgba(221, 178, 25, .15);
+
+    font-family: var(--font-body);
+
+    font-size: .64rem;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.auth-form__submit:hover {
+    background:
+        linear-gradient(
+            180deg,
+            #f5cf3e 0%,
+            #c7a016 100%
+        );
+
+    transform:
+        translateY(-1px);
+}
+
+.auth-form__submit i {
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   SEPARATOR
+   ========================================================= */
+
+.auth-card__separator {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin:
+        17px
+        0
+        12px;
+
+    color:
+        rgba(255, 255, 255, .34);
+
+    font-size: .53rem;
+}
+
+.auth-card__separator::before,
+.auth-card__separator::after {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+
+    width: 37%;
+
+    height: 1px;
+
+    background:
+        rgba(65, 90, 119, .28);
+}
+
+.auth-card__separator::before {
+    left: 0;
+}
+
+.auth-card__separator::after {
+    right: 0;
+}
+
+.auth-card__separator span {
+    position: relative;
+
+    z-index: 1;
+
+    padding:
+        0
+        8px;
+
+    background:
+        rgba(3, 18, 30, .96);
+}
+
+
+/* =========================================================
+   GOOGLE / APPLE
+   ========================================================= */
+
+.auth-social {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.auth-social__button {
+    width: 100%;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    color:
+        rgba(255, 255, 255, .76);
+
+    background:
+        rgba(5, 21, 34, .76);
+
+    border:
+        1px solid rgba(65, 90, 119, .42);
+
+    border-radius: 3px;
+
+    font-family: var(--font-body);
+
+    font-size: .58rem;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.auth-social__button:hover {
+    border-color:
+        rgba(221, 178, 25, .40);
+
+    background:
+        rgba(221, 178, 25, .05);
+}
+
+.auth-social__icon {
+    width: 12px;
+    height: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.auth-social__icon--google {
+    color: #4285F4;
+}
+
+.auth-social__icon--apple {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   REGISTER
+   ========================================================= */
+
+.auth-card__register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 4px;
+
+    margin-top: 15px;
+
+    color:
+        rgba(255, 255, 255, .43);
+
+    font-size: .53rem;
+}
+
+.auth-card__register a {
+    color: #DDB219;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition:
+        color .2s ease;
+}
+
+.auth-card__register a:hover {
+    color: #f0c52b;
+}
+
+
+/* =========================================================
+   FOOTER — LOGIN
+   ========================================================= */
+
+body.page-login footer {
+    flex:
+        0 0 auto;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLETTE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .page-login .site-header,
+    .page-login .site-header.is-scrolled {
+        height: 64px;
+    }
+
+    .page-login .navbar-container {
+        height: 64px;
+        min-height: 64px;
+    }
+
+    .page-login .navbar-logo,
+    .page-login .site-header.is-scrolled .navbar-logo {
+        width: 78px;
+
+        height: 64px;
+
+        align-items: center;
+        justify-content: center;
+
+        transform: none;
+    }
+
+    .page-login .navbar-logo-image,
+    .page-login .site-header.is-scrolled .navbar-logo-image {
+        width: 66px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    body.page-login .auth-page {
+        min-height: 0;
+        height: auto;
+
+        padding:
+            78px
+            15px
+            20px;
+    }
+
+    .auth-page__background {
+        background-position:
+            35%
+            center;
+    }
+
+    .auth-card {
+        max-width: 360px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    body.page-login {
+        overflow: hidden;
+    }
+
+    body.page-login .auth-page {
+        min-height: 0;
+        height: auto;
+
+        padding:
+            74px
+            12px
+            15px;
+    }
+
+    .auth-card {
+        max-width: 350px;
+
+        min-height: 0;
+
+        padding:
+            20px
+            18px
+            18px;
+    }
+
+    .auth-card__brand {
+        margin-bottom: 16px;
+    }
+
+    .auth-card__brand h1 {
+        font-size: .88rem;
+    }
+
+    .auth-card__brand p {
+        font-size: .55rem;
+    }
+
+    .auth-form__input {
+        height: 35px;
+    }
+
+    .auth-form__submit {
+        height: 36px;
+    }
+
+    .auth-social__button {
+        height: 33px;
+    }
+}
+
+/* =========================================================
+   NAVBAR — PAGE REGISTER
+   IDENTIQUE AU LOGIN
+   ========================================================= */
+
+/* =========================================================
+BODY REGISTER
+IDENTIQUE AU LOGIN
+========================================================= */
+
+body.page-register {
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+.page-register .site-header,
+.page-register .site-header.is-scrolled {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 70px;
+
+    z-index: 1000;
+
+    background: var(--navbar-bg-scroll);
+
+    border-bottom:
+        1px solid var(--navbar-border-scroll);
+
+    box-shadow:
+        var(--navbar-shadow-scroll);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    transform: none;
+}
+
+
+/* =========================================================
+   NAVBAR — CONTAINER
+   ========================================================= */
+
+.page-register .navbar-container {
+    height: 70px;
+    min-height: 70px;
+}
+
+
+/* =========================================================
+   NAVBAR — LOGO
+   ========================================================= */
+
+.page-register .navbar-logo,
+.page-register .site-header.is-scrolled .navbar-logo {
+    width: 66px;
+
+    top: 10px;
+}
+
+.page-register .navbar-logo-image,
+.page-register .site-header.is-scrolled .navbar-logo-image {
+    width: 66px;
+}
+
+
+/* =========================================================
+   NAVBAR — NAVIGATION
+   ========================================================= */
+
+.page-register .navbar-navigation,
+.page-register .site-header.is-scrolled .navbar-navigation {
+    top: 0;
+
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   NAVBAR — LIENS
+   ========================================================= */
+
+.page-register .navbar-link,
+.page-register .site-header.is-scrolled .navbar-link {
+    height: 70px;
+
+    min-height: 70px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   NAVBAR — ACTIONS
+   ========================================================= */
+
+.page-register .navbar-actions,
+.page-register .site-header.is-scrolled .navbar-actions {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    height: 70px;
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.55rem;
+
+    box-sizing: border-box;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   NAVBAR — BOUTONS
+   ========================================================= */
+
+.page-register .navbar-search,
+.page-register .navbar-login,
+.page-register .navbar-register,
+.page-register .site-header.is-scrolled .navbar-search,
+.page-register .site-header.is-scrolled .navbar-login,
+.page-register .site-header.is-scrolled .navbar-register {
+    height: 36px;
+
+    min-height: 36px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   NAVBAR — RECHERCHE
+   ========================================================= */
+
+.page-register .navbar-search,
+.page-register .site-header.is-scrolled .navbar-search {
+    width: 36px;
+}
+
+/* =========================================================
+   PAGE REGISTER — ZONE PRINCIPALE
+   IDENTIQUE AU LOGIN
+   ========================================================= */
+
+body.page-register .auth-page {
+    position: relative;
+
+    flex: 1 1 auto;
+
+    width: 100%;
+
+    min-height: 0;
+    height: auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    padding:
+        85px
+        20px
+        25px;
+
+    overflow: hidden;
+
+    background: #030d16;
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+body.page-register .auth-page__background {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(3, 14, 24, .12) 0%,
+            rgba(3, 14, 24, .02) 50%,
+            rgba(3, 14, 24, .12) 100%
+        ),
+        url("/images/auth/bg-register.png");
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+body.page-register .auth-page__background::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(3, 14, 24, .10) 0%,
+            rgba(3, 14, 24, .00) 45%,
+            rgba(3, 14, 24, .48) 100%
+        );
+}
+
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+
+.register-layout {
+    position: relative;
+
+    z-index: 5;
+
+    width: 100%;
+    height: 100%;
+
+    min-height: 0;
+
+    display: block;
+}
+
+/* =========================================================
+   TEXTE — TOUT À GAUCHE
+   ========================================================= */
+
+.register-presentation {
+    position: absolute;
+
+    left: 7%;
+    top: 50%;
+
+    width: 390px;
+
+    padding: 0;
+    margin: 0;
+
+    transform: translateY(-50%);
+}
+
+
+/* TITRE */
+
+.register-presentation h1 {
+    margin: 0 0 34px;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 2rem;
+    line-height: 1.08;
+
+    font-weight: 800;
+
+    letter-spacing: -.04em;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 3px 15px rgba(0, 0, 0, .75);
+}
+
+.register-presentation h1 strong {
+    color: #DDB219;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.register-benefits {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.register-benefits li {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: .88rem;
+
+    line-height: 1.2;
+
+    font-weight: 500;
+
+    text-shadow:
+        0 2px 8px rgba(0, 0, 0, .8);
+}
+
+
+/* CERCLES */
+
+.register-benefit-icon {
+    width: 24px;
+    height: 24px;
+
+    min-width: 24px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #DDB219;
+
+    border-radius: 50%;
+
+    color: #DDB219;
+
+    font-size: .68rem;
+
+    box-sizing: border-box;
+}
+
+.register-benefit-icon i {
+    line-height: 1;
+}
+
+
+/* =========================================================
+   CARD — CENTRE EXACT
+   ========================================================= */
+
+.register-card {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 370px;
+    max-width: 370px;
+
+    padding: 22px 24px 18px;
+
+    box-sizing: border-box;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 10;
+
+    border: 1px solid rgba(65, 90, 119, .65);
+
+    border-radius: 6px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7, 22, 35, .96),
+            rgba(3, 14, 24, .95)
+        );
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, .55),
+        inset 0 1px 0 rgba(255, 255, 255, .04);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+
+/* =========================================================
+   LOGO / TITRE CARD
+   ========================================================= */
+
+.register-card .auth-card__brand {
+    text-align: center;
+
+    margin-bottom: 16px;
+}
+
+.register-logo {
+    display: block;
+
+    width: 46px;
+    height: 46px;
+
+    object-fit: contain;
+
+    margin: 0 auto 7px;
+}
+
+.register-card .auth-card__brand h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: .88rem;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+.register-card .auth-card__brand p {
+    margin: 5px 0 0;
+
+    color: rgba(255, 255, 255, .62);
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: .54rem;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.register-form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.register-field {
+    width: 100%;
+}
+
+.register-input-wrapper {
+    position: relative;
+
+    width: 100%;
+}
+
+.register-input-wrapper > i:first-child {
+    position: absolute;
+
+    left: 11px;
+    top: 50%;
+
+    z-index: 2;
+
+    transform: translateY(-50%);
+
+    color: rgba(255, 255, 255, .62);
+
+    font-size: .68rem;
+
+    pointer-events: none;
+}
+
+.register-input-wrapper .auth-form__input {
+    width: 100%;
+    height: 33px;
+
+    padding: 0 34px 0 31px;
+
+    box-sizing: border-box;
+
+    border: 1px solid rgba(65, 90, 119, .65);
+
+    border-radius: 4px;
+
+    outline: none;
+
+    background: rgba(8, 27, 42, .78);
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: .58rem;
+}
+
+.register-input-wrapper .auth-form__input::placeholder {
+    color: rgba(255, 255, 255, .48);
+}
+
+.register-input-wrapper .auth-form__input:focus {
+    border-color: #DDB219;
+
+    box-shadow:
+        0 0 0 2px rgba(221, 178, 25, .08);
+}
+
+.register-password-toggle {
+    position: absolute;
+
+    right: 10px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: rgba(255, 255, 255, .55);
+
+    font-size: .62rem;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   CONDITIONS
+   ========================================================= */
+
+.register-terms {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 7px;
+
+    margin-top: 2px;
+}
+
+.register-checkbox {
+    width: 12px;
+    height: 12px;
+
+    flex: 0 0 12px;
+
+    margin-top: 1px;
+
+    accent-color: #DDB219;
+}
+
+.register-terms label {
+    color: rgba(255, 255, 255, .58);
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: .49rem;
+
+    line-height: 1.35;
+}
+
+.register-terms a {
+    color: #DDB219;
+
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   BOUTON
+   ========================================================= */
+
+.register-submit {
+    width: 100%;
+    height: 33px;
+
+    margin-top: 3px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    border: 0;
+
+    border-radius: 4px;
+
+    background: #DDB219;
+
+    color: #0E1036;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: .58rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.register-submit:hover {
+    background: #c7a016;
+}
+
+.register-submit i {
+    font-size: .55rem;
+}
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.auth-divider {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin: 10px 0 8px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: rgba(255, 255, 255, .10);
+}
+
+.auth-divider span {
+    color: rgba(255, 255, 255, .38);
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: .46rem;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   GOOGLE / APPLE
+   ========================================================= */
+
+.register-socials {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 7px;
+}
+
+.register-social {
+    height: 29px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    border: 1px solid rgba(65, 90, 119, .55);
+
+    border-radius: 4px;
+
+    background: rgba(255, 255, 255, .035);
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: .50rem;
+}
+
+.register-social i {
+    font-size: .68rem;
+}
+
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+.register-login-link {
+    margin: 10px 0 0;
+
+    text-align: center;
+
+    color: rgba(255, 255, 255, .55);
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: .49rem;
+}
+
+.register-login-link a {
+    margin-left: 4px;
+
+    color: #DDB219;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+body.page-register footer {
+    position: relative;
+
+    z-index: 20;
+
+    flex: 0 0 auto;
+}
+
+
+/* =========================================================
+   ÉCRANS PLUS PETITS
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .register-presentation {
+        left: 4%;
+        width: 340px;
+    }
+
+    .register-presentation h1 {
+        font-size: 1.7rem;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .register-presentation {
+        left: 3%;
+        width: 280px;
+    }
+
+    .register-presentation h1 {
+        font-size: 1.35rem;
+    }
+
+    .register-benefits li {
+        font-size: .72rem;
+    }
+
+    .register-benefit-icon {
+        width: 21px;
+        height: 21px;
+        min-width: 21px;
+    }
+
+    .register-card {
+        width: 350px;
+        max-width: 350px;
+    }
+}
+
+/* =========================================================
+   MOT DE PASSE OUBLIÉ
+   ========================================================= */
+
+body.page-forgot-password {
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* NAVBAR */
+
+.page-forgot-password .site-header,
+.page-forgot-password .site-header.is-scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    z-index: 1000;
+    background: var(--navbar-bg-scroll);
+    border-bottom: 1px solid var(--navbar-border-scroll);
+    box-shadow: var(--navbar-shadow-scroll);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transform: none;
+}
+
+.page-forgot-password .navbar-container {
+    height: 70px;
+    min-height: 70px;
+}
+
+.page-forgot-password .navbar-logo,
+.page-forgot-password .site-header.is-scrolled .navbar-logo {
+    width: 66px;
+    top: 10px;
+}
+
+.page-forgot-password .navbar-logo-image,
+.page-forgot-password .site-header.is-scrolled .navbar-logo-image {
+    width: 66px;
+}
+
+.page-forgot-password .navbar-navigation,
+.page-forgot-password .site-header.is-scrolled .navbar-navigation {
+    top: 0;
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.page-forgot-password .navbar-link,
+.page-forgot-password .site-header.is-scrolled .navbar-link {
+    height: 70px;
+    min-height: 70px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-forgot-password .navbar-actions,
+.page-forgot-password .site-header.is-scrolled .navbar-actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 70px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .55rem;
+    box-sizing: border-box;
+    transform: none;
+}
+
+.page-forgot-password .navbar-search,
+.page-forgot-password .navbar-login,
+.page-forgot-password .navbar-register,
+.page-forgot-password .site-header.is-scrolled .navbar-search,
+.page-forgot-password .site-header.is-scrolled .navbar-login,
+.page-forgot-password .site-header.is-scrolled .navbar-register {
+    height: 36px;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    line-height: 1;
+}
+
+.page-forgot-password .navbar-search,
+.page-forgot-password .site-header.is-scrolled .navbar-search {
+    width: 36px;
+}
+
+
+/* =========================================================
+   ZONE PRINCIPALE
+   ========================================================= */
+
+body.page-forgot-password .auth-page {
+    position: relative;
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 85px 20px 25px;
+    overflow: hidden;
+    background: #030d16;
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.page-forgot-password .auth-page__background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(3, 14, 24, .25) 0%,
+            rgba(3, 14, 24, .05) 55%,
+            rgba(3, 14, 24, .30) 100%
+        ),
+        url("/images/auth/bg-reset-password.png");
+
+    background-size: cover;
+    background-position: center 60%;
+    background-repeat: no-repeat;
+}
+
+.page-forgot-password .auth-page__background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(3, 14, 24, .28) 0%,
+            rgba(3, 14, 24, .08) 45%,
+            rgba(3, 14, 24, .72) 100%
+        );
+}
+
+
+/* =========================================================
+   CARTE
+   ========================================================= */
+
+.forgot-password-card {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 370px;
+
+    padding: 24px 28px 22px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(3, 20, 34, .94),
+            rgba(2, 13, 23, .91)
+        );
+
+    border: 1px solid rgba(65, 90, 119, .45);
+    border-radius: 6px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, .45),
+        inset 0 1px 0 rgba(255, 255, 255, .025);
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   COURONNE
+   ========================================================= */
+
+.forgot-password-icon {
+    width: 42px;
+    height: 30px;
+    margin: 0 auto 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #DDB219;
+    font-size: 25px;
+
+    filter: drop-shadow(0 2px 4px rgba(221, 178, 25, .25));
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.forgot-password-card h1 {
+    margin: 0 0 10px;
+
+    color: #ffffff;
+
+    font-family: "Playfair Display", serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: .03em;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.forgot-password-description {
+    margin: 0 auto 20px;
+
+    max-width: 285px;
+
+    color: rgba(229, 231, 235, .72);
+
+    font-family: "Montserrat", sans-serif;
+    font-size: .62rem;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   FORMULAIRE
+   ========================================================= */
+
+.forgot-password-form {
+    width: 100%;
+}
+
+.forgot-password-field {
+    text-align: left;
+    margin-bottom: 12px;
+}
+
+.forgot-password-field label {
+    display: none;
+}
+
+.forgot-password-field input {
+    width: 100%;
+    height: 38px;
+
+    box-sizing: border-box;
+
+    padding: 0 12px;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: .68rem;
+
+    background: rgba(2, 15, 26, .78);
+
+    border: 1px solid rgba(65, 90, 119, .7);
+    border-radius: 4px;
+
+    outline: none;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.forgot-password-field input::placeholder {
+    color: rgba(229, 231, 235, .48);
+}
+
+.forgot-password-field input:focus {
+    border-color: #DDB219;
+
+    box-shadow:
+        0 0 0 2px rgba(221, 178, 25, .08);
+}
+
+
+/* =========================================================
+   ERREURS
+   ========================================================= */
+
+.forgot-password-field ul {
+    list-style: none;
+    margin: 5px 0 0;
+    padding: 0;
+
+    color: #ef7777;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: .62rem;
+}
+
+
+/* =========================================================
+   BOUTON
+   ========================================================= */
+
+.forgot-password-submit {
+    width: 100%;
+    height: 38px;
+
+    border: 0;
+    border-radius: 4px;
+
+    background: #DDB219;
+    color: #07111b;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: .68rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+.forgot-password-submit:hover {
+    background: #c7a016;
+}
+
+.forgot-password-submit span {
+    font-size: .95rem;
+}
+
+
+/* =========================================================
+   RETOUR CONNEXION
+   ========================================================= */
+
+.forgot-password-back {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    color: #DDB219;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: .58rem;
+
+    text-decoration: none;
+
+    transition: color .2s ease;
+}
+
+.forgot-password-back:hover {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+body.page-forgot-password footer {
+    flex: 0 0 auto;
+}
+
+/* =========================================================
+   FEATURES — MOT DE PASSE OUBLIÉ
+   ========================================================= */
+
+.forgot-password-features {
+    position: absolute;
+    z-index: 2;
+
+    left: 7%;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 360px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 31px;
+}
+
+.forgot-password-feature {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.forgot-password-feature__icon {
+    width: 44px;
+    min-width: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #DDB219;
+
+    font-size: 34px;
+    line-height: 1;
+}
+
+.forgot-password-feature__text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.35;
+}
+
+.forgot-password-feature__text strong {
+    color: #ffffff;
+    font-size: .88rem;
+    font-weight: 600;
+}
+
+.forgot-password-feature__text span {
+    color: rgba(229, 231, 235, .80);
+    font-size: .74rem;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .forgot-password-features {
+        left: 4%;
+        width: 320px;
+    }
+
+    .forgot-password-feature__icon {
+        font-size: 31px;
+    }
+
+    .forgot-password-feature__text strong {
+        font-size: .80rem;
+    }
+
+    .forgot-password-feature__text span {
+        font-size: .68rem;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .forgot-password-card {
+        max-width: 350px;
+        padding: 22px 24px 20px;
+    }
+
+    .forgot-password-features {
+        display: none;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .page-forgot-password .navbar-navigation {
+        display: none;
+    }
+
+    .forgot-password-card {
+        max-width: 340px;
+    }
+
+}
+
+/* =========================================================
+   RESET PASSWORD
+   ========================================================= */
+
+body.page-reset-password {
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.page-reset-password .site-header,
+.page-reset-password .site-header.is-scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 70px;
+
+    z-index: 1000;
+
+    background: var(--navbar-bg-scroll);
+    border-bottom: 1px solid var(--navbar-border-scroll);
+    box-shadow: var(--navbar-shadow-scroll);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    transform: none;
+}
+
+.page-reset-password .navbar-container {
+    height: 70px;
+    min-height: 70px;
+}
+
+.page-reset-password .navbar-logo,
+.page-reset-password .site-header.is-scrolled .navbar-logo {
+    width: 66px;
+    top: 10px;
+}
+
+.page-reset-password .navbar-logo-image,
+.page-reset-password .site-header.is-scrolled .navbar-logo-image {
+    width: 66px;
+}
+
+.page-reset-password .navbar-navigation,
+.page-reset-password .site-header.is-scrolled .navbar-navigation {
+    top: 0;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+}
+
+.page-reset-password .navbar-link,
+.page-reset-password .site-header.is-scrolled .navbar-link {
+    height: 70px;
+    min-height: 70px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-reset-password .navbar-actions,
+.page-reset-password .site-header.is-scrolled .navbar-actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    height: 70px;
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: .55rem;
+
+    box-sizing: border-box;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+body.page-reset-password .auth-page {
+    position: relative;
+
+    flex: 1 1 auto;
+
+    width: 100%;
+    min-height: 0;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    padding: 85px 20px 25px;
+
+    overflow: hidden;
+
+    background: #020b14;
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.reset-password-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(2, 11, 20, .18) 0%,
+            rgba(2, 11, 20, .02) 55%,
+            rgba(2, 11, 20, .20) 100%
+        ),
+        url("/images/auth/bg-reset.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.reset-password-background::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(2, 11, 20, .18) 0%,
+            rgba(2, 11, 20, .02) 48%,
+            rgba(2, 11, 20, .45) 100%
+        );
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.reset-password-features {
+    position: absolute;
+
+    z-index: 2;
+
+    left: 7%;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 470px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 42px;
+}
+
+.reset-password-feature {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 28px;
+}
+
+.reset-password-feature__icon {
+    width: 52px;
+    min-width: 52px;
+
+    display: flex;
+    justify-content: center;
+
+    color: #DDB219;
+
+    font-size: 42px;
+
+    line-height: 1;
+}
+
+.reset-password-feature__content {
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 1.05rem;
+
+    line-height: 1.5;
+}
+
+.reset-password-feature__content strong {
+    font-size: 1.10rem;
+
+    font-weight: 700;
+
+    color: #ffffff;
+}
+
+.reset-password-feature__content > span {
+    color: rgba(229, 231, 235, .82);
+
+    font-size: .95rem;
+}
+
+
+/* =========================================================
+   RÈGLES
+   ========================================================= */
+
+.reset-password-rule {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    color: rgba(255, 255, 255, .86);
+
+    font-size: 1.10rem;
+
+    line-height: 1.65;
+}
+
+.reset-password-rule i {
+    color: #19c978;
+
+    font-size: 25px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   CARTE
+   ========================================================= */
+
+.reset-password-card {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+    max-width: 370px;
+
+    padding: 22px 25px 19px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(3, 20, 34, .95),
+            rgba(2, 13, 23, .93)
+        );
+
+    border: 1px solid rgba(65, 90, 119, .50);
+
+    border-radius: 6px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, .48),
+        inset 0 1px 0 rgba(255, 255, 255, .025);
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   COURONNE
+   ========================================================= */
+
+.reset-password-icon {
+    width: 42px;
+    height: 30px;
+
+    margin: 0 auto 4px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #DDB219;
+
+    font-size: 25px;
+
+    filter:
+        drop-shadow(
+            0 2px 4px rgba(221, 178, 25, .25)
+        );
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.reset-password-card h1 {
+    margin: 0 0 8px;
+
+    color: #ffffff;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 1.15rem;
+    font-weight: 700;
+
+    letter-spacing: .02em;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.reset-password-description {
+    max-width: 270px;
+
+    margin: 0 auto 18px;
+
+    color: rgba(229, 231, 235, .68);
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: .60rem;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.reset-password-form {
+    width: 100%;
+}
+
+.reset-password-field {
+    position: relative;
+
+    margin-bottom: 10px;
+}
+
+.reset-password-field input {
+    width: 100%;
+    height: 38px;
+
+    box-sizing: border-box;
+
+    padding: 0 38px 0 38px;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: .65rem;
+
+    background: rgba(2, 15, 26, .82);
+
+    border: 1px solid rgba(65, 90, 119, .72);
+
+    border-radius: 4px;
+
+    outline: none;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.reset-password-field input::placeholder {
+    color: rgba(229, 231, 235, .50);
+}
+
+.reset-password-field input:focus {
+    border-color: #DDB219;
+
+    box-shadow:
+        0 0 0 2px rgba(221, 178, 25, .08);
+}
+
+
+/* =========================================================
+   ERREURS
+   ========================================================= */
+
+.reset-password-form ul {
+    list-style: none;
+
+    margin: 5px 0 8px;
+    padding: 0;
+
+    color: #ef7777;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: .60rem;
+}
+
+
+/* =========================================================
+   BOUTON
+   ========================================================= */
+
+.reset-password-submit {
+    width: 100%;
+    height: 38px;
+
+    margin-top: 3px;
+
+    border: 0;
+    border-radius: 4px;
+
+    background: #DDB219;
+
+    color: #07111b;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: .65rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+.reset-password-submit:hover {
+    background: #c7a016;
+}
+
+.reset-password-submit span {
+    font-size: .90rem;
+}
+
+
+/* =========================================================
+   RETOUR
+   ========================================================= */
+
+.reset-password-back {
+    display: inline-block;
+
+    margin-top: 13px;
+
+    color: #DDB219;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: .57rem;
+
+    text-decoration: none;
+}
+
+.reset-password-back:hover {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+body.page-reset-password footer {
+    flex: 0 0 auto;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .reset-password-features {
+        left: 4%;
+        width: 280px;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    .reset-password-features {
+        display: none;
+    }
+
+    .reset-password-card {
+        max-width: 350px;
+    }
+
+}
+
+/* =========================================================
+   NAVBAR — PAGE CHECK EMAIL
+   Même rendu que la page LOGIN
+   ========================================================= */
+
+.page-check-email .site-header,
+.page-check-email .site-header.is-scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    z-index: 1000;
+    background: var(--navbar-bg-scroll);
+    border-bottom: 1px solid var(--navbar-border-scroll);
+    box-shadow: var(--navbar-shadow-scroll);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transform: none;
+}
+
+.page-check-email .navbar-container {
+    height: 70px;
+    min-height: 70px;
+}
+
+.page-check-email .navbar-logo,
+.page-check-email .site-header.is-scrolled .navbar-logo {
+    width: 66px;
+    top: 10px;
+}
+
+.page-check-email .navbar-logo-image,
+.page-check-email .site-header.is-scrolled .navbar-logo-image {
+    width: 66px;
+}
+
+.page-check-email .navbar-navigation,
+.page-check-email .site-header.is-scrolled .navbar-navigation {
+    top: 0;
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.page-check-email .navbar-link,
+.page-check-email .site-header.is-scrolled .navbar-link {
+    height: 70px;
+    min-height: 70px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-check-email .navbar-actions,
+.page-check-email .site-header.is-scrolled .navbar-actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 70px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .55rem;
+    box-sizing: border-box;
+    transform: none;
+}
+
+.page-check-email .navbar-search,
+.page-check-email .navbar-login,
+.page-check-email .navbar-register,
+.page-check-email .site-header.is-scrolled .navbar-search,
+.page-check-email .site-header.is-scrolled .navbar-login,
+.page-check-email .site-header.is-scrolled .navbar-register {
+    height: 36px;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    line-height: 1;
+}
+
+.page-check-email .navbar-search,
+.page-check-email .site-header.is-scrolled .navbar-search {
+    width: 36px;
+}
+
+/* =========================================================
+   CHECK EMAIL
+   ========================================================= */
+
+body.page-check-email {
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+body.page-check-email .auth-page {
+    position: relative;
+
+    flex: 1 1 auto;
+
+    width: 100%;
+    min-height: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    padding: 85px 20px 25px;
+
+    overflow: hidden;
+
+    background: #020b14;
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.check-email-background {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(2, 11, 20, .20) 0%,
+            rgba(2, 11, 20, .03) 55%,
+            rgba(2, 11, 20, .22) 100%
+        ),
+        url("/images/auth/bg-reset-password.png");
+
+    background-size: cover;
+    background-position: center 60%;
+    background-repeat: no-repeat;
+}
+
+.check-email-background::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(2, 11, 20, .20) 0%,
+            rgba(2, 11, 20, .04) 45%,
+            rgba(2, 11, 20, .55) 100%
+        );
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.check-email-features {
+    position: absolute;
+
+    z-index: 2;
+
+    left: 7%;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 470px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 38px;
+}
+
+.check-email-feature {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 25px;
+}
+
+.check-email-feature__icon {
+    width: 48px;
+    min-width: 48px;
+
+    display: flex;
+    justify-content: center;
+
+    color: #DDB219;
+
+    font-size: 38px;
+
+    line-height: 1;
+}
+
+.check-email-feature__content {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+
+    color: #ffffff;
+
+    font-family: "Montserrat", sans-serif;
+
+    line-height: 1.5;
+}
+
+.check-email-feature__content strong {
+    color: #ffffff;
+
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.check-email-feature__content span {
+    color: rgba(229, 231, 235, .80);
+
+    font-size: .82rem;
+}
+
+
+/* =========================================================
+   CARTE
+   ========================================================= */
+
+.check-email-card {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+    max-width: 390px;
+
+    padding: 30px 32px 27px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(3, 20, 34, .95),
+            rgba(2, 13, 23, .93)
+        );
+
+    border: 1px solid rgba(65, 90, 119, .50);
+
+    border-radius: 6px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, .48),
+        inset 0 1px 0 rgba(255, 255, 255, .025);
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   ICÔNE
+   ========================================================= */
+
+.check-email-icon {
+    margin-bottom: 12px;
+
+    color: #DDB219;
+
+    font-size: 43px;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.check-email-card h1 {
+    margin: 0 0 12px;
+
+    color: #ffffff;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 1.25rem;
+    font-weight: 700;
+
+    letter-spacing: .02em;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.check-email-description {
+    max-width: 310px;
+
+    margin: 0 auto 20px;
+
+    color: rgba(229, 231, 235, .72);
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: .68rem;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   NOTICE
+   ========================================================= */
+
+.check-email-notice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    margin: 0 auto;
+
+    padding: 11px 14px;
+
+    color: rgba(229, 231, 235, .78);
+
+    background: rgba(221, 178, 25, .06);
+
+    border: 1px solid rgba(221, 178, 25, .18);
+
+    border-radius: 4px;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: .63rem;
+
+    line-height: 1.4;
+}
+
+.check-email-notice i {
+    color: #DDB219;
+
+    font-size: 14px;
+}
+
+.check-email-notice strong {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   RETOUR
+   ========================================================= */
+
+.check-email-back {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    color: #DDB219;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: .62rem;
+
+    text-decoration: none;
+
+    transition: color .2s ease;
+}
+
+.check-email-back:hover {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+body.page-check-email footer {
+    flex: 0 0 auto;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .check-email-features {
+        left: 4%;
+        width: 330px;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    .check-email-features {
+        display: none;
+    }
+
+    .check-email-card {
+        max-width: 360px;
+    }
+
+}
+
+/* =========================================================
+   NAVBAR — PAGE VÉRIFICATION E-MAIL
+   Identique à la navbar Login / Register
+   ========================================================= */
+
+.page-verify-email .site-header,
+.page-verify-email .site-header.is-scrolled {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 70px;
+
+    z-index: 1000;
+
+    background: var(--navbar-bg-scroll);
+
+    border-bottom: 1px solid var(--navbar-border-scroll);
+
+    box-shadow: var(--navbar-shadow-scroll);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    transform: none;
+}
+
+
+/* CONTAINER */
+
+.page-verify-email .navbar-container,
+.page-verify-email .site-header.is-scrolled .navbar-container {
+    height: 70px;
+    min-height: 70px;
+}
+
+
+/* LOGO */
+
+.page-verify-email .navbar-logo,
+.page-verify-email .site-header.is-scrolled .navbar-logo {
+    width: 66px;
+    top: 10px;
+}
+
+.page-verify-email .navbar-logo-image,
+.page-verify-email .site-header.is-scrolled .navbar-logo-image {
+    width: 66px;
+}
+
+
+/* NAVIGATION */
+
+.page-verify-email .navbar-navigation,
+.page-verify-email .site-header.is-scrolled .navbar-navigation {
+    top: 0;
+
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* LIENS */
+
+.page-verify-email .navbar-link,
+.page-verify-email .site-header.is-scrolled .navbar-link {
+    height: 70px;
+    min-height: 70px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ACTIONS */
+
+.page-verify-email .navbar-actions,
+.page-verify-email .site-header.is-scrolled .navbar-actions {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    height: 70px;
+
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: .55rem;
+
+    box-sizing: border-box;
+
+    transform: none;
+}
+
+
+/* BOUTONS */
+
+.page-verify-email .navbar-search,
+.page-verify-email .navbar-login,
+.page-verify-email .navbar-register,
+.page-verify-email .site-header.is-scrolled .navbar-search,
+.page-verify-email .site-header.is-scrolled .navbar-login,
+.page-verify-email .site-header.is-scrolled .navbar-register {
+    height: 36px;
+    min-height: 36px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    line-height: 1;
+}
+
+
+/* RECHERCHE */
+
+.page-verify-email .navbar-search,
+.page-verify-email .site-header.is-scrolled .navbar-search {
+    width: 36px;
+}
+
+
+/* =========================================================
+   PAGE — ESPACE SOUS LA NAVBAR
+   ========================================================= */
+
+body.page-verify-email .verify-email-page {
+    padding-top: 85px;
+}
+
+/* =========================================================
+   EMAIL VERIFICATION
+   ========================================================= */
+
+body.page-verify-email {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.verify-email-page {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 90px 20px 35px;
+    overflow: hidden;
+    background: #020b14;
+}
+
+.verify-email-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(2, 11, 20, .22) 0%,
+            rgba(2, 11, 20, .05) 50%,
+            rgba(2, 11, 20, .22) 100%
+        ),
+        url("/images/auth/bg-email-verified.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.verify-email-background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(2, 11, 20, .18) 0%,
+            rgba(2, 11, 20, .05) 45%,
+            rgba(2, 11, 20, .58) 100%
+        );
+}
+
+
+/* CARD */
+
+.verify-email-card {
+    position: relative;
+    z-index: 3;
+
+    width: 100%;
+    max-width: 390px;
+
+    padding: 26px 32px 28px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(3, 20, 34, .96),
+            rgba(2, 13, 23, .94)
+        );
+
+    border: 1px solid rgba(65, 90, 119, .50);
+    border-radius: 6px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.48),
+        inset 0 1px 0 rgba(255,255,255,.025);
+
+    text-align: center;
+}
+
+
+/* STATES */
+
+.verification-state {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+        opacity .45s ease,
+        transform .45s ease;
+}
+
+.verification-state[hidden] {
+    display: none;
+}
+
+.verification-state-hide {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.verification-state-show {
+    animation: verificationShow .55s ease forwards;
+}
+
+@keyframes verificationShow {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* CROWN */
+
+.verify-email-crown {
+    margin-bottom: 12px;
+
+    color: #DDB219;
+    font-size: 29px;
+    line-height: 1;
+}
+
+
+/* ICON */
+
+.verify-email-main-icon,
+.verify-email-success-icon {
+    position: relative;
+
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid rgba(255,255,255,.90);
+    border-radius: 9px;
+
+    color: #fff;
+    font-size: 27px;
+}
+
+.verify-email-success-icon {
+    border-color: #fff;
+}
+
+.verify-email-success-icon > span {
+    position: absolute;
+
+    right: -8px;
+    bottom: -7px;
+
+    width: 23px;
+    height: 23px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #1fc77a;
+
+    border: 2px solid #061522;
+    border-radius: 50%;
+
+    color: #fff;
+    font-size: 11px;
+}
+
+
+/* TITRE */
+
+.verify-email-card h1 {
+    margin: 0 0 12px;
+
+    color: #fff;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 1.22rem;
+    font-weight: 700;
+
+    letter-spacing: .02em;
+}
+
+
+/* TEXTE */
+
+.verify-email-card p {
+    max-width: 310px;
+
+    margin: 0 auto 20px;
+
+    color: rgba(229,231,235,.72);
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: .68rem;
+    line-height: 1.7;
+}
+
+
+/* ATTENTE */
+
+.verify-email-waiting {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    margin: 0 auto 16px;
+
+    padding: 10px 14px;
+
+    color: rgba(229,231,235,.82);
+
+    background: rgba(221,178,25,.06);
+
+    border: 1px solid rgba(221,178,25,.18);
+    border-radius: 4px;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: .64rem;
+}
+
+.verify-email-spinner {
+    width: 13px;
+    height: 13px;
+
+    border: 2px solid rgba(221,178,25,.25);
+    border-top-color: #DDB219;
+
+    border-radius: 50%;
+
+    animation: verifySpinner .8s linear infinite;
+}
+
+@keyframes verifySpinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* INFO */
+
+.verify-email-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+
+    color: rgba(229,231,235,.55);
+
+    font-family: "Montserrat", sans-serif;
+    font-size: .58rem;
+    line-height: 1.6;
+}
+
+.verify-email-info i {
+    margin-top: 2px;
+
+    color: #DDB219;
+}
+
+
+/* BOUTON */
+
+.verify-email-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    min-width: 210px;
+
+    margin-top: 5px;
+    padding: 11px 18px;
+
+    background: #DDB219;
+
+    color: #07121d;
+
+    border-radius: 4px;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: .66rem;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+.verify-email-button:hover {
+    background: #c7a016;
+    transform: translateY(-1px);
+}
+
+.verify-email-button span {
+    font-size: 1rem;
+}
+
+/* =========================================================
+   CARD AVANTAGES — VERSION FINALE
+   ========================================================= */
+
+.verification-benefits {
+    position: absolute;
+    z-index: 4;
+
+    top: 50%;
+    right: 6%;
+
+    transform: translateY(-50%);
+
+    width: 285px;
+
+    padding: 22px 24px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(3, 20, 34, .96),
+            rgba(2, 13, 23, .94)
+        );
+
+    border: 1px solid rgba(65, 90, 119, .60);
+    border-radius: 6px;
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, .42),
+        inset 0 1px 0 rgba(255, 255, 255, .025);
+
+    opacity: 1;
+
+    transition:
+        opacity .45s ease,
+        transform .45s ease;
+}
+
+
+/* CARD CACHÉE */
+
+.verification-benefits[hidden] {
+    display: none;
+}
+
+
+/* ANIMATION D'APPARITION */
+
+.verification-benefits.verification-state-show {
+    animation: verificationBenefitsShow .55s ease forwards;
+}
+
+@keyframes verificationBenefitsShow {
+
+    from {
+        opacity: 0;
+        transform: translate(20px, -50%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0, -50%);
+    }
+
+}
+
+
+/* =========================================================
+   LIGNES
+   ========================================================= */
+
+.verification-benefit {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    min-height: 30px;
+
+    color: rgba(255, 255, 255, .92);
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: .78rem;
+    font-weight: 500;
+
+    line-height: 1.4;
+}
+
+
+/* ESPACEMENT */
+
+.verification-benefit + .verification-benefit {
+    margin-top: 8px;
+}
+
+
+/* =========================================================
+   CHECK VERT
+   ========================================================= */
+
+.verification-benefit__check {
+    width: 17px;
+    height: 17px;
+
+    min-width: 17px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #20c77a;
+
+    border-radius: 50%;
+
+    color: #03151f;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    box-shadow:
+        0 0 9px rgba(32, 199, 122, .20);
+}
+
+
+/* =========================================================
+   TEXTE
+   ========================================================= */
+
+.verification-benefit > span:last-child {
+    white-space: nowrap;
+}

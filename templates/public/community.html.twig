@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Communauté — NTS Betting{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    <main class="community-page">
+
+        {# FILTRES#}
+        {% include 'components/community/_filters.html.twig' %}
+
+        {# LAYOUT #}
+        {% include 'components/community/_layout.html.twig' %}
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

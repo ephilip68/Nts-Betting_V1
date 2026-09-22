@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mot de passe oublié — NTS Betting{% endblock %}
+
+{% block body_class %}page-forgot-password{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    <main class="auth-page forgot-password-page">
+
+        <div class="auth-page__background"></div>
+
+        {# FEATURES À GAUCHE #}
+        <div class="forgot-password-features">
+
+            <div class="forgot-password-feature">
+                <div class="forgot-password-feature__icon">
+                    <i class="fa-regular fa-envelope"></i>
+                </div>
+
+                <div class="forgot-password-feature__text">
+                    <strong>Réception rapide</strong>
+                    <span>du lien par e-mail</span>
+                </div>
+            </div>
+
+            <div class="forgot-password-feature">
+                <div class="forgot-password-feature__icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <div class="forgot-password-feature__text">
+                    <strong>Lien sécurisé</strong>
+                    <span>et temporaire</span>
+                </div>
+            </div>
+
+            <div class="forgot-password-feature">
+                <div class="forgot-password-feature__icon">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+
+                <div class="forgot-password-feature__text">
+                    <strong>Votre compte reste</strong>
+                    <span>complètement protégé</span>
+                </div>
+            </div>
+
+        </div>
+
+        {# CARTE MOT DE PASSE OUBLIÉ #}
+        <div class="forgot-password-card">
+
+            <div class="forgot-password-icon">
+                👑
+            </div>
+
+            <h1>MOT DE PASSE OUBLIÉ ?</h1>
+
+            <p class="forgot-password-description">
+                Entrez votre adresse e-mail et nous vous
+                enverrons un lien de réinitialisation.
+            </p>
+
+            {{ form_start(requestForm, {
+                attr: {
+                    class: 'forgot-password-form'
+                }
+            }) }}
+
+                <div class="forgot-password-field">
+                    {{ form_label(requestForm.email, 'Adresse e-mail') }}
+
+                    {{ form_widget(requestForm.email, {
+                        attr: {
+                            placeholder: 'Adresse e-mail',
+                            autocomplete: 'email'
+                        }
+                    }) }}
+
+                    {{ form_errors(requestForm.email) }}
+                </div>
+
+                <button type="submit" class="forgot-password-submit">
+                    Envoyer le lien
+                    <span>→</span>
+                </button>
+
+            {{ form_end(requestForm) }}
+
+            <a href="{{ path('app_login') }}" class="forgot-password-back">
+                Retour à la connexion
+            </a>
+
+        </div>
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

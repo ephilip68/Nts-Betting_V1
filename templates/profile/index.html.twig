@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil — NTS Betting{% endblock %}
+
+{% block body_class %}page-profile{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    <main class="profile-page">
+
+        <div class="profile-container">
+
+            <h1>Mon profil</h1>
+
+            <p>
+                Bienvenue {{ app.user.nickname }} 👋
+            </p>
+
+            <div>
+                <strong>Email :</strong>
+                {{ app.user.email }}
+            </div>
+
+            <div>
+                <strong>Points :</strong>
+                {{ app.user.points }}
+            </div>
+
+        </div>
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}
