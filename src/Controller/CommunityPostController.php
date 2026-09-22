@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\CommunityPost;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,14 +16,16 @@ final class CommunityPostController extends AbstractController
     #[Route('/community/post/create', name: 'app_community_post_create', methods: ['POST'])]
     public function create(
         Request $request,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        #[CurrentUser] ?User $user
     ): Response {
-        $user = $entityManager
-            ->getRepository(\App\Entity\User::class)
-            ->find(1);
-
+        // La route est protégée par access_control (ROLE_USER), mais on
+        // vérifie quand même explicitement pour éviter tout post "orphelin".
         if (!$user) {
-            throw $this->createNotFoundException('Utilisateur de test introuvable.');
+            return $this->json([
+                'success' => false,
+                'message' => 'Vous devez être connecté pour publier.',
+            ], 401);
         }
 
         $post = new CommunityPost();

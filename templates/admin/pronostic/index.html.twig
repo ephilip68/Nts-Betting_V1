@@ -1,0 +1,55 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Pronostics — Admin{% endblock %}
+
+{% block body %}
+
+    <div style="display:flex; align-items:center; justify-content:space-between;">
+        <h1>Pronostics</h1>
+        <a href="{{ path('admin_pronostic_new') }}" class="btn">+ Nouveau pronostic</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Match</th>
+                <th>Date</th>
+                <th>Pari</th>
+                <th>Cote</th>
+                <th>Accès</th>
+                <th>Résultat</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pronostic in pronostics %}
+                <tr>
+                    <td>{{ pronostic.teamHome }} vs {{ pronostic.teamAway }}{% if pronostic.featured %} ⭐{% endif %}</td>
+                    <td>{{ pronostic.matchDate|date('d/m/Y H:i') }}</td>
+                    <td>{{ pronostic.betType }} — {{ pronostic.betValue }}</td>
+                    <td>{{ pronostic.odds }}</td>
+                    <td>
+                        {% if pronostic.vip %}
+                            <span class="badge badge-vip">VIP</span>
+                        {% else %}
+                            <span class="badge badge-free">Gratuit</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <span class="badge badge-{{ pronostic.status }}">{{ pronostic.status }}</span>
+                    </td>
+                    <td style="white-space:nowrap;">
+                        <a href="{{ path('admin_pronostic_edit', {id: pronostic.id}) }}" class="btn btn-secondary" style="padding:6px 12px; font-size:13px;">Modifier</a>
+                        <form action="{{ path('admin_pronostic_delete', {id: pronostic.id}) }}" method="post" style="display:inline;" onsubmit="return confirm('Supprimer ce pronostic ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete-pronostic-' ~ pronostic.id) }}">
+                            <button type="submit" class="btn btn-danger" style="padding:6px 12px; font-size:13px;">Suppr.</button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr><td colspan="7">Aucun pronostic pour le moment.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

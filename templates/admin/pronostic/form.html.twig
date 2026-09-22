@@ -1,0 +1,33 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ pronostic.id ? 'Modifier' : 'Nouveau' }} pronostic — Admin{% endblock %}
+
+{% block body %}
+
+    <h1>{{ pronostic.id ? 'Modifier le pronostic' : 'Nouveau pronostic' }}</h1>
+
+    {{ form_start(form, {attr: {class: 'admin-form'}}) }}
+        {{ form_row(form.sport) }}
+        {{ form_row(form.competition) }}
+        {{ form_row(form.teamHome) }}
+        {{ form_row(form.teamAway) }}
+        {{ form_row(form.teamHomeLogo) }}
+        {{ form_row(form.teamAwayLogo) }}
+        {{ form_row(form.matchDate) }}
+        {{ form_row(form.betType) }}
+        {{ form_row(form.betValue) }}
+        {{ form_row(form.odds) }}
+        {{ form_row(form.confidence) }}
+        {{ form_row(form.analysis) }}
+        {{ form_row(form.status) }}
+
+        <div class="checkbox-row">{{ form_widget(form.isVip) }} {{ form_label(form.isVip) }}</div>
+        <div class="checkbox-row">{{ form_widget(form.isFeatured) }} {{ form_label(form.isFeatured) }}</div>
+
+        <div class="actions-row">
+            <button type="submit" class="btn">Enregistrer</button>
+            <a href="{{ path('admin_pronostic_index') }}" class="btn btn-secondary">Annuler</a>
+        </div>
+    {{ form_end(form) }}
+
+{% endblock %}

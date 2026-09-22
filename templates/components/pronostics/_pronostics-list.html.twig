@@ -8,7 +8,7 @@
             <div class="pronostics-section__header">
 
                 <h2 class="pronostics-section__title">
-                    Pronostics (32)
+                    Pronostics ({{ totalPronostics }})
                 </h2>
 
                 <div class="pronostics-section__sort">
@@ -25,117 +25,143 @@
 
             <div class="pronostics-list">
 
-                <!-- chaque pronostic -->
+                {% for pronostic in pronostics %}
 
-                <div class="pronostics-list__item">
+                    {# Un pronostic VIP est verrouillé pour les non-abonnés #}
+                    {% set isLocked = pronostic.vip and not isVip %}
 
-                    <!-- MATCH -->
-                    <div class="pronostics-list__match">
+                    <div class="pronostics-list__item{{ isLocked ? ' pronostics-list__item--locked' : '' }}">
 
-                        <div class="pronostics-list__sport-icon">
-                            <i class="fa-solid fa-futbol"></i>
-                        </div>
+                        <!-- MATCH -->
+                        <div class="pronostics-list__match">
 
-                        <div class="pronostics-list__match-info">
+                            <div class="pronostics-list__sport-icon">
+                                <i class="fa-solid fa-{{ pronostic.sport == 'basketball' ? 'basketball' : (pronostic.sport == 'tennis' ? 'table-tennis-paddle-ball' : 'futbol') }}"></i>
+                            </div>
 
-                            <span class="pronostics-list__competition">
-                                FR Ligue des Champions
-                            </span>
+                            <div class="pronostics-list__match-info">
 
-                            <div class="pronostics-list__teams">
-                                <span>Real Madrid</span>
-
-                                <span class="pronostics-list__vs">
-                                    VS
+                                <span class="pronostics-list__competition">
+                                    {{ pronostic.competition }}
                                 </span>
 
-                                <span>AC Milan</span>
+                                <div class="pronostics-list__teams">
+                                    <span>{{ pronostic.teamHome }}</span>
+
+                                    <span class="pronostics-list__vs">
+                                        VS
+                                    </span>
+
+                                    <span>{{ pronostic.teamAway }}</span>
+                                </div>
+
                             </div>
 
                         </div>
 
-                    </div>
+
+                        <!-- PRONOSTIC -->
+                        <div class="pronostics-list__bet">
+
+                            <span class="pronostics-list__bet-type">
+                                {{ pronostic.betType }}
+                            </span>
+
+                            <span class="pronostics-list__bet-value">
+                                {% if isLocked %}
+                                    <i class="fa-solid fa-lock"></i> Réservé VIP
+                                {% else %}
+                                    {{ pronostic.betValue }}
+                                {% endif %}
+                            </span>
+
+                        </div>
+
+                        <!-- COTE -->
+                        <div class="pronostics-list__odds">
+
+                            <span class="pronostics-list__meta-label">
+                                Cote
+                            </span>
+
+                            <strong class="pronostics-list__odds-value">
+                                {{ isLocked ? '—' : pronostic.odds }}
+                            </strong>
+
+                        </div>
 
 
-                    <!-- PRONOSTIC -->
-                    <div class="pronostics-list__bet">
+                        <!-- CONFIANCE -->
+                        <div class="pronostics-list__confidence">
 
-                        <span class="pronostics-list__bet-type">
-                            1X2
-                        </span>
+                            <span class="pronostics-list__meta-label">
+                                Confiance
+                            </span>
 
-                        <span class="pronostics-list__bet-value">
-                            Real Madrid
-                        </span>
+                            <div class="pronostics-list__confidence-dots">
 
-                    </div>
+                                {% for dot in 1..5 %}
+                                    <span class="{{ dot <= pronostic.confidence ? 'is-active' : '' }}"></span>
+                                {% endfor %}
 
-                    <!-- COTE -->
-                    <div class="pronostics-list__odds">
+                            </div>
 
-                        <span class="pronostics-list__meta-label">
-                            Cote
-                        </span>
-
-                        <strong class="pronostics-list__odds-value">
-                            1.65
-                        </strong>
-
-                    </div>
+                        </div>
 
 
-                    <!-- CONFIANCE -->
-                    <div class="pronostics-list__confidence">
+                        <!-- ACTION -->
+                        <div class="pronostics-list__action">
 
-                        <span class="pronostics-list__meta-label">
-                            Confiance
-                        </span>
-
-                        <div class="pronostics-list__confidence-dots">
-
-                            <span class="is-active"></span>
-                            <span class="is-active"></span>
-                            <span class="is-active"></span>
-                            <span class="is-active"></span>
-                            <span></span>
+                            {% if isLocked %}
+                                <a href="{{ path('app_offers') }}" class="pronostics-list__button">
+                                    <i class="fa-solid fa-crown"></i> VIP
+                                </a>
+                            {% else %}
+                                <button class="pronostics-list__button">
+                                    Voir
+                                </button>
+                            {% endif %}
 
                         </div>
 
                     </div>
 
+                {% else %}
 
-                    <!-- ACTION -->
-                    <div class="pronostics-list__action">
+                    <p class="pronostics-list__empty">
+                        Aucun pronostic ne correspond à ces filtres pour le moment.
+                    </p>
 
-                        <button class="pronostics-list__button">
-                            Voir
-                        </button>
+                {% endfor %}
 
-                    </div>
+            </div>
+
+
+            {% if pageCount > 1 %}
+
+                <div class="pronostics-pagination">
+
+                    <button {{ page <= 1 ? 'disabled' : '' }}>
+                        <a href="{{ path('app_pronostics', {sport: currentSport, access: currentAccess, page: max(page - 1, 1)}) }}">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </a>
+                    </button>
+
+                    {% for p in 1..pageCount %}
+                        <a href="{{ path('app_pronostics', {sport: currentSport, access: currentAccess, page: p}) }}">
+                            <button class="{{ p == page ? 'is-active' : '' }}">{{ p }}</button>
+                        </a>
+                    {% endfor %}
+
+                    <button {{ page >= pageCount ? 'disabled' : '' }}>
+                        <a href="{{ path('app_pronostics', {sport: currentSport, access: currentAccess, page: min(page + 1, pageCount)}) }}">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+                    </button>
 
                 </div>
 
-            </div>
-
-
-            <div class="pronostics-pagination">
-
-                <button>
-                    <i class="fa-solid fa-chevron-left"></i>
-                </button>
-
-                <button class="is-active">1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>...</button>
-                <button>8</button>
-
-                <button>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </button>
-
-            </div>
+            {% endif %}
 
         </div>
 
@@ -143,262 +169,254 @@
         <!-- COLONNE DROITE -->
         <aside class="pronostics-sidebar">
 
-            <!-- PRONOSTIC DU JOUR -->
+            {% if featured %}
 
-            <article class="pronostics-card">
+                <!-- PRONOSTIC DU JOUR -->
 
-                {# HEADER #}
+                <article class="pronostics-card">
 
-                <div class="pronostics-card__header">
+                    {# HEADER #}
 
-                    <div class="pronostics-card__title">
+                    <div class="pronostics-card__header">
 
-                        <i class="fa-solid fa-star"></i>
+                        <div class="pronostics-card__title">
 
-                        <span>
-                            Pronostic du jour
+                            <i class="fa-solid fa-star"></i>
+
+                            <span>
+                                Pronostic du jour
+                            </span>
+
+                        </div>
+
+                        <span class="pronostics-card__badge">
+                            Gratuit
                         </span>
 
                     </div>
 
-                    <span class="pronostics-card__badge">
-                        Gratuit
-                    </span>
 
-                </div>
+                    {# CORPS #}
 
+                    <div class="pronostics-card__body">
 
-                {# CORPS #}
+                        {# COMPÉTITION + DATE #}
 
-                <div class="pronostics-card__body">
+                        <div class="pronostics-card__match-info">
 
-                    {# COMPÉTITION + DATE #}
+                            <div class="pronostics-card__competition">
 
-                    <div class="pronostics-card__match-info">
+                                <i class="fa-solid fa-futbol"></i>
 
-                        <div class="pronostics-card__competition">
+                                <span>
+                                    {{ featured.competition }}
+                                </span>
 
-                            <i class="fa-solid fa-futbol"></i>
+                            </div>
 
-                            <span>
-                                Ligue des Champions
-                            </span>
-
-                        </div>
-
-                        <div class="pronostics-card__date">
-                            12 Novembre 2024 · 21:00
-                        </div>
-
-                    </div>
-
-
-                    {# ÉQUIPES #}
-
-                    <div class="pronostics-card__teams">
-
-                        <div class="pronostics-card__team">
-
-                            <img
-                                src="/images/resultats/teams/real-madrid.png"
-                                alt="Real Madrid"
-                            >
-
-                            <span>
-                                Real Madrid
-                            </span>
+                            <div class="pronostics-card__date">
+                                {{ featured.matchDate|date('d F Y · H:i') }}
+                            </div>
 
                         </div>
 
 
-                        <div class="pronostics-card__vs">
-                            VS
-                        </div>
+                        {# ÉQUIPES #}
+
+                        <div class="pronostics-card__teams">
+
+                            <div class="pronostics-card__team">
+
+                                <img
+                                    src="{{ featured.teamHomeLogo ?: '/images/resultats/teams/default.png' }}"
+                                    alt="{{ featured.teamHome }}"
+                                >
+
+                                <span>
+                                    {{ featured.teamHome }}
+                                </span>
+
+                            </div>
 
 
-                        <div class="pronostics-card__team">
-
-                            <img
-                                src="/images/resultats/teams/milan.png"
-                                alt="AC Milan"
-                            >
-
-                            <span>
-                                AC Milan
-                            </span>
-
-                        </div>
-
-                    </div>
+                            <div class="pronostics-card__vs">
+                                VS
+                            </div>
 
 
-                    {# INFORMATIONS #}
+                            <div class="pronostics-card__team">
 
-                    <div class="pronostics-card__stats">
+                                <img
+                                    src="{{ featured.teamAwayLogo ?: '/images/resultats/teams/default.png' }}"
+                                    alt="{{ featured.teamAway }}"
+                                >
 
-                        {# PRONOSTIC #}
-
-                        <div class="pronostics-card__stat">
-
-                            <span class="pronostics-card__stat-label">
-                                <i class="fa-solid fa-star"></i>
-                                Pronostic
-                            </span>
-
-                            <strong class="pronostics-card__stat-value">
-                                1X2 : Real Madrid
-                            </strong>
-
-                        </div>
-
-
-                        {# COTE #}
-
-                        <div class="pronostics-card__stat">
-
-                            <span class="pronostics-card__stat-label">
-                                Cote
-                            </span>
-
-                            <strong class="pronostics-card__stat-value">
-                                1.65
-                            </strong>
-
-                        </div>
-
-
-                        {# CONFIANCE #}
-
-                        <div class="pronostics-card__stat pronostics-card__stat--confidence">
-
-                            <span class="pronostics-card__stat-label">
-                                Niveau de confiance
-                            </span>
-
-                            <div class="pronostics-card__confidence">
-
-                                <span class="is-active"></span>
-                                <span class="is-active"></span>
-                                <span class="is-active"></span>
-                                <span class="is-active"></span>
-                                <span></span>
+                                <span>
+                                    {{ featured.teamAway }}
+                                </span>
 
                             </div>
 
                         </div>
 
+
+                        {# INFORMATIONS #}
+
+                        <div class="pronostics-card__stats">
+
+                            {# PRONOSTIC #}
+
+                            <div class="pronostics-card__stat">
+
+                                <span class="pronostics-card__stat-label">
+                                    <i class="fa-solid fa-star"></i>
+                                    Pronostic
+                                </span>
+
+                                <strong class="pronostics-card__stat-value">
+                                    {{ featured.betType }} : {{ featured.betValue }}
+                                </strong>
+
+                            </div>
+
+
+                            {# COTE #}
+
+                            <div class="pronostics-card__stat">
+
+                                <span class="pronostics-card__stat-label">
+                                    Cote
+                                </span>
+
+                                <strong class="pronostics-card__stat-value">
+                                    {{ featured.odds }}
+                                </strong>
+
+                            </div>
+
+
+                            {# CONFIANCE #}
+
+                            <div class="pronostics-card__stat pronostics-card__stat--confidence">
+
+                                <span class="pronostics-card__stat-label">
+                                    Niveau de confiance
+                                </span>
+
+                                <div class="pronostics-card__confidence">
+
+                                    {% for dot in 1..5 %}
+                                        <span class="{{ dot <= featured.confidence ? 'is-active' : '' }}"></span>
+                                    {% endfor %}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        {# ANALYSE #}
+
+                        {% if featured.analysis %}
+
+                            <div class="pronostics-card__analysis-block">
+
+                                <h3 class="pronostics-card__analysis-title">
+                                    Notre analyse
+                                </h3>
+
+                                <p class="pronostics-card__analysis">
+                                    {{ featured.analysis }}
+                                </p>
+
+                            </div>
+
+                        {% endif %}
+
                     </div>
 
+                </article>
 
-                    {# ANALYSE #}
+            {% endif %}
 
-                    <div class="pronostics-card__analysis-block">
 
-                        <h3 class="pronostics-card__analysis-title">
-                            Notre analyse
+            {% if not isVip %}
+
+                <!-- VIP -->
+
+                <article class="pronostics-card pronostics-card--vip">
+
+                    <!-- EN-TÊTE VIP -->
+                    <div class="pronostics-card--vip__head">
+
+                        <div class="pronostics-card--vip__icon">
+                            <i class="fa-solid fa-crown"></i>
+                        </div>
+
+                        <h3 class="pronostics-card--vip__title">
+                            Accès réservé aux membres VIP
                         </h3>
 
-                        <p class="pronostics-card__analysis">
-
-                            Le Real Madrid reste sur une série de victoires
-                            consécutives à domicile en Ligue des Champions.
-                            Face à un Milan en difficulté défensive, la valeur
-                            est du côté des Madrilènes.
-
+                        <p class="pronostics-card--vip__text">
+                            {% if nextVip %}
+                                Un prochain pronostic VIP ({{ nextVip.competition }}) est disponible uniquement pour nos membres VIP.
+                            {% else %}
+                                Cette analyse détaillée est disponible uniquement pour nos membres VIP.
+                            {% endif %}
                         </p>
 
                     </div>
 
 
-                    {# CTA #}
+                    <!-- FEATURES -->
+                    <div class="pronostics-card--vip__content">
 
-                    <a
-                        href="#"
-                        class="pronostics-card__link"
-                    >
+                        <ul class="pronostics-card--vip__features">
 
-                        <span>
-                            Voir l'analyse complète
-                        </span>
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>Analyse complète du match</span>
+                            </li>
 
-                        <i class="fa-solid fa-arrow-right"></i>
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>Statistiques avancées</span>
+                            </li>
 
-                    </a>
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>Conseil de mise (bankroll)</span>
+                            </li>
 
-                </div>
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>Scénarios alternatifs</span>
+                            </li>
 
-            </article>
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>Notre avis d'expert</span>
+                            </li>
 
+                        </ul>
 
-            <!-- VIP -->
-
-            <article class="pronostics-card pronostics-card--vip">
-
-                <!-- EN-TÊTE VIP -->
-                <div class="pronostics-card--vip__head">
-
-                    <div class="pronostics-card--vip__icon">
-                        <i class="fa-solid fa-crown"></i>
                     </div>
 
-                    <h3 class="pronostics-card--vip__title">
-                        Accès réservé aux membres VIP
-                    </h3>
 
-                    <p class="pronostics-card--vip__text">
-                        Cette analyse détaillée est disponible uniquement
-                        pour nos membres VIP.
-                    </p>
+                    <!-- CTA -->
+                    <div class="pronostics-card--vip__footer">
 
-                </div>
+                        <a href="{{ path('app_offers') }}" class="pronostics-card--vip__button">
+                            <span>Découvrir nos offres VIP</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
 
+                    </div>
 
-                <!-- FEATURES -->
-                <div class="pronostics-card--vip__content">
+                </article>
 
-                    <ul class="pronostics-card--vip__features">
-
-                        <li>
-                            <i class="fa-solid fa-circle-check"></i>
-                            <span>Analyse complète du match</span>
-                        </li>
-
-                        <li>
-                            <i class="fa-solid fa-circle-check"></i>
-                            <span>Statistiques avancées</span>
-                        </li>
-
-                        <li>
-                            <i class="fa-solid fa-circle-check"></i>
-                            <span>Conseil de mise (bankroll)</span>
-                        </li>
-
-                        <li>
-                            <i class="fa-solid fa-circle-check"></i>
-                            <span>Scénarios alternatifs</span>
-                        </li>
-
-                        <li>
-                            <i class="fa-solid fa-circle-check"></i>
-                            <span>Notre avis d'expert</span>
-                        </li>
-
-                    </ul>
-
-                </div>
-
-
-                <!-- CTA -->
-                <div class="pronostics-card--vip__footer">
-
-                    <button class="pronostics-card--vip__button">
-                        <span>Découvrir nos offres VIP</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-
-                </div>
-
-            </article>
+            {% endif %}
 
         </aside>
 

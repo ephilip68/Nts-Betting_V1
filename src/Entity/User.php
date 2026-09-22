@@ -172,6 +172,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * True si l'utilisateur a un abonnement VIP actif (vipUntil dans le futur).
+     */
+    public function isVip(): bool
+    {
+        return $this->vipUntil !== null && $this->vipUntil > new \DateTime();
+    }
+
     public function isVerified(): ?bool
     {
         return $this->isVerified;

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Administration — NTS Betting{% endblock %}</title>
+    <style>
+        :root {
+            --admin-bg: #0f1115;
+            --admin-panel: #171a21;
+            --admin-border: #2a2e38;
+            --admin-text: #e7e9ee;
+            --admin-muted: #9aa1af;
+            --admin-accent: #d4af37;
+            --admin-success: #2e7d32;
+            --admin-danger: #c62828;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--admin-bg);
+            color: var(--admin-text);
+        }
+        header.admin-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 32px;
+            border-bottom: 1px solid var(--admin-border);
+        }
+        header.admin-header a { color: var(--admin-text); text-decoration: none; }
+        header.admin-header .brand { font-weight: 700; letter-spacing: .5px; }
+        main { max-width: 1100px; margin: 0 auto; padding: 32px; }
+        .btn {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 6px;
+            background: var(--admin-accent);
+            color: #1a1a1a;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+        .btn.btn-secondary { background: var(--admin-panel); color: var(--admin-text); border: 1px solid var(--admin-border); }
+        .btn.btn-danger { background: var(--admin-danger); color: #fff; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px 10px; border-bottom: 1px solid var(--admin-border); text-align: left; font-size: 14px; }
+        th { color: var(--admin-muted); font-weight: 600; text-transform: uppercase; font-size: 12px; }
+        .badge { padding: 3px 8px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .badge-vip { background: rgba(212,175,55,.15); color: var(--admin-accent); }
+        .badge-free { background: rgba(255,255,255,.08); color: var(--admin-muted); }
+        .badge-won { background: rgba(46,125,50,.15); color: #66bb6a; }
+        .badge-lost { background: rgba(198,40,40,.15); color: #ef5350; }
+        .badge-pending { background: rgba(255,255,255,.08); color: var(--admin-muted); }
+        .flash { padding: 12px 16px; border-radius: 6px; margin-bottom: 16px; background: rgba(46,125,50,.15); color: #66bb6a; }
+        form.admin-form label { display: block; margin: 16px 0 6px; font-size: 14px; color: var(--admin-muted); }
+        form.admin-form input[type=text], form.admin-form input[type=number], form.admin-form input[type=datetime-local], form.admin-form textarea, form.admin-form select {
+            width: 100%;
+            padding: 10px 12px;
+            background: var(--admin-panel);
+            border: 1px solid var(--admin-border);
+            border-radius: 6px;
+            color: var(--admin-text);
+            font-size: 14px;
+        }
+        form.admin-form textarea { min-height: 120px; }
+        form.admin-form .checkbox-row { display: flex; align-items: center; gap: 8px; margin-top: 16px; }
+        form.admin-form .checkbox-row input { width: auto; }
+        .actions-row { display: flex; gap: 10px; margin-top: 24px; }
+    </style>
+</head>
+<body>
+
+    <header class="admin-header">
+        <a href="{{ path('admin_pronostic_index') }}" class="brand">NTS Betting — Admin</a>
+        <a href="{{ path('app_home') }}">← Retour au site</a>
+    </header>
+
+    <main>
+        {% for message in app.flashes('success') %}
+            <div class="flash">{{ message }}</div>
+        {% endfor %}
+
+        {% block body %}{% endblock %}
+    </main>
+
+</body>
+</html>
