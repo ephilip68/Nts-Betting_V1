@@ -1,0 +1,125 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog — NTS Betting{% endblock %}
+
+{% block body_class %}blog-page{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    <main>
+
+        <section class="blog-hero static-hero--visual">
+            <h1 class="blog-hero__title">Le blog <span>NTS</span></h1>
+            <p class="blog-hero__subtitle">Analyses, conseils et stratégies pour devenir un parieur plus intelligent.</p>
+        </section>
+
+        <div class="blog-page__container">
+
+            <div class="blog-filters">
+
+                <div class="blog-categories">
+                    <a href="{{ path('app_blog') }}" class="{{ category is null ? 'is-active' : '' }}">Tous les articles</a>
+                    {% for slug, label in categories %}
+                        <a href="{{ path('app_blog', {category: slug}) }}" class="{{ category == slug ? 'is-active' : '' }}">{{ label }}</a>
+                    {% endfor %}
+                </div>
+
+                <form class="blog-search" method="get" action="{{ path('app_blog') }}">
+                    {% if category %}<input type="hidden" name="category" value="{{ category }}">{% endif %}
+                    <input type="text" name="q" value="{{ search }}" placeholder="Rechercher un article, un sujet...">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+
+            </div>
+
+
+            {% if featured is not empty %}
+
+                <h2 class="blog-section-title">Articles à la une</h2>
+
+                <div class="blog-featured-grid">
+
+                    <a href="{{ path('app_blog_show', {slug: featured[0].slug}) }}" class="blog-card blog-card--big">
+                        <div class="blog-card__image" style="{{ featured[0].coverImage ? 'background-image:url(' ~ asset(featured[0].coverImage) ~ ')' : '' }}">
+                            <span class="blog-card__category">{{ featured[0].categoryLabel }}</span>
+                        </div>
+                        <div class="blog-card__body">
+                            <h3 class="blog-card__title">{{ featured[0].title }}</h3>
+                            <p class="blog-card__excerpt">{{ featured[0].excerpt }}</p>
+                            <div class="blog-card__meta">
+                                <span>Par {{ featured[0].author }}</span>
+                                <span>{{ featured[0].publishedAt|date('d M. Y') }}</span>
+                                <span>{{ featured[0].readingTime }} min</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <div class="blog-featured-grid__side">
+                        {% for article in featured|slice(1, 2) %}
+                            <a href="{{ path('app_blog_show', {slug: article.slug}) }}" class="blog-card">
+                                <div class="blog-card__image" style="{{ article.coverImage ? 'background-image:url(' ~ asset(article.coverImage) ~ ')' : '' }}">
+                                    <span class="blog-card__category">{{ article.categoryLabel }}</span>
+                                </div>
+                                <div class="blog-card__body">
+                                    <h3 class="blog-card__title">{{ article.title }}</h3>
+                                    <div class="blog-card__meta">
+                                        <span>{{ article.publishedAt|date('d M. Y') }}</span>
+                                        <span>{{ article.readingTime }} min</span>
+                                    </div>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+            {% endif %}
+
+
+            <h2 class="blog-section-title">
+                {% if search or category %}Résultats{% else %}Derniers articles{% endif %}
+            </h2>
+
+            {% if articles is empty %}
+
+                <p class="blog-empty">Aucun article pour le moment.</p>
+
+            {% else %}
+
+                <div class="blog-grid">
+                    {% for article in articles %}
+                        <a href="{{ path('app_blog_show', {slug: article.slug}) }}" class="blog-card">
+                            <div class="blog-card__image" style="{{ article.coverImage ? 'background-image:url(' ~ asset(article.coverImage) ~ ')' : '' }}">
+                                <span class="blog-card__category">{{ article.categoryLabel }}</span>
+                            </div>
+                            <div class="blog-card__body">
+                                <h3 class="blog-card__title">{{ article.title }}</h3>
+                                <p class="blog-card__excerpt">{{ article.excerpt }}</p>
+                                <div class="blog-card__meta">
+                                    <span>{{ article.publishedAt|date('d M. Y') }}</span>
+                                    <span>{{ article.readingTime }} min</span>
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+
+                {% if pages > 1 %}
+                    <div class="blog-pagination">
+                        {% for p in 1..pages %}
+                            <a href="{{ path('app_blog', {category: category, q: search, page: p}) }}" class="{{ p == page ? 'is-active' : '' }}">{{ p }}</a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+            {% endif %}
+
+        </div>
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

@@ -33,45 +33,30 @@
 
             <nav class="community-sidebar__nav">
 
-                <button
-                    type="button"
-                    class="community-sidebar__nav-item is-active"
-                >
+                <a href="{{ path('app_community', {sport: currentSport, q: currentSearch, sort: currentSort}) }}" class="community-sidebar__nav-item {{ not currentType ? 'is-active' : '' }}">
                     <i class="fa-solid fa-house"></i>
                     <span>Tous</span>
-                </button>
+                </a>
 
-                <button
-                    type="button"
-                    class="community-sidebar__nav-item"
-                >
+                <a href="{{ path('app_community', {type: 'ticket', sport: currentSport, q: currentSearch, sort: currentSort}) }}" class="community-sidebar__nav-item {{ currentType == 'ticket' ? 'is-active' : '' }}">
                     <i class="fa-regular fa-image"></i>
                     <span>Tickets</span>
-                </button>
+                </a>
 
-                <button
-                    type="button"
-                    class="community-sidebar__nav-item"
-                >
+                <a href="{{ path('app_community', {type: 'discussion', sport: currentSport, q: currentSearch, sort: currentSort}) }}" class="community-sidebar__nav-item {{ currentType == 'discussion' ? 'is-active' : '' }}">
                     <i class="fa-regular fa-comment"></i>
                     <span>Discussions</span>
-                </button>
+                </a>
 
-                <button
-                    type="button"
-                    class="community-sidebar__nav-item"
-                >
+                <a href="{{ path('app_community', {type: 'analyse', sport: currentSport, q: currentSearch, sort: currentSort}) }}" class="community-sidebar__nav-item {{ currentType == 'analyse' ? 'is-active' : '' }}">
                     <i class="fa-solid fa-chart-line"></i>
                     <span>Analyses</span>
-                </button>
+                </a>
 
-                <button
-                    type="button"
-                    class="community-sidebar__nav-item"
-                >
+                <a href="{{ path('app_community', {type: 'vip', sport: currentSport, q: currentSearch, sort: currentSort}) }}" class="community-sidebar__nav-item {{ currentType == 'vip' ? 'is-active' : '' }}">
                     <i class="fa-solid fa-crown"></i>
                     <span>VIP</span>
-                </button>
+                </a>
 
             </nav>
 
@@ -88,99 +73,39 @@
                         Sports
                     </h3>
 
-                    <a href="#">
-                        Voir tous
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </a>
-
                 </div>
 
 
                 <div class="community-sidebar__sports">
 
-                    <button type="button" class="community-sidebar__sport">
+                    {% set sportsList = {
+                        football: {label: 'Football', icon: 'fa-futbol'},
+                        tennis: {label: 'Tennis', icon: 'fa-table-tennis-paddle-ball'},
+                        basketball: {label: 'Basketball', icon: 'fa-basketball'},
+                        'sports-us': {label: 'Sports US', icon: 'fa-football'},
+                        other: {label: 'Autres', icon: 'fa-ellipsis'},
+                    } %}
 
-                        <span class="community-sidebar__sport-icon">
-                            <i class="fa-solid fa-futbol"></i>
-                        </span>
+                    {% for slug, sportInfo in sportsList %}
+                        <a
+                            href="{{ path('app_community', {type: currentType, sport: currentSport == slug ? null : slug, q: currentSearch, sort: currentSort}) }}"
+                            class="community-sidebar__sport {{ currentSport == slug ? 'is-active' : '' }}"
+                        >
 
-                        <span class="community-sidebar__sport-name">
-                            Football
-                        </span>
+                            <span class="community-sidebar__sport-icon">
+                                <i class="fa-solid {{ sportInfo.icon }}"></i>
+                            </span>
 
-                        <small>
-                            En ligne
-                        </small>
+                            <span class="community-sidebar__sport-name">
+                                {{ sportInfo.label }}
+                            </span>
 
-                    </button>
+                            <small>
+                                {{ postsBySport[slug] ?? 0 }}
+                            </small>
 
-
-                    <button type="button" class="community-sidebar__sport">
-
-                        <span class="community-sidebar__sport-icon">
-                            <i class="fa-solid fa-table-tennis-paddle-ball"></i>
-                        </span>
-
-                        <span class="community-sidebar__sport-name">
-                            Tennis
-                        </span>
-
-                        <small>
-                            En ligne
-                        </small>
-
-                    </button>
-
-
-                    <button type="button" class="community-sidebar__sport">
-
-                        <span class="community-sidebar__sport-icon">
-                            <i class="fa-solid fa-basketball"></i>
-                        </span>
-
-                        <span class="community-sidebar__sport-name">
-                            Basketball
-                        </span>
-
-                        <small>
-                            En ligne
-                        </small>
-
-                    </button>
-
-
-                    <button type="button" class="community-sidebar__sport">
-
-                        <span class="community-sidebar__sport-icon">
-                            <i class="fa-solid fa-football"></i>
-                        </span>
-
-                        <span class="community-sidebar__sport-name">
-                            Sports US
-                        </span>
-
-                        <small>
-                            En ligne
-                        </small>
-
-                    </button>
-
-
-                    <button type="button" class="community-sidebar__sport">
-
-                        <span class="community-sidebar__sport-icon">
-                            <i class="fa-solid fa-ellipsis"></i>
-                        </span>
-
-                        <span class="community-sidebar__sport-name">
-                            Autres
-                        </span>
-
-                        <small>
-                            En ligne
-                        </small>
-
-                    </button>
+                        </a>
+                    {% endfor %}
 
                 </div>
 
@@ -196,101 +121,18 @@
                 <div class="community-sidebar__section-heading">
 
                     <h3 class="community-sidebar__section-title">
-                        Membres en ligne
+                        Membres abonnés
                     </h3>
 
                     <span class="community-sidebar__online-count">
-                        5
+                        {{ activeMembersCount }}
                     </span>
 
                 </div>
 
-
-                <div class="community-sidebar__members">
-
-                    <div class="community-sidebar__member">
-
-                        <span class="community-sidebar__avatar">
-                            T
-                        </span>
-
-                        <span class="community-sidebar__member-name">
-                            Thomas11
-                        </span>
-
-                        <i class="community-sidebar__online"></i>
-
-                    </div>
-
-
-                    <div class="community-sidebar__member">
-
-                        <span class="community-sidebar__avatar">
-                            L
-                        </span>
-
-                        <span class="community-sidebar__member-name">
-                            LéaPari
-                        </span>
-
-                        <i class="community-sidebar__online"></i>
-
-                    </div>
-
-
-                    <div class="community-sidebar__member">
-
-                        <span class="community-sidebar__avatar">
-                            M
-                        </span>
-
-                        <span class="community-sidebar__member-name">
-                            Max_Bet
-                        </span>
-
-                        <i class="community-sidebar__online"></i>
-
-                    </div>
-
-
-                    <div class="community-sidebar__member">
-
-                        <span class="community-sidebar__avatar">
-                            S
-                        </span>
-
-                        <span class="community-sidebar__member-name">
-                            Sova_27
-                        </span>
-
-                        <i class="community-sidebar__online"></i>
-
-                    </div>
-
-
-                    <div class="community-sidebar__member">
-
-                        <span class="community-sidebar__avatar">
-                            A
-                        </span>
-
-                        <span class="community-sidebar__member-name">
-                            AlexB
-                        </span>
-
-                        <i class="community-sidebar__online"></i>
-
-                    </div>
-
-                </div>
-
-
-                <button
-                    type="button"
-                    class="community-sidebar__members-link"
-                >
-                    Voir tous (124)
-                </button>
+                <p style="color:rgba(255,255,255,0.45); font-size:0.78rem; margin:0;">
+                    Membres avec un abonnement actif sur NTS Betting.
+                </p>
 
             </div>
 
@@ -308,12 +150,15 @@
 
             <section class="community-composer">
 
+                {% if app.user %}
+                <form action="{{ path('app_community_post_create') }}" method="post" enctype="multipart/form-data" data-community-composer-form>
+
                 <div class="community-composer__header">
 
                     <div class="community-composer__author">
 
                         <div class="community-composer__avatar">
-                            T
+                            {{ app.user.nickname|slice(0, 1)|upper }}
                         </div>
 
                         <div class="community-composer__author-info">
@@ -338,6 +183,8 @@
 
 
                 <div class="community-composer__content">
+
+                    <input type="hidden" name="type" value="TICKET" data-community-type-input>
 
                     <div class="community-composer__types">
 
@@ -379,7 +226,27 @@
 
                     </div>
 
-                    <div class="community-composer__analysis-fields">
+                    <div class="community-composer__field">
+
+                        <label for="community-sport">
+                            Sport
+                        </label>
+
+                        <select
+                            id="community-sport"
+                            name="sport"
+                            class="community-composer__select"
+                        >
+                            <option value="football">Football</option>
+                            <option value="tennis">Tennis</option>
+                            <option value="basketball">Basketball</option>
+                            <option value="sports-us">Sports US</option>
+                            <option value="other">Autres</option>
+                        </select>
+
+                    </div>
+
+                    <div class="community-composer__analysis-fields" data-community-fields="ANALYSE" hidden>
 
                         <div class="community-composer__field">
 
@@ -390,36 +257,16 @@
                             <input
                                 type="text"
                                 id="community-analysis-title"
+                                name="analysisTitle"
                                 class="community-composer__input"
                                 placeholder="Ex : Real Madrid - AC Milan"
                             >
 
                         </div>
 
-
-                        <div class="community-composer__field">
-
-                            <label for="community-analysis-sport">
-                                Sport
-                            </label>
-
-                            <select
-                                id="community-analysis-sport"
-                                class="community-composer__select"
-                            >
-                                <option value="">Sélectionner un sport</option>
-                                <option value="football">Football</option>
-                                <option value="tennis">Tennis</option>
-                                <option value="basketball">Basketball</option>
-                                <option value="sports-us">Sports US</option>
-                                <option value="other">Autres</option>
-                            </select>
-
-                        </div>
-
                     </div>
 
-                    <div class="community-composer__vip-fields">
+                    <div class="community-composer__vip-fields" data-community-fields="VIP" hidden>
 
                         <div class="community-composer__vip-notice">
                             <div class="community-composer__vip-notice-icon">
@@ -443,6 +290,7 @@
                                 <input
                                     type="text"
                                     id="community-vip-match"
+                                    name="vipMatch"
                                     class="community-composer__input"
                                     placeholder="Ex : Real Madrid — AC Milan"
                                 >
@@ -453,6 +301,7 @@
                                 <input
                                     type="text"
                                     id="community-vip-prediction"
+                                    name="vipPrediction"
                                     class="community-composer__input"
                                     placeholder="Ex : Real Madrid gagne"
                                 >
@@ -463,6 +312,7 @@
                                 <input
                                     type="number"
                                     id="community-vip-odds"
+                                    name="vipOdds"
                                     class="community-composer__input"
                                     placeholder="Ex : 1.85"
                                     step="0.01"
@@ -475,6 +325,7 @@
                                 <input
                                     type="text"
                                     id="community-vip-stake"
+                                    name="vipStake"
                                     class="community-composer__input"
                                     placeholder="Ex : 2% bankroll"
                                 >
@@ -484,6 +335,7 @@
                                 <label for="community-vip-confidence">Confiance</label>
                                 <select
                                     id="community-vip-confidence"
+                                    name="vipConfidence"
                                     class="community-composer__select"
                                 >
                                     <option value="">Sélectionner</option>
@@ -521,8 +373,11 @@
 
                         <input
                             type="file"
+                            id="community-photo-input"
+                            name="photo"
                             class="community-composer__file"
                             accept="image/jpeg,image/png,image/webp"
+                            data-community-photo-input
                             hidden
                         >
 
@@ -542,24 +397,21 @@
 
                         </div>
 
-                        <button
-                            type="button"
-                            class="community-composer__upload-button"
-                        >
+                        <label for="community-photo-input" class="community-composer__upload-button">
                             Parcourir
-                        </button>
+                        </label>
 
                     </div>
 
 
-                    <div class="community-composer__preview">
+                    <div class="community-composer__preview" data-community-preview hidden>
 
                         <div class="community-composer__preview-image">
-                            <img src="" alt="Aperçu du ticket">
+                            <img src="" alt="Aperçu du ticket" data-community-preview-image>
                         </div>
 
                         <div class="community-composer__preview-info">
-                            <strong class="community-composer__preview-name"></strong>
+                            <strong class="community-composer__preview-name" data-community-preview-name></strong>
                             <span>Image sélectionnée</span>
                         </div>
 
@@ -567,6 +419,7 @@
                             type="button"
                             class="community-composer__preview-remove"
                             aria-label="Supprimer l'image"
+                            data-community-preview-remove
                         >
                             <i class="fa-solid fa-xmark"></i>
                         </button>
@@ -587,7 +440,7 @@
                         </div>
 
                         <button
-                            type="button"
+                            type="submit"
                             class="community-composer__publish"
                         >
                             <span>Publier</span>
@@ -599,11 +452,18 @@
 
                 </div>
 
+                </form>
+                {% else %}
+                <p style="padding:20px; color:rgba(255,255,255,0.5);">
+                    <a href="{{ path('app_login') }}">Connecte-toi</a> pour publier dans la communauté.
+                </p>
+                {% endif %}
+
             </section>
 
             {% for post in posts %}
 
-                <article class="community-post community-post--{{ post.type|lower }}" data-post-id="{{ post.id }}">
+                <article class="community-post community-post--{{ post.type|lower }}" data-post-id="{{ post.id }}" id="post-{{ post.id }}">
 
                     <header class="community-post__header">
 
@@ -618,7 +478,7 @@
                                 <strong>
                                     {{ post.user.nickname }}
 
-                                    {% if 'ROLE_VIP' in post.user.roles %}
+                                    {% if post.user.isVip %}
                                         <i class="fa-solid fa-crown"></i>
                                     {% endif %}
                                 </strong>
@@ -633,13 +493,14 @@
 
                         </div>
 
-                        <button
-                            type="button"
-                            class="community-post__menu"
-                            aria-label="Options"
-                        >
-                            <i class="fa-solid fa-ellipsis"></i>
-                        </button>
+                        {% if app.user and (app.user == post.user or is_granted('ROLE_ADMIN')) %}
+                            <form action="{{ path('app_community_post_delete', {id: post.id}) }}" method="post" onsubmit="return confirm('Supprimer cette publication ?');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete-community-post-' ~ post.id) }}">
+                                <button type="submit" class="community-post__menu" aria-label="Supprimer">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                        {% endif %}
 
                     </header>
 
@@ -693,54 +554,61 @@
                                     {{ post.vipMatch }}
                                 </div>
 
-                                <div class="community-post__vip-grid">
+                                {% if app.user and app.user.isVip %}
 
-                                    <div>
-                                        <span>Pronostic</span>
-                                        <strong>{{ post.vipPrediction ?: '—' }}</strong>
+                                    <div class="community-post__vip-grid">
+
+                                        <div>
+                                            <span>Pronostic</span>
+                                            <strong>{{ post.vipPrediction ?: '—' }}</strong>
+                                        </div>
+
+                                        <div>
+                                            <span>Cote</span>
+                                            <strong>{{ post.vipOdds ?: '—' }}</strong>
+                                        </div>
+
+                                        <div>
+                                            <span>Mise conseillée</span>
+                                            <strong>{{ post.vipStake ?: '—' }}</strong>
+                                        </div>
+
+                                        <div>
+                                            <span>Confiance</span>
+
+                                            <strong>
+                                                {% if post.vipConfidence == 1 %}
+                                                    ★☆☆☆☆
+                                                {% elseif post.vipConfidence == 2 %}
+                                                    ★★☆☆☆
+                                                {% elseif post.vipConfidence == 3 %}
+                                                    ★★★☆☆
+                                                {% elseif post.vipConfidence == 4 %}
+                                                    ★★★★☆
+                                                {% elseif post.vipConfidence == 5 %}
+                                                    ★★★★★
+                                                {% else %}
+                                                    —
+                                                {% endif %}
+                                            </strong>
+                                        </div>
+
                                     </div>
 
-                                    <div>
-                                        <span>Cote</span>
-                                        <strong>{{ post.vipOdds ?: '—' }}</strong>
+                                {% else %}
+
+                                    <div class="community-post__vip-lock">
+
+                                        <i class="fa-solid fa-lock"></i>
+
+                                        <span>
+                                            Pronostic, cote et mise réservés aux membres VIP.
+                                            <a href="{{ path('app_offers') }}" style="color:var(--color-gold, #DDB219);">Découvrir le VIP</a>
+                                        </span>
+
                                     </div>
 
-                                    <div>
-                                        <span>Mise conseillée</span>
-                                        <strong>{{ post.vipStake ?: '—' }}</strong>
-                                    </div>
-
-                                    <div>
-                                        <span>Confiance</span>
-
-                                        <strong>
-                                            {% if post.vipConfidence == 1 %}
-                                                ★☆☆☆☆
-                                            {% elseif post.vipConfidence == 2 %}
-                                                ★★☆☆☆
-                                            {% elseif post.vipConfidence == 3 %}
-                                                ★★★☆☆
-                                            {% elseif post.vipConfidence == 4 %}
-                                                ★★★★☆
-                                            {% elseif post.vipConfidence == 5 %}
-                                                ★★★★★
-                                            {% else %}
-                                                —
-                                            {% endif %}
-                                        </strong>
-                                    </div>
-
-                                </div>
-
-                                <div class="community-post__vip-lock">
-
-                                    <i class="fa-solid fa-lock"></i>
-
-                                    <span>
-                                        Contenu réservé aux membres VIP
-                                    </span>
-
-                                </div>
+                                {% endif %}
 
                             </div>
 
@@ -766,38 +634,26 @@
 
                         <footer class="community-post__actions">
 
+                            {% set userLiked = false %}
+                            {% for like in post.communityLikes %}
+                                {% if app.user and like.user.id == app.user.id %}
+                                    {% set userLiked = true %}
+                                {% endif %}
+                            {% endfor %}
+
                             <button
                                 type="button"
-                                class="
-                                    {% for like in post.communityLikes %}
-                                        {% if app.user and like.user.id == app.user.id %}
-                                            is-liked
-                                        {% endif %}
-                                    {% endfor %}
-                                "
+                                class="{{ userLiked ? 'is-liked' : '' }}"
+                                data-community-like-button
+                                data-post-id="{{ post.id }}"
+                                data-like-token="{{ csrf_token('community-like-' ~ post.id) }}"
+                                {{ app.user ? '' : 'disabled' }}
                             >
-                                <i class="
-                                    {% set userLiked = false %}
-
-                                    {% for like in post.communityLikes %}
-                                        {% if app.user and like.user.id == app.user.id %}
-                                            {% set userLiked = true %}
-                                        {% endif %}
-                                    {% endfor %}
-
-                                    {% if userLiked %}
-                                        fa-solid
-                                    {% else %}
-                                        fa-regular
-                                    {% endif %}
-
-                                    fa-heart
-                                "></i>
-
-                                <span>{{ post.communityLikes|length }}</span>
+                                <i class="{{ userLiked ? 'fa-solid' : 'fa-regular' }} fa-heart" data-community-like-icon></i>
+                                <span data-community-like-count>{{ post.communityLikes|length }}</span>
                             </button>
 
-                            <button type="button">
+                            <button type="button" data-community-comment-toggle="comments-{{ post.id }}">
                                 <i class="fa-regular fa-comment"></i>
                                 <span>{{ post.communityComments|length }}</span>
                             </button>
@@ -805,6 +661,8 @@
                             <button
                                 type="button"
                                 class="community-post__share-button"
+                                data-community-share
+                                data-share-url="{{ url('app_community') }}#post-{{ post.id }}"
                             >
                                 <i class="fa-solid fa-share-nodes"></i>
                                 <span>Partager</span>
@@ -816,32 +674,36 @@
                         COMMENTAIRES
                         ===================================================== #}
 
-                        <div class="community-post__comments">
+                        <div class="community-post__comments" id="comments-{{ post.id }}">
 
-                            <div class="community-post__comment-form">
+                            {% if app.user %}
+                            <div class="community-post__comment-form" data-community-comment-form data-post-id="{{ post.id }}" data-comment-token="{{ csrf_token('community-comment-' ~ post.id) }}">
 
                                 <div class="community-post__comment-avatar">
-                                    {{ post.user.nickname|first|upper }}
+                                    {{ app.user.nickname|first|upper }}
                                 </div>
 
                                 <input
                                     type="text"
                                     class="community-post__comment-input"
                                     placeholder="Écrire un commentaire..."
+                                    data-community-comment-input
                                 >
 
                                 <button
                                     type="button"
                                     class="community-post__comment-submit"
                                     aria-label="Publier le commentaire"
+                                    data-community-comment-submit
                                 >
                                     <i class="fa-solid fa-paper-plane"></i>
                                 </button>
 
                             </div>
+                            {% endif %}
 
 
-                            <div class="community-post__comments-list">
+                            <div class="community-post__comments-list" data-community-comments-list>
 
                                {% for comment in post.communityComments %}
 
@@ -933,126 +795,46 @@
 
                 <div class="community-widget__tabs">
 
-                    <button class="is-active">
+                    <a href="{{ path('app_community', {type: currentType, sport: currentSport, q: currentSearch, sort: currentSort, period: 'week'}) }}" class="{{ currentPeriod == 'week' ? 'is-active' : '' }}">
                         Semaine
-                    </button>
+                    </a>
 
-                    <button>
+                    <a href="{{ path('app_community', {type: currentType, sport: currentSport, q: currentSearch, sort: currentSort, period: 'month'}) }}" class="{{ currentPeriod == 'month' ? 'is-active' : '' }}">
                         Mois
-                    </button>
+                    </a>
 
-                    <button>
+                    <a href="{{ path('app_community', {type: currentType, sport: currentSport, q: currentSearch, sort: currentSort, period: 'all'}) }}" class="{{ currentPeriod == 'all' ? 'is-active' : '' }}">
                         Tous
-                    </button>
+                    </a>
 
                 </div>
 
 
                 <div class="community-ranking">
 
-                    <div class="community-ranking__item">
+                    {% for contributor in topContributors %}
+                        <div class="community-ranking__item">
 
-                        <span class="community-ranking__position">
-                            1
-                        </span>
+                            <span class="community-ranking__position">
+                                {{ loop.index }}
+                            </span>
 
-                        <span class="community-ranking__avatar">
-                            T
-                        </span>
+                            <span class="community-ranking__avatar">
+                                {{ contributor.user.nickname|slice(0, 1)|upper }}
+                            </span>
 
-                        <span class="community-ranking__name">
-                            Thomas11
-                        </span>
+                            <span class="community-ranking__name">
+                                {{ contributor.user.nickname }}
+                            </span>
 
-                        <strong>
-                            124 pts
-                        </strong>
+                            <strong>
+                                {{ contributor.score }} pts
+                            </strong>
 
-                    </div>
-
-
-                    <div class="community-ranking__item">
-
-                        <span class="community-ranking__position">
-                            2
-                        </span>
-
-                        <span class="community-ranking__avatar">
-                            L
-                        </span>
-
-                        <span class="community-ranking__name">
-                            LéaPari
-                        </span>
-
-                        <strong>
-                            98 pts
-                        </strong>
-
-                    </div>
-
-
-                    <div class="community-ranking__item">
-
-                        <span class="community-ranking__position">
-                            3
-                        </span>
-
-                        <span class="community-ranking__avatar">
-                            A
-                        </span>
-
-                        <span class="community-ranking__name">
-                            AlexB
-                        </span>
-
-                        <strong>
-                            87 pts
-                        </strong>
-
-                    </div>
-
-
-                    <div class="community-ranking__item">
-
-                        <span class="community-ranking__position">
-                            4
-                        </span>
-
-                        <span class="community-ranking__avatar">
-                            M
-                        </span>
-
-                        <span class="community-ranking__name">
-                            Max_Bet
-                        </span>
-
-                        <strong>
-                            71 pts
-                        </strong>
-
-                    </div>
-
-
-                    <div class="community-ranking__item">
-
-                        <span class="community-ranking__position">
-                            5
-                        </span>
-
-                        <span class="community-ranking__avatar">
-                            J
-                        </span>
-
-                        <span class="community-ranking__name">
-                            JulienT
-                        </span>
-
-                        <strong>
-                            69 pts
-                        </strong>
-
-                    </div>
+                        </div>
+                    {% else %}
+                        <p style="color:rgba(255,255,255,0.45); font-size:0.82rem;">Pas encore de contributions.</p>
+                    {% endfor %}
 
                 </div>
 
@@ -1109,7 +891,7 @@
 
 
                 <a
-                    href="#"
+                    href="{{ path('app_offers') }}"
                     class="community-vip__button"
                 >
                     <span>Découvrir le VIP</span>

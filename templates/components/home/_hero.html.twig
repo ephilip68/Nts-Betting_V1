@@ -64,7 +64,7 @@
             {# CTA #}
             <div class="hero-actions">
 
-                <a href="#" class="hero-btn hero-btn-primary">
+                <a href="{{ path('app_offers') }}" class="hero-btn hero-btn-primary">
                     <span>Découvrir nos offres</span>
 
                     <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -88,7 +88,7 @@
                 </div>
 
                 <span class="hero-members-text">
-                    +2 500 membres nous font confiance
+                    {{ activeMembersCount }} membre{{ activeMembersCount > 1 ? 's' : '' }} {{ activeMembersCount > 1 ? 'nous font' : 'nous fait' }} confiance
                 </span>
 
             </div>
@@ -122,7 +122,7 @@
                         </div>
 
                         <div class="hero-result-number">
-                            <strong>78%</strong>
+                            <strong>{{ heroStats.winRate is not null ? heroStats.winRate ~ '%' : '—' }}</strong>
                             <span class="hero-result-number-line"></span>
                         </div>
                     </div>
@@ -147,14 +147,14 @@
                         </div>
 
                         <div class="hero-result-number">
-                            <strong>+245</strong>
+                            <strong>{{ heroStats.unitsProfit > 0 ? '+' : '' }}{{ heroStats.unitsProfit }} €</strong>
                             <span class="hero-result-number-line"></span>
                         </div>
 
                     </div>
 
                     <span class="hero-result-label">
-                        Unités gagnées
+                        Gains cumulés
                     </span>
 
                 </div>
@@ -172,7 +172,7 @@
                         </div>
 
                         <div class="hero-result-number">
-                            <strong>126</strong>
+                            <strong>{{ heroStats.settledCount }}</strong>
                             <span class="hero-result-number-line"></span>
                         </div>
 
@@ -200,7 +200,7 @@
                         </div>
 
                         <div class="hero-result-number">
-                            <strong>+2 500</strong>
+                            <strong>{{ activeMembersCount }}</strong>
                             <span class="hero-result-number-line"></span>
                         </div>
 
@@ -273,7 +273,7 @@
             FOOTBALL
             ===================================================== #}
 
-            <a href="#" class="hero-sport is-active">
+            <a href="{{ path('app_pronostics', {sport: 'football'}) }}" class="hero-sport is-active">
 
                 <span class="hero-sport-icon">
                     <svg viewBox="0 0 32 32" aria-hidden="true">
@@ -298,7 +298,7 @@
             TENNIS
             ===================================================== #}
 
-            <a href="#" class="hero-sport">
+            <a href="{{ path('app_pronostics', {sport: 'tennis'}) }}" class="hero-sport">
 
                 <span class="hero-sport-icon">
                     <svg viewBox="0 0 32 32" aria-hidden="true">
@@ -320,7 +320,7 @@
             BASKETBALL
             ===================================================== #}
 
-            <a href="#" class="hero-sport">
+            <a href="{{ path('app_pronostics', {sport: 'basketball'}) }}" class="hero-sport">
 
                 <span class="hero-sport-icon">
                     <svg viewBox="0 0 32 32" aria-hidden="true">
@@ -344,7 +344,7 @@
             SPORTS US
             ===================================================== #}
 
-            <a href="#" class="hero-sport">
+            <a href="{{ path('app_pronostics') }}" class="hero-sport">
 
                 <span class="hero-sport-icon">
                     <svg viewBox="0 0 32 32" aria-hidden="true">
@@ -369,7 +369,7 @@
             RUGBY
             ===================================================== #}
 
-            <a href="#" class="hero-sport">
+            <a href="{{ path('app_pronostics') }}" class="hero-sport">
 
                 <span class="hero-sport-icon">
                     <svg viewBox="0 0 32 32" aria-hidden="true">
@@ -392,7 +392,7 @@
             HOCKEY
             ===================================================== #}
 
-            <a href="#" class="hero-sport">
+            <a href="{{ path('app_pronostics') }}" class="hero-sport">
 
                 <span class="hero-sport-icon">
                     <svg viewBox="0 0 32 32" aria-hidden="true">
@@ -416,7 +416,7 @@
             HANDBALL
             ===================================================== #}
 
-            <a href="#" class="hero-sport">
+            <a href="{{ path('app_pronostics') }}" class="hero-sport">
 
                 <span class="hero-sport-icon">
                     <svg viewBox="0 0 32 32" aria-hidden="true">
@@ -440,7 +440,7 @@
             VOLLEYBALL
             ===================================================== #}
 
-            <a href="#" class="hero-sport">
+            <a href="{{ path('app_pronostics') }}" class="hero-sport">
 
                 <span class="hero-sport-icon">
                     <svg viewBox="0 0 32 32" aria-hidden="true">
@@ -464,7 +464,7 @@
             SNOOKER
             ===================================================== #}
 
-            <a href="#" class="hero-sport">
+            <a href="{{ path('app_pronostics') }}" class="hero-sport">
 
                 <span class="hero-sport-icon">
                     <svg viewBox="0 0 32 32" aria-hidden="true">
@@ -487,7 +487,7 @@
             BOXE
             ===================================================== #}
 
-            <a href="#" class="hero-sport">
+            <a href="{{ path('app_pronostics') }}" class="hero-sport">
 
                 <span class="hero-sport-icon">
                     <svg viewBox="0 0 32 32" aria-hidden="true">
@@ -510,7 +510,7 @@
             BADMINTON
             ===================================================== #}
 
-            <a href="#" class="hero-sport">
+            <a href="{{ path('app_pronostics') }}" class="hero-sport">
 
                 <span class="hero-sport-icon">
                     <svg viewBox="0 0 32 32" aria-hidden="true">
@@ -535,7 +535,7 @@
             PING-PONG
             ===================================================== #}
 
-            <a href="#" class="hero-sport">
+            <a href="{{ path('app_pronostics') }}" class="hero-sport">
 
                 <span class="hero-sport-icon">
                     <svg viewBox="0 0 32 32" aria-hidden="true">
@@ -559,7 +559,7 @@
             NTS VAULT
             ===================================================== #}
 
-            <a href="#" class="hero-sport hero-sport-vault">
+            <a href="{{ path('app_vault') }}" class="hero-sport hero-sport-vault">
 
                 <span class="hero-sport-icon">
                     <svg viewBox="0 0 32 32" aria-hidden="true">

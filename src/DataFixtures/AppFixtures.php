@@ -64,6 +64,7 @@ class AppFixtures extends Fixture
         $featured->setBetType('1X2');
         $featured->setBetValue('Real Madrid');
         $featured->setOdds('1.65');
+        $featured->setStake('20.00');
         $featured->setConfidence(4);
         $featured->setAnalysis('Le Real Madrid reste sur une série de victoires consécutives à domicile en Ligue des Champions. Face à un Milan en difficulté défensive, la valeur est du côté des Madrilènes.');
         $featured->setIsVip(false);
@@ -80,6 +81,7 @@ class AppFixtures extends Fixture
         $free->setBetType('Double chance');
         $free->setBetValue('PSG ou nul');
         $free->setOdds('1.30');
+        $free->setStake('30.00');
         $free->setConfidence(5);
         $free->setAnalysis('Le PSG à domicile face à un OM diminué par les absences.');
         $free->setIsVip(false);
@@ -95,6 +97,7 @@ class AppFixtures extends Fixture
         $vip->setBetType('Handicap');
         $vip->setBetValue('Lakers -4.5');
         $vip->setOdds('1.90');
+        $vip->setStake('20.00');
         $vip->setConfidence(4);
         $vip->setAnalysis('Analyse approfondie réservée aux membres VIP : rotation des joueurs, forme récente et historique des confrontations directes.');
         $vip->setIsVip(true);

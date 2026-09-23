@@ -31,35 +31,35 @@
                 Accueil
             </a>
 
-            <a href="#" class="navbar-link">
+            <a href="{{ path('app_offers') }}" class="navbar-link">
                 Nos offres
             </a>
 
-            <a href="#" class="navbar-link">
+            <a href="{{ path('app_results') }}" class="navbar-link">
                 Résultats
             </a>
 
-            <a href="#" class="navbar-link">
+            <a href="{{ path('app_pronostics') }}" class="navbar-link">
                 Pronostics
             </a>
 
-            <a href="#" class="navbar-link">
+            <a href="{{ path('app_vault') }}" class="navbar-link">
                 NTS Vault
             </a>
 
-            <a href="#" class="navbar-link">
+            <a href="{{ path('app_blog') }}" class="navbar-link">
                 Blog
             </a>
 
-            <a href="#" class="navbar-link">
+            <a href="{{ path('app_about') }}" class="navbar-link">
                 À propos
             </a>
 
-            <a href="#" class="navbar-link">
+            <a href="{{ path('app_faq') }}" class="navbar-link">
                 FAQ
             </a>
 
-            <a href="#" class="navbar-link">
+            <a href="{{ path('app_contact') }}" class="navbar-link">
                 Contact
             </a>
 
@@ -103,8 +103,8 @@
 
             {% if app.user %}
 
-                <a href="{{ path('app_profile') }}" class="navbar-login">
-                    Mon profil
+                <a href="{{ path('app_dashboard') }}" class="navbar-login">
+                    Tableau de bord
                 </a>
 
                 <a href="{{ path('app_logout') }}" class="navbar-register">

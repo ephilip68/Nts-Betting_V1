@@ -16,7 +16,9 @@ body {
     margin: 0;
     padding: 0;
 
-    background: var(--bg-panel);
+    background:
+        radial-gradient(circle at 50% -15%, rgba(27, 77, 111, 0.28), transparent 36rem),
+        var(--bg-panel);
     color: var(--color-white);
 
     font-family: var(--font-body);

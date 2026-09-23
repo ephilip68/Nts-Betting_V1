@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FAQ — NTS Betting{% endblock %}
+
+{% block body_class %}static-page static-page--faq{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    <main>
+
+        <section class="static-hero static-hero--visual">
+            <h1 class="static-hero__title">Foire aux <span>questions</span></h1>
+            <p class="static-hero__subtitle">Trouve rapidement les réponses à tes questions.</p>
+        </section>
+
+        <div class="static-page__container">
+
+            <div class="faq-search">
+                <input type="text" id="faq-search-input" placeholder="Rechercher une question...">
+            </div>
+
+            <div class="faq-layout">
+
+                <div class="faq-categories">
+                    <button type="button" class="is-active" data-faq-category="">Toutes les questions ({{ items|length }})</button>
+                    {% for category in categories %}
+                        <button type="button" data-faq-category="{{ category }}">{{ category }} ({{ countByCategory[category] }})</button>
+                    {% endfor %}
+                </div>
+
+                <div class="faq-list" id="faq-list">
+
+                    {% for category in categories %}
+
+                        <div class="faq-category-group" data-faq-group="{{ category }}">
+
+                            <div class="faq-category-heading">{{ category }}</div>
+
+                            {% for item in items %}
+                                {% if item.category == category %}
+                                    <div class="faq-item" data-faq-question="{{ item.question|lower }}" data-faq-answer="{{ item.answer|lower }}">
+                                        <button class="faq-item__question" type="button">
+                                            <span>{{ item.question }}</span>
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </button>
+                                        <div class="faq-item__answer">
+                                            <p>{{ item.answer }}</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+
+                        </div>
+
+                    {% endfor %}
+
+                    <p class="faq-empty" id="faq-empty" hidden>Aucune question ne correspond à ta recherche.</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="static-section" style="text-align:center; margin-top:40px;">
+                <h2>Tu ne trouves pas ta réponse ?</h2>
+                <p style="margin:0 auto 16px;">Notre équipe te répond sous 24h.</p>
+                <a href="{{ path('app_contact') }}" class="member-btn">Nous contacter</a>
+            </div>
+
+        </div>
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

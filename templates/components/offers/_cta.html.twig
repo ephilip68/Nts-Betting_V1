@@ -21,10 +21,17 @@
 
         </div>
 
-        <a href="#" class="offers-cta__button">
-            <span>S'inscrire maintenant</span>
-            <i class="fa-solid fa-arrow-right"></i>
-        </a>
+        {% if app.user %}
+            <a href="{{ path('app_dashboard') }}" class="offers-cta__button">
+                <span>Accéder à mon tableau de bord</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        {% else %}
+            <a href="{{ path('app_register') }}" class="offers-cta__button">
+                <span>S'inscrire maintenant</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        {% endif %}
 
     </div>
 

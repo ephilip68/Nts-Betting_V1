@@ -44,6 +44,10 @@ class PronosticFormType extends AbstractType
                 'label' => 'Cote',
                 'scale' => 2,
             ])
+            ->add('stake', NumberType::class, [
+                'label' => 'Mise nominale (en €, ex : 10 à 50)',
+                'scale' => 2,
+            ])
             ->add('confidence', ChoiceType::class, [
                 'label' => 'Niveau de confiance',
                 'choices' => [

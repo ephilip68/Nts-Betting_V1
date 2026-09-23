@@ -1,0 +1,237 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de bord — NTS Betting{% endblock %}
+
+{% block body %}
+
+    <div class="member-layout">
+
+        {% include 'components/member/_sidebar.html.twig' with {active: 'dashboard'} %}
+
+        <main class="member-content">
+
+            {% include 'components/member/_topbar.html.twig' with {memberTitle: 'Tableau de bord'} %}
+
+            {# =====================================================
+               HERO DE BIENVENUE
+               ===================================================== #}
+
+            <div class="member-hero">
+                <div class="member-hero__text">
+                    <span class="member-hero__eyebrow">{{ "now"|date('d/m/Y') }}</span>
+                    <h1>Bonjour {{ app.user.nickname }} 👋</h1>
+                    <p>Voici un aperçu de ton activité et de tes performances sur NTS Betting.</p>
+                </div>
+                <div class="member-hero__badge">
+                    <i class="fa-solid {{ app.user.isVip ? 'fa-crown' : 'fa-shield-halved' }}"></i>
+                    <span>{{ app.user.isVip ? ('Membre ' ~ app.user.subscriptionPlan|capitalize) : 'Membre gratuit' }}</span>
+                </div>
+            </div>
+
+            {# =====================================================
+               QUICK ACCESS
+               ===================================================== #}
+
+            <div class="member-quicklinks">
+                <a href="{{ path('app_pronostics') }}" class="member-quicklink">
+                    <div class="member-quicklink__icon"><i class="fa-solid fa-bullseye"></i></div>
+                    <span>Mes pronostics</span>
+                </a>
+                <a href="{{ path('app_results') }}" class="member-quicklink">
+                    <div class="member-quicklink__icon"><i class="fa-solid fa-chart-column"></i></div>
+                    <span>Mes résultats</span>
+                </a>
+                <a href="{{ path('app_vault') }}" class="member-quicklink">
+                    <div class="member-quicklink__icon"><i class="fa-solid fa-piggy-bank"></i></div>
+                    <span>NTS Vault</span>
+                </a>
+                <a href="{{ path('app_profile') }}" class="member-quicklink">
+                    <div class="member-quicklink__icon"><i class="fa-solid fa-user"></i></div>
+                    <span>Mon profil</span>
+                </a>
+            </div>
+
+            {# =====================================================
+               ABONNEMENT
+               ===================================================== #}
+
+            <div class="member-panel member-panel--subscription">
+
+                <div class="member-panel__header">
+                    <h2 class="member-panel__title"><i class="fa-solid fa-crown" style="color:var(--color-gold); margin-right:8px;"></i>Mon abonnement</h2>
+
+                    {% if app.user.isVip %}
+                        <form action="{{ path('app_subscription_portal') }}" method="post">
+                            <button type="submit" class="member-btn member-btn--ghost">Gérer mon abonnement</button>
+                        </form>
+                    {% endif %}
+                </div>
+
+                {% if app.user.isVip %}
+
+                    <p style="color:#fff; margin:0 0 6px;">
+                        Offre <strong>{{ app.user.subscriptionPlan|capitalize }}</strong>
+                        {% if app.user.subscriptionStatus != 'active' %}
+                            <span class="member-badge member-badge--pending">{{ app.user.subscriptionStatus }}</span>
+                        {% endif %}
+                    </p>
+
+                    {% if subscriptionDaysRemaining is not null %}
+                        <p style="color:rgba(255,255,255,0.55); font-size:0.84rem; margin:0 0 10px;">
+                            Renouvellement le {{ app.user.subscriptionCurrentPeriodEnd|date('d/m/Y') }}
+                            ({{ subscriptionDaysRemaining }} jour{{ subscriptionDaysRemaining > 1 ? 's' : '' }} restant{{ subscriptionDaysRemaining > 1 ? 's' : '' }})
+                        </p>
+
+                        <div class="member-goal__bar" style="margin-bottom:4px;">
+                            <span style="width: {{ subscriptionPeriodPercent }}%;"></span>
+                        </div>
+                    {% endif %}
+
+                {% else %}
+
+                    <p style="color:rgba(255,255,255,0.6); margin:0 0 14px;">
+                        Tu n'as pas d'abonnement actif. Débloque les pronostics VIP, les analyses détaillées et le NTS Vault.
+                    </p>
+
+                    <a href="{{ path('app_offers') }}" class="member-btn">Voir les offres</a>
+
+                {% endif %}
+
+            </div>
+
+
+            {# =====================================================
+               STATS RAPIDES (Vault si accès, sinon upsell)
+               ===================================================== #}
+
+            {% if vaultSummary %}
+
+                <div class="member-stats-grid">
+
+                    <div class="member-stat-card">
+                        <div class="member-stat-card__icon"><i class="fa-solid fa-sack-dollar"></i></div>
+                        <span class="member-stat-card__label">Solde (NTS Vault)</span>
+                        <strong class="member-stat-card__value {{ vaultSummary.balance >= 0 ? 'is-positive' : 'is-negative' }}">
+                            {{ vaultSummary.balance > 0 ? '+' : '' }}{{ vaultSummary.balance }} €
+                        </strong>
+                    </div>
+
+                    <div class="member-stat-card">
+                        <div class="member-stat-card__icon"><i class="fa-solid fa-list-check"></i></div>
+                        <span class="member-stat-card__label">Paris placés</span>
+                        <strong class="member-stat-card__value">{{ vaultSummary.settledCount }}</strong>
+                    </div>
+
+                    <div class="member-stat-card">
+                        <div class="member-stat-card__icon"><i class="fa-solid fa-trophy"></i></div>
+                        <span class="member-stat-card__label">Paris gagnés</span>
+                        <strong class="member-stat-card__value">
+                            {{ vaultSummary.winRate is not null ? vaultSummary.winRate ~ '%' : '—' }}
+                        </strong>
+                    </div>
+
+                    <div class="member-stat-card">
+                        <div class="member-stat-card__icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                        <span class="member-stat-card__label">ROI</span>
+                        <strong class="member-stat-card__value {{ vaultSummary.roi is not null and vaultSummary.roi >= 0 ? 'is-positive' : 'is-negative' }}">
+                            {{ vaultSummary.roi is not null ? (vaultSummary.roi > 0 ? '+' : '') ~ vaultSummary.roi ~ '%' : '—' }}
+                        </strong>
+                    </div>
+
+                </div>
+
+            {% elseif app.user.hasVaultAccess %}
+
+                <div class="member-panel">
+                    <p class="member-empty">
+                        Ton NTS Vault est vide pour l'instant.
+                        <a href="{{ path('app_vault_bankrolls') }}" class="member-panel__link">Ajoute ton premier pari →</a>
+                    </p>
+                </div>
+
+            {% else %}
+
+                <div class="member-panel" style="text-align:center;">
+                    <i class="fa-solid fa-piggy-bank" style="color:var(--color-gold); font-size:1.6rem; margin-bottom:10px;"></i>
+                    <p style="color:rgba(255,255,255,0.6); margin:0 0 12px;">
+                        Passe Avancé ou VIP pour débloquer le NTS Vault et suivre tes propres paris (bénéfice net, ROI, taux de réussite...).
+                    </p>
+                    <a href="{{ path('app_offers') }}" class="member-btn">Débloquer le NTS Vault</a>
+                </div>
+
+            {% endif %}
+
+
+            {# =====================================================
+               PRONOSTICS RÉCENTS
+               ===================================================== #}
+
+            <div class="member-panel">
+
+                <div class="member-panel__header">
+                    <h2 class="member-panel__title">Pronostics récents</h2>
+                    <a href="{{ path('app_pronostics') }}" class="member-panel__link">Voir tous les pronostics →</a>
+                </div>
+
+                {% if recentPronostics is empty %}
+
+                    <p class="member-empty">Aucun pronostic publié pour le moment.</p>
+
+                {% else %}
+
+                    <div class="member-table-wrapper">
+
+                        <table class="member-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Match</th>
+                                    <th>Pronostic</th>
+                                    <th>Cote</th>
+                                    <th>Statut</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for pronostic in recentPronostics %}
+                                    {% set isLocked = pronostic.vip and not app.user.isVip %}
+                                    <tr>
+                                        <td>{{ pronostic.matchDate|date('d/m/Y') }}</td>
+                                        <td>{{ pronostic.teamHome }} vs {{ pronostic.teamAway }}</td>
+                                        <td>
+                                            {% if isLocked %}
+                                                <i class="fa-solid fa-lock" style="color:var(--color-gold);"></i> Réservé VIP
+                                            {% else %}
+                                                {{ pronostic.betType }} - {{ pronostic.betValue }}
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ isLocked ? '—' : pronostic.odds|odds }}</td>
+                                        <td>
+                                            {% if pronostic.status == 'won' %}
+                                                <span class="member-badge member-badge--won"><i class="fa-solid fa-check"></i> Gagné</span>
+                                            {% elseif pronostic.status == 'lost' %}
+                                                <span class="member-badge member-badge--lost"><i class="fa-solid fa-xmark"></i> Perdu</span>
+                                            {% elseif pronostic.status == 'void' %}
+                                                <span class="member-badge member-badge--void">Annulé</span>
+                                            {% else %}
+                                                <span class="member-badge member-badge--pending"><i class="fa-solid fa-clock"></i> À venir</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        </main>
+
+    </div>
+
+{% endblock %}

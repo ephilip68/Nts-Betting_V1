@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Abonnement confirmé — NTS Betting{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    <main style="max-width:600px; margin:80px auto; text-align:center; color:#e7e9ee; padding:0 20px;">
+
+        <i class="fa-solid fa-circle-check" style="font-size:48px; color:#d4af37;"></i>
+
+        <h1 style="margin-top:20px;">Paiement confirmé 🎉</h1>
+
+        <p style="color:#9aa1af; margin-top:12px;">
+            Merci pour ton abonnement ! Ton accès VIP sera actif dans quelques secondes
+            (le temps que Stripe confirme le paiement). Si ça ne se met pas à jour,
+            rafraîchis la page dans une minute.
+        </p>
+
+        <a href="{{ path('app_pronostics') }}" class="btn"
+           style="display:inline-block; margin-top:24px; padding:12px 24px; background:#d4af37; color:#1a1a1a; border-radius:6px; text-decoration:none; font-weight:600;">
+            Voir mes pronostics
+        </a>
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

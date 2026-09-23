@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact — NTS Betting{% endblock %}
+
+{% block body_class %}static-page static-page--contact{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    {% set settings = site_settings() %}
+
+    <main>
+
+        <section class="static-hero static-hero--visual">
+            <h1 class="static-hero__title">Contactez notre <span>équipe</span></h1>
+            <p class="static-hero__subtitle">Une question, un partenariat ou simplement envie d'échanger ?</p>
+        </section>
+
+        <div class="static-page__container">
+
+            {% for message in app.flashes('success') %}
+                <div class="profile-flash profile-flash--success">{{ message }}</div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+                <div class="profile-flash profile-flash--error">{{ message }}</div>
+            {% endfor %}
+
+            <div class="contact-layout">
+
+                <div class="contact-info-card">
+                    <i class="fa-regular fa-envelope"></i>
+                    <strong>Par e-mail</strong>
+                    {% if settings.contactEmail %}
+                        <a href="mailto:{{ settings.contactEmail }}">{{ settings.contactEmail }}</a>
+                    {% else %}
+                        <span>Utilise le formulaire ci-dessous</span>
+                    {% endif %}
+                </div>
+
+                {% if settings.telegramUrl %}
+                    <div class="contact-info-card">
+                        <i class="fa-brands fa-telegram"></i>
+                        <strong>Sur Telegram</strong>
+                        <a href="{{ settings.telegramUrl }}" target="_blank" rel="noopener">Rejoindre le groupe</a>
+                    </div>
+                {% endif %}
+
+                <div class="contact-info-card">
+                    <i class="fa-regular fa-clock"></i>
+                    <strong>Délai de réponse</strong>
+                    <span>Sous 24h en moyenne</span>
+                </div>
+
+            </div>
+
+
+            <div class="contact-grid">
+
+                <div class="member-panel">
+
+                    <h2 class="member-panel__title" style="margin-bottom:16px;">Formulaire de contact</h2>
+
+                    {{ form_start(form, {attr: {class: 'member-form'}}) }}
+                        {{ form_row(form.name) }}
+                        {{ form_row(form.email) }}
+                        {{ form_row(form.subject) }}
+                        {{ form_row(form.message) }}
+                        <button type="submit" class="member-btn">Envoyer le message</button>
+                    {{ form_end(form) }}
+
+                </div>
+
+                <div class="member-panel">
+
+                    <h2 class="member-panel__title" style="margin-bottom:16px;">Questions fréquentes</h2>
+
+                    <div style="display:flex; flex-direction:column; gap:10px;">
+                        {% for item in faqPreview %}
+                            <a href="{{ path('app_faq') }}" class="member-panel__link" style="display:block;">
+                                {{ item.question }}
+                            </a>
+                        {% endfor %}
+                    </div>
+
+                    <a href="{{ path('app_faq') }}" class="member-btn member-btn--ghost" style="margin-top:16px; display:inline-flex;">
+                        Voir toutes les questions
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

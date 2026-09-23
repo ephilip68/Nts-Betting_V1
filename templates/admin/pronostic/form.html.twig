@@ -1,10 +1,9 @@
 {% extends 'admin/base.html.twig' %}
 
 {% block title %}{{ pronostic.id ? 'Modifier' : 'Nouveau' }} pronostic — Admin{% endblock %}
+{% block page_title %}{{ pronostic.id ? 'Modifier le pronostic' : 'Nouveau pronostic' }}{% endblock %}
 
 {% block body %}
-
-    <h1>{{ pronostic.id ? 'Modifier le pronostic' : 'Nouveau pronostic' }}</h1>
 
     {{ form_start(form, {attr: {class: 'admin-form'}}) }}
         {{ form_row(form.sport) }}
@@ -17,6 +16,7 @@
         {{ form_row(form.betType) }}
         {{ form_row(form.betValue) }}
         {{ form_row(form.odds) }}
+        {{ form_row(form.stake) }}
         {{ form_row(form.confidence) }}
         {{ form_row(form.analysis) }}
         {{ form_row(form.status) }}

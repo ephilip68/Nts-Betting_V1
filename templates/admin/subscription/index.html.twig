@@ -1,0 +1,62 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Abonnements — Admin{% endblock %}
+{% block page_title %}Abonnements{% endblock %}
+
+{% block body %}
+
+    <div style="display:flex; gap:16px; margin:20px 0; flex-wrap:wrap;">
+
+        <div style="background:var(--admin-panel); border:1px solid var(--admin-border); border-radius:10px; padding:16px 20px;">
+            <div style="color:var(--admin-muted); font-size:0.8rem;">Abonnés actifs</div>
+            <strong style="font-size:1.5rem;">{{ activeCount }}</strong>
+        </div>
+
+        <div style="background:var(--admin-panel); border:1px solid var(--admin-border); border-radius:10px; padding:16px 20px;">
+            <div style="color:var(--admin-muted); font-size:0.8rem;">Revenu mensuel récurrent (MRR)</div>
+            <strong style="font-size:1.5rem;">{{ mrr }} €</strong>
+        </div>
+
+        {% for plan, count in byPlan %}
+            <div style="background:var(--admin-panel); border:1px solid var(--admin-border); border-radius:10px; padding:16px 20px;">
+                <div style="color:var(--admin-muted); font-size:0.8rem;">{{ plan|capitalize }}</div>
+                <strong style="font-size:1.5rem;">{{ count }}</strong>
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <div class="admin-table-wrapper">
+    <table>
+        <thead>
+            <tr>
+                <th>Membre</th>
+                <th>Email</th>
+                <th>Offre</th>
+                <th>Statut</th>
+                <th>Renouvellement</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in subscribers %}
+                <tr>
+                    <td>{{ u.nickname }}</td>
+                    <td>{{ u.email }}</td>
+                    <td>{{ u.subscriptionPlan|capitalize }}</td>
+                    <td>
+                        <span class="badge badge-{{ u.subscriptionStatus == 'active' ? 'won' : 'lost' }}">{{ u.subscriptionStatus }}</span>
+                    </td>
+                    <td>{{ u.subscriptionCurrentPeriodEnd ? u.subscriptionCurrentPeriodEnd|date('d/m/Y') : '—' }}</td>
+                    <td>
+                        <a href="{{ path('admin_user_edit', {id: u.id}) }}" class="btn btn-secondary" style="padding:6px 12px; font-size:13px;">Voir le membre</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr><td colspan="6">Aucun abonné pour le moment.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+{% endblock %}

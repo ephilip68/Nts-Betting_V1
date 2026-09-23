@@ -585,6 +585,24 @@
    LABEL
    ========================================================= */
 
+.results-stats__disclaimer {
+
+    width: min(calc(100% - 120px), 1450px);
+
+    margin: 12px auto 0;
+
+    font-size: 0.72rem;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.4
+        );
+}
+
+
 .results-stat-card__label {
 
     display: block;

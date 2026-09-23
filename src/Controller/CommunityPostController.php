@@ -112,41 +112,86 @@ final class CommunityPostController extends AbstractController
             $post->setPhoto(null);
         }
 
+        if (!in_array($type, ['TICKET', 'DISCUSSION', 'ANALYSE', 'VIP'], true)) {
+            $this->addFlash('error', 'Type de publication invalide.');
+
+            return $this->redirectToRoute('app_community');
+        }
+
+        if ($content === null || trim($content) === '') {
+            $this->addFlash('error', 'Le contenu de la publication ne peut pas être vide.');
+
+            return $this->redirectToRoute('app_community');
+        }
+
         $post->setType($type);
         $post->setContent($content);
         $post->setSport($request->request->get('sport') ?: 'football');
         $post->setCreatedAt(new \DateTime());
         $post->setAnalysisTitle(
-            $request->request->get('analysisTitle') ?: null
+            $type === 'ANALYSE' ? ($request->request->get('analysisTitle') ?: null) : null
         );
-        $post->setVipMatch(
-            $request->request->get('vipMatch') ?: null
-        );
-        $post->setVipPrediction(
-            $request->request->get('vipPrediction') ?: null
-        );
-        $post->setVipOdds(
-            $request->request->get('vipOdds') ?: null
-        );
-        $post->setVipStake(
-            $request->request->get('vipStake') ?: null
-        );
-        $vipConfidence = $request->request->get('vipConfidence');
-        $post->setVipConfidence(
-            $vipConfidence !== null && $vipConfidence !== ''
-                ? (int) $vipConfidence
-                : null
-        );
+
+        if ($type === 'VIP') {
+            $post->setVipMatch($request->request->get('vipMatch') ?: null);
+            $post->setVipPrediction($request->request->get('vipPrediction') ?: null);
+            $post->setVipOdds($request->request->get('vipOdds') ?: null);
+            $post->setVipStake($request->request->get('vipStake') ?: null);
+            $vipConfidence = $request->request->get('vipConfidence');
+            $post->setVipConfidence(
+                $vipConfidence !== null && $vipConfidence !== '' ? (int) $vipConfidence : null
+            );
+        }
 
         $entityManager->persist($post);
         $entityManager->flush();
 
-        return new Response('Post créé avec l\'ID : ' . $post->getId());
+        $this->addFlash('success', 'Publication partagée avec la communauté.');
+
+        return $this->redirectToRoute('app_community');
+    }
+
+    #[Route('/community/post/{id}/supprimer', name: 'app_community_post_delete', methods: ['POST'])]
+    public function delete(
+        CommunityPost $post,
+        Request $request,
+        #[CurrentUser] ?User $user,
+        EntityManagerInterface $entityManager
+    ): Response {
+        if (!$user || ($post->getUser() !== $user && !$this->isGranted('ROLE_ADMIN'))) {
+            throw $this->createAccessDeniedException();
+        }
+
+        if ($this->isCsrfTokenValid('delete-community-post-' . $post->getId(), $request->request->get('_token'))) {
+            if ($post->getPhoto()) {
+                $path = $this->getParameter('kernel.project_dir') . '/public/uploads/community/' . $post->getPhoto();
+                if (is_file($path)) {
+                    @unlink($path);
+                }
+            }
+
+            // Les likes/commentaires sur ce post (par n'importe qui) doivent partir avant
+            // le post lui-même, sinon la contrainte de clé étrangère bloque la suppression.
+            $entityManager->createQuery('DELETE FROM App\Entity\CommunityLike l WHERE l.communityPost = :post')
+                ->setParameter('post', $post)
+                ->execute();
+            $entityManager->createQuery('DELETE FROM App\Entity\CommunityComment c WHERE c.communityPost = :post')
+                ->setParameter('post', $post)
+                ->execute();
+
+            $entityManager->remove($post);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Publication supprimée.');
+        }
+
+        return $this->redirectToRoute('app_community');
     }
 
     #[Route('/community/post/{id}/like', name: 'app_community_post_like', methods: ['POST'])]
     public function like(
         CommunityPost $post,
+        Request $request,
         #[CurrentUser] ?\App\Entity\User $user,
         EntityManagerInterface $entityManager
     ): Response {
@@ -157,6 +202,10 @@ final class CommunityPostController extends AbstractController
                 'success' => false,
                 'message' => 'Vous devez être connecté pour aimer une publication.'
             ], 401);
+        }
+
+        if (!$this->isCsrfTokenValid('community-like-' . $post->getId(), $request->request->get('_token'))) {
+            return $this->json(['success' => false, 'message' => 'Action refusée, réessaie.'], 403);
         }
 
         $likeRepository = $entityManager
@@ -217,6 +266,10 @@ final class CommunityPostController extends AbstractController
                 'success' => false,
                 'message' => 'Vous devez être connecté pour commenter.'
             ], 401);
+        }
+
+        if (!$this->isCsrfTokenValid('community-comment-' . $post->getId(), $request->request->get('_token'))) {
+            return $this->json(['success' => false, 'message' => 'Action refusée, réessaie.'], 403);
         }
 
         // Récupérer le contenu

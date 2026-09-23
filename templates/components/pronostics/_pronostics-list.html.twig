@@ -12,9 +12,11 @@
                 </h2>
 
                 <div class="pronostics-section__sort">
-                    <select>
-                        <option>Plus récents</option>
-                        <option>Plus anciens</option>
+                    <select data-pronostics-sort>
+                        <option value="recent" {{ currentSort == 'recent' ? 'selected' : '' }}>Plus récents</option>
+                        <option value="oldest" {{ currentSort == 'oldest' ? 'selected' : '' }}>Plus anciens</option>
+                        <option value="confidence" {{ currentSort == 'confidence' ? 'selected' : '' }}>Confiance</option>
+                        <option value="odds" {{ currentSort == 'odds' ? 'selected' : '' }}>Cote</option>
                     </select>
 
                     <i class="fa-solid fa-chevron-down"></i>
@@ -85,7 +87,7 @@
                             </span>
 
                             <strong class="pronostics-list__odds-value">
-                                {{ isLocked ? '—' : pronostic.odds }}
+                                {{ isLocked ? '—' : pronostic.odds|odds }}
                             </strong>
 
                         </div>
@@ -110,14 +112,23 @@
 
 
                         <!-- ACTION -->
-                        <div class="pronostics-list__action">
+                        <div class="pronostics-list__action" style="display:flex; align-items:center; gap:8px;">
+
+                            {% if app.user %}
+                                <form action="{{ path('app_pronostic_favorite_toggle', {id: pronostic.id}) }}" method="post">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('toggle-favorite-' ~ pronostic.id) }}">
+                                    <button type="submit" class="pronostics-list__favorite {{ pronostic.id in favoriteIds ? 'is-active' : '' }}" aria-label="Ajouter aux favoris" style="background:none; border:none; cursor:pointer; font-size:1.1rem; color: {{ pronostic.id in favoriteIds ? 'var(--color-gold, #DDB219)' : 'rgba(255,255,255,0.35)' }};">
+                                        <i class="fa-solid fa-star"></i>
+                                    </button>
+                                </form>
+                            {% endif %}
 
                             {% if isLocked %}
                                 <a href="{{ path('app_offers') }}" class="pronostics-list__button">
                                     <i class="fa-solid fa-crown"></i> VIP
                                 </a>
-                            {% else %}
-                                <button class="pronostics-list__button">
+                            {% elseif pronostic.analysis %}
+                                <button type="button" class="pronostics-list__button" data-pronostic-toggle="analysis-{{ pronostic.id }}">
                                     Voir
                                 </button>
                             {% endif %}
@@ -125,6 +136,12 @@
                         </div>
 
                     </div>
+
+                    {% if not isLocked and pronostic.analysis %}
+                        <div class="pronostics-list__analysis" id="analysis-{{ pronostic.id }}" hidden style="padding:14px 16px; color:rgba(255,255,255,0.7); font-size:0.88rem; border-top:1px solid rgba(255,255,255,0.06);">
+                            {{ pronostic.analysis }}
+                        </div>
+                    {% endif %}
 
                 {% else %}
 
@@ -139,22 +156,24 @@
 
             {% if pageCount > 1 %}
 
+                {% set paginationParams = {sport: currentSport, access: currentAccess, competition: currentCompetition, type: currentBetType, confidence: currentConfidence, q: currentSearch, sort: currentSort, favorites: onlyFavorites ? 1 : null} %}
+
                 <div class="pronostics-pagination">
 
                     <button {{ page <= 1 ? 'disabled' : '' }}>
-                        <a href="{{ path('app_pronostics', {sport: currentSport, access: currentAccess, page: max(page - 1, 1)}) }}">
+                        <a href="{{ path('app_pronostics', paginationParams|merge({page: max(page - 1, 1)})) }}">
                             <i class="fa-solid fa-chevron-left"></i>
                         </a>
                     </button>
 
                     {% for p in 1..pageCount %}
-                        <a href="{{ path('app_pronostics', {sport: currentSport, access: currentAccess, page: p}) }}">
+                        <a href="{{ path('app_pronostics', paginationParams|merge({page: p})) }}">
                             <button class="{{ p == page ? 'is-active' : '' }}">{{ p }}</button>
                         </a>
                     {% endfor %}
 
                     <button {{ page >= pageCount ? 'disabled' : '' }}>
-                        <a href="{{ path('app_pronostics', {sport: currentSport, access: currentAccess, page: min(page + 1, pageCount)}) }}">
+                        <a href="{{ path('app_pronostics', paginationParams|merge({page: min(page + 1, pageCount)})) }}">
                             <i class="fa-solid fa-chevron-right"></i>
                         </a>
                     </button>
@@ -227,10 +246,9 @@
 
                             <div class="pronostics-card__team">
 
-                                <img
-                                    src="{{ featured.teamHomeLogo ?: '/images/resultats/teams/default.png' }}"
-                                    alt="{{ featured.teamHome }}"
-                                >
+                                {% if featured.teamHomeLogo %}
+                                    <img src="{{ featured.teamHomeLogo }}" alt="{{ featured.teamHome }}">
+                                {% endif %}
 
                                 <span>
                                     {{ featured.teamHome }}
@@ -246,10 +264,9 @@
 
                             <div class="pronostics-card__team">
 
-                                <img
-                                    src="{{ featured.teamAwayLogo ?: '/images/resultats/teams/default.png' }}"
-                                    alt="{{ featured.teamAway }}"
-                                >
+                                {% if featured.teamAwayLogo %}
+                                    <img src="{{ featured.teamAwayLogo }}" alt="{{ featured.teamAway }}">
+                                {% endif %}
 
                                 <span>
                                     {{ featured.teamAway }}
@@ -289,7 +306,7 @@
                                 </span>
 
                                 <strong class="pronostics-card__stat-value">
-                                    {{ featured.odds }}
+                                    {{ featured.odds|odds }}
                                 </strong>
 
                             </div>

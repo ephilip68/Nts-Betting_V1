@@ -49,6 +49,14 @@ class Pronostic
     #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
     private ?string $odds = null;
 
+    /**
+     * Mise nominale en euros, utilisée pour calculer les stats de la page Résultats
+     * (gains/pertes, ROI...). Indicatif : ce n'est pas un solde ou de l'argent réel
+     * détenu par le site (voir la contrainte NTS Vault).
+     */
+    #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
+    private string $stake = '10.00';
+
     #[ORM\Column]
     private ?int $confidence = null;
 
@@ -193,6 +201,18 @@ class Pronostic
     public function setOdds(string $odds): static
     {
         $this->odds = $odds;
+
+        return $this;
+    }
+
+    public function getStake(): string
+    {
+        return $this->stake;
+    }
+
+    public function setStake(string $stake): static
+    {
+        $this->stake = $stake;
 
         return $this;
     }

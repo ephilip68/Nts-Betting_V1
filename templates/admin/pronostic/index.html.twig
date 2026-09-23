@@ -1,14 +1,15 @@
 {% extends 'admin/base.html.twig' %}
 
 {% block title %}Pronostics — Admin{% endblock %}
+{% block page_title %}Pronostics{% endblock %}
 
 {% block body %}
 
-    <div style="display:flex; align-items:center; justify-content:space-between;">
-        <h1>Pronostics</h1>
-        <a href="{{ path('admin_pronostic_new') }}" class="btn">+ Nouveau pronostic</a>
+    <div style="display:flex; justify-content:flex-end; margin-bottom:16px;">
+        <a href="{{ path('admin_pronostic_new') }}" class="btn"><i class="fa-solid fa-plus"></i> Nouveau pronostic</a>
     </div>
 
+    <div class="admin-table-wrapper">
     <table>
         <thead>
             <tr>
@@ -16,6 +17,7 @@
                 <th>Date</th>
                 <th>Pari</th>
                 <th>Cote</th>
+                <th>Mise</th>
                 <th>Accès</th>
                 <th>Résultat</th>
                 <th></th>
@@ -28,6 +30,7 @@
                     <td>{{ pronostic.matchDate|date('d/m/Y H:i') }}</td>
                     <td>{{ pronostic.betType }} — {{ pronostic.betValue }}</td>
                     <td>{{ pronostic.odds }}</td>
+                    <td>{{ pronostic.stake }} €</td>
                     <td>
                         {% if pronostic.vip %}
                             <span class="badge badge-vip">VIP</span>
@@ -47,9 +50,10 @@
                     </td>
                 </tr>
             {% else %}
-                <tr><td colspan="7">Aucun pronostic pour le moment.</td></tr>
+                <tr><td colspan="8">Aucun pronostic pour le moment.</td></tr>
             {% endfor %}
         </tbody>
     </table>
+    </div>
 
 {% endblock %}

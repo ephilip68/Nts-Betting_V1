@@ -1,0 +1,21 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}{{ campaign.id ? 'Modifier' : 'Nouvelle' }} campagne — Admin{% endblock %}
+{% block page_title %}{{ campaign.id ? 'Modifier la campagne' : 'Nouvelle campagne' }}{% endblock %}
+
+{% block body %}
+
+    {{ form_start(form, {attr: {class: 'admin-form'}}) }}
+        {{ form_row(form.subject) }}
+        {{ form_row(form.content) }}
+
+        <div class="actions-row">
+            <button type="submit" class="btn">Enregistrer le brouillon</button>
+            <a href="{{ path('admin_newsletter_campaign_index') }}" class="btn btn-secondary">Annuler</a>
+            {% if campaign.id %}
+                <a href="{{ path('admin_newsletter_campaign_preview', {id: campaign.id}) }}" target="_blank" class="btn btn-secondary">Aperçu</a>
+            {% endif %}
+        </div>
+    {{ form_end(form) }}
+
+{% endblock %}

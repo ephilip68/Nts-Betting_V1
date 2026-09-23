@@ -1,0 +1,42 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Newsletter — Admin{% endblock %}
+{% block page_title %}Newsletter ({{ activeCount }} inscrit{{ activeCount > 1 ? 's' : '' }} actif{{ activeCount > 1 ? 's' : '' }}){% endblock %}
+
+{% block body %}
+
+    <div style="display:flex; justify-content:flex-end; gap:10px; margin-bottom:16px;">
+        <a href="{{ path('admin_newsletter_campaign_index') }}" class="btn btn-secondary">Campagnes</a>
+        <a href="{{ path('admin_newsletter_export') }}" class="btn">Exporter en CSV</a>
+    </div>
+
+    <div class="admin-table-wrapper">
+    <table>
+        <thead>
+            <tr>
+                <th>E-mail</th>
+                <th>Inscrit le</th>
+                <th>Statut</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for subscriber in subscribers %}
+                <tr>
+                    <td>{{ subscriber.email }}</td>
+                    <td>{{ subscriber.subscribedAt|date('d/m/Y H:i') }}</td>
+                    <td>
+                        {% if subscriber.active %}
+                            <span class="badge badge-active">Actif</span>
+                        {% else %}
+                            <span class="badge badge-void">Désinscrit</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% else %}
+                <tr><td colspan="3">Aucun inscrit pour le moment.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+{% endblock %}

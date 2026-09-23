@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Désinscription — NTS Betting{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    <main>
+
+        <div class="member-panel member-panel--locked" style="max-width:520px; margin:60px auto;">
+
+            <i class="fa-solid fa-envelope-circle-check"></i>
+
+            {% if found %}
+                <h1>Tu es bien désinscrit(e)</h1>
+                <p>Tu ne recevras plus nos e-mails de newsletter. Tu peux te réinscrire à tout moment depuis le bas de n'importe quelle page.</p>
+            {% else %}
+                <h1>Lien invalide</h1>
+                <p>Ce lien de désinscription n'est plus valide.</p>
+            {% endif %}
+
+            <a href="{{ path('app_home') }}" class="member-btn">Retour à l'accueil</a>
+
+        </div>
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

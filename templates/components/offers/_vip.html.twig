@@ -130,10 +130,19 @@
 
                 <div class="vip-section__bottom">
 
-                    <a href="#" class="vip-section__button">
-                        <span>Rejoindre le VIP</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
+                    {% if is_granted('ROLE_USER') %}
+                        <form action="{{ path('app_subscription_checkout', {plan: 'vip'}) }}" method="post">
+                            <button type="submit" class="vip-section__button">
+                                <span>Rejoindre le VIP</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </form>
+                    {% else %}
+                        <a href="{{ path('app_login') }}" class="vip-section__button">
+                            <span>Rejoindre le VIP</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    {% endif %}
 
                     <div class="vip-section__separator"></div>
 

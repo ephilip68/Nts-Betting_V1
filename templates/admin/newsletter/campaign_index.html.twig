@@ -1,0 +1,62 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Campagnes newsletter — Admin{% endblock %}
+{% block page_title %}Campagnes newsletter{% endblock %}
+
+{% block body %}
+
+    <div style="display:flex; justify-content:flex-end; gap:10px; margin-bottom:16px;">
+        <a href="{{ path('admin_newsletter_index') }}" class="btn btn-secondary">Voir les inscrits</a>
+        <a href="{{ path('admin_newsletter_campaign_new') }}" class="btn"><i class="fa-solid fa-plus"></i> Nouvelle campagne</a>
+    </div>
+
+    <div class="admin-table-wrapper">
+    <table>
+        <thead>
+            <tr>
+                <th>Sujet</th>
+                <th>Statut</th>
+                <th>Créée le</th>
+                <th>Envoyée à</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for campaign in campaigns %}
+                <tr>
+                    <td>{{ campaign.subject }}</td>
+                    <td>
+                        {% if campaign.sent %}
+                            <span class="badge badge-published">Envoyée</span>
+                        {% else %}
+                            <span class="badge badge-draft">Brouillon</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ campaign.createdAt|date('d/m/Y H:i') }}</td>
+                    <td>{{ campaign.sent ? campaign.recipientCount ~ ' inscrit(s)' : '—' }}</td>
+                    <td style="white-space:nowrap; display:flex; gap:6px;">
+                        <a href="{{ path('admin_newsletter_campaign_preview', {id: campaign.id}) }}" target="_blank" class="btn btn-secondary" style="padding:6px 12px; font-size:13px;">Aperçu</a>
+
+                        {% if not campaign.sent %}
+                            <a href="{{ path('admin_newsletter_campaign_edit', {id: campaign.id}) }}" class="btn btn-secondary" style="padding:6px 12px; font-size:13px;">Modifier</a>
+
+                            <form action="{{ path('admin_newsletter_campaign_send', {id: campaign.id}) }}" method="post" onsubmit="return confirm('Envoyer cette campagne à tous les inscrits actifs ? Cette action est irréversible.');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('send-campaign-' ~ campaign.id) }}">
+                                <button type="submit" class="btn" style="padding:6px 12px; font-size:13px;">Envoyer</button>
+                            </form>
+
+                            <form action="{{ path('admin_newsletter_campaign_delete', {id: campaign.id}) }}" method="post" onsubmit="return confirm('Supprimer ce brouillon ?');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete-campaign-' ~ campaign.id) }}">
+                                <button type="submit" class="btn btn-danger" style="padding:6px 12px; font-size:13px;">Suppr.</button>
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% else %}
+                <tr><td colspan="5">Aucune campagne pour le moment.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+{% endblock %}

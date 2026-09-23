@@ -38,7 +38,7 @@
                     <div class="stats-telegram-section__stat-content">
 
                         <strong class="stats-telegram-section__stat-value">
-                            78%
+                            {{ monthStats.winRate is not null ? monthStats.winRate ~ '%' : '—' }}
                         </strong>
 
                         <span class="stats-telegram-section__stat-label">
@@ -63,7 +63,7 @@
                     <div class="stats-telegram-section__stat-content">
 
                         <strong class="stats-telegram-section__stat-value">
-                            +24.5
+                            {{ monthStats.unitsProfit > 0 ? '+' : '' }}{{ monthStats.unitsProfit }} €
                         </strong>
 
                         <span class="stats-telegram-section__stat-label">
@@ -88,7 +88,7 @@
                     <div class="stats-telegram-section__stat-content">
 
                         <strong class="stats-telegram-section__stat-value">
-                            3.12
+                            {{ monthStats.avgOdds ?? '—' }}
                         </strong>
 
                         <span class="stats-telegram-section__stat-label">
@@ -113,11 +113,11 @@
                     <div class="stats-telegram-section__stat-content">
 
                         <strong class="stats-telegram-section__stat-value">
-                            +12 580 €
+                            {{ monthStats.settledCount }}
                         </strong>
 
                         <span class="stats-telegram-section__stat-label">
-                            Bénéfice estimé
+                            Pronostics joués
                         </span>
 
                     </div>
@@ -174,18 +174,18 @@
                     et nos résultats en temps réel.
                 </p>
 
-                <a
-                    href="#"
-                    class="stats-telegram-section__telegram-button"
-                >
+                {% set telegramUrl = site_settings().telegramUrl %}
 
-                    <span>
-                        Nous rejoindre
+                {% if telegramUrl %}
+                    <a href="{{ telegramUrl }}" target="_blank" rel="noopener" class="stats-telegram-section__telegram-button">
+                        <span>Nous rejoindre</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                {% else %}
+                    <span class="stats-telegram-section__telegram-button" style="opacity:0.5; cursor:default;">
+                        <span>Bientôt disponible</span>
                     </span>
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </a>
+                {% endif %}
 
             </div>
 

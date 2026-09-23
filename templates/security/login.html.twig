@@ -103,7 +103,7 @@
                         <span>Se souvenir de moi</span>
                     </label>
 
-                    <a href="#" class="auth-form__forgot">
+                    <a href="{{ path('app_forgot_password_request') }}" class="auth-form__forgot">
                         Mot de passe oublié ?
                     </a>
 
@@ -125,21 +125,21 @@
 
             <div class="auth-social">
 
-                <button type="button" class="auth-social__button">
+                <a href="{{ path('connect_google') }}" class="auth-social__button">
                     <span class="auth-social__icon auth-social__icon--google">
                         G
                     </span>
 
                     <span>Continuer avec Google</span>
-                </button>
+                </a>
 
-                <button type="button" class="auth-social__button">
+                <a href="{{ path('connect_apple') }}" class="auth-social__button">
                     <span class="auth-social__icon auth-social__icon--apple">
                         <i class="fa-brands fa-apple"></i>
                     </span>
 
                     <span>Continuer avec Apple</span>
-                </button>
+                </a>
 
             </div>
 
@@ -147,7 +147,7 @@
 
                 <span>Pas encore de compte ?</span>
 
-                <a href="#">
+                <a href="{{ path('app_register') }}">
                     S'inscrire
                 </a>
 

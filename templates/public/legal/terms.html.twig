@@ -1,0 +1,154 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Conditions d'utilisation — NTS Betting{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    {% set settings = site_settings() %}
+
+    <main>
+
+        <section class="static-hero">
+            <h1 class="static-hero__title">Conditions <span>d'utilisation</span></h1>
+            <p class="static-hero__subtitle">Conditions générales d'utilisation et de vente (CGU/CGV)</p>
+        </section>
+
+        <div class="static-page__container" style="max-width:800px;">
+
+            <div class="legal-notice-banner">
+                <strong>À compléter :</strong> l'identité de la société et le droit applicable (zones surlignées)
+                doivent être remplis avant la mise en ligne — je ne peux pas les inventer à ta place. Le reste
+                (offres, fonctionnement, résiliation) reflète le fonctionnement réel du site.
+            </div>
+
+            <div class="article-body">
+
+                <p>Dernière mise à jour : {{ "now"|date("d/m/Y") }}</p>
+
+                <h2>1. Objet</h2>
+                <p>
+                    Les présentes Conditions Générales d'Utilisation et de Vente (CGU/CGV) régissent l'accès et
+                    l'utilisation du site NTS Betting, édité par
+                    <span class="legal-placeholder">[raison sociale de la société]</span>
+                    (voir nos <a href="{{ path('app_legal_notice') }}">mentions légales</a>), ainsi que la
+                    souscription aux abonnements proposés. En créant un compte ou en souscrivant à une offre, tu
+                    acceptes sans réserve les présentes conditions.
+                </p>
+
+                <h2>2. Nature du service</h2>
+                <p>
+                    NTS Betting est un service d'analyses et de pronostics sportifs à visée informative. NTS Betting
+                    <strong>ne propose ni ne prend aucun pari</strong>, ne détient aucun compte joueur et ne gère
+                    aucun argent lié aux paris sportifs. Les pronostics et analyses publiés n'engagent que leurs
+                    auteurs et ne garantissent aucun résultat. Voir notre page
+                    <a href="{{ path('app_responsible_gaming') }}">Jeu responsable</a>.
+                </p>
+
+                <h2>3. Création de compte</h2>
+                <p>
+                    L'inscription est réservée aux personnes majeures (18 ans et plus), disposant d'une adresse
+                    e-mail valide. La création de compte nécessite la vérification de l'adresse e-mail avant toute
+                    connexion. Chaque membre est responsable de la confidentialité de son mot de passe et de
+                    l'ensemble des actions réalisées depuis son compte.
+                </p>
+
+                <h2>4. Offres et abonnements</h2>
+                <p>Quatre paliers d'abonnement mensuel, sans engagement de durée, sont proposés :</p>
+                <ul>
+                    <li><strong>Starter</strong> — 14,99 € / mois</li>
+                    <li><strong>Essentiel</strong> — 29,99 € / mois</li>
+                    <li><strong>Avancé</strong> — 49,99 € / mois (inclut l'accès au NTS Vault)</li>
+                    <li><strong>VIP</strong> — 99,99 € / mois (inclut l'accès au NTS Vault)</li>
+                </ul>
+                <p>
+                    Le contenu et les fonctionnalités accessibles selon chaque offre sont détaillés sur la page
+                    <a href="{{ path('app_offers') }}">Nos offres</a>. NTS Betting se réserve le droit de faire
+                    évoluer le contenu, les tarifs ou les paliers des offres, moyennant une information préalable
+                    des membres concernés.
+                </p>
+
+                <h2>5. Paiement et renouvellement</h2>
+                <p>
+                    Les paiements sont traités exclusivement par notre prestataire <strong>Stripe</strong>, de
+                    manière sécurisée. L'abonnement est à <strong>reconduction automatique mensuelle</strong> : il
+                    est prélevé chaque mois à la date anniversaire de la souscription, jusqu'à résiliation par le
+                    membre. NTS Betting ne stocke aucune donnée bancaire.
+                </p>
+
+                <h2>6. Résiliation</h2>
+                <p>
+                    Chaque membre peut résilier son abonnement à tout moment, sans frais ni justification, depuis
+                    Mon profil &gt; Mon abonnement &gt; "Gérer mon abonnement" (portail Stripe). L'accès aux
+                    fonctionnalités de l'offre reste actif jusqu'à la fin de la période déjà payée ; aucun
+                    remboursement au prorata n'est effectué pour une période entamée, sauf disposition légale
+                    contraire ou décision commerciale exceptionnelle.
+                </p>
+
+                <h2>7. NTS Vault</h2>
+                <p>
+                    Le NTS Vault (réservé aux offres Avancé et VIP) est un outil de suivi personnel de bankroll :
+                    le membre y enregistre lui-même ses propres mises et gains, réalisés en dehors de NTS Betting,
+                    à titre purement déclaratif. <strong>Aucun dépôt ni retrait d'argent réel n'est possible sur
+                    NTS Betting.</strong>
+                </p>
+
+                <h2>8. Contenu communautaire</h2>
+                <p>
+                    L'espace communautaire permet aux membres de publier des messages, tickets et analyses. Chaque
+                    membre reste responsable du contenu qu'il publie et s'engage à ne pas diffuser de contenu
+                    illicite, injurieux, trompeur ou portant atteinte aux droits de tiers. NTS Betting se réserve le
+                    droit de modérer ou supprimer tout contenu ne respectant pas ces règles, et de suspendre un
+                    compte en cas d'abus répété.
+                </p>
+
+                <h2>9. Propriété intellectuelle</h2>
+                <p>
+                    L'ensemble des contenus édités par NTS Betting (analyses, pronostics, textes, logo) est protégé
+                    par le droit d'auteur. Voir le détail dans nos
+                    <a href="{{ path('app_legal_notice') }}">mentions légales</a>.
+                </p>
+
+                <h2>10. Suppression de compte</h2>
+                <p>
+                    Chaque membre peut supprimer définitivement son compte depuis Mon profil. Cette action entraîne
+                    la résiliation immédiate de l'abonnement en cours, la suppression du NTS Vault et des données
+                    personnelles, conformément à notre
+                    <a href="{{ path('app_privacy_policy') }}">politique de confidentialité</a>.
+                </p>
+
+                <h2>11. Modification des présentes conditions</h2>
+                <p>
+                    NTS Betting peut modifier les présentes CGU/CGV à tout moment. Les membres seront informés de
+                    toute modification substantielle ; la poursuite de l'utilisation du service après modification
+                    vaut acceptation des nouvelles conditions.
+                </p>
+
+                <h2>12. Droit applicable et litiges</h2>
+                <p>
+                    Les présentes conditions sont soumises au droit
+                    <span class="legal-placeholder">[français / autre]</span>. En cas de litige, et à défaut de
+                    résolution amiable, les tribunaux <span class="legal-placeholder">[compétents]</span> seront
+                    seuls compétents.
+                </p>
+
+                <h2>13. Contact</h2>
+                <p>
+                    Pour toute question relative aux présentes conditions, contacte-nous
+                    {% if settings.contactEmail %}
+                        à <a href="mailto:{{ settings.contactEmail }}">{{ settings.contactEmail }}</a>
+                    {% else %}
+                        via notre <a href="{{ path('app_contact') }}">formulaire de contact</a>
+                    {% endif %}.
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

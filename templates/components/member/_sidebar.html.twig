@@ -1,0 +1,61 @@
+{# =========================================================
+   ESPACE MEMBRE — SIDEBAR
+   ========================================================= #}
+
+<aside class="member-sidebar">
+
+    <a href="{{ path('app_home') }}" class="member-sidebar__logo">
+        <img src="{{ asset('images/logo/logo.png') }}" alt="NTS Betting">
+    </a>
+
+    <nav class="member-sidebar__nav">
+
+        <a href="{{ path('app_dashboard') }}" class="member-sidebar__link {{ active == 'dashboard' ? 'is-active' : '' }}">
+            <i class="fa-solid fa-gauge"></i>
+            <span>Tableau de bord</span>
+        </a>
+
+        <a href="{{ path('app_pronostics') }}" class="member-sidebar__link {{ active == 'pronostics' ? 'is-active' : '' }}">
+            <i class="fa-solid fa-bullseye"></i>
+            <span>Mes pronostics</span>
+        </a>
+
+        <a href="{{ path('app_results') }}" class="member-sidebar__link {{ active == 'results' ? 'is-active' : '' }}">
+            <i class="fa-solid fa-chart-column"></i>
+            <span>Mes résultats</span>
+        </a>
+
+        <a href="{{ path('app_vault') }}" class="member-sidebar__link {{ active == 'vault' ? 'is-active' : '' }}">
+            <i class="fa-solid fa-piggy-bank"></i>
+            <span>NTS Vault</span>
+        </a>
+
+        {% if site_settings().telegramUrl %}
+            <a href="{{ site_settings().telegramUrl }}" target="_blank" rel="noopener" class="member-sidebar__link">
+                <i class="fa-brands fa-telegram"></i>
+                <span>Groupe Telegram</span>
+            </a>
+        {% endif %}
+
+        <a href="{{ path('app_profile') }}" class="member-sidebar__link {{ active == 'profile' ? 'is-active' : '' }}">
+            <i class="fa-solid fa-crown"></i>
+            <span>Mon abonnement</span>
+        </a>
+
+        <a href="{{ path('app_profile') }}" class="member-sidebar__link {{ active == 'profile' ? 'is-active' : '' }}">
+            <i class="fa-solid fa-user"></i>
+            <span>Mon profil</span>
+        </a>
+
+    </nav>
+
+    {% if not app.user.hasVaultAccess %}
+        <div class="member-sidebar__upsell">
+            <div class="member-sidebar__upsell-badge"><i class="fa-solid fa-crown"></i></div>
+            <strong>Passez Avancé ou VIP</strong>
+            <span>Accédez à des analyses exclusives, plus de pronostics et des outils avancés.</span>
+            <a href="{{ path('app_offers') }}">Voir les offres <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    {% endif %}
+
+</aside>

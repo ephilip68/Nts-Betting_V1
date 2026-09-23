@@ -1,0 +1,76 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Résultats — Admin{% endblock %}
+{% block page_title %}Noter les résultats{% endblock %}
+
+{% block body %}
+
+    <p style="color:var(--admin-muted);">
+        Marque rapidement le résultat des pronostics joués. Pour tout modifier (cote, mise, analyse...),
+        passe par <a href="{{ path('admin_pronostic_index') }}">Pronostics</a>.
+    </p>
+
+    <h2 style="margin-top:28px;">En attente ({{ pending|length }})</h2>
+
+    <div class="admin-table-wrapper">
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Match</th>
+                <th>Pronostic</th>
+                <th>Cote</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pronostic in pending %}
+                <tr>
+                    <td>{{ pronostic.matchDate|date('d/m/Y H:i') }}</td>
+                    <td>{{ pronostic.teamHome }} vs {{ pronostic.teamAway }}</td>
+                    <td>{{ pronostic.betType }} — {{ pronostic.betValue }}</td>
+                    <td>{{ pronostic.odds }}</td>
+                    <td style="white-space:nowrap; display:flex; gap:6px;">
+                        {% for status, label in {won: 'Gagné', lost: 'Perdu', void: 'Annulé'} %}
+                            <form action="{{ path('admin_results_grade', {id: pronostic.id}) }}" method="post">
+                                <input type="hidden" name="status" value="{{ status }}">
+                                <input type="hidden" name="_token" value="{{ csrf_token('grade-pronostic-' ~ pronostic.id) }}">
+                                <button type="submit" class="btn {{ status == 'won' ? '' : 'btn-secondary' }}" style="padding:6px 10px; font-size:12px;">{{ label }}</button>
+                            </form>
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% else %}
+                <tr><td colspan="5">Aucun pronostic en attente.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+
+    <h2 style="margin-top:36px;">Derniers pronostics notés</h2>
+
+    <div class="admin-table-wrapper">
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Match</th>
+                <th>Statut</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pronostic in recentlyGraded %}
+                <tr>
+                    <td>{{ pronostic.matchDate|date('d/m/Y') }}</td>
+                    <td>{{ pronostic.teamHome }} vs {{ pronostic.teamAway }}</td>
+                    <td><span class="badge badge-{{ pronostic.status }}">{{ pronostic.status }}</span></td>
+                    <td><a href="{{ path('admin_pronostic_edit', {id: pronostic.id}) }}" class="btn btn-secondary" style="padding:6px 12px; font-size:13px;">Modifier</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+{% endblock %}

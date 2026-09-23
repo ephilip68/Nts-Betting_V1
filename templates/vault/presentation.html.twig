@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NTS Vault — NTS Betting{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    <main class="vault-presentation">
+
+        <section class="vault-hero">
+            <span class="vault-hero__eyebrow"><i class="fa-solid fa-lock"></i> Espace bankroll</span>
+            <h1 class="vault-hero__title">NTS <span>Vault</span></h1>
+            <p class="vault-hero__subtitle">Votre bankroll, notre priorité.</p>
+            <p class="vault-hero__description">
+                Le NTS Vault est un espace sécurisé dédié au suivi de ta bankroll. Enregistre tes
+                paris (simples, combinés, systèmes), suis ton évolution et ton ROI en temps réel —
+                aucun argent réel ne transite par le site, c'est un outil de suivi personnel.
+            </p>
+
+            <div class="vault-hero__guarantees">
+                <div class="vault-hero__guarantee">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <strong>Aucun argent réel</strong>
+                        <span>Un outil de suivi, pas un portefeuille</span>
+                    </div>
+                </div>
+                <div class="vault-hero__guarantee">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <div>
+                        <strong>Suivi en temps réel</strong>
+                        <span>Analyse tes performances</span>
+                    </div>
+                </div>
+                <div class="vault-hero__guarantee">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <div>
+                        <strong>Multi-bankroll</strong>
+                        <span>Un suivi par stratégie</span>
+                    </div>
+                </div>
+                <div class="vault-hero__guarantee">
+                    <i class="fa-solid fa-gem"></i>
+                    <div>
+                        <strong>Réservé aux abonnés</strong>
+                        <span>Nombre de bankrolls selon ton palier</span>
+                    </div>
+                </div>
+            </div>
+
+            {% if app.user %}
+                <a href="{{ path('app_offers') }}" class="member-btn">Découvrir nos offres <i class="fa-solid fa-arrow-right"></i></a>
+            {% else %}
+                <div class="vault-hero__actions">
+                    <a href="{{ path('app_offers') }}" class="member-btn">Découvrir nos offres <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="{{ path('app_login') }}" class="member-btn member-btn--ghost">Se connecter</a>
+                </div>
+            {% endif %}
+        </section>
+
+        <section class="vault-features">
+            <div class="vault-feature">
+                <i class="fa-solid fa-briefcase"></i>
+                <strong>Gestion de bankroll</strong>
+                <span>Suis tes mises et tes gains</span>
+            </div>
+            <div class="vault-feature">
+                <i class="fa-solid fa-chart-simple"></i>
+                <strong>Analyse des performances</strong>
+                <span>Statistiques détaillées</span>
+            </div>
+            <div class="vault-feature">
+                <i class="fa-solid fa-diagram-project"></i>
+                <strong>Système de paris</strong>
+                <span>Simple, combiné, système</span>
+            </div>
+            <div class="vault-feature">
+                <i class="fa-solid fa-bullseye"></i>
+                <strong>Objectifs</strong>
+                <span>Fixe-toi des objectifs mensuels</span>
+            </div>
+        </section>
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

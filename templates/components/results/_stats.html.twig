@@ -19,7 +19,7 @@
             <div class="results-stat-card__content">
 
                 <strong class="results-stat-card__value">
-                    78%
+                    {{ stats.winRate is not null ? stats.winRate ~ '%' : '—' }}
                 </strong>
 
                 <span class="results-stat-card__label">
@@ -44,11 +44,11 @@
             <div class="results-stat-card__content">
 
                 <strong class="results-stat-card__value">
-                    2 847
+                    {{ stats.settledCount }}
                 </strong>
 
                 <span class="results-stat-card__label">
-                    Pronostics publiés
+                    Pronostics joués
                 </span>
 
             </div>
@@ -60,7 +60,7 @@
            UNITÉS GAGNÉES
            ===================================================== #}
 
-        <div class="results-stat-card results-stat-card--success">
+        <div class="results-stat-card {{ stats.unitsProfit >= 0 ? 'results-stat-card--success' : '' }}">
 
             <div class="results-stat-card__icon">
                 <i class="fa-solid fa-arrow-trend-up"></i>
@@ -69,11 +69,11 @@
             <div class="results-stat-card__content">
 
                 <strong class="results-stat-card__value">
-                    +245%
+                    {{ stats.unitsProfit > 0 ? '+' : '' }}{{ stats.unitsProfit }} €
                 </strong>
 
                 <span class="results-stat-card__label">
-                    Unités gagnées
+                    Gains cumulés
                 </span>
 
             </div>
@@ -82,7 +82,7 @@
 
 
         {# =====================================================
-           BÉNÉFICE ESTIMÉ
+           ROI
            ===================================================== #}
 
         <div class="results-stat-card">
@@ -94,11 +94,11 @@
             <div class="results-stat-card__content">
 
                 <strong class="results-stat-card__value">
-                    +12 580€
+                    {{ stats.roi is not null ? (stats.roi > 0 ? '+' : '') ~ stats.roi ~ '%' : '—' }}
                 </strong>
 
                 <span class="results-stat-card__label">
-                    Bénéfice estimé*
+                    ROI*
                 </span>
 
             </div>
@@ -119,7 +119,7 @@
             <div class="results-stat-card__content">
 
                 <strong class="results-stat-card__value">
-                    +2 500
+                    {{ activeMembersCount }}
                 </strong>
 
                 <span class="results-stat-card__label">
@@ -131,5 +131,9 @@
         </div>
 
     </div>
+
+    <p class="results-stats__disclaimer">
+        * Gains et ROI calculés sur une mise nominale par pronostic, à titre indicatif — performances passées non contractuelles.
+    </p>
 
 </section>

@@ -40,6 +40,9 @@ security:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/community/post/create, roles: ROLE_USER }
+        - { path: ^/abonnement/checkout, roles: ROLE_USER }
+        - { path: ^/abonnement/portail, roles: ROLE_USER }
+        # /stripe/webhook doit rester public : c'est Stripe qui l'appelle, pas un navigateur connecté.
 
 when@test:
     security:

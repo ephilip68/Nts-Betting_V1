@@ -1,0 +1,45 @@
+{# =========================================================
+   ESPACE MEMBRE — TOPBAR
+   ========================================================= #}
+
+<header class="member-topbar">
+
+    <button type="button" class="member-topbar__burger" aria-label="Menu" data-member-sidebar-toggle>
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div class="member-topbar__title">
+        {{ memberTitle|default('') }}
+    </div>
+
+    <form class="member-topbar__search" action="{{ path('app_pronostics') }}" method="get">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" name="q" placeholder="Rechercher un pronostic, une compétition…">
+    </form>
+
+    <div class="member-topbar__user">
+
+        <a href="{{ path('app_profile') }}" class="member-topbar__bell" aria-label="Mon profil">
+            <i class="fa-regular fa-bell"></i>
+        </a>
+
+        <a href="{{ path('app_profile') }}" class="member-topbar__identity">
+            <div class="member-topbar__avatar">
+                {{ app.user.nickname|slice(0, 1)|upper }}
+            </div>
+            <div class="member-topbar__identity-text">
+                <span class="member-topbar__hello">{{ app.user.nickname }}</span>
+                <span class="member-topbar__plan">
+                    {% if app.user.isVip %}
+                        Membre {{ app.user.subscriptionPlan|capitalize }}
+                    {% else %}
+                        Membre gratuit
+                    {% endif %}
+                </span>
+            </div>
+            <i class="fa-solid fa-chevron-down member-topbar__chevron"></i>
+        </a>
+
+    </div>
+
+</header>

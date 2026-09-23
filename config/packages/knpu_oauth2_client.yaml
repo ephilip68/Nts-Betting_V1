@@ -1,0 +1,30 @@
+knpu_oauth2_client:
+    clients:
+        # Connexion "Google" — https://console.cloud.google.com/apis/credentials
+        # Ajoute GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET dans .env.local, avec
+        # comme URI de redirection autorisée : http://ton-domaine/connect/google/check
+        google:
+            type: google
+            client_id: '%env(GOOGLE_CLIENT_ID)%'
+            client_secret: '%env(GOOGLE_CLIENT_SECRET)%'
+            redirect_route: connect_google_check
+            redirect_params: {}
+            use_state: true
+            access_type: offline
+
+        # Connexion "Apple" — https://developer.apple.com/account/resources/identifiers
+        # Nécessite un compte Apple Developer payant + une "Services ID" + une clé privée.
+        # Contrairement à Google, le client_secret d'Apple n'est pas une chaîne fixe :
+        # c'est un JWT signé avec la clé privée .p8 d'Apple, à régénérer périodiquement
+        # (voir App\Service\AppleClientSecretGenerator, à finaliser avec les vraies clés).
+        apple:
+            type: generic
+            provider_class: League\OAuth2\Client\Provider\GenericProvider
+            provider_options:
+                urlAuthorize: 'https://appleid.apple.com/auth/authorize'
+                urlAccessToken: 'https://appleid.apple.com/auth/token'
+                urlResourceOwnerDetails: ''
+            client_id: '%env(APPLE_CLIENT_ID)%'
+            client_secret: '%env(APPLE_CLIENT_SECRET)%'
+            redirect_route: connect_apple_check
+            redirect_params: {}

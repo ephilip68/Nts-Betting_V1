@@ -27,12 +27,7 @@
 
                 <span class="performance-legend performance-legend--units">
                     <i></i>
-                    Unités gagnées
-                </span>
-
-                <span class="performance-legend performance-legend--losses">
-                    <i></i>
-                    Unités perdues
+                    Gains (€)
                 </span>
 
                 <span class="performance-legend performance-legend--rate">
@@ -43,125 +38,81 @@
             </div>
 
 
-            <div class="performance-chart">
+            {% if stats.settledCount == 0 %}
 
-                <div class="performance-chart__y-axis">
+                <p class="latest-results__empty">
+                    Pas encore assez de résultats pour afficher un graphique.
+                </p>
 
-                    <span>30</span>
-                    <span>20</span>
-                    <span>10</span>
-                    <span>0</span>
-                    <span>-10</span>
+            {% else %}
 
-                </div>
+                <div class="performance-chart">
+
+                    <div class="performance-chart__y-axis">
+                        {% for label in chart.yAxisLabels %}
+                            <span>{{ label }}</span>
+                        {% endfor %}
+                    </div>
 
 
-                <div class="performance-chart__area">
+                    <div class="performance-chart__area">
 
-                    <div class="performance-chart__grid">
+                        <div class="performance-chart__grid">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
 
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
+
+                        {# BARRES #}
+
+                        <div class="performance-chart__bars">
+                            {% for bar in chart.bars %}
+                                <span style="height: {{ bar.heightPercent }}%;" title="{{ bar.label }} : {{ bar.unitsWon }} €"></span>
+                            {% endfor %}
+                        </div>
+
+
+                        {# COURBE #}
+
+                        <svg
+                            class="performance-chart__line"
+                            viewBox="0 0 500 150"
+                            preserveAspectRatio="none"
+                            aria-hidden="true"
+                        >
+
+                            <polyline points="{{ chart.polyline }}"/>
+
+                            {% for circle in chart.circles %}
+                                <circle cx="{{ circle.x }}" cy="{{ circle.y }}" r="2.5"/>
+                            {% endfor %}
+
+                        </svg>
+
+
+                        <div class="performance-chart__months">
+                            {% for month in monthlyPerformance %}
+                                <span>{{ month.label }}</span>
+                            {% endfor %}
+                        </div>
 
                     </div>
 
 
-                    {# BARRES #}
-
-                    <div class="performance-chart__bars">
-
-                        <span style="height: 13%;"></span>
-                        <span style="height: 20%;"></span>
-                        <span style="height: 35%;"></span>
-                        <span style="height: 17%;"></span>
-                        <span style="height: 28%;"></span>
-                        <span style="height: 38%;"></span>
-                        <span style="height: 29%;"></span>
-                        <span style="height: 46%;"></span>
-                        <span style="height: 54%;"></span>
-                        <span style="height: 63%;"></span>
-                        <span style="height: 72%;"></span>
-                        <span style="height: 83%;"></span>
-
-                    </div>
-
-
-                    {# COURBE #}
-
-                    <svg
-                        class="performance-chart__line"
-                        viewBox="0 0 500 150"
-                        preserveAspectRatio="none"
-                        aria-hidden="true"
-                    >
-
-                        <polyline
-                            points="
-                                0,92
-                                45,67
-                                90,72
-                                135,55
-                                180,60
-                                225,53
-                                270,57
-                                315,51
-                                360,43
-                                405,51
-                                450,26
-                                500,38
-                            "
-                        />
-
-                        <circle cx="0" cy="92" r="2.5"/>
-                        <circle cx="45" cy="67" r="2.5"/>
-                        <circle cx="90" cy="72" r="2.5"/>
-                        <circle cx="135" cy="55" r="2.5"/>
-                        <circle cx="180" cy="60" r="2.5"/>
-                        <circle cx="225" cy="53" r="2.5"/>
-                        <circle cx="270" cy="57" r="2.5"/>
-                        <circle cx="315" cy="51" r="2.5"/>
-                        <circle cx="360" cy="43" r="2.5"/>
-                        <circle cx="405" cy="51" r="2.5"/>
-                        <circle cx="450" cy="26" r="2.5"/>
-                        <circle cx="500" cy="38" r="2.5"/>
-
-                    </svg>
-
-
-                    <div class="performance-chart__months">
-
-                        <span>Jan</span>
-                        <span>Fév</span>
-                        <span>Mar</span>
-                        <span>Avr</span>
-                        <span>Mai</span>
-                        <span>Juin</span>
-                        <span>Juil</span>
-                        <span>Aoû</span>
-                        <span>Sep</span>
-                        <span>Oct</span>
-                        <span>Nov</span>
-                        <span>Déc</span>
-
+                    <div class="performance-chart__right-axis">
+                        <span>100%</span>
+                        <span>75%</span>
+                        <span>50%</span>
+                        <span>25%</span>
+                        <span>0%</span>
                     </div>
 
                 </div>
 
-
-                <div class="performance-chart__right-axis">
-
-                    <span>100%</span>
-                    <span>75%</span>
-                    <span>50%</span>
-                    <span>25%</span>
-                    <span>0%</span>
-
-                </div>
-
-            </div>
+            {% endif %}
 
         </article>
 
@@ -189,102 +140,64 @@
             </div>
 
 
-            <div class="sports-distribution">
+            {% if sportDistribution is empty %}
 
-                <div class="sports-donut">
+                <p class="latest-results__empty">
+                    Pas encore de données par sport.
+                </p>
 
-                    <div class="sports-donut__center">
+            {% else %}
 
-                        <strong>78%</strong>
+                {% set donutColors = ['var(--color-gold)', '#f59e0b', '#3b82f6', '#94a3b8', '#64748b'] %}
+                {% set cumulative = 0 %}
+                {% set stops = [] %}
 
-                        <span>
-                            de réussite
-                        </span>
+                {% for sport in sportDistribution %}
+                    {% set color = donutColors[loop.index0 % donutColors|length] %}
+                    {% set stops = stops|merge(["#{color} #{cumulative}% #{cumulative + sport.percent}%"]) %}
+                    {% set cumulative = cumulative + sport.percent %}
+                {% endfor %}
+
+                <div class="sports-distribution">
+
+                    <div class="sports-donut" style="background: conic-gradient({{ stops|join(', ') }});">
+
+                        <div class="sports-donut__center">
+
+                            <strong>{{ stats.winRate }}%</strong>
+
+                            <span>
+                                de réussite
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="sports-list">
+
+                        {% for sport in sportDistribution %}
+                            <div class="sports-list__item">
+
+                                <span class="sports-list__icon">
+                                    <i class="fa-solid {{ sport.icon }}"></i>
+                                </span>
+
+                                <span class="sports-list__name">
+                                    {{ sport.label }}
+                                </span>
+
+                                <strong>{{ sport.percent }}%</strong>
+
+                            </div>
+                        {% endfor %}
 
                     </div>
 
                 </div>
 
-
-                <div class="sports-list">
-
-                    <div class="sports-list__item">
-
-                        <span class="sports-list__icon">
-                            <i class="fa-solid fa-futbol"></i>
-                        </span>
-
-                        <span class="sports-list__name">
-                            Football
-                        </span>
-
-                        <strong>45%</strong>
-
-                    </div>
-
-
-                    <div class="sports-list__item">
-
-                        <span class="sports-list__icon">
-                            <i class="fa-solid fa-table-tennis-paddle-ball"></i>
-                        </span>
-
-                        <span class="sports-list__name">
-                            Tennis
-                        </span>
-
-                        <strong>25%</strong>
-
-                    </div>
-
-
-                    <div class="sports-list__item">
-
-                        <span class="sports-list__icon">
-                            <i class="fa-solid fa-basketball"></i>
-                        </span>
-
-                        <span class="sports-list__name">
-                            Basketball
-                        </span>
-
-                        <strong>15%</strong>
-
-                    </div>
-
-
-                    <div class="sports-list__item">
-
-                        <span class="sports-list__icon">
-                            <i class="fa-solid fa-baseball"></i>
-                        </span>
-
-                        <span class="sports-list__name">
-                            Sports US
-                        </span>
-
-                        <strong>10%</strong>
-
-                    </div>
-
-
-                    <div class="sports-list__item">
-
-                        <span class="sports-list__icon">
-                            <i class="fa-solid fa-ellipsis"></i>
-                        </span>
-
-                        <span class="sports-list__name">
-                            Autres
-                        </span>
-
-                        <strong>5%</strong>
-
-                    </div>
-
-                </div>
-
-            </div>
+            {% endif %}
 
         </article>
 
@@ -325,7 +238,7 @@
                     </span>
 
                     <strong class="key-stat__value">
-                        1.72
+                        {{ stats.avgOdds ?? '—' }}
                     </strong>
 
                 </div>
@@ -342,7 +255,7 @@
                     </span>
 
                     <strong class="key-stat__value">
-                        2.1 u
+                        {{ stats.avgStake is not null ? stats.avgStake ~ ' €' : '—' }}
                     </strong>
 
                 </div>
@@ -358,8 +271,8 @@
                         ROI
                     </span>
 
-                    <strong class="key-stat__value key-stat__value--positive">
-                        +18.4%
+                    <strong class="key-stat__value {{ stats.roi is not null and stats.roi >= 0 ? 'key-stat__value--positive' : '' }}">
+                        {{ stats.roi is not null ? (stats.roi > 0 ? '+' : '') ~ stats.roi ~ '%' : '—' }}
                     </strong>
 
                 </div>
@@ -376,7 +289,7 @@
                     </span>
 
                     <strong class="key-stat__value">
-                        12
+                        {{ stats.longestWinStreak }}
                     </strong>
 
                 </div>
@@ -393,7 +306,7 @@
                     </span>
 
                     <strong class="key-stat__value">
-                        4
+                        {{ stats.longestLossStreak }}
                     </strong>
 
                 </div>
@@ -410,8 +323,12 @@
                     </span>
 
                     <strong class="key-stat__value key-stat__value--month">
-                        Octobre 2024
-                        <small>(+62 u)</small>
+                        {% if stats.bestMonth %}
+                            {{ stats.bestMonth.label }}
+                            <small>(+{{ stats.bestMonth.units }} €)</small>
+                        {% else %}
+                            —
+                        {% endif %}
                     </strong>
 
                 </div>

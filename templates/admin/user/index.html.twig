@@ -1,0 +1,81 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Utilisateurs — Admin{% endblock %}
+{% block page_title %}Utilisateurs ({{ total }}){% endblock %}
+
+{% block body %}
+
+    <form method="get" style="display:flex; gap:10px; margin:0 0 16px; flex-wrap:wrap;">
+        <input type="text" name="q" value="{{ search }}" placeholder="Rechercher par email ou pseudo..." style="flex:1; min-width:200px; max-width:320px; padding:8px 12px; border-radius:6px; border:1px solid var(--admin-border); background:transparent; color:inherit;">
+
+        <select name="plan" style="padding:8px 12px; border-radius:6px; border:1px solid var(--admin-border); background:transparent; color:inherit;">
+            <option value="">Tous</option>
+            <option value="starter" {{ plan == 'starter' ? 'selected' : '' }}>Starter</option>
+            <option value="essentiel" {{ plan == 'essentiel' ? 'selected' : '' }}>Essentiel</option>
+            <option value="avance" {{ plan == 'avance' ? 'selected' : '' }}>Avancé</option>
+            <option value="vip" {{ plan == 'vip' ? 'selected' : '' }}>VIP</option>
+            <option value="vip_manual" {{ plan == 'vip_manual' ? 'selected' : '' }}>VIP offert (manuel)</option>
+            <option value="admin" {{ plan == 'admin' ? 'selected' : '' }}>Administrateurs</option>
+        </select>
+
+        <button type="submit" class="btn btn-secondary">Filtrer</button>
+    </form>
+
+    <div class="admin-table-wrapper">
+    <table>
+        <thead>
+            <tr>
+                <th>Membre</th>
+                <th>Email</th>
+                <th>Inscrit le</th>
+                <th>Abonnement</th>
+                <th>Rôle</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in users %}
+                <tr>
+                    <td>{{ u.nickname }}</td>
+                    <td>{{ u.email }}</td>
+                    <td>{{ u.dateInscription|date('d/m/Y') }}</td>
+                    <td>
+                        {% if u.isVip %}
+                            <span class="badge badge-vip">
+                                {{ u.subscriptionPlan ? u.subscriptionPlan|capitalize : 'VIP offert' }}
+                            </span>
+                        {% else %}
+                            <span class="badge badge-free">Gratuit</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if 'ROLE_ADMIN' in u.roles %}
+                            <span class="badge badge-vip">Admin</span>
+                        {% else %}
+                            Membre
+                        {% endif %}
+                    </td>
+                    <td style="white-space:nowrap;">
+                        <a href="{{ path('admin_user_edit', {id: u.id}) }}" class="btn btn-secondary" style="padding:6px 12px; font-size:13px;">Modifier</a>
+                        <form action="{{ path('admin_user_delete', {id: u.id}) }}" method="post" style="display:inline;" onsubmit="return confirm('Supprimer définitivement ce membre et toutes ses données ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete-user-' ~ u.id) }}">
+                            <button type="submit" class="btn btn-danger" style="padding:6px 12px; font-size:13px;">Suppr.</button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr><td colspan="6">Aucun utilisateur trouvé.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+    {% if pages > 1 %}
+        <div style="display:flex; gap:8px; margin-top:16px;">
+            {% for p in 1..pages %}
+                <a href="{{ path('admin_user_index', {q: search, plan: plan, page: p}) }}" class="btn {{ p == page ? '' : 'btn-secondary' }}" style="padding:6px 12px; font-size:13px;">{{ p }}</a>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+{% endblock %}

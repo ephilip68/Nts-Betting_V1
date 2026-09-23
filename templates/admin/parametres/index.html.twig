@@ -1,0 +1,25 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Paramètres — Admin{% endblock %}
+{% block page_title %}Paramètres du site{% endblock %}
+
+{% block body %}
+
+    {{ form_start(form, {attr: {class: 'admin-form'}}) }}
+        {{ form_row(form.contactEmail) }}
+        {{ form_row(form.telegramUrl) }}
+        {{ form_row(form.twitterUrl) }}
+        {{ form_row(form.instagramUrl) }}
+        {{ form_row(form.youtubeUrl) }}
+
+        <hr style="border-color: var(--admin-border); margin: 24px 0;">
+
+        <div class="checkbox-row">{{ form_widget(form.maintenanceMode) }} {{ form_label(form.maintenanceMode) }}</div>
+        {{ form_row(form.maintenanceMessage) }}
+
+        <div class="actions-row">
+            <button type="submit" class="btn">Enregistrer</button>
+        </div>
+    {{ form_end(form) }}
+
+{% endblock %}

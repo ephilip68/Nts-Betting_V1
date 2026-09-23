@@ -4,87 +4,270 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Administration — NTS Betting{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('styles/variables.css') }}">
     <style>
-        :root {
-            --admin-bg: #0f1115;
-            --admin-panel: #171a21;
-            --admin-border: #2a2e38;
-            --admin-text: #e7e9ee;
-            --admin-muted: #9aa1af;
-            --admin-accent: #d4af37;
-            --admin-success: #2e7d32;
-            --admin-danger: #c62828;
-        }
         * { box-sizing: border-box; }
         body {
             margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: var(--admin-bg);
-            color: var(--admin-text);
+            font-family: var(--font-body);
+            background: var(--bg-panel);
+            color: var(--color-white);
         }
-        header.admin-header {
+        a { color: inherit; }
+        h1, h2, h3 { font-family: var(--font-heading); margin: 0; }
+
+        .admin-layout { display: flex; min-height: 100vh; }
+
+        .admin-sidebar {
+            width: 240px;
+            flex: 0 0 240px;
+            background: var(--bg-panel);
+            border-right: 1px solid var(--border-color);
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
+        .admin-sidebar__brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0 8px;
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: .3px;
+        }
+        .admin-sidebar__brand i { color: var(--color-gold); font-size: 1.1rem; }
+        .admin-sidebar__nav { display: flex; flex-direction: column; gap: 4px; }
+        .admin-sidebar__link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 11px 12px;
+            border-radius: var(--radius-md);
+            color: var(--hero-text-faded);
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: background var(--transition-fast), color var(--transition-fast);
+        }
+        .admin-sidebar__link i {
+            width: 32px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            transition: border-color var(--transition-fast);
+        }
+        .admin-sidebar__link:hover { background: var(--hero-gold-bg-soft); color: var(--color-white); }
+        .admin-sidebar__link:hover i { border-color: var(--border-color-hover); }
+        .admin-sidebar__link.is-active { background: var(--hero-gold-bg); color: var(--color-gold); }
+        .admin-sidebar__link.is-active i { border-color: var(--hero-gold-border-light); background: var(--hero-gold-bg-soft); color: var(--color-gold); }
+        .admin-sidebar__back {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 12px;
+            color: var(--hero-text-subtle);
+            text-decoration: none;
+            font-size: 0.86rem;
+            transition: color var(--transition-fast);
+        }
+        .admin-sidebar__back:hover { color: var(--color-white); }
+
+        .admin-content { flex: 1; min-width: 0; padding: 28px 32px 60px; }
+
+        .admin-topbar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px 32px;
-            border-bottom: 1px solid var(--admin-border);
+            margin-bottom: 24px;
+            gap: 16px;
+            flex-wrap: wrap;
         }
-        header.admin-header a { color: var(--admin-text); text-decoration: none; }
-        header.admin-header .brand { font-weight: 700; letter-spacing: .5px; }
-        main { max-width: 1100px; margin: 0 auto; padding: 32px; }
+        .admin-topbar h1 { color: var(--color-white); font-size: 1.4rem; font-weight: 700; }
+        .admin-topbar .admin-user { display: flex; align-items: center; gap: 10px; color: var(--hero-text-soft); font-size: 0.86rem; }
+        .admin-topbar .admin-avatar {
+            width: 34px; height: 34px; border-radius: 50%;
+            background: var(--color-gold); color: var(--color-dark-text);
+            display: flex; align-items: center; justify-content: center; font-weight: 700;
+        }
+
+        main { max-width: none; margin: 0; padding: 0; }
+
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             padding: 10px 18px;
-            border-radius: 6px;
-            background: var(--admin-accent);
-            color: #1a1a1a;
-            font-weight: 600;
+            border-radius: var(--radius-md);
+            background: var(--color-gold);
+            color: var(--color-dark-text);
+            font-weight: 700;
+            font-size: 0.88rem;
             text-decoration: none;
             border: none;
             cursor: pointer;
+            box-shadow: var(--hero-button-shadow);
+            transition: background var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
         }
-        .btn.btn-secondary { background: var(--admin-panel); color: var(--admin-text); border: 1px solid var(--admin-border); }
-        .btn.btn-danger { background: var(--admin-danger); color: #fff; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { padding: 12px 10px; border-bottom: 1px solid var(--admin-border); text-align: left; font-size: 14px; }
-        th { color: var(--admin-muted); font-weight: 600; text-transform: uppercase; font-size: 12px; }
-        .badge { padding: 3px 8px; border-radius: 20px; font-size: 12px; font-weight: 600; }
-        .badge-vip { background: rgba(212,175,55,.15); color: var(--admin-accent); }
-        .badge-free { background: rgba(255,255,255,.08); color: var(--admin-muted); }
-        .badge-won { background: rgba(46,125,50,.15); color: #66bb6a; }
-        .badge-lost { background: rgba(198,40,40,.15); color: #ef5350; }
-        .badge-pending { background: rgba(255,255,255,.08); color: var(--admin-muted); }
-        .flash { padding: 12px 16px; border-radius: 6px; margin-bottom: 16px; background: rgba(46,125,50,.15); color: #66bb6a; }
-        form.admin-form label { display: block; margin: 16px 0 6px; font-size: 14px; color: var(--admin-muted); }
+        .btn:hover { background: var(--color-gold-hover); box-shadow: var(--hero-button-shadow-hover); transform: translateY(-1px); }
+        .btn.btn-secondary { background: var(--hero-overlay-soft); color: var(--color-white); border: 1px solid var(--border-color); box-shadow: none; }
+        .btn.btn-secondary:hover { background: var(--hero-gold-bg-soft); border-color: var(--border-color-hover); transform: none; }
+        .btn.btn-danger { background: #f87171; color: #1a0505; box-shadow: none; }
+
+        .admin-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .admin-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .admin-stat-card {
+            background: var(--offers-card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            transition: border-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+        }
+        .admin-stat-card:hover { border-color: var(--border-color-hover); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+        .admin-stat-card__icon {
+            width: 38px; height: 38px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            border: 1px solid var(--hero-gold-border-light); background: var(--hero-gold-bg-soft); color: var(--color-gold);
+            font-size: 0.9rem; margin-bottom: 12px;
+        }
+        .admin-stat-card__label { display: block; color: var(--hero-text-subtle); font-size: 0.78rem; margin-bottom: 6px; }
+        .admin-stat-card__value { display: block; color: var(--color-white); font-size: 1.5rem; font-weight: 700; }
+
+        .admin-table-wrapper { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 4px; min-width: 520px; }
+        th, td { padding: 12px 10px; border-bottom: 1px solid var(--border-color); text-align: left; font-size: 14px; }
+        th { color: var(--hero-text-disabled); font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.03em; }
+        td { color: var(--hero-text-medium); }
+
+        .badge { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: var(--radius-full); font-size: 12px; font-weight: 600; }
+        .badge-vip { background: var(--hero-gold-bg); color: var(--color-gold); }
+        .badge-free { background: var(--hero-border-medium); color: var(--hero-text-subtle); }
+        .badge-won { background: rgba(25, 212, 122, .12); color: var(--hero-success); }
+        .badge-lost { background: rgba(248, 113, 113, .12); color: #f87171; }
+        .badge-pending { background: rgba(65, 90, 119, .22); color: var(--color-sky); }
+        .badge-void { background: var(--hero-border-medium); color: var(--hero-text-subtle); }
+        .badge-draft { background: var(--hero-border-medium); color: var(--hero-text-subtle); }
+        .badge-published { background: rgba(25, 212, 122, .12); color: var(--hero-success); }
+        .badge-active { background: rgba(25, 212, 122, .12); color: var(--hero-success); }
+
+        .flash { padding: 12px 16px; border-radius: var(--radius-md); margin-bottom: 16px; background: rgba(25, 212, 122, .12); border: 1px solid var(--hero-success-border); color: var(--hero-success); }
+
+        form.admin-form label { display: block; margin: 16px 0 6px; font-size: 14px; color: var(--hero-text-subtle); }
         form.admin-form input[type=text], form.admin-form input[type=number], form.admin-form input[type=datetime-local], form.admin-form textarea, form.admin-form select {
             width: 100%;
             padding: 10px 12px;
-            background: var(--admin-panel);
-            border: 1px solid var(--admin-border);
-            border-radius: 6px;
-            color: var(--admin-text);
+            background: var(--hero-overlay-soft);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--color-white);
             font-size: 14px;
+            font-family: var(--font-body);
+            transition: border-color var(--transition-fast);
+        }
+        form.admin-form input:focus, form.admin-form textarea:focus, form.admin-form select:focus {
+            outline: none;
+            border-color: var(--border-color-hover);
         }
         form.admin-form textarea { min-height: 120px; }
         form.admin-form .checkbox-row { display: flex; align-items: center; gap: 8px; margin-top: 16px; }
         form.admin-form .checkbox-row input { width: auto; }
-        .actions-row { display: flex; gap: 10px; margin-top: 24px; }
+        .actions-row { display: flex; gap: 10px; margin-top: 24px; flex-wrap: wrap; }
+
+        @media (max-width: 960px) {
+            .admin-layout { flex-direction: column; }
+            .admin-sidebar { position: static; width: 100%; flex: none; height: auto; }
+            .admin-content { padding: 20px 16px 40px; }
+        }
     </style>
+    {% block stylesheets %}{% endblock %}
 </head>
 <body>
 
-    <header class="admin-header">
-        <a href="{{ path('admin_pronostic_index') }}" class="brand">NTS Betting — Admin</a>
-        <a href="{{ path('app_home') }}">← Retour au site</a>
-    </header>
+    <div class="admin-layout">
 
-    <main>
-        {% for message in app.flashes('success') %}
-            <div class="flash">{{ message }}</div>
-        {% endfor %}
+        <aside class="admin-sidebar">
 
-        {% block body %}{% endblock %}
-    </main>
+            <a href="{{ path('admin_dashboard') }}" class="admin-sidebar__brand">
+                <i class="fa-solid fa-crown"></i>
+                <span>NTS Betting — Admin</span>
+            </a>
+
+            {% set currentRoute = app.request.attributes.get('_route') %}
+            <nav class="admin-sidebar__nav">
+                <a href="{{ path('admin_dashboard') }}" class="admin-sidebar__link {{ currentRoute == 'admin_dashboard' ? 'is-active' : '' }}">
+                    <i class="fa-solid fa-gauge"></i><span>Tableau de bord</span>
+                </a>
+                <a href="{{ path('admin_user_index') }}" class="admin-sidebar__link {{ currentRoute starts with 'admin_user_' ? 'is-active' : '' }}">
+                    <i class="fa-solid fa-users"></i><span>Utilisateurs</span>
+                </a>
+                <a href="{{ path('admin_subscription_index') }}" class="admin-sidebar__link {{ currentRoute starts with 'admin_subscription_' ? 'is-active' : '' }}">
+                    <i class="fa-solid fa-credit-card"></i><span>Abonnements</span>
+                </a>
+                <a href="{{ path('admin_pronostic_index') }}" class="admin-sidebar__link {{ currentRoute starts with 'admin_pronostic_' ? 'is-active' : '' }}">
+                    <i class="fa-solid fa-bullseye"></i><span>Pronostics</span>
+                </a>
+                <a href="{{ path('admin_results_index') }}" class="admin-sidebar__link {{ currentRoute starts with 'admin_results_' ? 'is-active' : '' }}">
+                    <i class="fa-solid fa-chart-column"></i><span>Résultats</span>
+                </a>
+                <a href="{{ path('admin_article_index') }}" class="admin-sidebar__link {{ currentRoute starts with 'admin_article_' ? 'is-active' : '' }}">
+                    <i class="fa-solid fa-newspaper"></i><span>Blog</span>
+                </a>
+                <a href="{{ path('admin_stats_index') }}" class="admin-sidebar__link {{ currentRoute starts with 'admin_stats_' ? 'is-active' : '' }}">
+                    <i class="fa-solid fa-chart-pie"></i><span>Statistiques</span>
+                </a>
+                <a href="{{ path('admin_newsletter_index') }}" class="admin-sidebar__link {{ currentRoute starts with 'admin_newsletter_' ? 'is-active' : '' }}">
+                    <i class="fa-solid fa-envelope"></i><span>Newsletter</span>
+                </a>
+                <a href="{{ path('admin_parametres') }}" class="admin-sidebar__link {{ currentRoute == 'admin_parametres' ? 'is-active' : '' }}">
+                    <i class="fa-solid fa-gear"></i><span>Paramètres</span>
+                </a>
+            </nav>
+
+            <a href="{{ path('app_home') }}" class="admin-sidebar__back">
+                <i class="fa-solid fa-arrow-left"></i><span>Retour au site</span>
+            </a>
+
+        </aside>
+
+        <main class="admin-content">
+
+            <div class="admin-topbar">
+                <h1>{% block page_title %}{% endblock %}</h1>
+                <div class="admin-user">
+                    <div class="admin-avatar">{{ app.user.nickname|slice(0, 1)|upper }}</div>
+                    <span>{{ app.user.nickname }}</span>
+                </div>
+            </div>
+
+            {% for message in app.flashes('success') %}
+                <div class="flash">{{ message }}</div>
+            {% endfor %}
+
+            {% block body %}{% endblock %}
+
+        </main>
+
+    </div>
 
 </body>
 </html>

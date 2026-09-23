@@ -25,7 +25,7 @@
                FILTRES
                ================================================= #}
 
-            <form class="results-filters__form">
+            <form class="results-filters__form" action="{{ path('app_results') }}" method="get">
 
                 {# SPORT #}
 
@@ -41,21 +41,11 @@
                             Tous
                         </option>
 
-                        <option value="football">
-                            Football
-                        </option>
-
-                        <option value="tennis">
-                            Tennis
-                        </option>
-
-                        <option value="basketball">
-                            Basketball
-                        </option>
-
-                        <option value="baseball">
-                            Baseball
-                        </option>
+                        {% for sport in availableSports %}
+                            <option value="{{ sport }}" {{ filters.sport == sport ? 'selected' : '' }}>
+                                {{ sport|capitalize }}
+                            </option>
+                        {% endfor %}
 
                     </select>
 
@@ -79,21 +69,11 @@
                             Toutes
                         </option>
 
-                        <option value="ligue-1">
-                            Ligue 1
-                        </option>
-
-                        <option value="premier-league">
-                            Premier League
-                        </option>
-
-                        <option value="liga">
-                            Liga
-                        </option>
-
-                        <option value="serie-a">
-                            Serie A
-                        </option>
+                        {% for competition in availableCompetitions %}
+                            <option value="{{ competition }}" {{ filters.competition == competition ? 'selected' : '' }}>
+                                {{ competition }}
+                            </option>
+                        {% endfor %}
 
                     </select>
 
@@ -117,17 +97,11 @@
                             Tous
                         </option>
 
-                        <option value="simple">
-                            Simple
-                        </option>
-
-                        <option value="combine">
-                            Combiné
-                        </option>
-
-                        <option value="live">
-                            Live
-                        </option>
+                        {% for betType in availableBetTypes %}
+                            <option value="{{ betType }}" {{ filters.type == betType ? 'selected' : '' }}>
+                                {{ betType }}
+                            </option>
+                        {% endfor %}
 
                     </select>
 
@@ -147,19 +121,19 @@
                         name="period"
                     >
 
-                        <option value="30">
-                            30 derniers jours
-                        </option>
-
-                        <option value="7">
+                        <option value="7" {{ filters.period == 7 ? 'selected' : '' }}>
                             7 derniers jours
                         </option>
 
-                        <option value="90">
+                        <option value="30" {{ filters.period == 30 ? 'selected' : '' }}>
+                            30 derniers jours
+                        </option>
+
+                        <option value="90" {{ filters.period == 90 ? 'selected' : '' }}>
                             90 derniers jours
                         </option>
 
-                        <option value="365">
+                        <option value="365" {{ filters.period == 365 ? 'selected' : '' }}>
                             Cette année
                         </option>
 
@@ -185,11 +159,11 @@
                             Tous
                         </option>
 
-                        <option value="won">
+                        <option value="won" {{ filters.status == 'won' ? 'selected' : '' }}>
                             Gagné
                         </option>
 
-                        <option value="lost">
+                        <option value="lost" {{ filters.status == 'lost' ? 'selected' : '' }}>
                             Perdu
                         </option>
 

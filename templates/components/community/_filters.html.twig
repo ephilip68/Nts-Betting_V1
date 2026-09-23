@@ -27,7 +27,10 @@
            RECHERCHE
            ===================================================== #}
 
-        <div class="community-filters__search">
+        <form class="community-filters__search" method="get" action="{{ path('app_community') }}">
+
+            {% if currentType %}<input type="hidden" name="type" value="{{ currentType }}">{% endif %}
+            {% if currentSport %}<input type="hidden" name="sport" value="{{ currentSport }}">{% endif %}
 
             <div class="community-filters__search-field">
 
@@ -35,21 +38,23 @@
 
                 <input
                     type="search"
-                    placeholder="Rechercher un membre, un pari, un sport..."
+                    name="q"
+                    value="{{ currentSearch }}"
+                    placeholder="Rechercher un membre, un message..."
                     aria-label="Rechercher dans la communauté"
                 >
 
             </div>
 
             <button
-                type="button"
+                type="submit"
                 class="community-filters__search-button"
             >
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <span>Rechercher</span>
             </button>
 
-        </div>
+        </form>
 
 
         {# =====================================================

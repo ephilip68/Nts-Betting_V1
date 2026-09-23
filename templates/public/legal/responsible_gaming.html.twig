@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jeu responsable — NTS Betting{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    <main>
+
+        <section class="static-hero">
+            <h1 class="static-hero__title">Jeu <span>responsable</span></h1>
+            <p class="static-hero__subtitle">18+. Jouer doit rester un plaisir, jamais une source de difficultés.</p>
+        </section>
+
+        <div class="static-page__container" style="max-width:800px;">
+
+            <div class="article-body">
+
+                <p>Dernière mise à jour : {{ "now"|date("d/m/Y") }}</p>
+
+                <h2>NTS Betting n'est pas un opérateur de paris</h2>
+                <p>
+                    NTS Betting propose des analyses, des pronostics et des outils de suivi (dont le NTS Vault).
+                    Nous ne prenons aucun pari, ne détenons aucun compte joueur et ne gérons aucun argent lié aux
+                    paris sportifs. Les mises que tu enregistres dans le NTS Vault sont uniquement déclaratives :
+                    elles servent à ton propre suivi, l'argent réel transite exclusivement chez l'opérateur de paris
+                    de ton choix, en dehors de notre plateforme.
+                </p>
+
+                <h2>Nos recommandations</h2>
+                <ul>
+                    <li>Le pari sportif est réservé aux personnes majeures (18 ans et plus).</li>
+                    <li>Ne mise jamais plus que ce que tu peux te permettre de perdre.</li>
+                    <li>Un pronostic, même argumenté, ne garantit jamais un résultat — aucune méthode n'élimine le risque.</li>
+                    <li>Fixe-toi des limites de mise et de temps, et respecte-les.</li>
+                    <li>Ne cherche jamais à "se refaire" après une perte en misant davantage.</li>
+                    <li>Le jeu ne doit jamais servir à résoudre des difficultés financières.</li>
+                </ul>
+
+                <h2>Signes qui doivent alerter</h2>
+                <ul>
+                    <li>Miser des sommes de plus en plus importantes pour ressentir les mêmes sensations.</li>
+                    <li>Mentir à ses proches sur le temps ou l'argent consacré aux paris.</li>
+                    <li>Emprunter de l'argent pour miser ou rembourser des pertes de jeu.</li>
+                    <li>Ressentir de l'anxiété ou de l'irritabilité en essayant de réduire sa pratique.</li>
+                </ul>
+
+                <h2>Besoin d'aide ?</h2>
+                <p>
+                    Si le jeu prend une place trop importante dans ta vie ou celle d'un proche, une aide gratuite,
+                    anonyme et confidentielle existe :
+                </p>
+                <ul>
+                    <li><strong>Joueurs Info Service</strong> — 09 74 75 13 13 (appel non surtaxé, 8h-2h, 7j/7) — <a href="https://www.joueurs-info-service.fr" target="_blank" rel="noopener">joueurs-info-service.fr</a></li>
+                </ul>
+
+                <p>
+                    Pour toute question, tu peux aussi nous écrire via notre
+                    <a href="{{ path('app_contact') }}">formulaire de contact</a>.
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

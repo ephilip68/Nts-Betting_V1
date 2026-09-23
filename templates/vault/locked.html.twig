@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NTS Vault — NTS Betting{% endblock %}
+
+{% block body %}
+
+    <div class="member-layout">
+
+        {% include 'components/member/_sidebar.html.twig' with {active: 'vault'} %}
+
+        <main class="member-content">
+
+            {% include 'components/member/_topbar.html.twig' with {memberTitle: 'NTS Vault'} %}
+
+            <div class="member-panel member-panel--locked">
+
+                <i class="fa-solid fa-piggy-bank"></i>
+
+                <h1>Le NTS Vault est réservé à nos membres abonnés</h1>
+
+                <p>
+                    Suis tes mises et tes gains, visualise l'évolution de ta bankroll et ton ROI,
+                    fixe-toi des objectifs mensuels. Le NTS Vault est un outil de suivi personnel :
+                    aucun dépôt d'argent réel n'est effectué sur le site.
+                </p>
+
+                <a href="{{ path('app_offers') }}" class="member-btn">Voir les offres</a>
+
+            </div>
+
+        </main>
+
+    </div>
+
+{% endblock %}

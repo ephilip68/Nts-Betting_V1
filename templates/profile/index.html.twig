@@ -2,36 +2,434 @@
 
 {% block title %}Mon profil — NTS Betting{% endblock %}
 
-{% block body_class %}page-profile{% endblock %}
-
 {% block body %}
 
-    {% include 'components/_navbar.html.twig' %}
+    {% set planFeatures = {
+        starter: ['3 à 5 pronostics par semaine', 'Analyses basiques', 'Accès au groupe Telegram', 'Suivi des résultats', 'NTS Vault (1 bankroll)'],
+        essentiel: ['5 à 10 pronostics par semaine', 'Analyses détaillées', 'Conseils de gestion de bankroll', 'Accès au groupe Telegram', 'Statistiques complètes', 'NTS Vault (5 bankrolls)'],
+        avance: ['10 à 15 pronostics par semaine', 'Analyses approfondies', 'Accès au groupe Telegram VIP', 'Accès aux analyses en avant-première', 'NTS Vault (10 bankrolls)'],
+        vip: ['Tous les pronostics', 'Analyses ultra-détaillées', 'Accès au groupe Telegram VIP', 'Accompagnement personnalisé', 'NTS Vault (bankrolls illimités)'],
+    } %}
+    {% set settings = site_settings() %}
 
-    <main class="profile-page">
+    <div class="member-layout">
 
-        <div class="profile-container">
+        {% include 'components/member/_sidebar.html.twig' with {active: 'profile'} %}
 
-            <h1>Mon profil</h1>
+        <main class="member-content">
 
-            <p>
-                Bienvenue {{ app.user.nickname }} 👋
-            </p>
+            {% include 'components/member/_topbar.html.twig' with {memberTitle: 'Mon profil'} %}
 
-            <div>
-                <strong>Email :</strong>
-                {{ app.user.email }}
+            {% for message in app.flashes('success') %}
+                <div class="profile-flash profile-flash--success">{{ message }}</div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+                <div class="profile-flash profile-flash--error">{{ message }}</div>
+            {% endfor %}
+
+            <section class="profile-cover" aria-label="Mon profil">
+                <div class="profile-cover__content">
+                    <span>Mon espace personnel</span>
+                    <h1>MON <strong>PROFIL</strong></h1>
+                    <p>Gère tes informations, ton abonnement et tes préférences.</p>
+                </div>
+            </section>
+
+            {# =====================================================
+               EN-TÊTE PROFIL
+               ===================================================== #}
+
+            <div class="member-panel profile-header">
+
+                <div class="profile-avatar">
+                    {% if app.user.photo %}
+                        <img src="{{ app.user.photo }}" alt="{{ app.user.nickname }}">
+                    {% else %}
+                        {{ app.user.nickname|slice(0, 1)|upper }}
+                    {% endif %}
+                </div>
+
+                <div class="profile-header__identity">
+                    <h1>
+                        {{ app.user.nickname }}
+                        {% if app.user.isVip %}<i class="fa-solid fa-crown"></i>{% endif %}
+                    </h1>
+                    <p class="profile-header__email">{{ app.user.email }}</p>
+                    <p class="profile-header__meta">
+                        Membre depuis le {{ app.user.dateInscription|date('d/m/Y') }}
+                        {% if app.user.isVerified %}
+                            · <span class="profile-header__verified"><i class="fa-solid fa-circle-check"></i> Compte vérifié</span>
+                        {% endif %}
+                    </p>
+                </div>
+
+                <div class="profile-header-stats">
+                    <div class="member-stat-card">
+                        <div class="member-stat-card__icon"><i class="fa-solid fa-star"></i></div>
+                        <span class="member-stat-card__label">Points fidélité</span>
+                        <strong class="member-stat-card__value">{{ app.user.points }}</strong>
+                    </div>
+                    {% if vaultSummary %}
+                        <div class="member-stat-card">
+                            <div class="member-stat-card__icon"><i class="fa-solid fa-chart-column"></i></div>
+                            <span class="member-stat-card__label">Paris suivis</span>
+                            <strong class="member-stat-card__value">{{ vaultSummary.settledCount }}</strong>
+                        </div>
+                        <div class="member-stat-card">
+                            <div class="member-stat-card__icon"><i class="fa-solid fa-trophy"></i></div>
+                            <span class="member-stat-card__label">Bénéfice net</span>
+                            <strong class="member-stat-card__value {{ vaultSummary.balance >= 0 ? 'is-positive' : 'is-negative' }}">
+                                {{ vaultSummary.balance > 0 ? '+' : '' }}{{ vaultSummary.balance }} €
+                            </strong>
+                        </div>
+                    {% else %}
+                        <div class="member-stat-card">
+                            <div class="member-stat-card__icon"><i class="fa-solid fa-calendar-days"></i></div>
+                            <span class="member-stat-card__label">Membre depuis</span>
+                            <strong class="member-stat-card__value">{{ ((date().timestamp - app.user.dateInscription.timestamp) / 86400)|round }} j</strong>
+                        </div>
+                        <div class="member-stat-card">
+                            <div class="member-stat-card__icon"><i class="fa-solid {{ app.user.isVip ? 'fa-crown' : 'fa-shield-halved' }}"></i></div>
+                            <span class="member-stat-card__label">Statut</span>
+                            <strong class="member-stat-card__value">{{ app.user.isVip ? app.user.subscriptionPlan|capitalize : 'Gratuit' }}</strong>
+                        </div>
+                    {% endif %}
+                </div>
+
             </div>
 
-            <div>
-                <strong>Points :</strong>
-                {{ app.user.points }}
+
+            {# =====================================================
+               ONGLETS (ancres de navigation rapide)
+               ===================================================== #}
+
+            <div class="profile-tabs" data-profile-tabs>
+                <a href="#infos" class="is-active">Informations personnelles</a>
+                <a href="#securite">Sécurité</a>
+                <a href="#abonnement">Mon abonnement</a>
+                <a href="#paiements">Mes paiements</a>
+                <a href="#notifications">Notifications</a>
+                <a href="#preferences">Préférences</a>
+                {% if settings.telegramUrl %}<a href="#telegram">Groupe Telegram</a>{% endif %}
             </div>
 
-        </div>
 
-    </main>
+            <div class="profile-grid">
 
-    {% include 'components/_footer.html.twig' %}
+                <div class="profile-grid__main">
+
+                    {# =============================================
+                       INFORMATIONS PERSONNELLES
+                       ============================================= #}
+
+                    <div class="member-panel" id="infos">
+                        <div class="member-panel__header">
+                            <h2 class="member-panel__title"><i class="fa-solid fa-shield-halved"></i> Informations personnelles</h2>
+                        </div>
+
+                        {{ form_start(infoForm, {action: path('app_profile_info'), attr: {id: 'profile-info-form', class: 'member-form', enctype: 'multipart/form-data'}}) }}
+                            <div class="member-form__row">
+                                {{ form_row(infoForm.nickname) }}
+                                {{ form_row(infoForm.email) }}
+                            </div>
+                            <div class="member-form__row">
+                                {{ form_row(infoForm.firstName) }}
+                                {{ form_row(infoForm.lastName) }}
+                            </div>
+                            <div class="member-form__row">
+                                {{ form_row(infoForm.birthDate) }}
+                                {{ form_row(infoForm.country) }}
+                            </div>
+                            {{ form_row(infoForm.language) }}
+                            {{ form_widget(infoForm.photoFile, {attr: {'data-photo-input': true, style: 'display:none;', id: 'profile-photo-input'}}) }}
+                            <span data-photo-filename class="profile-photo-filename"></span>
+                            <button type="submit" class="member-btn">Enregistrer</button>
+                        {{ form_end(infoForm) }}
+                    </div>
+
+
+                    {# =============================================
+                       SÉCURITÉ
+                       ============================================= #}
+
+                    <div class="member-panel" id="securite">
+                        <div class="member-panel__header">
+                            <h2 class="member-panel__title"><i class="fa-solid fa-lock"></i> Sécurité du compte</h2>
+                        </div>
+                        <p class="member-panel__description">Assure la sécurité de ton compte avec un mot de passe robuste.</p>
+
+                        {{ form_start(passwordForm, {action: path('app_profile_security'), attr: {class: 'member-form'}}) }}
+                            {{ form_row(passwordForm.currentPassword) }}
+                            {{ form_row(passwordForm.newPassword) }}
+
+                            <ul class="password-requirements">
+                                <li><i class="fa-solid fa-circle-check"></i> Au moins 8 caractères</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Une lettre majuscule et une minuscule</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Au moins un chiffre</li>
+                            </ul>
+
+                            <button type="submit" class="member-btn">Mettre à jour le mot de passe</button>
+                        {{ form_end(passwordForm) }}
+                    </div>
+
+
+                    {# =============================================
+                       NOTIFICATIONS
+                       ============================================= #}
+
+                    <div class="member-panel" id="notifications">
+                        <div class="member-panel__header">
+                            <h2 class="member-panel__title"><i class="fa-solid fa-bell"></i> Préférences de notifications</h2>
+                        </div>
+                        <p class="member-panel__description">Choisis les notifications que tu souhaites recevoir.</p>
+
+                        {{ form_start(notificationsForm, {action: path('app_profile_notifications'), attr: {class: 'notifications-grid'}}) }}
+                            <label class="notification-toggle">
+                                {{ form_widget(notificationsForm.notifyNewPronostics) }}
+                                <span class="notification-toggle__switch"></span>
+                                <span>{{ notificationsForm.notifyNewPronostics.vars.label }}</span>
+                            </label>
+                            <label class="notification-toggle">
+                                {{ form_widget(notificationsForm.notifySiteNews) }}
+                                <span class="notification-toggle__switch"></span>
+                                <span>{{ notificationsForm.notifySiteNews.vars.label }}</span>
+                            </label>
+                            <label class="notification-toggle">
+                                {{ form_widget(notificationsForm.notifyResultsAnalysis) }}
+                                <span class="notification-toggle__switch"></span>
+                                <span>{{ notificationsForm.notifyResultsAnalysis.vars.label }}</span>
+                            </label>
+                            <label class="notification-toggle">
+                                {{ form_widget(notificationsForm.notifySubscriptionReminders) }}
+                                <span class="notification-toggle__switch"></span>
+                                <span>{{ notificationsForm.notifySubscriptionReminders.vars.label }}</span>
+                            </label>
+                            <label class="notification-toggle">
+                                {{ form_widget(notificationsForm.notifyOffers) }}
+                                <span class="notification-toggle__switch"></span>
+                                <span>{{ notificationsForm.notifyOffers.vars.label }}</span>
+                            </label>
+                            <label class="notification-toggle">
+                                {{ form_widget(notificationsForm.notifyTelegramMessages) }}
+                                <span class="notification-toggle__switch"></span>
+                                <span>{{ notificationsForm.notifyTelegramMessages.vars.label }}</span>
+                            </label>
+                            <button type="submit" class="member-btn notifications-grid__submit">Enregistrer</button>
+                        {{ form_end(notificationsForm) }}
+                    </div>
+
+
+                    {# =============================================
+                       PRÉFÉRENCES D'AFFICHAGE
+                       ============================================= #}
+
+                    <div class="member-panel" id="preferences">
+                        <div class="member-panel__header">
+                            <h2 class="member-panel__title"><i class="fa-solid fa-sliders"></i> Préférences d'affichage</h2>
+                        </div>
+
+                        {{ form_start(preferencesForm, {action: path('app_profile_preferences'), attr: {class: 'member-form'}}) }}
+                            {{ form_label(preferencesForm.theme) }}
+                            <div class="theme-switcher">
+                                {% for choice in preferencesForm.theme %}
+                                    <label class="theme-switcher__option">
+                                        {{ form_widget(choice) }}
+                                        <i class="fa-solid {{ choice.vars.value == 'dark' ? 'fa-moon' : (choice.vars.value == 'light' ? 'fa-sun' : 'fa-display') }}"></i>
+                                        <span>{{ choice.vars.label }}</span>
+                                    </label>
+                                {% endfor %}
+                            </div>
+                            {% if preferencesForm.theme.vars.help %}
+                                <p class="member-form__help">{{ preferencesForm.theme.vars.help }}</p>
+                            {% endif %}
+
+                            <div class="member-form__row">
+                                {{ form_row(preferencesForm.oddsFormat) }}
+                                {{ form_row(preferencesForm.timezone) }}
+                            </div>
+                            {{ form_row(preferencesForm.favoriteSport) }}
+
+                            <button type="submit" class="member-btn">Enregistrer</button>
+                        {{ form_end(preferencesForm) }}
+                    </div>
+
+                </div>
+
+
+                <div class="profile-grid__side">
+
+                    {# =============================================
+                       PHOTO DE PROFIL
+                       ============================================= #}
+
+                    <div class="member-panel">
+                        <div class="member-panel__header">
+                            <h2 class="member-panel__title"><i class="fa-solid fa-camera"></i> Photo de profil</h2>
+                        </div>
+
+                        <div class="profile-photo-editor">
+                            <div class="profile-avatar profile-avatar--sm">
+                                {% if app.user.photo %}
+                                    <img src="{{ app.user.photo }}" alt="{{ app.user.nickname }}">
+                                {% else %}
+                                    {{ app.user.nickname|slice(0, 1)|upper }}
+                                {% endif %}
+                            </div>
+                            <div>
+                                <p>Formats acceptés : JPG, PNG, WEBP (max 2 Mo).</p>
+                                <label for="profile-photo-input" class="member-btn">
+                                    <i class="fa-solid fa-upload"></i> Choisir une image
+                                </label>
+                                <button type="submit" form="profile-info-form" class="member-btn member-btn--ghost">Enregistrer</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    {# =============================================
+                       MON ABONNEMENT
+                       ============================================= #}
+
+                    <div class="member-panel" id="abonnement">
+                        <div class="member-panel__header">
+                            <h2 class="member-panel__title"><i class="fa-solid fa-crown"></i> Mon abonnement</h2>
+                        </div>
+
+                        {% if app.user.isVip %}
+
+                            <div class="profile-plan-card">
+                                <div class="profile-plan-card__head">
+                                    <span>Plan actuel</span>
+                                    <span class="member-badge member-badge--won">{{ app.user.subscriptionStatus }}</span>
+                                </div>
+                                <strong class="profile-plan-card__name">{{ app.user.subscriptionPlan|capitalize }}</strong>
+
+                                {% if subscriptionDaysRemaining is not null %}
+                                    <p class="profile-plan-card__renewal">
+                                        Valide jusqu'au {{ app.user.subscriptionCurrentPeriodEnd|date('d/m/Y') }}
+                                        ({{ subscriptionDaysRemaining }} jour{{ subscriptionDaysRemaining > 1 ? 's' : '' }} restant{{ subscriptionDaysRemaining > 1 ? 's' : '' }})
+                                    </p>
+                                    <div class="profile-plan-card__bar"><span style="width: {{ subscriptionPeriodPercent }}%;"></span></div>
+                                {% endif %}
+                            </div>
+
+                            {% if planFeatures[app.user.subscriptionPlan] is defined %}
+                                <ul class="profile-plan-features">
+                                    {% for feature in planFeatures[app.user.subscriptionPlan] %}
+                                        <li><i class="fa-solid fa-check"></i>{{ feature }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+
+                            <div class="profile-plan-actions">
+                                <a href="{{ path('app_offers') }}" class="member-btn">Voir toutes les offres</a>
+                                <form action="{{ path('app_subscription_portal') }}" method="post">
+                                    <button type="submit" class="member-btn member-btn--ghost">Gérer mon abonnement</button>
+                                </form>
+                            </div>
+
+                        {% else %}
+
+                            <p class="member-panel__description">Tu n'as pas d'abonnement actif.</p>
+                            <a href="{{ path('app_offers') }}" class="member-btn">Voir les offres</a>
+
+                        {% endif %}
+                    </div>
+
+
+                    {# =============================================
+                       MES PAIEMENTS
+                       ============================================= #}
+
+                    <div class="member-panel" id="paiements">
+                        <div class="member-panel__header">
+                            <h2 class="member-panel__title"><i class="fa-solid fa-credit-card"></i> Mes paiements</h2>
+                        </div>
+
+                        {% if invoices is empty %}
+                            <p class="member-empty">Aucun paiement pour le moment.</p>
+                        {% else %}
+                            <div class="member-table-wrapper">
+                                <table class="member-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Montant</th>
+                                            <th>Statut</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for invoice in invoices|slice(0, 4) %}
+                                            <tr>
+                                                <td>{{ invoice.date|date('d/m/Y') }}</td>
+                                                <td>{{ '%.2f'|format(invoice.amount) }} €</td>
+                                                <td>
+                                                    {% if invoice.status == 'paid' %}
+                                                        <span class="member-badge member-badge--won">Payé</span>
+                                                    {% else %}
+                                                        <span class="member-badge member-badge--pending">{{ invoice.status }}</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if invoice.invoiceUrl %}
+                                                        <a href="{{ invoice.invoiceUrl }}" target="_blank" rel="noopener" class="member-panel__link">Facture</a>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% endif %}
+                    </div>
+
+
+                    {% if settings.telegramUrl %}
+                        {# =========================================
+                           GROUPE TELEGRAM
+                           ========================================= #}
+
+                        <div class="member-panel profile-telegram-card" id="telegram">
+                            <div class="member-panel__header">
+                                <h2 class="member-panel__title"><i class="fa-brands fa-telegram"></i> Groupe Telegram</h2>
+                            </div>
+                            <p class="member-panel__description">Rejoins notre groupe privé Telegram pour recevoir les pronostics en temps réel et échanger avec la communauté.</p>
+                            <a href="{{ settings.telegramUrl }}" target="_blank" rel="noopener" class="member-btn">
+                                Accéder au groupe Telegram <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    {% endif %}
+
+
+                    {# =============================================
+                       SUPPRIMER MON COMPTE
+                       ============================================= #}
+
+                    <div class="member-panel profile-danger-card" id="danger">
+                        <div class="member-panel__header">
+                            <h2 class="member-panel__title"><i class="fa-solid fa-trash"></i> Supprimer mon compte</h2>
+                        </div>
+                        <p class="member-panel__description">
+                            Cette action est irréversible et définitive. Ton abonnement Stripe est annulé
+                            immédiatement, et toutes tes données sont supprimées : ton compte, ton NTS
+                            Vault, tes posts, commentaires et likes communautaires (y compris les
+                            commentaires et likes des autres membres sur tes posts, qui disparaissent
+                            avec eux).
+                        </p>
+
+                        <form action="{{ path('app_profile_delete') }}" method="post" onsubmit="return confirm('Supprimer définitivement ton compte ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete-account') }}">
+                            <button type="submit" class="member-btn member-btn--danger">Supprimer mon compte</button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
 
 {% endblock %}

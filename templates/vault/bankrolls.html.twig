@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes bankrolls — NTS Vault{% endblock %}
+
+{% block body %}
+
+    <div class="member-layout">
+
+        {% include 'components/member/_sidebar.html.twig' with {active: 'vault'} %}
+
+        <main class="member-content">
+
+            {% include 'components/member/_topbar.html.twig' with {memberTitle: 'Mes bankrolls'} %}
+
+            {% for message in app.flashes('success') %}
+                <div class="profile-flash profile-flash--success">{{ message }}</div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+                <div class="profile-flash profile-flash--error">{{ message }}</div>
+            {% endfor %}
+
+            <div class="member-panel__header" style="margin-bottom:20px;">
+                <h1 class="member-panel__title" style="font-size:1.3rem;">Mes bankrolls</h1>
+
+                {% if canCreate %}
+                    <button type="button" class="member-btn" data-bankroll-new-toggle>
+                        <i class="fa-solid fa-plus"></i> Nouveau bankroll
+                    </button>
+                {% else %}
+                    <a href="{{ path('app_offers') }}" class="member-btn member-btn--ghost">
+                        Limite atteinte — voir les offres
+                    </a>
+                {% endif %}
+            </div>
+
+            {% if canCreate %}
+                <div class="member-panel bankroll-new-form" data-bankroll-new-form hidden>
+                    <form action="{{ path('app_vault_bankroll_new') }}" method="post" class="member-form" style="flex-direction:row; align-items:flex-end; gap:12px; max-width:none;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('bankroll-new') }}">
+                        <div style="flex:1;">
+                            <label for="bankroll-name">Nom du bankroll</label>
+                            <input type="text" id="bankroll-name" name="name" placeholder="ex. Foot Ligue 1, Stratégie value bet..." required maxlength="100">
+                        </div>
+                        <button type="submit" class="member-btn">Créer</button>
+                    </form>
+                </div>
+            {% endif %}
+
+            <p class="member-panel__description">
+                {{ cards|length }} bankroll{{ cards|length > 1 ? 's' : '' }}
+                {% if maxBankrolls < 999999 %}
+                    sur {{ maxBankrolls }} autorisé{{ maxBankrolls > 1 ? 's' : '' }} pour ton palier
+                {% endif %}
+            </p>
+
+            {% if cards is empty %}
+
+                <div class="member-panel" style="text-align:center; padding:48px 24px;">
+                    <i class="fa-solid fa-briefcase" style="color:var(--color-gold); font-size:1.8rem; margin-bottom:14px;"></i>
+                    <p style="color:var(--hero-text-medium); margin:0;">
+                        Tu n'as pas encore de bankroll. Crée-en un pour commencer à suivre tes paris.
+                    </p>
+                </div>
+
+            {% else %}
+
+                <div class="bankroll-grid">
+                    {% for card in cards %}
+                        {% set bankroll = card.bankroll %}
+                        {% set summary = card.summary %}
+
+                        <div class="bankroll-card">
+                            <a href="{{ path('app_vault_bankroll_detail', {id: bankroll.id}) }}" class="bankroll-card__link">
+                                <div class="bankroll-card__header">
+                                    <i class="fa-solid fa-briefcase"></i>
+                                    <strong>{{ bankroll.name }}</strong>
+                                </div>
+                                <span class="bankroll-card__date">Créé le {{ bankroll.createdAt|date('d/m/Y') }}</span>
+
+                                <div class="bankroll-card__stats">
+                                    <div>
+                                        <span>Gain total</span>
+                                        <strong class="{{ summary.balance >= 0 ? 'is-positive' : 'is-negative' }}">
+                                            {{ summary.balance > 0 ? '+' : '' }}{{ summary.balance }} €
+                                        </strong>
+                                    </div>
+                                    <div>
+                                        <span>ROI</span>
+                                        <strong class="{{ summary.roi is not null and summary.roi >= 0 ? 'is-positive' : 'is-negative' }}">
+                                            {{ summary.roi is not null ? (summary.roi > 0 ? '+' : '') ~ summary.roi ~ '%' : '—' }}
+                                        </strong>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <div class="bankroll-card__actions">
+                                <button type="button" class="member-panel__link" data-bankroll-rename-toggle="rename-{{ bankroll.id }}">
+                                    <i class="fa-solid fa-pen"></i> Modifier
+                                </button>
+                                <form action="{{ path('app_vault_bankroll_delete', {id: bankroll.id}) }}" method="post" onsubmit="return confirm('Supprimer ce bankroll et tous ses paris ?');">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('bankroll-delete-' ~ bankroll.id) }}">
+                                    <button type="submit" class="bankroll-card__delete">
+                                        <i class="fa-solid fa-trash"></i> Supprimer
+                                    </button>
+                                </form>
+                            </div>
+
+                            <form action="{{ path('app_vault_bankroll_rename', {id: bankroll.id}) }}" method="post" class="bankroll-rename-form" id="rename-{{ bankroll.id }}" hidden>
+                                <input type="hidden" name="_token" value="{{ csrf_token('bankroll-rename-' ~ bankroll.id) }}">
+                                <input type="text" name="name" value="{{ bankroll.name }}" required maxlength="100">
+                                <button type="submit" class="member-btn">Enregistrer</button>
+                            </form>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            {% endif %}
+
+        </main>
+
+    </div>
+
+{% endblock %}

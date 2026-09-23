@@ -1,0 +1,98 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Statistiques — Admin{% endblock %}
+{% block page_title %}Statistiques{% endblock %}
+
+{% block body %}
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px,1fr)); gap:16px; margin:24px 0;">
+
+        <div style="background:var(--admin-panel); border:1px solid var(--admin-border); border-radius:10px; padding:16px 20px;">
+            <div style="color:var(--admin-muted); font-size:0.8rem;">Taux de réussite (site)</div>
+            <strong style="font-size:1.5rem;">{{ stats.winRate is not null ? stats.winRate ~ '%' : '—' }}</strong>
+        </div>
+
+        <div style="background:var(--admin-panel); border:1px solid var(--admin-border); border-radius:10px; padding:16px 20px;">
+            <div style="color:var(--admin-muted); font-size:0.8rem;">Pronostics joués</div>
+            <strong style="font-size:1.5rem;">{{ stats.settledCount }}</strong>
+        </div>
+
+        <div style="background:var(--admin-panel); border:1px solid var(--admin-border); border-radius:10px; padding:16px 20px;">
+            <div style="color:var(--admin-muted); font-size:0.8rem;">Utilisateurs (dont gratuits)</div>
+            <strong style="font-size:1.5rem;">{{ totalUsers }} <small style="font-size:0.9rem; color:var(--admin-muted);">({{ freeUsers }})</small></strong>
+        </div>
+
+        <div style="background:var(--admin-panel); border:1px solid var(--admin-border); border-radius:10px; padding:16px 20px;">
+            <div style="color:var(--admin-muted); font-size:0.8rem;">MRR (revenu mensuel récurrent)</div>
+            <strong style="font-size:1.5rem;">{{ mrr }} €</strong>
+        </div>
+
+    </div>
+
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:24px;">
+
+        <div style="background:var(--admin-panel); border:1px solid var(--admin-border); border-radius:10px; padding:20px;">
+            <h2 style="margin-top:0;">Répartition des abonnements</h2>
+
+            {% if byPlan is empty %}
+                <p>Aucun abonné actif.</p>
+            {% else %}
+                {% for plan, count in byPlan %}
+                    <div style="margin-bottom:10px;">
+                        <div style="display:flex; justify-content:space-between; font-size:0.86rem; margin-bottom:4px;">
+                            <span>{{ plan|capitalize }}</span>
+                            <strong>{{ count }}</strong>
+                        </div>
+                        <div style="height:6px; background:rgba(255,255,255,0.08); border-radius:99px; overflow:hidden;">
+                            <div style="height:100%; width:{{ byPlanTotal > 0 ? (count / byPlanTotal * 100) : 0 }}%; background:#DDB219;"></div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div style="background:var(--admin-panel); border:1px solid var(--admin-border); border-radius:10px; padding:20px;">
+            <h2 style="margin-top:0;">Répartition par sport (pronostics)</h2>
+
+            {% if sportDistribution is empty %}
+                <p>Pas encore de données.</p>
+            {% else %}
+                {% for sport in sportDistribution %}
+                    <div style="margin-bottom:10px;">
+                        <div style="display:flex; justify-content:space-between; font-size:0.86rem; margin-bottom:4px;">
+                            <span>{{ sport.label }}</span>
+                            <strong>{{ sport.percent }}%</strong>
+                        </div>
+                        <div style="height:6px; background:rgba(255,255,255,0.08); border-radius:99px; overflow:hidden;">
+                            <div style="height:100%; width:{{ sport.percent }}%; background:#3b82f6;"></div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+    </div>
+
+
+    <div style="background:var(--admin-panel); border:1px solid var(--admin-border); border-radius:10px; padding:20px; margin-top:24px;">
+        <h2 style="margin-top:0;">Performance mensuelle (6 derniers mois)</h2>
+
+        <div class="admin-table-wrapper">
+        <table>
+            <thead><tr><th>Mois</th><th>Pronostics joués</th><th>Taux de réussite</th><th>Gains (€)</th></tr></thead>
+            <tbody>
+                {% for month in monthlyPerformance %}
+                    <tr>
+                        <td>{{ month.label }}</td>
+                        <td>{{ month.count }}</td>
+                        <td>{{ month.count > 0 ? month.winRate ~ '%' : '—' }}</td>
+                        <td>{{ month.unitsWon }} €</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+{% endblock %}

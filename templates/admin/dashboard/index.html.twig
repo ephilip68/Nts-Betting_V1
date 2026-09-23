@@ -1,0 +1,114 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Tableau de bord — Admin{% endblock %}
+{% block page_title %}Bienvenue, {{ app.user.nickname }} 👋{% endblock %}
+
+{% block body %}
+
+    <div class="admin-stats-grid">
+
+        <div class="admin-stat-card">
+            <div class="admin-stat-card__icon"><i class="fa-solid fa-users"></i></div>
+            <span class="admin-stat-card__label">Utilisateurs</span>
+            <strong class="admin-stat-card__value">{{ usersCount }}</strong>
+        </div>
+
+        <div class="admin-stat-card">
+            <div class="admin-stat-card__icon"><i class="fa-solid fa-crown"></i></div>
+            <span class="admin-stat-card__label">Abonnés actifs</span>
+            <strong class="admin-stat-card__value">{{ activeSubscribersCount }}</strong>
+        </div>
+
+        <div class="admin-stat-card">
+            <div class="admin-stat-card__icon"><i class="fa-solid fa-bullseye"></i></div>
+            <span class="admin-stat-card__label">Pronostics publiés</span>
+            <strong class="admin-stat-card__value">{{ pronosticsCount }}</strong>
+        </div>
+
+        <div class="admin-stat-card">
+            <div class="admin-stat-card__icon"><i class="fa-solid fa-trophy"></i></div>
+            <span class="admin-stat-card__label">Taux de réussite</span>
+            <strong class="admin-stat-card__value">{{ winRate is not null ? winRate ~ '%' : '—' }}</strong>
+        </div>
+
+        <div class="admin-stat-card">
+            <div class="admin-stat-card__icon"><i class="fa-solid fa-newspaper"></i></div>
+            <span class="admin-stat-card__label">Articles publiés</span>
+            <strong class="admin-stat-card__value">{{ articlesCount }}</strong>
+        </div>
+
+    </div>
+
+
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px;">
+        <a href="{{ path('admin_pronostic_new') }}" class="btn"><i class="fa-solid fa-plus"></i> Ajouter un pronostic</a>
+        <a href="{{ path('admin_article_new') }}" class="btn btn-secondary"><i class="fa-solid fa-plus"></i> Publier un article</a>
+        <a href="{{ path('admin_user_index') }}" class="btn btn-secondary">Gérer les utilisateurs</a>
+        <a href="{{ path('admin_subscription_index') }}" class="btn btn-secondary">Voir les abonnements</a>
+        <a href="{{ path('admin_stats_index') }}" class="btn btn-secondary">Voir les statistiques</a>
+        <a href="{{ path('admin_parametres') }}" class="btn btn-secondary">Paramètres</a>
+    </div>
+
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:20px;">
+
+        <div class="admin-panel">
+            <h2 style="margin:0 0 12px; font-size:1rem; color:#fff;">Derniers pronostics</h2>
+            <div class="admin-table-wrapper">
+            <table>
+                <thead><tr><th>Match</th><th>Statut</th></tr></thead>
+                <tbody>
+                    {% for p in recentPronostics %}
+                        <tr>
+                            <td>{{ p.teamHome }} vs {{ p.teamAway }}</td>
+                            <td><span class="badge badge-{{ p.status }}">{{ p.status }}</span></td>
+                        </tr>
+                    {% else %}
+                        <tr><td colspan="2">Aucun.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <div class="admin-panel">
+            <h2 style="margin:0 0 12px; font-size:1rem; color:#fff;">Derniers articles</h2>
+            <div class="admin-table-wrapper">
+            <table>
+                <thead><tr><th>Titre</th><th>Statut</th></tr></thead>
+                <tbody>
+                    {% for a in recentArticles %}
+                        <tr>
+                            <td>{{ a.title }}</td>
+                            <td><span class="badge badge-{{ a.status }}">{{ a.status }}</span></td>
+                        </tr>
+                    {% else %}
+                        <tr><td colspan="2">Aucun.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <div class="admin-panel">
+            <h2 style="margin:0 0 12px; font-size:1rem; color:#fff;">Derniers inscrits</h2>
+            <div class="admin-table-wrapper">
+            <table>
+                <thead><tr><th>Membre</th><th>Inscrit le</th></tr></thead>
+                <tbody>
+                    {% for u in recentUsers %}
+                        <tr>
+                            <td>{{ u.nickname }}</td>
+                            <td>{{ u.dateInscription|date('d/m/Y') }}</td>
+                        </tr>
+                    {% else %}
+                        <tr><td colspan="2">Aucun.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

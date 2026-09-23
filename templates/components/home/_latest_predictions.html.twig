@@ -28,7 +28,7 @@
 
             </div>
 
-            <a href="#" class="latest-predictions-link">
+            <a href="{{ path('app_results') }}" class="latest-predictions-link">
                 Voir tous les résultats
                 <span class="latest-predictions-arrow" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none">
@@ -52,72 +52,66 @@
 
         <div class="latest-predictions-grid">
 
-            {# =====================================================
-            CARTE — PRONOSTIC 1
-            ===================================================== #}
+            {% for pronostic in latestResults %}
 
-            <article class="prediction-card">
+                {% set won = pronostic.status == 'won' %}
 
-                {# -------------------------------------------------
-                TOP CARD
-                ------------------------------------------------- #}
+                <article class="prediction-card">
 
-                <div class="prediction-card-top">
+                    <div class="prediction-card-top">
 
-                    <div class="prediction-card-meta">
+                        <div class="prediction-card-meta">
 
-                        <span class="prediction-card-date">
-                            12 Nov. 2024
-                        </span>
+                            <span class="prediction-card-date">
+                                {{ pronostic.matchDate|date('d M. Y') }}
+                            </span>
 
-                        <span class="prediction-card-competition">
-                            Ligue des Champions
+                            <span class="prediction-card-competition">
+                                {{ pronostic.competition }}
+                            </span>
+
+                        </div>
+
+                        <span class="prediction-card-sport" aria-label="{{ pronostic.sport }}">
+                            {% if pronostic.sport == 'basketball' %}🏀{% elseif pronostic.sport == 'tennis' %}🎾{% else %}⚽{% endif %}
                         </span>
 
                     </div>
 
-                    <span class="prediction-card-sport" aria-label="Football">
-                        ⚽
-                    </span>
 
-                </div>
+                    <div class="prediction-card-match">
 
+                        <strong class="prediction-card-teams">
+                            {{ pronostic.teamHome }} vs {{ pronostic.teamAway }}
+                        </strong>
 
-                {# -------------------------------------------------
-                MATCH
-                ------------------------------------------------- #}
+                        <span class="prediction-card-prediction">
+                            {{ pronostic.betType }} - {{ pronostic.betValue }}
+                        </span>
 
-                <div class="prediction-card-match">
-
-                    <strong class="prediction-card-teams">
-                        Real Madrid vs Braga
-                    </strong>
-
-                    <span class="prediction-card-prediction">
-                        1X2 - Real Madrid
-                    </span>
-
-                </div>
+                    </div>
 
 
-                {# -------------------------------------------------
-                FOOTER
-                ------------------------------------------------- #}
+                    <div class="prediction-card-footer">
 
-                <div class="prediction-card-footer">
+                        <span class="prediction-card-status {{ won ? 'prediction-card-status-win' : 'prediction-card-status-loss' }}">
+                            <span aria-hidden="true">{{ won ? '✓' : '✗' }}</span>
+                            {{ won ? 'Gagné' : 'Perdu' }}
+                        </span>
 
-                    <span class="prediction-card-status prediction-card-status-win">
-                        <span aria-hidden="true">✓</span>
-                        Gagné
-                    </span>
+                        <strong class="prediction-card-odds">
+                            {{ pronostic.odds|odds }}
+                        </strong>
 
-                    <strong class="prediction-card-odds">
-                        1.65
-                    </strong>
+                    </div>
 
-                </div>
+                </article>
 
-            </article>
+            {% else %}
+
+                <p style="color:rgba(255,255,255,0.5);">Aucun résultat pour le moment.</p>
+
+            {% endfor %}
 
         </div>
 

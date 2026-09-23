@@ -36,6 +36,11 @@
    --color-gray-700: #374151;
    --color-gray-900: #111827;
 
+   --color-avatar: #7C5CFC;
+   --color-info: #3B82F6;
+   --color-info-light: #60A5FA;
+   --gradient-progress-info: linear-gradient(90deg, var(--color-info-light), var(--color-info));
+
 
    /* =========================================================
       BACKGROUNDS

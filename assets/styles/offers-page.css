@@ -1694,7 +1694,9 @@
 
     gap: 9px;
 
+    border: none;
     border-radius: 6px;
+    cursor: pointer;
 
     color: #111827;
     background: var(--color-gold);

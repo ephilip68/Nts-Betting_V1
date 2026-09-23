@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Politique de confidentialité — NTS Betting{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    {% set settings = site_settings() %}
+
+    <main>
+
+        <section class="static-hero">
+            <h1 class="static-hero__title">Politique de <span>confidentialité</span></h1>
+        </section>
+
+        <div class="static-page__container" style="max-width:800px;">
+
+            <div class="legal-notice-banner">
+                <strong>À compléter :</strong> l'identité du responsable de traitement ci-dessous doit être remplie
+                avec les vraies informations de ta société avant la mise en ligne du site.
+            </div>
+
+            <div class="article-body">
+
+                <p>Dernière mise à jour : {{ "now"|date("d/m/Y") }}</p>
+
+                <h2>Responsable du traitement</h2>
+                <p>
+                    <span class="legal-placeholder">[Raison sociale de la société]</span>,
+                    <span class="legal-placeholder">[adresse]</span>, est responsable du traitement des données
+                    personnelles collectées sur NTS Betting. Pour toute question relative à tes données, contacte-nous
+                    {% if settings.contactEmail %}
+                        à <a href="mailto:{{ settings.contactEmail }}">{{ settings.contactEmail }}</a>
+                    {% else %}
+                        via notre <a href="{{ path('app_contact') }}">formulaire de contact</a>
+                    {% endif %}.
+                </p>
+
+                <h2>Données que nous collectons</h2>
+                <p>Nous collectons uniquement les données nécessaires au fonctionnement du service :</p>
+                <ul>
+                    <li><strong>Compte</strong> : adresse e-mail, pseudo, mot de passe (stocké de façon chiffrée, jamais en clair), photo de profil (optionnelle), date d'inscription.</li>
+                    <li><strong>Abonnement et paiement</strong> : le statut et l'offre de ton abonnement. Tes données bancaires ne transitent et ne sont stockées que chez notre prestataire de paiement, <strong>Stripe</strong> — nous n'y avons jamais accès.</li>
+                    <li><strong>NTS Vault</strong> (membres Avancé/VIP) : les mises et gains que tu enregistres toi-même, à titre de suivi personnel. Aucun argent réel n'est géré sur le site.</li>
+                    <li><strong>Contenu communautaire</strong> : les publications, commentaires et likes que tu choisis de partager dans le forum.</li>
+                    <li><strong>Préférences</strong> : format d'affichage des cotes et autres réglages de ton compte.</li>
+                    <li><strong>Connexion</strong> : un cookie de session technique, nécessaire pour rester connecté. Nous n'utilisons pas de cookies publicitaires ou de traceurs tiers.</li>
+                </ul>
+
+                <h2>Pourquoi nous les utilisons</h2>
+                <ul>
+                    <li>Créer et sécuriser ton compte (authentification, réinitialisation de mot de passe).</li>
+                    <li>Fournir le service : accès aux pronostics selon ton offre, NTS Vault, forum communautaire.</li>
+                    <li>Gérer ton abonnement et sa facturation, via Stripe.</li>
+                    <li>Te contacter en réponse à une demande envoyée via le formulaire de contact.</li>
+                </ul>
+
+                <h2>Avec qui nous les partageons</h2>
+                <p>
+                    Tes données ne sont jamais vendues. Elles sont partagées uniquement avec les prestataires
+                    nécessaires au fonctionnement du service :
+                </p>
+                <ul>
+                    <li><strong>Stripe</strong> (paiement et facturation) — <a href="https://stripe.com/fr/privacy" target="_blank" rel="noopener">politique de confidentialité de Stripe</a></li>
+                    <li>Notre prestataire d'envoi d'e-mails (vérification de compte, réinitialisation de mot de passe, notifications de contact).</li>
+                </ul>
+
+                <h2>Combien de temps nous les conservons</h2>
+                <p>
+                    Tes données sont conservées tant que ton compte est actif. Si tu supprimes ton compte depuis
+                    Mon profil, la suppression est réelle et définitive : informations personnelles, NTS Vault et
+                    contenu communautaire associé sont effacés (voir le détail sur la page de suppression de compte).
+                </p>
+
+                <h2>Tes droits</h2>
+                <p>
+                    Conformément au RGPD, tu disposes d'un droit d'accès, de rectification, d'effacement,
+                    d'opposition et de portabilité sur tes données. Tu peux :
+                </p>
+                <ul>
+                    <li>Consulter et modifier tes informations depuis Mon profil,</li>
+                    <li>Supprimer définitivement ton compte et tes données depuis Mon profil,</li>
+                    <li>Nous contacter via le <a href="{{ path('app_contact') }}">formulaire de contact</a> pour toute autre demande.</li>
+                </ul>
+                <p>
+                    Tu disposes également du droit d'introduire une réclamation auprès de la CNIL
+                    (<a href="https://www.cnil.fr" target="_blank" rel="noopener">cnil.fr</a>).
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

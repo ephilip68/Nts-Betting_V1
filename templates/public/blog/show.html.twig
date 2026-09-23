@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.title }} — Blog NTS Betting{% endblock %}
+{% block meta_description %}{{ article.excerpt }}{% endblock %}
+
+{% block body_class %}blog-page{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    <main>
+
+        <section class="article-hero" style="{{ article.coverImage ? 'background-image:url(' ~ asset(article.coverImage) ~ ')' : '' }}">
+            <div class="article-hero__content">
+
+                <p class="article-hero__breadcrumb">
+                    <a href="{{ path('app_blog') }}">Blog</a> ·
+                    <a href="{{ path('app_blog', {category: article.category}) }}">{{ article.categoryLabel }}</a>
+                </p>
+
+                <span class="article-hero__category">{{ article.categoryLabel }}</span>
+
+                <h1 class="article-hero__title">{{ article.title }}</h1>
+
+                <p class="article-hero__excerpt">{{ article.excerpt }}</p>
+
+                <div class="article-hero__meta">
+                    <span><i class="fa-solid fa-user"></i> Par {{ article.author }}</span>
+                    <span><i class="fa-regular fa-calendar"></i> {{ article.publishedAt|date('d M. Y') }}</span>
+                    <span><i class="fa-regular fa-clock"></i> {{ article.readingTime }} min de lecture</span>
+                </div>
+
+            </div>
+        </section>
+
+
+        <div class="article-layout">
+
+            {% if toc is not empty %}
+                <aside class="article-toc">
+                    <h2>Sommaire</h2>
+                    <ol>
+                        {% for item in toc %}
+                            <li><a href="#{{ item.id }}">{{ item.title }}</a></li>
+                        {% endfor %}
+                    </ol>
+                </aside>
+            {% else %}
+                <div></div>
+            {% endif %}
+
+
+            <article class="article-body">
+                {{ contentHtml|raw }}
+            </article>
+
+
+            <aside class="article-sidebar">
+
+                {% if similarArticles is not empty %}
+                    <div class="member-panel">
+                        <h2 class="member-panel__title" style="margin-bottom:14px; font-size:0.95rem;">Articles similaires</h2>
+
+                        {% for similar in similarArticles %}
+                            <a href="{{ path('app_blog_show', {slug: similar.slug}) }}" class="article-similar-item">
+                                {% if similar.coverImage %}
+                                    <img src="{{ asset(similar.coverImage) }}" alt="">
+                                {% endif %}
+                                <div>
+                                    <strong>{{ similar.title }}</strong>
+                                    <small>{{ similar.publishedAt|date('d M. Y') }}</small>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <div class="member-panel">
+                    <h2 class="member-panel__title" style="margin-bottom:10px; font-size:0.95rem;">
+                        <i class="fa-brands fa-telegram" style="color:#3b82f6;"></i> Rejoindre la communauté
+                    </h2>
+                    <p style="color:rgba(255,255,255,0.55); font-size:0.84rem; margin:0 0 10px;">
+                        Reçois nos analyses en avant-première sur le groupe Telegram NTS Betting.
+                    </p>
+                    {% if site_settings().telegramUrl %}
+                        <a href="{{ site_settings().telegramUrl }}" target="_blank" rel="noopener" class="member-panel__link">Rejoindre →</a>
+                    {% endif %}
+                </div>
+
+                <div class="member-panel">
+                    <h2 class="member-panel__title" style="margin-bottom:12px; font-size:0.95rem;">Partager cet article</h2>
+                    <div class="article-share">
+                        <a href="https://twitter.com/intent/tweet?url={{ app.request.uri|url_encode }}&text={{ article.title|url_encode }}" target="_blank" rel="noopener" aria-label="Partager sur X"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ app.request.uri|url_encode }}" target="_blank" rel="noopener" aria-label="Partager sur Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ app.request.uri|url_encode }}" target="_blank" rel="noopener" aria-label="Partager sur LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

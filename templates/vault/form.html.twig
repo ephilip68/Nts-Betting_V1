@@ -1,0 +1,158 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ entry.id ? 'Modifier' : 'Ajouter' }} un pari — NTS Vault{% endblock %}
+
+{% block body %}
+
+    <div class="member-layout">
+
+        {% include 'components/member/_sidebar.html.twig' with {active: 'vault'} %}
+
+        <main class="member-content">
+
+            {% include 'components/member/_topbar.html.twig' with {memberTitle: entry.id ? 'Modifier le pari' : 'Ajouter un pari'} %}
+
+            <div class="member-panel bet-form-panel">
+
+                {{ form_start(form, {attr: {class: 'member-form bet-form', id: 'vault-bet-form'}}) }}
+
+                    <div class="bet-form__grid">
+
+                        <div class="bet-form__col">
+
+                            <div class="member-form__row">
+                                {{ form_row(form.placedAt) }}
+                                {{ form_row(form.bookmaker) }}
+                            </div>
+
+                            {{ form_row(form.betType) }}
+
+                            <div id="system-fields" class="bet-form__system-fields">
+                                {{ form_row(form.systemOption) }}
+                            </div>
+
+                            <div id="simple-fields">
+                                {{ form_row(form.category) }}
+                                {{ form_row(form.competition) }}
+                                <div class="member-form__row">
+                                    {{ form_row(form.homeTeam) }}
+                                    {{ form_row(form.awayTeam) }}
+                                </div>
+                                {{ form_row(form.winner) }}
+                                {{ form_widget(form.winnerLabel, {attr: {id: 'winnerLabel'}}) }}
+                            </div>
+
+                            <div id="selections-wrapper" class="bet-form__selections">
+                                <div id="selections-container" data-prototype="{{ form_widget(form.selections.vars.prototype)|e('html_attr') }}">
+                                    {% for selection in form.selections %}
+                                        <div class="selection-block" data-open="false">
+                                            <div class="match-title">
+                                                <div class="match-actions">
+                                                    <i class="fa-solid fa-chevron-down chevron"></i>
+                                                    <span class="match-label">Match {{ loop.index }}</span>
+                                                </div>
+                                                <span class="closed-trash"><i class="fa-solid fa-trash-alt"></i></span>
+                                            </div>
+                                            <div class="match-content">
+                                                {{ form_widget(selection) }}
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                                <button type="button" class="add-selection">
+                                    <i class="fa-solid fa-plus"></i> Ajouter un match
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <div class="bet-form__divider"></div>
+
+                        <div class="bet-form__col">
+
+                            <div class="member-form__row">
+                                {{ form_row(form.odds) }}
+                                {{ form_row(form.stake) }}
+                            </div>
+
+                            {{ form_row(form.status) }}
+
+                            <div id="cashout-field" class="bet-form__cashout">
+                                {{ form_row(form.cashoutGain) }}
+                            </div>
+
+                            {{ form_widget(form.isBoosted, {attr: {id: 'isBoosted-field'}}) }}
+                            {{ form_widget(form.isFreebet, {attr: {id: 'isFreebet-field'}}) }}
+                            {{ form_widget(form.isInsured, {attr: {id: 'isInsured-field'}}) }}
+
+                            <div class="bet-switches">
+                                <label class="bet-switch" id="boost-label">
+                                    <span>Cote boostée</span>
+                                    <span class="switch">
+                                        <input type="checkbox" id="boost-checkbox">
+                                        <span class="switch__slider"></span>
+                                    </span>
+                                </label>
+
+                                <label class="bet-switch">
+                                    <span>Freebet</span>
+                                    <span class="switch">
+                                        <input type="checkbox" id="freebet-checkbox">
+                                        <span class="switch__slider"></span>
+                                    </span>
+                                </label>
+
+                                <label class="bet-switch" id="insured-label">
+                                    <span>Assurer mon combiné</span>
+                                    <span class="switch">
+                                        <input type="checkbox" id="insured-checkbox">
+                                        <span class="switch__slider"></span>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div id="profit-preview" class="bet-form__profit">
+                                <div class="bet-form__profit-item">
+                                    <span>Gain estimé</span>
+                                    <strong id="gain-field">0.00</strong> €
+                                </div>
+                                <div class="bet-form__profit-item">
+                                    <span>Profit estimé</span>
+                                    <strong id="profit-field">0.00</strong> €
+                                </div>
+                            </div>
+
+                            <div class="bet-form__actions">
+                                <button type="submit" class="member-btn">{{ entry.id ? 'Enregistrer' : 'Ajouter le pari' }}</button>
+                                <a href="{{ path('app_vault_bankroll_detail', {id: bankroll.id}) }}" class="member-btn member-btn--ghost">Annuler</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {{ form_end(form) }}
+
+            </div>
+
+        </main>
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        window.vaultBetFormConfig = {
+            winnerOptionsUrl: '{{ path('api_vault_winner_options') }}',
+            systemOptionsUrl: '{{ path('api_vault_system_options') }}',
+            betTypeId: '{{ form.betType.vars.id }}',
+            oddsId: '{{ form.odds.vars.id }}',
+            stakeId: '{{ form.stake.vars.id }}',
+            statusId: '{{ form.status.vars.id }}',
+            systemOptionId: '{{ form.systemOption.vars.id }}',
+        };
+    </script>
+{% endblock %}

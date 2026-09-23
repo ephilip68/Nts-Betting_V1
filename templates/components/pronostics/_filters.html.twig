@@ -10,33 +10,35 @@
 
             <div class="pronostics-filter__tabs-list">
 
-                <button
-                    type="button"
-                    class="pronostics-filter__tab pronostics-filter__tab--active"
+                <a
+                    href="{{ path('app_pronostics', {sport: currentSport, competition: currentCompetition, type: currentBetType, confidence: currentConfidence, q: currentSearch, sort: currentSort}) }}"
+                    class="pronostics-filter__tab {{ not currentAccess and not onlyFavorites ? 'pronostics-filter__tab--active' : '' }}"
                 >
                     Tous les pronostics
-                </button>
+                </a>
 
-                <button
-                    type="button"
-                    class="pronostics-filter__tab"
+                <a
+                    href="{{ path('app_pronostics', {sport: currentSport, access: 'free', competition: currentCompetition, type: currentBetType, confidence: currentConfidence, q: currentSearch, sort: currentSort}) }}"
+                    class="pronostics-filter__tab {{ currentAccess == 'free' ? 'pronostics-filter__tab--active' : '' }}"
                 >
                     Gratuits
-                </button>
+                </a>
 
-                <button
-                    type="button"
-                    class="pronostics-filter__tab"
+                <a
+                    href="{{ path('app_pronostics', {sport: currentSport, access: 'vip', competition: currentCompetition, type: currentBetType, confidence: currentConfidence, q: currentSearch, sort: currentSort}) }}"
+                    class="pronostics-filter__tab {{ currentAccess == 'vip' ? 'pronostics-filter__tab--active' : '' }}"
                 >
                     VIP
-                </button>
+                </a>
 
-                <button
-                    type="button"
-                    class="pronostics-filter__tab"
-                >
-                    Mes favoris
-                </button>
+                {% if app.user %}
+                    <a
+                        href="{{ path('app_pronostics', {favorites: 1, sport: currentSport, competition: currentCompetition, type: currentBetType, confidence: currentConfidence, q: currentSearch, sort: currentSort}) }}"
+                        class="pronostics-filter__tab {{ onlyFavorites ? 'pronostics-filter__tab--active' : '' }}"
+                    >
+                        Mes favoris
+                    </a>
+                {% endif %}
 
             </div>
 
@@ -46,6 +48,7 @@
             <button
                 type="button"
                 class="pronostics-filter__help"
+                data-pronostics-help-toggle
             >
                 <span>Comment lire nos pronostics ?</span>
                 <i class="fa-solid fa-circle-question"></i>
@@ -54,11 +57,21 @@
         </div>
 
 
+        <div class="pronostics-filter__help-panel" data-pronostics-help-panel hidden>
+            <p><strong>Cote</strong> — le gain potentiel pour 1€ misé si le pronostic est gagnant.</p>
+            <p><strong>Confiance</strong> — le niveau de conviction de l'analyse, de 1 à 5 points.</p>
+            <p><strong><i class="fa-solid fa-lock"></i> Réservé VIP</strong> — pronostic et analyse visibles uniquement pour les membres VIP.</p>
+        </div>
+
+
         {# =====================================================
            FILTERS
            ===================================================== #}
 
-        <div class="pronostics-filter__filters">
+        <form class="pronostics-filter__filters" method="get" action="{{ path('app_pronostics') }}">
+
+            {% if currentAccess %}<input type="hidden" name="access" value="{{ currentAccess }}">{% endif %}
+            {% if onlyFavorites %}<input type="hidden" name="favorites" value="1">{% endif %}
 
             {# SPORT #}
 
@@ -70,23 +83,12 @@
 
                 <div class="pronostics-filter__select">
 
-                    <select id="filter-sport">
+                    <select id="filter-sport" name="sport">
 
-                        <option value="">
-                            Tous
-                        </option>
-
-                        <option value="football">
-                            Football
-                        </option>
-
-                        <option value="basketball">
-                            Basket
-                        </option>
-
-                        <option value="tennis">
-                            Tennis
-                        </option>
+                        <option value="">Tous</option>
+                        <option value="football" {{ currentSport == 'football' ? 'selected' : '' }}>Football</option>
+                        <option value="basketball" {{ currentSport == 'basketball' ? 'selected' : '' }}>Basket</option>
+                        <option value="tennis" {{ currentSport == 'tennis' ? 'selected' : '' }}>Tennis</option>
 
                     </select>
 
@@ -107,68 +109,12 @@
 
                 <div class="pronostics-filter__select">
 
-                    <select id="filter-competition">
+                    <select id="filter-competition" name="competition">
 
-                        <option value="">
-                            Toutes
-                        </option>
-
-                        <option value="ligue-1">
-                            Ligue 1
-                        </option>
-
-                        <option value="premier-league">
-                            Premier League
-                        </option>
-
-                        <option value="liga">
-                            Liga
-                        </option>
-
-                        <option value="bundesliga">
-                            Bundesliga
-                        </option>
-
-                        <option value="serie-a">
-                            Serie A
-                        </option>
-
-                    </select>
-
-                    <i class="fa-solid fa-chevron-down"></i>
-
-                </div>
-
-            </div>
-
-
-            {# PÉRIODE #}
-
-            <div class="pronostics-filter__field">
-
-                <label for="filter-period">
-                    Période
-                </label>
-
-                <div class="pronostics-filter__select">
-
-                    <select id="filter-period">
-
-                        <option value="week">
-                            Cette semaine
-                        </option>
-
-                        <option value="today">
-                            Aujourd'hui
-                        </option>
-
-                        <option value="month">
-                            Ce mois
-                        </option>
-
-                        <option value="all">
-                            Toutes les périodes
-                        </option>
+                        <option value="">Toutes</option>
+                        {% for competition in availableCompetitions %}
+                            <option value="{{ competition }}" {{ currentCompetition == competition ? 'selected' : '' }}>{{ competition }}</option>
+                        {% endfor %}
 
                     </select>
 
@@ -189,27 +135,12 @@
 
                 <div class="pronostics-filter__select">
 
-                    <select id="filter-bet-type">
+                    <select id="filter-bet-type" name="type">
 
-                        <option value="">
-                            Tous
-                        </option>
-
-                        <option value="winner">
-                            Vainqueur
-                        </option>
-
-                        <option value="double-chance">
-                            Double chance
-                        </option>
-
-                        <option value="goals">
-                            Buts
-                        </option>
-
-                        <option value="handicap">
-                            Handicap
-                        </option>
+                        <option value="">Tous</option>
+                        {% for betType in availableBetTypes %}
+                            <option value="{{ betType }}" {{ currentBetType == betType ? 'selected' : '' }}>{{ betType }}</option>
+                        {% endfor %}
 
                     </select>
 
@@ -230,23 +161,12 @@
 
                 <div class="pronostics-filter__select">
 
-                    <select id="filter-confidence">
+                    <select id="filter-confidence" name="confidence">
 
-                        <option value="">
-                            Tous
-                        </option>
-
-                        <option value="5">
-                            Très élevé
-                        </option>
-
-                        <option value="4">
-                            Élevé
-                        </option>
-
-                        <option value="3">
-                            Moyen
-                        </option>
+                        <option value="">Tous</option>
+                        <option value="5" {{ currentConfidence == 5 ? 'selected' : '' }}>Très élevé (5)</option>
+                        <option value="4" {{ currentConfidence == 4 ? 'selected' : '' }}>Élevé (4+)</option>
+                        <option value="3" {{ currentConfidence == 3 ? 'selected' : '' }}>Moyen (3+)</option>
 
                     </select>
 
@@ -266,6 +186,8 @@
                 <input
                     type="text"
                     id="filter-search"
+                    name="q"
+                    value="{{ currentSearch }}"
                     placeholder="Rechercher une équipe, un match..."
                 >
 
@@ -274,10 +196,7 @@
 
             {# FILTRER #}
 
-            <button
-                type="button"
-                class="pronostics-filter__button"
-            >
+            <button type="submit" class="pronostics-filter__button">
 
                 <i class="fa-solid fa-magnifying-glass"></i>
 
@@ -287,7 +206,7 @@
 
             </button>
 
-        </div>
+        </form>
 
     </div>
 

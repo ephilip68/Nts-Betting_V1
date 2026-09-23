@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}À propos — NTS Betting{% endblock %}
+
+{% block body_class %}static-page static-page--about{% endblock %}
+
+{% block body %}
+
+    {% include 'components/_navbar.html.twig' %}
+
+    <main>
+
+        <section class="static-hero static-hero--visual">
+            <h1 class="static-hero__title">À propos de <span>NTS Betting</span></h1>
+            <p class="static-hero__subtitle">Plus qu'un simple site de pronostics, une vraie communauté.</p>
+        </section>
+
+        <div class="static-page__container">
+
+            <div class="static-stats-grid">
+
+                <div class="static-stat-card">
+                    <div class="static-stat-card__icon"><i class="fa-solid fa-users"></i></div>
+                    <strong>{{ activeMembersCount }}</strong>
+                    <span>Membres actifs</span>
+                </div>
+
+                <div class="static-stat-card">
+                    <div class="static-stat-card__icon"><i class="fa-solid fa-trophy"></i></div>
+                    <strong>{{ winRate is not null ? winRate ~ '%' : '—' }}</strong>
+                    <span>Taux de réussite</span>
+                </div>
+
+                <div class="static-stat-card">
+                    <div class="static-stat-card__icon"><i class="fa-solid fa-bullseye"></i></div>
+                    <strong>{{ settledCount }}</strong>
+                    <span>Pronostics joués</span>
+                </div>
+
+            </div>
+
+
+            <div class="static-section">
+                <h2>Notre mission</h2>
+                <p>
+                    Rendre les paris sportifs plus accessibles, plus transparents et plus rentables
+                    grâce à des analyses de qualité, des outils de suivi performants et un accompagnement
+                    complet — du pronostic ponctuel jusqu'à la gestion sérieuse d'une bankroll.
+                </p>
+            </div>
+
+
+            <div class="static-section">
+                <h2>Nos valeurs</h2>
+
+                <div class="static-values-grid">
+
+                    <div class="static-value-card">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                        <strong>Transparence</strong>
+                        <span>Des analyses claires et argumentées, un historique de résultats entièrement consultable.</span>
+                    </div>
+
+                    <div class="static-value-card">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <strong>Rigueur</strong>
+                        <span>Une approche basée sur les statistiques, pas sur l'intuition.</span>
+                    </div>
+
+                    <div class="static-value-card">
+                        <i class="fa-solid fa-users"></i>
+                        <strong>Communauté</strong>
+                        <span>Un espace d'échange où les membres progressent ensemble.</span>
+                    </div>
+
+                    <div class="static-value-card">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <strong>Jeu responsable</strong>
+                        <span>Le NTS Vault aide à suivre sa bankroll sans jamais gérer d'argent réel sur le site.</span>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="static-section" style="text-align:center;">
+                <h2>Prêt à nous rejoindre ?</h2>
+                <p style="margin:0 auto 16px;">Découvre nos offres et rejoins une communauté de parieurs passionnés.</p>
+                <a href="{{ path('app_offers') }}" class="member-btn">Découvrir nos offres</a>
+            </div>
+
+        </div>
+
+    </main>
+
+    {% include 'components/_footer.html.twig' %}
+
+{% endblock %}

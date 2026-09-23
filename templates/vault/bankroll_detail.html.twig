@@ -1,0 +1,318 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ bankroll.name }} — NTS Vault{% endblock %}
+
+{% block body %}
+
+    <div class="member-layout">
+
+        {% include 'components/member/_sidebar.html.twig' with {active: 'vault'} %}
+
+        <main class="member-content">
+
+            {% include 'components/member/_topbar.html.twig' with {memberTitle: bankroll.name} %}
+
+            <a href="{{ path('app_vault_bankrolls') }}" class="member-panel__link" style="display:inline-flex; align-items:center; gap:6px; margin-bottom:16px;">
+                <i class="fa-solid fa-arrow-left"></i> Mes bankrolls
+            </a>
+
+            {% for message in app.flashes('success') %}
+                <div class="profile-flash profile-flash--success">{{ message }}</div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+                <div class="profile-flash profile-flash--error">{{ message }}</div>
+            {% endfor %}
+
+            {# =====================================================
+               STATS
+               ===================================================== #}
+
+            <div class="member-stats-grid">
+
+                <div class="member-stat-card">
+                    <div class="member-stat-card__icon"><i class="fa-solid fa-sack-dollar"></i></div>
+                    <span class="member-stat-card__label">Solde (cumulé)</span>
+                    <strong class="member-stat-card__value {{ summary.balance >= 0 ? 'is-positive' : 'is-negative' }}">
+                        {{ summary.balance > 0 ? '+' : '' }}{{ summary.balance }} €
+                    </strong>
+                </div>
+
+                <div class="member-stat-card">
+                    <div class="member-stat-card__icon"><i class="fa-solid fa-coins"></i></div>
+                    <span class="member-stat-card__label">Mise totale</span>
+                    <strong class="member-stat-card__value">{{ summary.totalStaked }} €</strong>
+                </div>
+
+                <div class="member-stat-card">
+                    <div class="member-stat-card__icon"><i class="fa-solid fa-trophy"></i></div>
+                    <span class="member-stat-card__label">Gain total</span>
+                    <strong class="member-stat-card__value">{{ summary.totalWon }} €</strong>
+                </div>
+
+                <div class="member-stat-card">
+                    <div class="member-stat-card__icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                    <span class="member-stat-card__label">ROI</span>
+                    <strong class="member-stat-card__value {{ summary.roi is not null and summary.roi >= 0 ? 'is-positive' : 'is-negative' }}">
+                        {{ summary.roi is not null ? (summary.roi > 0 ? '+' : '') ~ summary.roi ~ '%' : '—' }}
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div style="display:grid; grid-template-columns: 2fr 1fr; gap:24px; align-items:start;" class="vault-grid">
+
+                {# =================================================
+                   ÉVOLUTION DE LA BANKROLL
+                   ================================================= #}
+
+                <div class="member-panel">
+
+                    <div class="member-panel__header">
+                        <h2 class="member-panel__title">Évolution de la bankroll</h2>
+                        <a href="{{ path('app_vault_new', {bankrollId: bankroll.id}) }}" class="member-btn">
+                            <i class="fa-solid fa-plus"></i> Ajouter un pari
+                        </a>
+                    </div>
+
+                    {% if summary.settledCount == 0 %}
+
+                        <p class="member-empty">Ajoute ton premier pari pour voir ton évolution.</p>
+
+                    {% else %}
+
+                        <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="width:100%; height:180px;">
+
+                            <polyline
+                                points="{{ chart.polyline }}"
+                                fill="none"
+                                stroke="var(--color-gold, #DDB219)"
+                                stroke-width="2"
+                            />
+
+                            {% for circle in chart.circles %}
+                                <circle cx="{{ circle.x }}" cy="{{ circle.y }}" r="2.5" fill="var(--color-gold, #DDB219)"/>
+                            {% endfor %}
+
+                        </svg>
+
+                        <div style="display:flex; justify-content:space-between; color:rgba(255,255,255,0.45); font-size:0.72rem; margin-top:6px;">
+                            {% for label in chart.labels %}
+                                <span>{{ label }}</span>
+                            {% endfor %}
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+
+                {# =================================================
+                   TAUX DE RÉUSSITE
+                   ================================================= #}
+
+                <div class="member-panel">
+
+                    <h2 class="member-panel__title" style="margin-bottom:16px;">Taux de réussite</h2>
+
+                    {% if summary.settledCount == 0 %}
+
+                        <p class="member-empty">—</p>
+
+                    {% else %}
+
+                        {% set wonDeg = (summary.wonCount / summary.settledCount) * 360 %}
+                        {% set lostDeg = (summary.lostCount / summary.settledCount) * 360 %}
+
+                        <div class="member-donut" style="background: conic-gradient(#4ade80 0deg {{ wonDeg }}deg, #f87171 {{ wonDeg }}deg {{ wonDeg + lostDeg }}deg, #94a3b8 {{ wonDeg + lostDeg }}deg 360deg);">
+                            <div class="member-donut__center">
+                                <strong>{{ summary.winRate }}%</strong>
+                                <span>{{ summary.wonCount }} / {{ summary.settledCount }}</span>
+                            </div>
+                        </div>
+
+                        <div style="display:flex; flex-direction:column; gap:8px; font-size:0.84rem;">
+                            <div style="display:flex; justify-content:space-between; color:#4ade80;">
+                                <span>● Gagnés</span><strong>{{ summary.wonCount }}</strong>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; color:#f87171;">
+                                <span>● Perdus</span><strong>{{ summary.lostCount }}</strong>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; color:#94a3b8;">
+                                <span>● Annulés</span><strong>{{ summary.voidCount }}</strong>
+                            </div>
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+            <div style="display:grid; grid-template-columns: 2fr 1fr; gap:24px; align-items:start;" class="vault-grid">
+
+                {# =================================================
+                   HISTORIQUE
+                   ================================================= #}
+
+                <div class="member-panel">
+
+                    <div class="member-panel__header">
+                        <h2 class="member-panel__title">Historique de mes paris</h2>
+                    </div>
+
+                    {% if recentEntries is empty %}
+
+                        <p class="member-empty">Aucun pari enregistré pour le moment.</p>
+
+                    {% else %}
+
+                        <div class="member-table-wrapper">
+
+                            <table class="member-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Description</th>
+                                        <th>Bookmaker</th>
+                                        <th>Mise</th>
+                                        <th>Cote</th>
+                                        <th>Statut</th>
+                                        <th>Résultat</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% for entry in recentEntries %}
+                                        {% set profit = vaultStatsService.profit(entry) %}
+                                        <tr>
+                                            <td>{{ entry.placedAt|date('d/m/Y') }}</td>
+                                            <td>{{ entry.label }}</td>
+                                            <td>{{ entry.bookmaker ?: '—' }}</td>
+                                            <td>{{ '%.2f'|format(entry.stake) }} €</td>
+                                            <td>{{ entry.odds|odds }}</td>
+                                            <td>
+                                                {% if entry.status == 'won' %}
+                                                    <span class="member-badge member-badge--won">Gagné</span>
+                                                {% elseif entry.status == 'lost' %}
+                                                    <span class="member-badge member-badge--lost">Perdu</span>
+                                                {% elseif entry.status == 'void' %}
+                                                    <span class="member-badge member-badge--void">Annulé</span>
+                                                {% elseif entry.status == 'cashout' %}
+                                                    <span class="member-badge member-badge--won">Cashout</span>
+                                                {% else %}
+                                                    <span class="member-badge member-badge--pending">En attente</span>
+                                                {% endif %}
+                                            </td>
+                                            <td class="{{ profit >= 0 ? 'member-profit--positive' : 'member-profit--negative' }}">
+                                                {% if entry.status in ['won', 'lost', 'cashout'] %}
+                                                    {{ profit > 0 ? '+' : '' }}{{ '%.2f'|format(profit) }} €
+                                                {% else %}
+                                                    —
+                                                {% endif %}
+                                            </td>
+                                            <td style="white-space:nowrap;">
+                                                <a href="{{ path('app_vault_edit', {bankrollId: bankroll.id, id: entry.id}) }}" class="member-panel__link">Modifier</a>
+                                                <form action="{{ path('app_vault_delete', {bankrollId: bankroll.id, id: entry.id}) }}" method="post" style="display:inline;" onsubmit="return confirm('Supprimer ce pari ?');">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token('delete-vault-entry-' ~ entry.id) }}">
+                                                    <button type="submit" style="background:none; border:none; color:#f87171; cursor:pointer; font-size:0.82rem;">Suppr.</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+
+                <div>
+
+                    {# =================================================
+                       OBJECTIFS PERSONNELS
+                       ================================================= #}
+
+                    <div class="member-panel">
+
+                        <h2 class="member-panel__title" style="margin-bottom:16px;">Objectifs du mois</h2>
+
+                        <div class="member-goal">
+                            <div class="member-goal__head">
+                                <span>Bénéfice mensuel</span>
+                                <strong>
+                                    {{ goals.profit.current }} € {{ goals.profit.goal ? '/ ' ~ goals.profit.goal ~ ' €' : '' }}
+                                </strong>
+                            </div>
+                            <div class="member-goal__bar"><span style="width: {{ goals.profit.percent }}%;"></span></div>
+                        </div>
+
+                        <div class="member-goal">
+                            <div class="member-goal__head">
+                                <span>Taux de réussite</span>
+                                <strong>
+                                    {{ goals.winRate.current }}% {{ goals.winRate.goal ? '/ ' ~ goals.winRate.goal ~ '%' : '' }}
+                                </strong>
+                            </div>
+                            <div class="member-goal__bar"><span style="width: {{ goals.winRate.percent }}%;"></span></div>
+                        </div>
+
+                        <div class="member-goal">
+                            <div class="member-goal__head">
+                                <span>Paris placés</span>
+                                <strong>
+                                    {{ goals.betCount.current }} {{ goals.betCount.goal ? '/ ' ~ goals.betCount.goal : '' }}
+                                </strong>
+                            </div>
+                            <div class="member-goal__bar"><span style="width: {{ goals.betCount.percent }}%;"></span></div>
+                        </div>
+
+                        <details style="margin-top:16px;">
+                            <summary style="color:var(--color-gold); font-size:0.82rem; cursor:pointer;">Modifier mes objectifs</summary>
+
+                            {{ form_start(goalsForm, {action: path('app_vault_goals', {id: bankroll.id}), attr: {class: 'member-form', style: 'margin-top:14px;'}}) }}
+                                {{ form_row(goalsForm.vaultGoalMonthlyProfit) }}
+                                {{ form_row(goalsForm.vaultGoalWinRate) }}
+                                {{ form_row(goalsForm.vaultGoalBetCount) }}
+                                <button type="submit" class="member-btn">Enregistrer</button>
+                            {{ form_end(goalsForm) }}
+                        </details>
+
+                    </div>
+
+
+                    {# =================================================
+                       MES PERFORMANCES
+                       ================================================= #}
+
+                    <div class="member-panel">
+
+                        <h2 class="member-panel__title" style="margin-bottom:16px;">Mes performances</h2>
+
+                        <div style="display:flex; flex-direction:column; gap:12px; font-size:0.86rem;">
+                            <div style="display:flex; justify-content:space-between; color:rgba(255,255,255,0.6);">
+                                <span>Mise moyenne</span><strong style="color:#fff;">{{ summary.avgStake ?? '—' }} €</strong>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; color:rgba(255,255,255,0.6);">
+                                <span>Gain moyen</span><strong style="color:#fff;">{{ summary.avgWin is not null ? summary.avgWin ~ ' €' : '—' }}</strong>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+{% endblock %}

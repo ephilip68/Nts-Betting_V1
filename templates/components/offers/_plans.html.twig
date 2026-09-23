@@ -27,9 +27,13 @@
 
                 </div>
 
-                <a href="#" class="offer-card__button">
-                    Commencer
-                </a>
+                {% if is_granted('ROLE_USER') %}
+                    <form action="{{ path('app_subscription_checkout', {plan: 'starter'}) }}" method="post">
+                        <button type="submit" class="offer-card__button">Commencer</button>
+                    </form>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="offer-card__button">Commencer</a>
+                {% endif %}
 
                 <ul class="offer-card__features">
                     <li>
@@ -52,9 +56,9 @@
                         Suivi des résultats
                     </li>
 
-                    <li class="is-disabled">
-                        <i class="fa-solid fa-xmark"></i>
-                        NTS Vault non inclus
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        NTS Vault (1 bankroll)
                     </li>
 
                     <li class="is-disabled">
@@ -89,9 +93,13 @@
 
                 </div>
 
-                <a href="#" class="offer-card__button">
-                    Choisir Essentiel
-                </a>
+                {% if is_granted('ROLE_USER') %}
+                    <form action="{{ path('app_subscription_checkout', {plan: 'essentiel'}) }}" method="post">
+                        <button type="submit" class="offer-card__button">Choisir Essentiel</button>
+                    </form>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="offer-card__button">Choisir Essentiel</a>
+                {% endif %}
 
                 <ul class="offer-card__features">
                     <li><i class="fa-solid fa-check"></i>5 à 10 pronostics par semaine</li>
@@ -99,7 +107,7 @@
                     <li><i class="fa-solid fa-check"></i>Conseils de gestion de bankroll</li>
                     <li><i class="fa-solid fa-check"></i>Accès au groupe Telegram</li>
                     <li><i class="fa-solid fa-check"></i>Statistiques complètes</li>
-                    <li class="is-disabled"><i class="fa-solid fa-xmark"></i>NTS Vault non inclus</li>
+                    <li><i class="fa-solid fa-check"></i>NTS Vault (5 bankrolls)</li>
                 </ul>
 
             </article>
@@ -133,9 +141,13 @@
 
                 </div>
 
-                <a href="#" class="offer-card__button">
-                    Choisir Avancé
-                </a>
+                {% if is_granted('ROLE_USER') %}
+                    <form action="{{ path('app_subscription_checkout', {plan: 'avance'}) }}" method="post">
+                        <button type="submit" class="offer-card__button">Choisir Avancé</button>
+                    </form>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="offer-card__button">Choisir Avancé</a>
+                {% endif %}
 
                 <ul class="offer-card__features">
                     <li><i class="fa-solid fa-check"></i>10 à 15 pronostics par semaine</li>
@@ -144,7 +156,7 @@
                     <li><i class="fa-solid fa-check"></i>Accès au groupe Telegram VIP</li>
                     <li><i class="fa-solid fa-check"></i>Accès aux analyses en avant-première</li>
                     <li><i class="fa-solid fa-check"></i>Suivi des performances</li>
-                    <li><i class="fa-solid fa-check"></i>NTS Vault inclus</li>
+                    <li><i class="fa-solid fa-check"></i>NTS Vault (10 bankrolls)</li>
                 </ul>
 
             </article>
@@ -173,9 +185,13 @@
 
                 </div>
 
-                <a href="#" class="offer-card__button">
-                    Choisir VIP
-                </a>
+                {% if is_granted('ROLE_USER') %}
+                    <form action="{{ path('app_subscription_checkout', {plan: 'vip'}) }}" method="post">
+                        <button type="submit" class="offer-card__button">Choisir VIP</button>
+                    </form>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="offer-card__button">Choisir VIP</a>
+                {% endif %}
 
                 <ul class="offer-card__features">
                     <li><i class="fa-solid fa-check"></i>Tous les pronostics</li>
@@ -183,8 +199,8 @@
                     <li><i class="fa-solid fa-check"></i>Accès au groupe Telegram VIP</li>
                     <li><i class="fa-solid fa-check"></i>Accès aux lives / échanges</li>
                     <li><i class="fa-solid fa-check"></i>Accompagnement personnalisé</li>
-                    <li><i class="fa-solid fa-check"></i>NTS Vault inclus</li>
                     <li><i class="fa-solid fa-check"></i>Accès aux outils exclusifs</li>
+                    <li><i class="fa-solid fa-check"></i>NTS Vault (bankrolls illimités)</li>
                     <li><i class="fa-solid fa-check"></i>Suivi individuel</li>
                 </ul>
 

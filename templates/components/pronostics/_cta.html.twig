@@ -22,7 +22,7 @@
         </div>
 
 
-        <a href="#" class="pronostics-cta__button">
+        <a href="{{ app.user ? path('app_offers') : path('app_register') }}" class="pronostics-cta__button">
 
             <span>
                 S'inscrire maintenant

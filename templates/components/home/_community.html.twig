@@ -44,11 +44,8 @@
 
                     <div class="community-member">
 
-                        <div class="community-member-avatar">
-                            <img
-                                src="{{ asset('images/community/avatar-thomas.webp') }}"
-                                alt="Thomas R."
-                            >
+                        <div class="community-member-avatar community-member-avatar--letter">
+                            T
                         </div>
 
                         <div class="community-member-info">
@@ -115,11 +112,8 @@
 
                     <div class="community-member">
 
-                        <div class="community-member-avatar">
-                            <img
-                                src="{{ asset('images/community/avatar-lucas.webp') }}"
-                                alt="Lucas M."
-                            >
+                        <div class="community-member-avatar community-member-avatar--letter">
+                            L
                         </div>
 
                         <div class="community-member-info">
@@ -174,11 +168,8 @@
 
                     <div class="community-member">
 
-                        <div class="community-member-avatar">
-                            <img
-                                src="{{ asset('images/community/avatar-camille.webp') }}"
-                                alt="Camille D."
-                            >
+                        <div class="community-member-avatar community-member-avatar--letter">
+                            C
                         </div>
 
                         <div class="community-member-info">
@@ -251,11 +242,11 @@
                 <div class="community-cta__action">
 
                     <a
-                        href="#"
+                        href="{{ app.user ? path('app_offers') : path('app_register') }}"
                         class="community-cta__button"
                     >
                         <span>
-                            S'inscrire maintenant
+                            {{ app.user ? 'Voir les offres' : "S'inscrire maintenant" }}
                         </span>
 
                         <span

@@ -28,17 +28,6 @@
 
             </div>
 
-
-            <a href="#" class="latest-tickets__button">
-
-                <span>
-                    Voir tous les résultats
-                </span>
-
-                <i class="fa-solid fa-arrow-right"></i>
-
-            </a>
-
         </div>
 
 
@@ -46,497 +35,194 @@
            TICKETS
            ===================================================== #}
 
-        <div class="latest-tickets__grid">
+        {% if recentTickets is empty %}
+
+            <p class="latest-results__empty">
+                Aucun ticket joué pour le moment.
+            </p>
+
+        {% else %}
+
+            {% set sportBg = {
+                'football': '/images/resultats/football/staduim.png',
+                'basketball': '/images/resultats/basketball/basketball.png',
+                'tennis': '/images/resultats/tennis/atp.png',
+            } %}
+
+            {% set sportIcon = {
+                'football': 'fa-futbol',
+                'basketball': 'fa-basketball',
+                'tennis': 'fa-table-tennis-paddle-ball',
+            } %}
+
+            <div class="latest-tickets__grid">
+
+                {% for pronostic in recentTickets %}
+
+                    {% set won = pronostic.status == 'won' %}
+                    {% set gain = statsService.profit(pronostic) %}
+
+                    <article class="latest-ticket {{ won ? 'latest-ticket--won' : 'latest-ticket--lost' }}">
+
+                        <div class="latest-ticket__top">
+
+                            <div class="latest-ticket__sport">
+
+                                <span class="latest-ticket__sport-icon">
+                                    <i class="fa-solid {{ sportIcon[pronostic.sport] ?? 'fa-circle' }}"></i>
+                                </span>
+
+                                <div>
+                                    <strong>{{ pronostic.sport|capitalize }}</strong>
+
+                                    <small>
+                                        {{ pronostic.competition }}
+                                    </small>
+                                </div>
+
+                            </div>
 
 
-            {# =================================================
-               TICKET 1
-               ================================================= #}
+                            <span class="latest-ticket__status {{ won ? 'latest-ticket__status--won' : 'latest-ticket__status--lost' }}">
+                                <i class="fa-solid {{ won ? 'fa-check' : 'fa-xmark' }}"></i>
+                                {{ won ? 'Gagné' : 'Perdu' }}
+                            </span>
 
-            <article class="latest-ticket latest-ticket--won">
-
-                <div class="latest-ticket__top">
-
-                    <div class="latest-ticket__sport">
-
-                        <span class="latest-ticket__sport-icon">
-                            <i class="fa-solid fa-futbol"></i>
-                        </span>
-
-                        <div>
-                            <strong>Football</strong>
-
-                            <small>
-                                Ligue des Champions
-                            </small>
                         </div>
 
-                    </div>
+
+                        {# MATCH #}
+
+                        <div class="latest-ticket__match latest-ticket__match--{{ pronostic.sport }}">
+
+                            {% if sportBg[pronostic.sport] is defined %}
+                                <img
+                                    class="latest-ticket__match-bg"
+                                    src="{{ sportBg[pronostic.sport] }}"
+                                    alt=""
+                                    aria-hidden="true"
+                                >
+                            {% endif %}
+
+                            <div class="latest-ticket__match-overlay"></div>
 
 
-                    <span class="latest-ticket__status latest-ticket__status--won">
-                        <i class="fa-solid fa-check"></i>
-                        Gagné
-                    </span>
+                            <div class="latest-ticket__team">
 
-                </div>
+                                {% if pronostic.teamHomeLogo %}
+                                    <img src="{{ pronostic.teamHomeLogo }}" alt="{{ pronostic.teamHome }}">
+                                {% endif %}
 
+                                <strong>
+                                    {{ pronostic.teamHome }}
+                                </strong>
 
-                {# MATCH #}
-
-                <div class="latest-ticket__match latest-ticket__match--football">
-
-                    {# IMAGE DE FOND #}
-                    <img
-                        class="latest-ticket__match-bg"
-                        src="/images/resultats/football/ldc.png"
-                        alt=""
-                        aria-hidden="true"
-                    >
-
-                    {# OVERLAY #}
-                    <div class="latest-ticket__match-overlay"></div>
+                            </div>
 
 
-                    {# ÉQUIPE GAUCHE #}
-                    <div class="latest-ticket__team">
-
-                        <img
-                            src="/images/resultats/teams/real-madrid.png"
-                            alt="Real Madrid"
-                        >
-
-                        <strong>
-                            Real Madrid
-                        </strong>
-
-                    </div>
+                            <span class="latest-ticket__vs">
+                                VS
+                            </span>
 
 
-                    {# VS #}
-                    <span class="latest-ticket__vs">
-                        VS
-                    </span>
+                            <div class="latest-ticket__team">
 
+                                {% if pronostic.teamAwayLogo %}
+                                    <img src="{{ pronostic.teamAwayLogo }}" alt="{{ pronostic.teamAway }}">
+                                {% endif %}
 
-                    {# ÉQUIPE DROITE #}
-                    <div class="latest-ticket__team">
+                                <strong>
+                                    {{ pronostic.teamAway }}
+                                </strong>
 
-                        <img
-                            src="/images/resultats/teams/city.png"
-                            alt="Manchester City"
-                        >
+                            </div>
 
-                        <strong>
-                            Manchester City
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                {# PRONOSTIC #}
-
-                <div class="latest-ticket__prediction">
-
-                    <span>
-                        Pronostic
-                    </span>
-
-                    <strong>
-                        Victoire Real Madrid
-                    </strong>
-
-                </div>
-
-
-                {# STATS #}
-
-                <div class="latest-ticket__stats">
-
-                    <div class="latest-ticket__stat">
-
-                        <span>
-                            Cote
-                        </span>
-
-                        <strong>
-                            2.15
-                        </strong>
-
-                    </div>
-
-
-                    <div class="latest-ticket__stat">
-
-                        <span>
-                            Mise
-                        </span>
-
-                        <strong>
-                            10.00€
-                        </strong>
-
-                    </div>
-
-
-                    <div class="latest-ticket__stat">
-
-                        <span>
-                            Résultat
-                        </span>
-
-                        <strong class="latest-ticket__profit">
-                            +11.50€
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                {# FOOTER #}
-
-                <div class="latest-ticket__footer">
-
-                    <span>
-                        <i class="fa-regular fa-calendar"></i>
-                        12 Sept. 2026
-                    </span>
-
-                    <span>
-                        <i class="fa-solid fa-tag"></i>
-                        NTS Betting
-                    </span>
-
-                </div>
-
-            </article>
-
-
-            {# =================================================
-               TICKET 2
-               ================================================= #}
-
-            <article class="latest-ticket latest-ticket--won">
-
-                <div class="latest-ticket__top">
-
-                    <div class="latest-ticket__sport">
-
-                        <span class="latest-ticket__sport-icon">
-                            <i class="fa-solid fa-basketball"></i>
-                        </span>
-
-                        <div>
-                            <strong>Basketball</strong>
-
-                            <small>
-                                NBA
-                            </small>
                         </div>
 
-                    </div>
 
+                        {# PRONOSTIC #}
 
-                    <span class="latest-ticket__status latest-ticket__status--won">
-                        <i class="fa-solid fa-check"></i>
-                        Gagné
-                    </span>
+                        <div class="latest-ticket__prediction">
 
-                </div>
+                            <span>
+                                Pronostic
+                            </span>
 
+                            <strong>
+                                {{ pronostic.betValue }}
+                            </strong>
 
-                {# MATCH #}
-
-                <div class="latest-ticket__match latest-ticket__match--basketball">
-
-                    <img
-                        class="latest-ticket__match-bg"
-                        src="/images/resultats/basketball/basketball.png"
-                        alt=""
-                        aria-hidden="true"
-                    >
-
-                    <div class="latest-ticket__match-overlay"></div>
-
-
-                    <div class="latest-ticket__team">
-
-                        <img
-                            src="/images/resultats/teams/boston.png"
-                            alt="Boston Celtics"
-                        >
-
-                        <strong>
-                            Boston Celtics
-                        </strong>
-
-                    </div>
-
-
-                    <span class="latest-ticket__vs">
-                        VS
-                    </span>
-
-
-                    <div class="latest-ticket__team">
-
-                        <img
-                            src="/images/resultats/teams/miami.png"
-                            alt="Miami Heat"
-                        >
-
-                        <strong>
-                            Miami Heat
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                {# PRONOSTIC #}
-
-                <div class="latest-ticket__prediction">
-
-                    <span>
-                        Pronostic
-                    </span>
-
-                    <strong>
-                        Boston Celtics
-                    </strong>
-
-                </div>
-
-
-                {# STATS #}
-
-                <div class="latest-ticket__stats">
-
-                    <div class="latest-ticket__stat">
-
-                        <span>
-                            Cote
-                        </span>
-
-                        <strong>
-                            1.72
-                        </strong>
-
-                    </div>
-
-
-                    <div class="latest-ticket__stat">
-
-                        <span>
-                            Mise
-                        </span>
-
-                        <strong>
-                            15.00€
-                        </strong>
-
-                    </div>
-
-
-                    <div class="latest-ticket__stat">
-
-                        <span>
-                            Résultat
-                        </span>
-
-                        <strong class="latest-ticket__profit">
-                            +10.80€
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                {# FOOTER #}
-
-                <div class="latest-ticket__footer">
-
-                    <span>
-                        <i class="fa-regular fa-calendar"></i>
-                        11 Sept. 2026
-                    </span>
-
-                    <span>
-                        <i class="fa-solid fa-tag"></i>
-                        NTS Betting
-                    </span>
-
-                </div>
-
-            </article>
-
-
-            {# =================================================
-               TICKET 3
-               ================================================= #}
-
-            <article class="latest-ticket latest-ticket--lost">
-
-                <div class="latest-ticket__top">
-
-                    <div class="latest-ticket__sport">
-
-                        <span class="latest-ticket__sport-icon">
-                            <i class="fa-solid fa-futbol"></i>
-                        </span>
-
-                        <div>
-                            <strong>Football</strong>
-
-                            <small>
-                                Premier League
-                            </small>
                         </div>
 
-                    </div>
+
+                        {# STATS #}
+
+                        <div class="latest-ticket__stats">
+
+                            <div class="latest-ticket__stat">
+
+                                <span>
+                                    Cote
+                                </span>
+
+                                <strong>
+                                    {{ pronostic.odds|odds }}
+                                </strong>
+
+                            </div>
 
 
-                    <span class="latest-ticket__status latest-ticket__status--lost">
-                        <i class="fa-solid fa-xmark"></i>
-                        Perdu
-                    </span>
+                            <div class="latest-ticket__stat">
 
-                </div>
+                                <span>
+                                    Mise
+                                </span>
 
+                                <strong>
+                                    {{ '%.2f'|format(pronostic.stake) }} €
+                                </strong>
 
-                {# MATCH #}
-
-                <div class="latest-ticket__match latest-ticket__match--football">
-
-                    <img
-                        class="latest-ticket__match-bg"
-                        src="/images/resultats/football/pl-foot.png"
-                        alt=""
-                        aria-hidden="true"
-                    >
-
-                    <div class="latest-ticket__match-overlay"></div>
+                            </div>
 
 
-                    <div class="latest-ticket__team">
+                            <div class="latest-ticket__stat">
 
-                        <img
-                            src="/images/resultats/teams/arsenal.png"
-                            alt="Arsenal"
-                        >
+                                <span>
+                                    Résultat
+                                </span>
 
-                        <strong>
-                            Arsenal
-                        </strong>
+                                <strong class="{{ won ? 'latest-ticket__profit' : 'latest-ticket__loss' }}">
+                                    {{ gain > 0 ? '+' : '' }}{{ '%.2f'|format(gain) }} €
+                                </strong>
 
-                    </div>
+                            </div>
 
-
-                    <span class="latest-ticket__vs">
-                        VS
-                    </span>
+                        </div>
 
 
-                    <div class="latest-ticket__team">
+                        {# FOOTER #}
 
-                        <img
-                            src="/images/resultats/teams/liverpool.png"
-                            alt="Liverpool"
-                        >
+                        <div class="latest-ticket__footer">
 
-                        <strong>
-                            Liverpool
-                        </strong>
+                            <span>
+                                <i class="fa-regular fa-calendar"></i>
+                                {{ pronostic.matchDate|date('d M. Y') }}
+                            </span>
 
-                    </div>
+                            <span>
+                                <i class="fa-solid fa-tag"></i>
+                                NTS Betting
+                            </span>
 
-                </div>
+                        </div>
 
+                    </article>
 
-                {# PRONOSTIC #}
+                {% endfor %}
 
-                <div class="latest-ticket__prediction">
+            </div>
 
-                    <span>
-                        Pronostic
-                    </span>
-
-                    <strong>
-                        Victoire Arsenal
-                    </strong>
-
-                </div>
-
-
-                {# STATS #}
-
-                <div class="latest-ticket__stats">
-
-                    <div class="latest-ticket__stat">
-
-                        <span>
-                            Cote
-                        </span>
-
-                        <strong>
-                            2.40
-                        </strong>
-
-                    </div>
-
-
-                    <div class="latest-ticket__stat">
-
-                        <span>
-                            Mise
-                        </span>
-
-                        <strong>
-                            10.00€
-                        </strong>
-
-                    </div>
-
-
-                    <div class="latest-ticket__stat">
-
-                        <span>
-                            Résultat
-                        </span>
-
-                        <strong class="latest-ticket__loss">
-                            -10.00€
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                {# FOOTER #}
-
-                <div class="latest-ticket__footer">
-
-                    <span>
-                        <i class="fa-regular fa-calendar"></i>
-                        10 Sept. 2026
-                    </span>
-
-                    <span>
-                        <i class="fa-solid fa-tag"></i>
-                        NTS Betting
-                    </span>
-
-                </div>
-
-            </article>
-
-        </div>
+        {% endif %}
 
     </div>
 

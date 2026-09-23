@@ -1,0 +1,25 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Modifier {{ editedUser.nickname }} — Admin{% endblock %}
+{% block page_title %}Modifier {{ editedUser.nickname }}{% endblock %}
+
+{% block body %}
+
+    <p style="color:var(--admin-muted);">
+        {{ editedUser.email }} · Inscrit le {{ editedUser.dateInscription|date('d/m/Y') }}
+        {% if editedUser.subscriptionPlan %}
+            · Abonnement Stripe : {{ editedUser.subscriptionPlan|capitalize }} ({{ editedUser.subscriptionStatus }})
+        {% endif %}
+    </p>
+
+    {{ form_start(form, {attr: {class: 'admin-form'}}) }}
+        <div class="checkbox-row">{{ form_widget(form.isAdmin) }} {{ form_label(form.isAdmin) }}</div>
+        {{ form_row(form.vipUntil) }}
+
+        <div class="actions-row">
+            <button type="submit" class="btn">Enregistrer</button>
+            <a href="{{ path('admin_user_index') }}" class="btn btn-secondary">Annuler</a>
+        </div>
+    {{ form_end(form) }}
+
+{% endblock %}
